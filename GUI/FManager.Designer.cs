@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblClose = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnBill = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnCustomer = new System.Windows.Forms.Button();
             this.btnService = new System.Windows.Forms.Button();
@@ -42,13 +43,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.ucBill = new HotelManagementSystem.UCBill();
             this.ucService = new HotelManagementSystem.UCService();
             this.ucDashboard = new HotelManagementSystem.UCDashboard();
             this.ucCustomer = new HotelManagementSystem.UCCustomer();
             this.ucRoom = new HotelManagementSystem.UCRoom();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.btnBill = new System.Windows.Forms.Button();
-            this.ucBill = new HotelManagementSystem.UCBill();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -63,7 +63,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1500, 45);
+            this.panel1.Size = new System.Drawing.Size(1386, 45);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -107,8 +107,21 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 45);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(250, 755);
+            this.panel2.Size = new System.Drawing.Size(250, 743);
             this.panel2.TabIndex = 1;
+            // 
+            // btnBill
+            // 
+            this.btnBill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBill.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBill.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnBill.Location = new System.Drawing.Point(15, 462);
+            this.btnBill.Name = "btnBill";
+            this.btnBill.Size = new System.Drawing.Size(216, 40);
+            this.btnBill.TabIndex = 12;
+            this.btnBill.Text = "Bill";
+            this.btnBill.UseVisualStyleBackColor = true;
+            this.btnBill.Click += new System.EventHandler(this.btnBill_Click);
             // 
             // btnLogout
             // 
@@ -235,8 +248,15 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(250, 45);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1250, 755);
+            this.panel3.Size = new System.Drawing.Size(1136, 743);
             this.panel3.TabIndex = 2;
+            // 
+            // ucBill
+            // 
+            this.ucBill.Location = new System.Drawing.Point(0, 0);
+            this.ucBill.Name = "ucBill";
+            this.ucBill.Size = new System.Drawing.Size(1250, 755);
+            this.ucBill.TabIndex = 6;
             // 
             // ucService
             // 
@@ -266,31 +286,11 @@
             this.ucRoom.Size = new System.Drawing.Size(1250, 755);
             this.ucRoom.TabIndex = 0;
             // 
-            // btnBill
-            // 
-            this.btnBill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBill.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBill.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnBill.Location = new System.Drawing.Point(15, 462);
-            this.btnBill.Name = "btnBill";
-            this.btnBill.Size = new System.Drawing.Size(216, 40);
-            this.btnBill.TabIndex = 12;
-            this.btnBill.Text = "Bill";
-            this.btnBill.UseVisualStyleBackColor = true;
-            this.btnBill.Click += new System.EventHandler(this.btnBill_Click);
-            // 
-            // ucBill
-            // 
-            this.ucBill.Location = new System.Drawing.Point(0, 0);
-            this.ucBill.Name = "ucBill";
-            this.ucBill.Size = new System.Drawing.Size(1250, 755);
-            this.ucBill.TabIndex = 6;
-            // 
             // FManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1500, 800);
+            this.ClientSize = new System.Drawing.Size(1386, 788);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
