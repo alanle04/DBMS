@@ -3,6 +3,7 @@ use master;
 DROP DATABASE IF EXISTS hotel_management;
 
 CREATE DATABASE hotel_management;
+GO
 
 USE hotel_management;
 
@@ -16,7 +17,7 @@ CREATE TABLE account (
 -- Tạo bảng staff
 CREATE TABLE staff (
     staff_id VARCHAR(20) CONSTRAINT PK_staff PRIMARY KEY,
-    full_name VARCHAR(100) NOT NULL,
+    full_name NVARCHAR(255) NOT NULL,
     gender VARCHAR(10) CHECK (gender IN ('male', 'female', 'other')),
     phone_number VARCHAR(20) NOT NULL,
     address TEXT NOT NULL,
@@ -28,7 +29,7 @@ CREATE TABLE staff (
 -- Tạo bảng room_type
 CREATE TABLE room_type (
     room_type_id VARCHAR(20) CONSTRAINT PK_room_type PRIMARY KEY,
-    room_type_name VARCHAR(100) NOT NULL,
+    room_type_name NVARCHAR(50) NOT NULL,
     number_of_bed INT CHECK (number_of_bed > 0),
     capacity INT CHECK (capacity > 0),
     cost_per_day INT CHECK (cost_per_day >= 0),
@@ -50,7 +51,7 @@ CREATE TABLE room (
 -- Tạo bảng service
 CREATE TABLE service (
     service_id VARCHAR(20) CONSTRAINT PK_service PRIMARY KEY,
-    service_name VARCHAR(100) NOT NULL,
+    service_name NVARCHAR(255) NOT NULL,
     price INT CHECK (price >= 0),
     description TEXT,
     manager_id VARCHAR(20),
@@ -60,7 +61,7 @@ CREATE TABLE service (
 -- Tạo bảng customer
 CREATE TABLE customer (
     customer_id VARCHAR(20) CONSTRAINT PK_customer PRIMARY KEY,
-    full_name VARCHAR(100) NOT NULL,
+    full_name NVARCHAR(255) NOT NULL,
     gender VARCHAR(10) CHECK (gender IN ('male', 'female', 'other')),
     phone_number VARCHAR(20) NOT NULL,
     identification_number VARCHAR(20) NOT NULL,
