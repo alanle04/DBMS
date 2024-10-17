@@ -72,7 +72,6 @@
     </Compile>
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\Bill.cs" />
-    <Compile Include="Model\Booking.cs" />
     <Compile Include="Model\BookingRecord.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Room.cs" />
@@ -204,6 +203,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DAO\" />
+    <Folder Include="Enums\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

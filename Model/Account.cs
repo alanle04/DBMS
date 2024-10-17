@@ -8,9 +8,9 @@
 
 
         public Account(string username, string password, string role) { 
-            this.Username = username;
-            this.Password = password;
-            this.Role = role;
+            Username = username;
+            Password = password;
+            Role = role;
         }
 
         public string Username { get => _username; set => _username = value; }
