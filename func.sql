@@ -1,4 +1,4 @@
-﻿
+
 -- 3.2.4. Hàm tìm kiếm dữ liệu
 -- 3.2.4.1. Bảng room_type
 --Tìm kiếm theo tên
@@ -12,7 +12,7 @@ RETURN
     FROM room_type
     WHERE room_type_name = @ten
 );
-GO;
+GO
 --Tìm kiếm theo mã loại phòng
 CREATE FUNCTION fn_SearchIDRoomType(@id VARCHAR(20))
 RETURNS TABLE
@@ -23,7 +23,7 @@ RETURN
     FROM room_type
     WHERE room_type_id = @id
 );
-GO;
+GO
 
 --3.2.4.2. Bảng service_usage_record
 CREATE FUNCTION fn_SearchServiceUsageRecord(@id VARCHAR(20))
@@ -35,7 +35,7 @@ RETURN
  	FROM service_usage_record
  	WHERE service_usage_id = @id
 );
-GO;
+GO
 --3.2.4.3. Bảng room 
 --Tìm kiếm theo mã phòng
 CREATE PROCEDURE sp_SearchRoomById
@@ -67,7 +67,7 @@ BEGIN
        RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
     END CATCH
 END;
-GO;
+GO
 
 --Tìm kiếm theo tên phòng
 CREATE PROCEDURE sp_SearchRoomByName
@@ -99,7 +99,7 @@ BEGIN
        RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
     END CATCH
 END;
-GO;
+GO
 
 
 --3.2.4.4. Bảng customer 
@@ -115,7 +115,7 @@ RETURN
 	FROM dbo.customer
 	WHERE full_name LIKE '%' + @full_name + '%'
 );
-GO;
+GO
 --Tìm kiếm theo mã khách hàng
 CREATE FUNCTION fn_FindCustomer (
 	@customer_id VARCHAR(20)
@@ -128,7 +128,7 @@ RETURN
 	FROM dbo.customer
 	WHERE customer_id = @customer_id
 );
-GO;
+GO
 
 --3.2.4.5. Bảng service 
 
@@ -143,7 +143,7 @@ RETURN
     FROM dbo.service
     WHERE service_id = @service_id
 );
-GO;
+GO
 
 --3.2.4.6. Tính tổng doanh thu theo ngày (ví dụ nhập vào 1 ngày và tính tổng các hóa đơn hôm đó)
 CREATE FUNCTION fn_CalculateTotalRevenueByDate(@date DATE)
@@ -155,7 +155,7 @@ RETURN
     FROM bill
     WHERE CAST(created_at AS DATE) = @date
 );
-GO;
+GO
 
 --3.2.4.7. Tính tổng doanh thu theo tháng (ví dụ nhập vào 1 tháng và tính tổng các hóa đơn trong tháng đó)
 
@@ -183,7 +183,7 @@ BEGIN
        RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
     END CATCH
 END;
-GO;
+GO
 
 --3.2.4.8. Tính tổng doanh thu theo quý (ví dụ nhập vào 1 quý và tính tổng các hóa đơn trong quý đó)
 CREATE FUNCTION fn_TotalRevenueByQuarter
@@ -206,7 +206,7 @@ RETURN
     	(MONTH(created_at) BETWEEN 10 AND 12 AND @quarter = 4)
 	)
 );
-GO;
+GO
 
 
 --3.2.4.9. Tính tổng doanh thu theo năm (ví dụ nhập vào 1 năm và tính tổng các hóa đơn trong năm đó)
@@ -222,7 +222,7 @@ RETURN
    	FROM bill
    	WHERE YEAR(created_at) = @year
 );
-GO;
+GO
 
 --3.2.4.10. Kiểm tra login
 CREATE FUNCTION CheckLogin (
