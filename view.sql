@@ -1,4 +1,7 @@
-﻿-- 2.7.1. View xem danh sách các phòng
+﻿USE hotel_management;
+GO
+-- 2.7.1. View xem danh sách các phòng
+
 
 CREATE VIEW vw_RoomList AS
 SELECT
@@ -16,7 +19,7 @@ JOIN
     room_type rt ON r.room_type_id = rt.room_type_id
 LEFT JOIN
 	staff s ON r.manager_id = s.staff_id;
-GO;
+GO
 
 --2.7.2. View xem danh sách các phòng còn trống
 
@@ -38,7 +41,7 @@ LEFT JOIN
     staff s ON r.manager_id = s.staff_id
 WHERE
 	r.status = 'available';
-GO;
+GO
 
 --2.7.3. View xem chi tiết hóa đơn
 
@@ -60,7 +63,7 @@ LEFT JOIN
     staff s ON b.receptionist_id = s.staff_id
 LEFT JOIN
 	customer c ON b.customer_id = c.customer_id;
-GO;
+GO
 
 --2.7.4. View xem chi tiết các dịch vụ mà khách hàng đã dùng
 
@@ -85,6 +88,6 @@ LEFT JOIN
     service srv ON sur.service_id = srv.service_id
 LEFT JOIN
 	customer c ON br.customer_id = c.customer_id;
-GO;
+GO
 
 

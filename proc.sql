@@ -1,3 +1,6 @@
+USE hotel_management;
+GO
+
 -- 3.2.1. Thủ tục thêm dữ liệu các bảng
 -- 3.2.1.1. Bảng room_type
 

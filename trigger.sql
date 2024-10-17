@@ -1,3 +1,6 @@
+USE hotel_management;
+GO
+
 --2.6.1. Trigger thêm vào trạng thái phòng (status) 'occupied' khi phiếu đặt phòng (booking) có thời gian check in thực tế (actual_check_in_time)
 
 CREATE TRIGGER trg_UpdateRoomStatusOccupied
