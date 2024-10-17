@@ -1,4 +1,4 @@
-﻿-- 3.2.1. Thủ tục thêm dữ liệu các bảng
+-- 3.2.1. Thủ tục thêm dữ liệu các bảng
 -- 3.2.1.1. Bảng room_type
 
 CREATE PROC sp_AddRoomType
@@ -27,7 +27,7 @@ BEGIN
     	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
     END CATCH
 END;
-GO;
+GO
 
 --3.2.1.2. Bảng service
 
@@ -57,7 +57,7 @@ BEGIN
     	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
     END CATCH
 END;
-GO;
+GO
 
 --3.2.1.3. Bảng room
 
@@ -88,7 +88,7 @@ BEGIN
     	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
     END CATCH
 END;
-GO;
+GO
 
 
 --3.2.1.4. Bảng customer
@@ -118,7 +118,7 @@ BEGIN
     	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
     END CATCH
 END;
-GO;
+GO
 
 --3.2.1.5. Bảng service_usage_record
 
@@ -147,7 +147,7 @@ BEGIN
     	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
     END CATCH
 END;
-GO;
+GO
 
 --3.2.1.6 Bảng booking _record
 
@@ -183,7 +183,7 @@ BEGIN
     	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
     END CATCH
 END;
-GO;
+GO
 
 --3.2.2. Thủ cập nhật dữ liệu các bảng
 -- 3.2.2.1. Bảng room _type
@@ -221,7 +221,7 @@ BEGIN
     	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
     END CATCH
 END;
-GO;
+GO
 
 --3.2.2.2. Bảng bill
 CREATE PROCEDURE sp_UpdateBill
@@ -248,7 +248,7 @@ BEGIN
     	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
     END CATCH
 END;
-GO;
+GO
 
 --3.2.2.3. Bảng room 
 
@@ -288,7 +288,7 @@ BEGIN
     	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
     END CATCH
 END;
-GO;
+GO
 
 --3.2.2.4. Bảng service
 CREATE PROCEDURE sp_UpdateService
@@ -322,7 +322,7 @@ BEGIN
     	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
     END CATCH
 END;
-GO;
+GO
 
 
 --3.2.3. Thủ tục xóa dữ liệu trong các bảng
@@ -352,7 +352,7 @@ BEGIN
     	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
     END CATCH
 END;
-GO;
+GO
 
 --3.2.3.2 Bảng room 
 CREATE PROCEDURE sp_DeleteRoomById
@@ -385,7 +385,7 @@ BEGIN
     	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
     END CATCH
 END;
-GO;
+GO
 
 --3.2.3.3. Bảng service
 
@@ -411,7 +411,7 @@ BEGIN
     	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
     END CATCH
 END;
-GO;
+GO
 
 --3.2.3.4 Bảng service_usage_record
 
@@ -439,4 +439,4 @@ BEGIN
     	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
     END CATCH
 END;
-GO;
+GO
