@@ -52,6 +52,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\LoginDAO.cs" />
+    <Compile Include="DBConnection\Connection.cs" />
+    <Compile Include="Enums\EnumBookingStatus.cs" />
+    <Compile Include="Enums\EnumExtensions.cs" />
+    <Compile Include="Enums\EnumGender.cs" />
+    <Compile Include="Enums\EnumRole.cs" />
+    <Compile Include="Enums\EnumRoomStatus.cs" />
     <Compile Include="GUI\FLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,7 +79,6 @@
     </Compile>
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\Bill.cs" />
-    <Compile Include="Model\Booking.cs" />
     <Compile Include="Model\BookingRecord.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Room.cs" />
@@ -202,8 +208,6 @@
   <ItemGroup>
     <None Include="Assets\year-icon.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DAO\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
