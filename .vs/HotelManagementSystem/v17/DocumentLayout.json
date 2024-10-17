@@ -3,88 +3,72 @@
   "WorkspaceRootPath": "D:\\DBMS\\DBMS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\model\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:model\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\model\\bill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:model\\bill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\model\\serviceusagerecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:model\\serviceusagerecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\model\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|D:\\DBMS\\DBMS\\model\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:model\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\model\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:model\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\model\\roomtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:model\\roomtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\model\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:model\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\model\\bookingrecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|D:\\DBMS\\DBMS\\model\\bookingrecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:model\\bookingrecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\model\\staff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|D:\\DBMS\\DBMS\\model\\bill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:model\\bill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|D:\\DBMS\\DBMS\\model\\staff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:model\\staff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\model\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|D:\\DBMS\\DBMS\\model\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:model\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|D:\\DBMS\\DBMS\\model\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:model\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\gui\\ucserviceandpayment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\ucserviceandpayment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\gui\\ucservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\ucservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\gui\\ucroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\ucroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\gui\\ucdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\ucdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\gui\\uccustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\uccustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\gui\\uccheckin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\uccheckin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\gui\\ucbooking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\ucbooking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\gui\\ucbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\ucbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\gui\\fmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\fmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\gui\\freceptionist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\freceptionist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\gui\\flogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\flogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|D:\\DBMS\\DBMS\\gui\\ucserviceandpayment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\ucserviceandpayment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|D:\\DBMS\\DBMS\\gui\\ucservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\ucservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|D:\\DBMS\\DBMS\\gui\\ucroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\ucroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|D:\\DBMS\\DBMS\\gui\\ucdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\ucdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|D:\\DBMS\\DBMS\\gui\\uccustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\uccustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|D:\\DBMS\\DBMS\\gui\\uccheckin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\uccheckin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|D:\\DBMS\\DBMS\\gui\\ucbooking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\ucbooking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|D:\\DBMS\\DBMS\\gui\\ucbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\ucbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|D:\\DBMS\\DBMS\\gui\\fmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\fmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|D:\\DBMS\\DBMS\\gui\\freceptionist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\freceptionist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -94,7 +78,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -110,257 +94,85 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Account.cs",
               "DocumentMoniker": "D:\\DBMS\\DBMS\\Model\\Account.cs",
               "RelativeDocumentMoniker": "Model\\Account.cs",
               "ToolTip": "D:\\DBMS\\DBMS\\Model\\Account.cs",
               "RelativeToolTip": "Model\\Account.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-10T07:52:32.728Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Booking.cs",
-              "DocumentMoniker": "D:\\DBMS\\DBMS\\Model\\Booking.cs",
-              "RelativeDocumentMoniker": "Model\\Booking.cs",
-              "ToolTip": "D:\\DBMS\\DBMS\\Model\\Booking.cs",
-              "RelativeToolTip": "Model\\Booking.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T07:52:19.542Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Bill.cs",
               "DocumentMoniker": "D:\\DBMS\\DBMS\\Model\\Bill.cs",
               "RelativeDocumentMoniker": "Model\\Bill.cs",
               "ToolTip": "D:\\DBMS\\DBMS\\Model\\Bill.cs",
               "RelativeToolTip": "Model\\Bill.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAvwBEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-10T07:52:13.183Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ServiceUsageRecord.cs",
-              "DocumentMoniker": "D:\\DBMS\\DBMS\\Model\\ServiceUsageRecord.cs",
-              "RelativeDocumentMoniker": "Model\\ServiceUsageRecord.cs",
-              "ToolTip": "D:\\DBMS\\DBMS\\Model\\ServiceUsageRecord.cs",
-              "RelativeToolTip": "Model\\ServiceUsageRecord.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T07:52:02.724Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Room.cs",
-              "DocumentMoniker": "D:\\DBMS\\DBMS\\Model\\Room.cs",
-              "RelativeDocumentMoniker": "Model\\Room.cs",
-              "ToolTip": "D:\\DBMS\\DBMS\\Model\\Room.cs",
-              "RelativeToolTip": "Model\\Room.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T07:51:39.632Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "RoomType.cs",
-              "DocumentMoniker": "D:\\DBMS\\DBMS\\Model\\RoomType.cs",
-              "RelativeDocumentMoniker": "Model\\RoomType.cs",
-              "ToolTip": "D:\\DBMS\\DBMS\\Model\\RoomType.cs",
-              "RelativeToolTip": "Model\\RoomType.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwcAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T07:51:30.206Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Service.cs",
-              "DocumentMoniker": "D:\\DBMS\\DBMS\\Model\\Service.cs",
-              "RelativeDocumentMoniker": "Model\\Service.cs",
-              "ToolTip": "D:\\DBMS\\DBMS\\Model\\Service.cs",
-              "RelativeToolTip": "Model\\Service.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T07:51:23.348Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "BookingRecord.cs",
-              "DocumentMoniker": "D:\\DBMS\\DBMS\\Model\\BookingRecord.cs",
-              "RelativeDocumentMoniker": "Model\\BookingRecord.cs",
-              "ToolTip": "D:\\DBMS\\DBMS\\Model\\BookingRecord.cs",
-              "RelativeToolTip": "Model\\BookingRecord.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T07:51:18.4Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
               "Title": "Staff.cs",
               "DocumentMoniker": "D:\\DBMS\\DBMS\\Model\\Staff.cs",
               "RelativeDocumentMoniker": "Model\\Staff.cs",
               "ToolTip": "D:\\DBMS\\DBMS\\Model\\Staff.cs",
               "RelativeToolTip": "Model\\Staff.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAywA4AAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-10T07:51:09.336Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 5,
               "Title": "Customer.cs",
               "DocumentMoniker": "D:\\DBMS\\DBMS\\Model\\Customer.cs",
               "RelativeDocumentMoniker": "Model\\Customer.cs",
               "ToolTip": "D:\\DBMS\\DBMS\\Model\\Customer.cs",
               "RelativeToolTip": "Model\\Customer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-10T07:51:00.55Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "UCServiceAndPayment.cs [Design]",
-              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\UCServiceAndPayment.cs",
-              "RelativeDocumentMoniker": "GUI\\UCServiceAndPayment.cs",
-              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\UCServiceAndPayment.cs [Design]",
-              "RelativeToolTip": "GUI\\UCServiceAndPayment.cs [Design]",
+              "DocumentIndex": 1,
+              "Title": "BookingRecord.cs",
+              "DocumentMoniker": "D:\\DBMS\\DBMS\\Model\\BookingRecord.cs",
+              "RelativeDocumentMoniker": "Model\\BookingRecord.cs",
+              "ToolTip": "D:\\DBMS\\DBMS\\Model\\BookingRecord.cs",
+              "RelativeToolTip": "Model\\BookingRecord.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAvwBIAAAAHAQAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T07:50:18.373Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-10-10T07:51:18.4Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "UCService.cs [Design]",
-              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\UCService.cs",
-              "RelativeDocumentMoniker": "GUI\\UCService.cs",
-              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\UCService.cs [Design]",
-              "RelativeToolTip": "GUI\\UCService.cs [Design]",
+              "DocumentIndex": 0,
+              "Title": "Service.cs",
+              "DocumentMoniker": "D:\\DBMS\\DBMS\\Model\\Service.cs",
+              "RelativeDocumentMoniker": "Model\\Service.cs",
+              "ToolTip": "D:\\DBMS\\DBMS\\Model\\Service.cs",
+              "RelativeToolTip": "Model\\Service.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAowBAAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T07:50:17.243Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-10-10T07:51:23.348Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "UCRoom.cs [Design]",
-              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\UCRoom.cs",
-              "RelativeDocumentMoniker": "GUI\\UCRoom.cs",
-              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\UCRoom.cs [Design]",
-              "RelativeToolTip": "GUI\\UCRoom.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T07:50:16.453Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "UCDashboard.cs [Design]",
-              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\UCDashboard.cs",
-              "RelativeDocumentMoniker": "GUI\\UCDashboard.cs",
-              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\UCDashboard.cs [Design]",
-              "RelativeToolTip": "GUI\\UCDashboard.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T07:50:13.42Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "UCCustomer.cs [Design]",
-              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\UCCustomer.cs",
-              "RelativeDocumentMoniker": "GUI\\UCCustomer.cs",
-              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\UCCustomer.cs [Design]",
-              "RelativeToolTip": "GUI\\UCCustomer.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T07:50:12.762Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "UCCheckIn.cs [Design]",
-              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\UCCheckIn.cs",
-              "RelativeDocumentMoniker": "GUI\\UCCheckIn.cs",
-              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\UCCheckIn.cs [Design]",
-              "RelativeToolTip": "GUI\\UCCheckIn.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T07:50:11.4Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "UCBooking.cs [Design]",
-              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\UCBooking.cs",
-              "RelativeDocumentMoniker": "GUI\\UCBooking.cs",
-              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\UCBooking.cs [Design]",
-              "RelativeToolTip": "GUI\\UCBooking.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T07:50:09.313Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "UCBill.cs [Design]",
-              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\UCBill.cs",
-              "RelativeDocumentMoniker": "GUI\\UCBill.cs",
-              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\UCBill.cs [Design]",
-              "RelativeToolTip": "GUI\\UCBill.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T07:50:07.562Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "FManager.cs [Design]",
-              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\FManager.cs",
-              "RelativeDocumentMoniker": "GUI\\FManager.cs",
-              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\FManager.cs [Design]",
-              "RelativeToolTip": "GUI\\FManager.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T07:50:06.434Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "FReceptionist.cs [Design]",
-              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\FReceptionist.cs",
-              "RelativeDocumentMoniker": "GUI\\FReceptionist.cs",
-              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\FReceptionist.cs [Design]",
-              "RelativeToolTip": "GUI\\FReceptionist.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T07:50:05.506Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 6,
               "Title": "FLogin.cs [Design]",
               "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\FLogin.cs",
               "RelativeDocumentMoniker": "GUI\\FLogin.cs",
@@ -369,6 +181,116 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-10T07:50:04.315Z",
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UCServiceAndPayment.cs [Design]",
+              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\UCServiceAndPayment.cs",
+              "RelativeDocumentMoniker": "GUI\\UCServiceAndPayment.cs",
+              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\UCServiceAndPayment.cs [Design]",
+              "RelativeToolTip": "GUI\\UCServiceAndPayment.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T07:50:18.373Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UCService.cs [Design]",
+              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\UCService.cs",
+              "RelativeDocumentMoniker": "GUI\\UCService.cs",
+              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\UCService.cs [Design]",
+              "RelativeToolTip": "GUI\\UCService.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T07:50:17.243Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UCRoom.cs [Design]",
+              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\UCRoom.cs",
+              "RelativeDocumentMoniker": "GUI\\UCRoom.cs",
+              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\UCRoom.cs [Design]",
+              "RelativeToolTip": "GUI\\UCRoom.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T07:50:16.453Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UCDashboard.cs [Design]",
+              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\UCDashboard.cs",
+              "RelativeDocumentMoniker": "GUI\\UCDashboard.cs",
+              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\UCDashboard.cs [Design]",
+              "RelativeToolTip": "GUI\\UCDashboard.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T07:50:13.42Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "UCCustomer.cs [Design]",
+              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\UCCustomer.cs",
+              "RelativeDocumentMoniker": "GUI\\UCCustomer.cs",
+              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\UCCustomer.cs [Design]",
+              "RelativeToolTip": "GUI\\UCCustomer.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T07:50:12.762Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UCCheckIn.cs [Design]",
+              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\UCCheckIn.cs",
+              "RelativeDocumentMoniker": "GUI\\UCCheckIn.cs",
+              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\UCCheckIn.cs [Design]",
+              "RelativeToolTip": "GUI\\UCCheckIn.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T07:50:11.4Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "UCBooking.cs [Design]",
+              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\UCBooking.cs",
+              "RelativeDocumentMoniker": "GUI\\UCBooking.cs",
+              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\UCBooking.cs [Design]",
+              "RelativeToolTip": "GUI\\UCBooking.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T07:50:09.313Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "UCBill.cs [Design]",
+              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\UCBill.cs",
+              "RelativeDocumentMoniker": "GUI\\UCBill.cs",
+              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\UCBill.cs [Design]",
+              "RelativeToolTip": "GUI\\UCBill.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T07:50:07.562Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "FManager.cs [Design]",
+              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\FManager.cs",
+              "RelativeDocumentMoniker": "GUI\\FManager.cs",
+              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\FManager.cs [Design]",
+              "RelativeToolTip": "GUI\\FManager.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T07:50:06.434Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "FReceptionist.cs [Design]",
+              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\FReceptionist.cs",
+              "RelativeDocumentMoniker": "GUI\\FReceptionist.cs",
+              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\FReceptionist.cs [Design]",
+              "RelativeToolTip": "GUI\\FReceptionist.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T07:50:05.506Z"
             }
           ]
         }
