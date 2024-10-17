@@ -1,4 +1,4 @@
-﻿--2.6.1. Trigger thêm vào trạng thái phòng (status) 'occupied' khi phiếu đặt phòng (booking) có thời gian check in thực tế (actual_check_in_time)
+--2.6.1. Trigger thêm vào trạng thái phòng (status) 'occupied' khi phiếu đặt phòng (booking) có thời gian check in thực tế (actual_check_in_time)
 
 CREATE TRIGGER trg_UpdateRoomStatusOccupied
 ON booking_record
@@ -11,7 +11,7 @@ BEGIN
     INNER JOIN inserted i ON r.room_id = i.room_id
     WHERE i.actual_check_in_time IS NOT NULL;
 END;
-GO;
+GO
 
 
 --2.6.2. Trigger thêm vào trạng thái phòng status 'deposited' khi phiếu đặt phòng (booking_record) chưa có thời gian check in thực tế actual_check_in_time)
@@ -28,7 +28,7 @@ BEGIN
 	JOIN inserted i ON r.room_id = i.room_id
 	WHERE i.actual_check_in_time IS NULL;
 END;
-GO;
+GO
 
 -- 2.6.3. Trigger kiểm tra khách hàng thuê phòng trùng với thời gian phòng được đặt trước thì không được thuê
 
@@ -54,7 +54,7 @@ BEGIN
  	ROLLBACK TRANSACTION;
     END;
 END;
-GO;
+GO
 
 --2.6.4. Trigger cập nhật chi phí khách hàng check in sớm vào hóa đơn (bill)
 
@@ -87,7 +87,7 @@ BEGIN
     JOIN bill b ON b.customer_id = i.customer_id
     WHERE i.actual_check_in_time < i.expected_check_in_time;
 END;
-GO;
+GO
 
 --2.6.5. Trigger cập nhật khi sử dụng dịch vụ tính thêm chi phí vào hóa đơn
 
@@ -126,7 +126,7 @@ FROM service_usage_record sur
     	WHERE bill_id = @bill_id;
     END
 END;
-GO;
+GO
 
 -- 2.6.6. Trigger cập nhật sau khi thanh toán hóa đơn (bill) trạng thái phòng (status)  trở về “available”
 
@@ -142,7 +142,7 @@ BEGIN
     	WHERE room_id IN (SELECT room_id FROM bill WHERE created_at IS NOT NULL);
 	END
 END;
-GO;
+GO
 
 --2.6.7. Trigger cập nhật chi phí khách hàng check out trễ vào hóa đơn
 
@@ -171,7 +171,7 @@ BEGIN
 	UPDATE bill
 	SET total = room_fee + service_fee + @additional_fee,  additional_fee = @additional_fee	WHERE customer_id IN (SELECT customer_id FROM Inserted);
 END;
-GO;
+GO
 
 --2.6.8. Trigger tạo hóa đơn khi phiếu đặt phòng (booking_record) được tạo
 
@@ -214,7 +214,7 @@ BEGIN
 	INSERT INTO Bill (customer_id, receptionist_id,created_at,  room_fee, service_fee, additional_fee, total)
 	VALUES (@cus, @staff, NULL, @room_fee, NULL, NULL, @room_fee * @days_stayed);
 END;
-GO;
+GO
 
 --2.6.9. Trigger kiểm tra phòng đang được đặt bởi khách hàng thì không thể xóa.
 
@@ -241,7 +241,7 @@ BEGIN
     	DELETE FROM room WHERE room_id = @room_id;
     END
 END;
-GO;
+GO
 
 --2.6.10. Trigger kiểm tra khi quá hạn check in thì xóa phiếu đặt phòng và đặt trạng thái phòng available
 
@@ -263,7 +263,7 @@ BEGIN
     	WHERE expected_check_in_time < @current_time
     );
 END;
-GO;
+GO
 
 --2.6.11. Trigger kiểm tra khi thêm loại phòng, tên loại phòng không được trùng.
 CREATE TRIGGER trg_CheckRoomTypeName
@@ -281,7 +281,7 @@ BEGIN
  SELECT room_type_id, room_type_name, number_of_bed, capacity, cost_per_day, manager_id
     FROM inserted;
 END;
-GO;
+GO
 
 --2.6.12. Trigger kiểm tra khi thêm dịch vụ, tên dịch vụ không được trùng.
 
@@ -300,7 +300,7 @@ BEGIN
     SELECT service_id, service_name, price, description, manager_id
     FROM inserted;
 END;
-GO;
+GO
 --2.6.13. Trigger khi bấm xuất hóa đơn thì lấy thời gian xuất hóa đơn thiết lập giá trị actual_check_out_time bên bảng booking_record.
 
 CREATE TRIGGER trg_UpdateCheckOutTime
@@ -314,4 +314,3 @@ BEGIN
 	INNER JOIN inserted i ON b.customer_id = i.customer_id
 	WHERE b.customer_id = i.customer_id;
 END;
-
