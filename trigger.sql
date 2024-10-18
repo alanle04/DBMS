@@ -148,32 +148,38 @@ END;
 GO
 
 --2.6.7. Trigger cập nhật chi phí khách hàng check out trễ vào hóa đơn
-
-CREATE TRIGGER trg_OverCheckOut
-ON bill
+ALTER TRIGGER [dbo].[trg_OverCheckOut]
+ON [dbo].[bill]
 AFTER INSERT, UPDATE
 AS
 BEGIN
-	DECLARE @checkout_time TIME;  
-	DECLARE @room_price INT;
-	DECLARE @additional_fee DECIMAL(18, 2);   
-	SELECT @checkout_time = CAST(inserted.created_at AS TIME), @room_price = room_fee
-	FROM Inserted;
-	IF @checkout_time BETWEEN '12:00' AND '15:00'
-	BEGIN
-    	SET @additional_fee = @additional_fee + @room_price * 0.30;
-	END
-	ELSE IF @checkout_time BETWEEN '15:00' AND '18:00'
-	BEGIN
-    	SET @additional_fee = @additional_fee + @room_price * 0.50; 
-	END
-	ELSE IF @checkout_time > '18:00'
-	BEGIN
-    	SET @additional_fee = @additional_fee + @room_price * 1.00; 
-	END
-	UPDATE bill
-	SET total = room_fee + service_fee + @additional_fee,  additional_fee = @additional_fee	WHERE customer_id IN (SELECT customer_id FROM Inserted);
+    -- Chỉ thực thi nếu tồn tại bản ghi trong Inserted
+    IF EXISTS (SELECT 1 FROM Inserted)
+    BEGIN
+        -- Cập nhật hóa đơn với phí bổ sung dựa trên thời gian checkout
+        UPDATE b
+        SET 
+            b.additional_fee = CASE 
+                -- 30% phụ phí nếu checkout giữa 12:00 và 15:00
+                WHEN CAST(i.created_at AS TIME) BETWEEN '12:00' AND '15:00' THEN i.room_fee * 0.30
+                -- 50% phụ phí nếu checkout giữa 15:00 và 18:00
+                WHEN CAST(i.created_at AS TIME) BETWEEN '15:00' AND '18:00' THEN i.room_fee * 0.50
+                -- 100% phụ phí nếu checkout sau 18:00
+                WHEN CAST(i.created_at AS TIME) > '18:00' THEN i.room_fee * 1.00
+                ELSE 0 -- Không có phụ phí nếu checkout trước 12:00
+            END,
+            -- Cập nhật tổng phí bao gồm phụ phí
+            b.total = i.room_fee + i.service_fee + CASE 
+                WHEN CAST(i.created_at AS TIME) BETWEEN '12:00' AND '15:00' THEN i.room_fee * 0.30
+                WHEN CAST(i.created_at AS TIME) BETWEEN '15:00' AND '18:00' THEN i.room_fee * 0.50
+                WHEN CAST(i.created_at AS TIME) > '18:00' THEN i.room_fee * 1.00
+                ELSE 0 
+            END
+        FROM bill b
+        INNER JOIN Inserted i ON b.bill_id = i.bill_id; -- Join với bảng Inserted theo khóa chính
+    END
 END;
+
 GO
 
 --2.6.8. Trigger tạo hóa đơn khi phiếu đặt phòng (booking_record) được tạo
