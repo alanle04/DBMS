@@ -62,7 +62,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 45);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(250, 743);
+            this.panel2.Size = new System.Drawing.Size(250, 755);
             this.panel2.TabIndex = 3;
             // 
             // btnServiceAndPayment
@@ -175,7 +175,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1386, 45);
+            this.panel1.Size = new System.Drawing.Size(1500, 45);
             this.panel1.TabIndex = 2;
             // 
             // label1
@@ -229,7 +229,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1386, 788);
+            this.ClientSize = new System.Drawing.Size(1500, 800);
             this.Controls.Add(this.ucServiceAndPayment);
             this.Controls.Add(this.ucCheckIn);
             this.Controls.Add(this.ucBooking);

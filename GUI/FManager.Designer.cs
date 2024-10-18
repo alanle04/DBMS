@@ -63,7 +63,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1386, 45);
+            this.panel1.Size = new System.Drawing.Size(1500, 45);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -107,7 +107,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 45);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(250, 743);
+            this.panel2.Size = new System.Drawing.Size(250, 755);
             this.panel2.TabIndex = 1;
             // 
             // btnBill
@@ -248,7 +248,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(250, 45);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1136, 743);
+            this.panel3.Size = new System.Drawing.Size(1250, 755);
             this.panel3.TabIndex = 2;
             // 
             // ucBill
@@ -290,7 +290,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1386, 788);
+            this.ClientSize = new System.Drawing.Size(1500, 800);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
