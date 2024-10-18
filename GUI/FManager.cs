@@ -1,18 +1,4 @@
-<<<<<<< HEAD
-﻿using HotelManagementSystem.DBConnection;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-=======
-﻿using HotelManagementSystem.GUI;
-using System;
->>>>>>> main
+﻿using System;
 using System.Windows.Forms;
 
 namespace HotelManagementSystem {
@@ -51,49 +37,48 @@ namespace HotelManagementSystem {
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            ucDashboard.Visible = true;
-            ucRoom.Visible = false;
-            ucCustomer.Visible = false;
-            ucService.Visible = false;
+            //ucDashboard.Visible = true;
+            //ucRoom.Visible = false;
+            //ucCustomer.Visible = false;
+            //ucService.Visible = false;
         }
 
         private void btnRoom_Click(object sender, EventArgs e)
         {
-            ucDashboard.Visible = false;
-            ucRoom.Visible = true;
-            ucCustomer.Visible = false;
-            ucService.Visible = false;
-            ucBill.Visible = false;
+            //ucDashboard.Visible = false;
+            //ucRoom.Visible = true;
+            //ucCustomer.Visible = false;
+            //ucService.Visible = false;
+            //ucBill.Visible = false;
         }
 
         private void btnCustomer_Click(object sender, EventArgs e)
         {
-            ucDashboard.Visible = false;
-            ucRoom.Visible = false;
-            ucCustomer.Visible = true;
-            ucService.Visible = false;
-            ucBill.Visible = false;
+            //ucDashboard.Visible = false;
+            //ucRoom.Visible = false;
+            //ucCustomer.Visible = true;
+            //ucService.Visible = false;
+            //ucBill.Visible = false;
         }
 
         private void btnService_Click(object sender, EventArgs e)
         {
-            ucDashboard.Visible = false;
-            ucRoom.Visible = false;
-            ucCustomer.Visible = false;
-            ucService.Visible = true;
-            ucBill.Visible = false;
+            //ucDashboard.Visible = false;
+            //ucRoom.Visible = false;
+            //ucCustomer.Visible = false;
+            //ucService.Visible = true;
+            //ucBill.Visible = false;
         }
 
         private void btnBill_Click(object sender, EventArgs e)
         {
-            ucDashboard.Visible = false;
-            ucRoom.Visible = false;
-            ucCustomer.Visible = false;
-            ucService.Visible = false;
-            ucBill.Visible = true;
+            //ucDashboard.Visible = false;
+            //ucRoom.Visible = false;
+            //ucCustomer.Visible = false;
+            //ucService.Visible = false;
+            //ucBill.Visible = true;
         }
 
-<<<<<<< HEAD
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -117,15 +102,6 @@ namespace HotelManagementSystem {
         private void FManager_Load(object sender, EventArgs e)
         {
 
-=======
-        private void btnRoomType_Click(object sender, EventArgs e) {
-            ucDashboard.Visible = false;
-            ucRoom.Visible = false;
-            ucRoomType.Visible = true;
-            ucCustomer.Visible = false;
-            ucService.Visible = false;
-            ucBill.Visible = false;
->>>>>>> main
         }
     }
 }

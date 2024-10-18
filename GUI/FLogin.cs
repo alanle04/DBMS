@@ -75,7 +75,6 @@ namespace HotelManagementSystem
             return string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtPassword.Text);
         }
 
-<<<<<<< HEAD
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (emptyFields())
@@ -84,23 +83,10 @@ namespace HotelManagementSystem
             }
             else
             {
-                db.openConnection(); // Mở kết nối từ class Connection
+                db.openConnection(); 
                 try
                 {
-                    int loginResult = CheckLogin(txtUsername.Text, txtPassword.Text); // Chỉ gọi một lần
-=======
-        private void btnLogin_Click(object sender, EventArgs e) {
-            if(emptyFields()) {
-                MessageBox.Show("All fields are required to be filled.", "Errorr Message", MessageBoxButtons.OK);
-            } else {
-                if(connection.State == ConnectionState.Closed) {
-                    try {
-                        connection.Open();
-                        string selectAccount = "SELECT COUNT(*) FROM account WHERE username = @username AND password = @password";
-                        using(SqlCommand cmd = new SqlCommand(selectAccount, connection)) {
-                            cmd.Parameters.AddWithValue("@username", txtUsername.Text.Trim());
-                            cmd.Parameters.AddWithValue("@password", txtPassword.Text.Trim());
->>>>>>> main
+                    int loginResult = CheckLogin(txtUsername.Text, txtPassword.Text); 
 
                     if (loginResult == 1)
                     {
@@ -127,7 +113,7 @@ namespace HotelManagementSystem
                 }
                 finally
                 {
-                    db.closeConnection(); // Đóng kết nối
+                    db.closeConnection();
                 }
             }
         }
