@@ -16,7 +16,7 @@ namespace HotelManagementSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FReceptionist());
+            Application.Run(new FLogin());
         }
     }
 }

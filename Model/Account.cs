@@ -6,7 +6,6 @@
 
         public Account() { }
 
-
         public Account(string username, string password, string role) { 
             Username = username;
             Password = password;

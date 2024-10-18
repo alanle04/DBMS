@@ -77,10 +77,11 @@
     <Compile Include="GUI\FReceptionist.Designer.cs">
       <DependentUpon>FReceptionist.cs</DependentUpon>
     </Compile>
-    <Compile Include="hotel_managementDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>hotel_managementDataSet.xsd</DependentUpon>
+    <Compile Include="GUI\UCRoomType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UCRoomType.Designer.cs">
+      <DependentUpon>UCRoomType.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\Bill.cs" />
@@ -151,6 +152,9 @@
       <DependentUpon>FReceptionist.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\.resx" />
+    <EmbeddedResource Include="GUI\UCRoomType.resx">
+      <DependentUpon>UCRoomType.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -185,17 +189,6 @@
     <EmbeddedResource Include="GUI\UCServiceAndPayment.resx">
       <DependentUpon>UCServiceAndPayment.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="hotel_managementDataSet.xsc">
-      <DependentUpon>hotel_managementDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="hotel_managementDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>hotel_managementDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="hotel_managementDataSet.xss">
-      <DependentUpon>hotel_managementDataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

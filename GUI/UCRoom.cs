@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.SqlClient;
-using System.Web.UI.WebControls;
+﻿using System.Windows.Forms;
 
-namespace HotelManagementSystem
-{
+namespace HotelManagementSystem {
     public partial class UCRoom : UserControl
     {
         public UCRoom()
