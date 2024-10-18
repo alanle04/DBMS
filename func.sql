@@ -229,21 +229,31 @@ CREATE FUNCTION CheckLogin (
 	@username VARCHAR(50),
 	@password VARCHAR(255)
 )
-RETURNS BIT
+RETURNS INT
 AS
 BEGIN
-	DECLARE @result BIT;
-	IF EXISTS (
-    	SELECT 1
-    	FROM account
-    	WHERE username = @username AND [password] = @password
-	)
+	DECLARE @result INT;
+	DECLARE @role VARCHAR(20);
+	
+	-- Kiểm tra nếu tài khoản tồn tại và lấy vai trò
+	SELECT @role = role
+	FROM account
+	WHERE username = @username AND [password] = @password;
+ 
+	IF @role IS NOT NULL
 	BEGIN
-    	SET @result = 1;
+    	IF @role = 'manager'
+    	BEGIN
+        	SET @result = 1;  -- Quản lý
+    	END
+    	ELSE IF @role = 'receptionist'
+    	BEGIN
+        	SET @result = 0;  -- Lễ tân
+    	END
 	END
 	ELSE
 	BEGIN
-    	SET @result = 0;
+    	SET @result = -1;  -- Tài khoản không tồn tại
 	END
  
 	RETURN @result;
