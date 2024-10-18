@@ -77,6 +77,12 @@
     <Compile Include="GUI\FReceptionist.Designer.cs">
       <DependentUpon>FReceptionist.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\UCRoomType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UCRoomType.Designer.cs">
+      <DependentUpon>UCRoomType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\Bill.cs" />
     <Compile Include="Model\BookingRecord.cs" />
@@ -144,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\FReceptionist.resx">
       <DependentUpon>FReceptionist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UCRoomType.resx">
+      <DependentUpon>UCRoomType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
