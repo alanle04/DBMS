@@ -28,7 +28,6 @@ namespace HotelManagementSystem {
         }
 
         private void btnLogin_Click(object sender, EventArgs e) {
-            MessageBox.Show(Connection.GetConnection().ToString());
             if(emptyFields()) {
                 MessageBox.Show("All fields are required to be filled.", "Errorr Message", MessageBoxButtons.OK);
             } else {
@@ -78,6 +77,11 @@ namespace HotelManagementSystem {
                 }
 
             }
+        }
+
+        private void FLogin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
