@@ -1,4 +1,8 @@
-﻿namespace HotelManagementSystem.Model {
+﻿using System.Data.SqlClient;
+using System.Data;
+using System.Drawing;
+
+namespace HotelManagementSystem.Model {
     public class Staff {
         private string _staffId;
         private string _fullName;
@@ -28,5 +32,6 @@
         public string Address { get => _address; set => _address = value; }
         public string Role { get => _role; set => _role = value; }
         public string Username { get => _username; set => _username = value; }
+       
     }
 }
