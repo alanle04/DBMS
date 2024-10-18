@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using HotelManagementSystem.DBConnection;
 using System;
 using System.Collections.Generic;
@@ -8,10 +9,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+=======
+﻿using HotelManagementSystem.GUI;
+using System;
+>>>>>>> main
 using System.Windows.Forms;
 
-namespace HotelManagementSystem
-{
+namespace HotelManagementSystem {
     public partial class FManager : Form
     {
      
@@ -89,6 +93,7 @@ namespace HotelManagementSystem
             ucBill.Visible = true;
         }
 
+<<<<<<< HEAD
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -112,6 +117,15 @@ namespace HotelManagementSystem
         private void FManager_Load(object sender, EventArgs e)
         {
 
+=======
+        private void btnRoomType_Click(object sender, EventArgs e) {
+            ucDashboard.Visible = false;
+            ucRoom.Visible = false;
+            ucRoomType.Visible = true;
+            ucCustomer.Visible = false;
+            ucService.Visible = false;
+            ucBill.Visible = false;
+>>>>>>> main
         }
     }
 }

@@ -63,7 +63,11 @@
             this.panel2.Location = new System.Drawing.Point(0, 55);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
+<<<<<<< HEAD
             this.panel2.Size = new System.Drawing.Size(336, 915);
+=======
+            this.panel2.Size = new System.Drawing.Size(250, 755);
+>>>>>>> main
             this.panel2.TabIndex = 3;
             // 
             // btnServiceAndPayment
@@ -178,7 +182,11 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
+<<<<<<< HEAD
             this.panel1.Size = new System.Drawing.Size(1848, 55);
+=======
+            this.panel1.Size = new System.Drawing.Size(1500, 45);
+>>>>>>> main
             this.panel1.TabIndex = 2;
             // 
             // label1
@@ -233,7 +241,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
             this.ClientSize = new System.Drawing.Size(1848, 970);
+=======
+            this.ClientSize = new System.Drawing.Size(1500, 800);
+>>>>>>> main
             this.Controls.Add(this.ucServiceAndPayment);
             this.Controls.Add(this.ucCheckIn);
             this.Controls.Add(this.ucBooking);

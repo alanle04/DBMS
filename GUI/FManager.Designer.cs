@@ -43,13 +43,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+<<<<<<< HEAD
             this.ucBill1 = new HotelManagementSystem.UCBill();
+=======
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.btnRoomType = new System.Windows.Forms.Button();
+>>>>>>> main
             this.ucBill = new HotelManagementSystem.UCBill();
             this.ucService = new HotelManagementSystem.UCService();
-            this.ucDashboard = new HotelManagementSystem.UCDashboard();
             this.ucCustomer = new HotelManagementSystem.UCCustomer();
             this.ucRoom = new HotelManagementSystem.UCRoom();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.ucRoomType = new HotelManagementSystem.GUI.UCRoomType();
+            this.ucDashboard = new HotelManagementSystem.UCDashboard();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -66,7 +71,11 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
+<<<<<<< HEAD
             this.panel1.Size = new System.Drawing.Size(1942, 40);
+=======
+            this.panel1.Size = new System.Drawing.Size(1500, 45);
+>>>>>>> main
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -100,6 +109,7 @@
             this.panel2.Controls.Add(this.btnLogout);
             this.panel2.Controls.Add(this.btnCustomer);
             this.panel2.Controls.Add(this.btnService);
+            this.panel2.Controls.Add(this.btnRoomType);
             this.panel2.Controls.Add(this.btnRoom);
             this.panel2.Controls.Add(this.btnDashboard);
             this.panel2.Controls.Add(this.label4);
@@ -109,7 +119,11 @@
             this.panel2.Location = new System.Drawing.Point(0, 48);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
+<<<<<<< HEAD
             this.panel2.Size = new System.Drawing.Size(349, 1057);
+=======
+            this.panel2.Size = new System.Drawing.Size(250, 755);
+>>>>>>> main
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -118,12 +132,16 @@
             this.btnBill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBill.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBill.ForeColor = System.Drawing.Color.WhiteSmoke;
+<<<<<<< HEAD
             this.btnBill.Location = new System.Drawing.Point(20, 569);
             this.btnBill.Margin = new System.Windows.Forms.Padding(4);
+=======
+            this.btnBill.Location = new System.Drawing.Point(17, 520);
+>>>>>>> main
             this.btnBill.Name = "btnBill";
             this.btnBill.Size = new System.Drawing.Size(288, 49);
             this.btnBill.TabIndex = 12;
-            this.btnBill.Text = "Bill";
+            this.btnBill.Text = "Hóa đơn";
             this.btnBill.UseVisualStyleBackColor = true;
             this.btnBill.Click += new System.EventHandler(this.btnBill_Click);
             // 
@@ -146,12 +164,16 @@
             this.btnCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCustomer.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCustomer.ForeColor = System.Drawing.Color.WhiteSmoke;
+<<<<<<< HEAD
             this.btnCustomer.Location = new System.Drawing.Point(20, 492);
             this.btnCustomer.Margin = new System.Windows.Forms.Padding(4);
+=======
+            this.btnCustomer.Location = new System.Drawing.Point(17, 458);
+>>>>>>> main
             this.btnCustomer.Name = "btnCustomer";
             this.btnCustomer.Size = new System.Drawing.Size(288, 49);
             this.btnCustomer.TabIndex = 10;
-            this.btnCustomer.Text = "Customer";
+            this.btnCustomer.Text = "Khách hàng";
             this.btnCustomer.UseVisualStyleBackColor = true;
             this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
             // 
@@ -160,12 +182,16 @@
             this.btnService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnService.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnService.ForeColor = System.Drawing.Color.WhiteSmoke;
+<<<<<<< HEAD
             this.btnService.Location = new System.Drawing.Point(20, 415);
             this.btnService.Margin = new System.Windows.Forms.Padding(4);
+=======
+            this.btnService.Location = new System.Drawing.Point(17, 395);
+>>>>>>> main
             this.btnService.Name = "btnService";
             this.btnService.Size = new System.Drawing.Size(288, 49);
             this.btnService.TabIndex = 9;
-            this.btnService.Text = "Service";
+            this.btnService.Text = "Dịch vụ";
             this.btnService.UseVisualStyleBackColor = true;
             this.btnService.Click += new System.EventHandler(this.btnService_Click);
             // 
@@ -179,7 +205,7 @@
             this.btnRoom.Name = "btnRoom";
             this.btnRoom.Size = new System.Drawing.Size(288, 49);
             this.btnRoom.TabIndex = 8;
-            this.btnRoom.Text = "Room";
+            this.btnRoom.Text = "Phòng";
             this.btnRoom.UseVisualStyleBackColor = true;
             this.btnRoom.Click += new System.EventHandler(this.btnRoom_Click);
             // 
@@ -193,7 +219,7 @@
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.Size = new System.Drawing.Size(288, 49);
             this.btnDashboard.TabIndex = 7;
-            this.btnDashboard.Text = "Dashboard";
+            this.btnDashboard.Text = "Trang chủ";
             this.btnDashboard.UseVisualStyleBackColor = true;
             this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
@@ -246,16 +272,24 @@
             // 
             // panel3
             // 
+<<<<<<< HEAD
             this.panel3.Controls.Add(this.ucBill1);
+=======
+            this.panel3.Controls.Add(this.ucDashboard);
+            this.panel3.Controls.Add(this.ucRoomType);
+>>>>>>> main
             this.panel3.Controls.Add(this.ucBill);
             this.panel3.Controls.Add(this.ucService);
-            this.panel3.Controls.Add(this.ucDashboard);
             this.panel3.Controls.Add(this.ucCustomer);
             this.panel3.Controls.Add(this.ucRoom);
             this.panel3.Location = new System.Drawing.Point(344, 55);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
+<<<<<<< HEAD
             this.panel3.Size = new System.Drawing.Size(1644, 927);
+=======
+            this.panel3.Size = new System.Drawing.Size(1250, 755);
+>>>>>>> main
             this.panel3.TabIndex = 2;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -270,11 +304,28 @@
             this.ucBill1.TabIndex = 6;
             this.ucBill1.Load += new System.EventHandler(this.ucBill_Load);
             // 
+            // btnRoomType
+            // 
+            this.btnRoomType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRoomType.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRoomType.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRoomType.Location = new System.Drawing.Point(15, 332);
+            this.btnRoomType.Name = "btnRoomType";
+            this.btnRoomType.Size = new System.Drawing.Size(216, 40);
+            this.btnRoomType.TabIndex = 8;
+            this.btnRoomType.Text = "Loại phòng";
+            this.btnRoomType.UseVisualStyleBackColor = true;
+            this.btnRoomType.Click += new System.EventHandler(this.btnRoomType_Click);
+            // 
             // ucBill
             // 
+<<<<<<< HEAD
             this.ucBill.AutoSize = true;
             this.ucBill.Location = new System.Drawing.Point(14, -41);
             this.ucBill.Margin = new System.Windows.Forms.Padding(5);
+=======
+            this.ucBill.Location = new System.Drawing.Point(-3, 0);
+>>>>>>> main
             this.ucBill.Name = "ucBill";
             this.ucBill.Size = new System.Drawing.Size(1662, 1067);
             this.ucBill.TabIndex = 6;
@@ -288,6 +339,7 @@
             this.ucService.Size = new System.Drawing.Size(1667, 896);
             this.ucService.TabIndex = 5;
             // 
+<<<<<<< HEAD
             // ucDashboard
             // 
             this.ucDashboard.Location = new System.Drawing.Point(0, 33);
@@ -296,6 +348,8 @@
             this.ucDashboard.Size = new System.Drawing.Size(1667, 896);
             this.ucDashboard.TabIndex = 4;
             // 
+=======
+>>>>>>> main
             // ucCustomer
             // 
             this.ucCustomer.Location = new System.Drawing.Point(0, 33);
@@ -312,12 +366,30 @@
             this.ucRoom.Size = new System.Drawing.Size(1667, 896);
             this.ucRoom.TabIndex = 0;
             // 
+            // ucRoomType
+            // 
+            this.ucRoomType.Location = new System.Drawing.Point(3, 3);
+            this.ucRoomType.Name = "ucRoomType";
+            this.ucRoomType.Size = new System.Drawing.Size(1250, 755);
+            this.ucRoomType.TabIndex = 8;
+            // 
+            // ucDashboard
+            // 
+            this.ucDashboard.Location = new System.Drawing.Point(0, 0);
+            this.ucDashboard.Name = "ucDashboard";
+            this.ucDashboard.Size = new System.Drawing.Size(1250, 755);
+            this.ucDashboard.TabIndex = 9;
+            // 
             // FManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(1942, 1029);
+=======
+            this.ClientSize = new System.Drawing.Size(1500, 800);
+>>>>>>> main
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -356,12 +428,17 @@
         private System.Windows.Forms.Button btnRoom;
         private System.Windows.Forms.Panel panel3;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private UCRoom ucRoom;
-        private UCDashboard ucDashboard;
-        private UCCustomer ucCustomer;
-        private UCService ucService;
         private System.Windows.Forms.Button btnBill;
         private UCBill ucBill;
+<<<<<<< HEAD
         private UCBill ucBill1;
+=======
+        private UCService ucService;
+        private UCCustomer ucCustomer;
+        private UCRoom ucRoom;
+        private System.Windows.Forms.Button btnRoomType;
+        private UCDashboard ucDashboard;
+        private GUI.UCRoomType ucRoomType;
+>>>>>>> main
     }
 }
