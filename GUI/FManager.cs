@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HotelManagementSystem.GUI;
+using System;
 using System.Windows.Forms;
 
-namespace HotelManagementSystem
-{
+namespace HotelManagementSystem {
     public partial class FManager : Form
     {
         public FManager()
@@ -82,6 +75,15 @@ namespace HotelManagementSystem
             ucCustomer.Visible = false;
             ucService.Visible = false;
             ucBill.Visible = true;
+        }
+
+        private void btnRoomType_Click(object sender, EventArgs e) {
+            ucDashboard.Visible = false;
+            ucRoom.Visible = false;
+            ucRoomType.Visible = true;
+            ucCustomer.Visible = false;
+            ucService.Visible = false;
+            ucBill.Visible = false;
         }
     }
 }

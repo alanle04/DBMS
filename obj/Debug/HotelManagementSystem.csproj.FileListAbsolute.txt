@@ -42,3 +42,4 @@ D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.csproj.CoreCompileInputs.cache
 D:\DBMS\DBMS\obj\Debug\HotelMan.F5E31FD0.Up2Date
 D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.exe
 D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.pdb
+D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRoomType.resources
