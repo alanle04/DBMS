@@ -1,8 +1,4 @@
-﻿using System.Data.SqlClient;
-using System.Data;
-using System.Drawing;
-
-namespace HotelManagementSystem.Model {
+﻿namespace HotelManagementSystem.Model {
     public class Staff {
         private string _staffId;
         private string _fullName;
@@ -11,10 +7,8 @@ namespace HotelManagementSystem.Model {
         private string _address;
         private string _role;
         private string _username;
-
         public Staff() {
         }
-
         public Staff(string staffId, string fullName, string gender, string phoneNumber, string address, string role, string username) {
             StaffId = staffId;
             FullName = fullName;

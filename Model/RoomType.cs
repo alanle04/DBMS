@@ -6,7 +6,6 @@
         private int _capacity;
         private int _costPerDay;
         private string _managerId;
-
         public RoomType() { }
 
         public RoomType(string roomTypeId, string roomTypeName, int numberOfBed, int capacity, int costPerDay, string managerId) {
@@ -17,7 +16,6 @@
             CostPerDay = costPerDay;
             ManagerId = managerId;
         }
-
         public string RoomTypeId { get => _roomTypeId; set => _roomTypeId = value; }
         public string RoomTypeName { get => _roomTypeName; set => _roomTypeName = value; }
         public int NumberOfBed { get => _numberOfBed; set => _numberOfBed = value; }

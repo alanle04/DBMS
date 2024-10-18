@@ -1,126 +1,69 @@
-﻿using HotelManagementSystem.DBConnection;
+﻿using HotelManagementSystem.DAO;
 using System;
-using System.Data;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace HotelManagementSystem
-{
-    public partial class FLogin : Form
-    {
-        Connection db = new Connection();
+namespace HotelManagementSystem {
+    public partial class FLogin : Form {
 
-        public FLogin()
-        {
+        LoginDAO db = new LoginDAO();
+
+        public FLogin() {
             InitializeComponent();
         }
 
-        public int CheckLogin(string username, string password)
-        {
-            int result = -1; // Mặc định là tài khoản không tồn tại
-            string connectionString = @"Data Source=DESKTOP-EBUN5JD;Initial Catalog=hotel_management;Persist Security Info=True;User ID=sa;Password=1234567890";
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-
-                    // Gọi hàm trong câu lệnh SQL
-                    string query = "SELECT dbo.CheckLogin(@username, @password)";
-
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        // Thêm tham số cho hàm
-                        command.Parameters.AddWithValue("@username", username);
-                        command.Parameters.AddWithValue("@password", password);
-
-                        // Thực hiện lệnh và lấy kết quả
-                        object resultObj = command.ExecuteScalar();
-
-                        // Kiểm tra xem kết quả có null không
-                        if (resultObj != null)
-                        {
-                            result = Convert.ToInt32(resultObj); // Chuyển đổi kết quả sang int
-                        }
-                        else
-                        {
-                            MessageBox.Show("Không có kết quả trả về từ cơ sở dữ liệu."); // Thông báo nếu không có kết quả
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message); // Bắt lỗi và hiển thị thông báo
-            }
-
-            return result; // Trả về kết quả
-       
-        }
-
-
-        private void lblClose_Click(object sender, EventArgs e)
-        {
+        private void lblClose_Click(object sender, EventArgs e) {
             Application.Exit();
         }
 
-        private void chkShowPassword_CheckedChanged(object sender, EventArgs e)
-        {
+        private void chkShowPassword_CheckedChanged(object sender, EventArgs e) {
             txtPassword.PasswordChar = chkShowPassword.Checked ? '\0' : '*';
         }
 
-        public bool emptyFields()
-        {
+        public bool emptyFields() {
             return string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtPassword.Text);
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            if (emptyFields())
-            {
+        private void btnLogin_Click(object sender, EventArgs e) {
+            if(emptyFields()) {
                 MessageBox.Show("Tất cả các trường đều phải được điền đầy đủ.", "Thông báo lỗi", MessageBoxButtons.OK);
-            }
-            else
-            {
-                db.openConnection(); 
-                try
-                {
-                    int loginResult = CheckLogin(txtUsername.Text, txtPassword.Text); 
+            } else {
 
-                    if (loginResult == 1)
-                    {
+                try {
+                    int loginResult = db.CheckLogin(txtUsername.Text.Trim(), txtPassword.Text.Trim());
+
+                    if(loginResult == 1) {
                         MessageBox.Show("Manager đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        FManager fManager = new FManager();
+                        FManager fManager = new FManager(txtUsername.Text.Trim());
                         fManager.Show();
                         this.Hide();
-                    }
-                    else if (loginResult == 0)
-                    {
+                    } else if(loginResult == 0) {
                         MessageBox.Show("Receptionist đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        FReceptionist fReceptionist = new FReceptionist();
+                        FReceptionist fReceptionist = new FReceptionist(txtUsername.Text.Trim());
                         fReceptionist.Show();
                         this.Hide();
+                    } else {
+                        MessageBox.Show("Tên người dùng hoặc mật khẩu không chính xác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else
-                    {
-                        MessageBox.Show("Tên người dùng hoặc mật khẩu không chính xác", "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                catch (Exception ex)
-                {
+                } catch(Exception ex) {
                     MessageBox.Show("Kết nối thất bại: " + ex.Message, "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    db.closeConnection();
                 }
             }
         }
 
-        private void FLogin_Load(object sender, EventArgs e)
-        {
+        private void FLogin_Load(object sender, EventArgs e) {
 
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e) {
+            if(e.KeyCode == Keys.Enter) {
+                btnLogin_Click(sender, e);
+            }
+        }
+
+        private void txtUsername_KeyDown(object sender, KeyEventArgs e) {
+            if(e.KeyCode == Keys.Enter) {
+                btnLogin_Click(sender, e);
+            }
         }
     }
 }

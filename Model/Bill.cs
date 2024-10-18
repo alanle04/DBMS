@@ -12,10 +12,8 @@ namespace HotelManagementSystem.Model {
         private string _paymentMethod;
         private string _customerId;
         private string _receptionistId;
-
         public Bill() {
         }
-
         public Bill(string billId, int roomFee, int serviceFee, int additionalFee, string additionalFeeContent, DateTime createdAt, int total, string paymentMethod, string customerId, string receptionistId) {
             BillId = billId;
             RoomFee = roomFee;
@@ -28,7 +26,6 @@ namespace HotelManagementSystem.Model {
             CustomerId = customerId;
             ReceptionistId = receptionistId;
         }
-
         public string BillId { get => _billId; set => _billId = value; }
         public int RoomFee { get => _roomFee; set => _roomFee = value; }
         public int ServiceFee { get => _serviceFee; set => _serviceFee = value; }

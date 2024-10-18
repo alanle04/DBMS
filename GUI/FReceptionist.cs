@@ -1,33 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HotelManagementSystem
-{
-    public partial class FReceptionist : Form
-    {
-        public FReceptionist()
-        {
+namespace HotelManagementSystem {
+    public partial class FReceptionist : Form {
+        private string username;
+        public FReceptionist() {
             InitializeComponent();
         }
 
-        private void lblClose_Click(object sender, EventArgs e)
-        {
+        public FReceptionist(string username) {
+            InitializeComponent();
+            this.username = username;
+            lblUsername.Text = username;
+        }
+
+        private void lblClose_Click(object sender, EventArgs e) {
             Application.Exit();
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
+        private void btnLogout_Click(object sender, EventArgs e) {
+            MessageBox.Show(username);
+
             DialogResult result = MessageBox.Show("Are you sure you want to logout?", "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (result == DialogResult.Yes)
-            {
+            if(result == DialogResult.Yes) {
                 FLogin fLogin = new FLogin();
                 fLogin.Show();
 
@@ -35,22 +31,19 @@ namespace HotelManagementSystem
             }
         }
 
-        private void btnBooking_Click(object sender, EventArgs e)
-        {
+        private void btnBooking_Click(object sender, EventArgs e) {
             ucBooking.Visible = true;
             ucCheckIn.Visible = false;
             ucServiceAndPayment.Visible = false;
         }
 
-        private void btnServiceAndPayment_Click(object sender, EventArgs e)
-        {
+        private void btnServiceAndPayment_Click(object sender, EventArgs e) {
             ucBooking.Visible = false;
             ucCheckIn.Visible = false;
             ucServiceAndPayment.Visible = true;
         }
 
-        private void btnCheckIn_Click(object sender, EventArgs e)
-        {
+        private void btnCheckIn_Click(object sender, EventArgs e) {
             ucBooking.Visible = false;
             ucCheckIn.Visible = true;
             ucServiceAndPayment.Visible = false;

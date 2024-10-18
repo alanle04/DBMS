@@ -2,7 +2,6 @@ D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.csproj.AssemblyReference.cache
 D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.FLogin.resources
 D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.FManager.resources
 D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.FReceptionist.resources
-D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRoomType.resources
 D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.Properties.Resources.resources
 D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.UCBill.resources
 D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.UCBooking.resources
@@ -21,3 +20,5 @@ D:\DBMS\DBMS\bin\Debug\HotelManagementSystem.exe
 D:\DBMS\DBMS\bin\Debug\HotelManagementSystem.pdb
 D:\DBMS\DBMS\bin\Debug\Guna.UI2.dll
 D:\DBMS\DBMS\obj\Debug\HotelMan.F5E31FD0.Up2Date
+D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.GUI..resources
+D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRoomType.resources

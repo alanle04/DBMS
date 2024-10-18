@@ -15,7 +15,6 @@ namespace HotelManagementSystem.Model {
 
         public BookingRecord() {
         }
-
         public BookingRecord(string bookingRecordId, DateTime bookingTime, string status, DateTime expectedCheckInTime, DateTime expectedCheckOutTime, DateTime actualCheckInTime, DateTime actualCheckOutTime, string receptionistId, string customerId, string roomId) {
             BookingRecordId = bookingRecordId;
             BookingTime = bookingTime;
@@ -28,7 +27,6 @@ namespace HotelManagementSystem.Model {
             CustomerId = customerId;
             RoomId = roomId;
         }
-
         public string BookingRecordId { get => _bookingRecordId; set => _bookingRecordId = value; }
         public DateTime BookingTime { get => _bookingTime; set => _bookingTime = value; }
         public string Status { get => _status; set => _status = value; }

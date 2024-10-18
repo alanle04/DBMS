@@ -38,17 +38,22 @@
             this.btnService = new System.Windows.Forms.Button();
             this.btnRoom = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblUsername = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnRoomType = new System.Windows.Forms.Button();
+            this.ucDashboard = new HotelManagementSystem.UCDashboard();
+            this.ucRoom = new HotelManagementSystem.UCRoom();
+            this.ucRoomType = new HotelManagementSystem.GUI.UCRoomType();
+            this.ucService = new HotelManagementSystem.UCService();
+            this.ucCustomer = new HotelManagementSystem.UCCustomer();
             this.ucBill = new HotelManagementSystem.UCBill();
-            this.ucBooking1 = new HotelManagementSystem.UCBooking();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -96,9 +101,10 @@
             this.panel2.Controls.Add(this.btnLogout);
             this.panel2.Controls.Add(this.btnCustomer);
             this.panel2.Controls.Add(this.btnService);
+            this.panel2.Controls.Add(this.btnRoomType);
             this.panel2.Controls.Add(this.btnRoom);
             this.panel2.Controls.Add(this.btnDashboard);
-            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.lblUsername);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.pictureBox1);
@@ -113,7 +119,7 @@
             this.btnBill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBill.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBill.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnBill.Location = new System.Drawing.Point(15, 462);
+            this.btnBill.Location = new System.Drawing.Point(15, 530);
             this.btnBill.Name = "btnBill";
             this.btnBill.Size = new System.Drawing.Size(216, 40);
             this.btnBill.TabIndex = 12;
@@ -139,7 +145,7 @@
             this.btnCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCustomer.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCustomer.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnCustomer.Location = new System.Drawing.Point(15, 400);
+            this.btnCustomer.Location = new System.Drawing.Point(15, 467);
             this.btnCustomer.Name = "btnCustomer";
             this.btnCustomer.Size = new System.Drawing.Size(216, 40);
             this.btnCustomer.TabIndex = 10;
@@ -152,7 +158,7 @@
             this.btnService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnService.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnService.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnService.Location = new System.Drawing.Point(15, 337);
+            this.btnService.Location = new System.Drawing.Point(15, 404);
             this.btnService.Name = "btnService";
             this.btnService.Size = new System.Drawing.Size(216, 40);
             this.btnService.TabIndex = 9;
@@ -165,7 +171,7 @@
             this.btnRoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRoom.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRoom.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRoom.Location = new System.Drawing.Point(15, 275);
+            this.btnRoom.Location = new System.Drawing.Point(15, 278);
             this.btnRoom.Name = "btnRoom";
             this.btnRoom.Size = new System.Drawing.Size(216, 40);
             this.btnRoom.TabIndex = 8;
@@ -186,18 +192,18 @@
             this.btnDashboard.UseVisualStyleBackColor = true;
             this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
-            // label4
+            // lblUsername
             // 
-            this.label4.AutoSize = true;
-            this.label4.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(109, 171);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 17);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "admin";
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblUsername.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.ForeColor = System.Drawing.Color.White;
+            this.lblUsername.Location = new System.Drawing.Point(109, 171);
+            this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(52, 17);
+            this.lblUsername.TabIndex = 6;
+            this.lblUsername.Text = "admin";
             // 
             // label3
             // 
@@ -205,12 +211,12 @@
             this.label3.Cursor = System.Windows.Forms.Cursors.Default;
             this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(14, 171);
+            this.label3.Location = new System.Drawing.Point(25, 171);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 17);
+            this.label3.Size = new System.Drawing.Size(88, 17);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Username: ";
+            this.label3.Text = "Username:";
             // 
             // label2
             // 
@@ -225,6 +231,20 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Manager\'s Portal";
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.ucDashboard);
+            this.panel3.Controls.Add(this.ucRoom);
+            this.panel3.Controls.Add(this.ucRoomType);
+            this.panel3.Controls.Add(this.ucService);
+            this.panel3.Controls.Add(this.ucCustomer);
+            this.panel3.Controls.Add(this.ucBill);
+            this.panel3.Location = new System.Drawing.Point(268, 45);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1223, 739);
+            this.panel3.TabIndex = 2;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::HotelManagementSystem.Properties.Resources.hotel_icon1;
@@ -236,32 +256,60 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // panel3
+            // btnRoomType
             // 
-            this.panel3.Controls.Add(this.ucBooking1);
-            this.panel3.Controls.Add(this.ucBill);
-            this.panel3.Location = new System.Drawing.Point(258, 45);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1233, 739);
-            this.panel3.TabIndex = 2;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            this.btnRoomType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRoomType.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRoomType.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRoomType.Location = new System.Drawing.Point(15, 341);
+            this.btnRoomType.Name = "btnRoomType";
+            this.btnRoomType.Size = new System.Drawing.Size(216, 40);
+            this.btnRoomType.TabIndex = 8;
+            this.btnRoomType.Text = "Loại phòng";
+            this.btnRoomType.UseVisualStyleBackColor = true;
+            this.btnRoomType.Click += new System.EventHandler(this.btnRoomType_Click);
+            // 
+            // ucDashboard
+            // 
+            this.ucDashboard.Location = new System.Drawing.Point(-7, -7);
+            this.ucDashboard.Name = "ucDashboard";
+            this.ucDashboard.Size = new System.Drawing.Size(1272, 755);
+            this.ucDashboard.TabIndex = 5;
+            // 
+            // ucRoom
+            // 
+            this.ucRoom.Location = new System.Drawing.Point(-7, -7);
+            this.ucRoom.Name = "ucRoom";
+            this.ucRoom.Size = new System.Drawing.Size(1250, 755);
+            this.ucRoom.TabIndex = 4;
+            // 
+            // ucRoomType
+            // 
+            this.ucRoomType.Location = new System.Drawing.Point(-7, -7);
+            this.ucRoomType.Name = "ucRoomType";
+            this.ucRoomType.Size = new System.Drawing.Size(1250, 755);
+            this.ucRoomType.TabIndex = 3;
+            // 
+            // ucService
+            // 
+            this.ucService.Location = new System.Drawing.Point(-7, -7);
+            this.ucService.Name = "ucService";
+            this.ucService.Size = new System.Drawing.Size(1250, 755);
+            this.ucService.TabIndex = 2;
+            // 
+            // ucCustomer
+            // 
+            this.ucCustomer.Location = new System.Drawing.Point(-7, -7);
+            this.ucCustomer.Name = "ucCustomer";
+            this.ucCustomer.Size = new System.Drawing.Size(1250, 755);
+            this.ucCustomer.TabIndex = 1;
             // 
             // ucBill
             // 
-            this.ucBill.AutoSize = true;
-            this.ucBill.Location = new System.Drawing.Point(4, -14);
-            this.ucBill.Margin = new System.Windows.Forms.Padding(4);
+            this.ucBill.Location = new System.Drawing.Point(-7, -7);
             this.ucBill.Name = "ucBill";
-            this.ucBill.Size = new System.Drawing.Size(1246, 747);
-            this.ucBill.TabIndex = 6;
-            this.ucBill.Load += new System.EventHandler(this.ucBill_Load);
-            // 
-            // ucBooking1
-            // 
-            this.ucBooking1.Location = new System.Drawing.Point(148, 180);
-            this.ucBooking1.Name = "ucBooking1";
-            this.ucBooking1.Size = new System.Drawing.Size(15, 15);
-            this.ucBooking1.TabIndex = 7;
+            this.ucBill.Size = new System.Drawing.Size(1250, 755);
+            this.ucBill.TabIndex = 0;
             // 
             // FManager
             // 
@@ -281,9 +329,8 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,7 +344,7 @@
         private System.Windows.Forms.Label lblClose;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnDashboard;
         private System.Windows.Forms.Button btnLogout;
@@ -307,7 +354,12 @@
         private System.Windows.Forms.Panel panel3;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button btnBill;
+        private System.Windows.Forms.Button btnRoomType;
+        private UCDashboard ucDashboard;
+        private UCRoom ucRoom;
+        private GUI.UCRoomType ucRoomType;
+        private UCService ucService;
+        private UCCustomer ucCustomer;
         private UCBill ucBill;
-        private UCBooking ucBooking1;
     }
 }

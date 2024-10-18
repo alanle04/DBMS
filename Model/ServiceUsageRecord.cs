@@ -8,10 +8,8 @@ namespace HotelManagementSystem.Model {
         private string _bookingId;
         private string _receptionistId;
         private string _serviceId;
-
         public ServiceUsageRecord() {
         }
-
         public ServiceUsageRecord(string serviceUsesageId, DateTime usageTime, int quantity, string bookingId, string receptionistId, string serviceId) {
             ServiceUsesageId = serviceUsesageId;
             UsageTime = usageTime;
@@ -20,7 +18,6 @@ namespace HotelManagementSystem.Model {
             ReceptionistId = receptionistId;
             ServiceId = serviceId;
         }
-
         public string ServiceUsesageId { get => _serviceUsesageId; set => _serviceUsesageId = value; }
         public DateTime UsageTime { get => _usageTime; set => _usageTime = value; }
         public int Quantity { get => _quantity; set => _quantity = value; }

@@ -1,51 +1,23 @@
 ﻿using HotelManagementSystem.Properties;
-using System.Data.SqlClient;
-using System.Data;
-using System.Windows.Forms;
 using System;
-using System.Drawing;
+using System.Data.SqlClient;
 
 namespace HotelManagementSystem.DBConnection {
     public class Connection {
-        string strCon = @"Data Source=DESKTOP-EBUN5JD;Initial Catalog=hotel_management;Persist Security Info=True;User ID=sa;Password=1234567890";
-        public SqlConnection sqlcon = null;
-        public SqlConnection getConnection()
-        {
-             if (sqlcon == null)
-            {
+        static string strCon = Settings.Default.connectionString;
+        static SqlConnection sqlcon = null;
+
+        public static SqlConnection GetConnection() {
+            if(sqlcon == null || sqlcon.State == System.Data.ConnectionState.Closed || sqlcon.State == System.Data.ConnectionState.Broken) {
                 sqlcon = new SqlConnection(strCon);
-              }
+            }
             return sqlcon;
         }
 
-        public void openConnection()
-        {
-            try
-            {
-                if (sqlcon == null)
-                {
-                    sqlcon = new SqlConnection(strCon);
-                }
-                sqlcon = new SqlConnection(strCon);
-                if (sqlcon.State == ConnectionState.Closed)
-                {
-                    sqlcon.Open();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-        public void closeConnection() {
-            if (sqlcon != null && sqlcon.State == ConnectionState.Open)
-            {
+        public static void CloseConnection() {
+            if(sqlcon != null && sqlcon.State == System.Data.ConnectionState.Open) {
                 sqlcon.Close();
-               
             }
-           
         }
-
     }
 }
