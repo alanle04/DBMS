@@ -77,6 +77,11 @@
     <Compile Include="GUI\FReceptionist.Designer.cs">
       <DependentUpon>FReceptionist.cs</DependentUpon>
     </Compile>
+    <Compile Include="hotel_managementDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotel_managementDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\Bill.cs" />
     <Compile Include="Model\BookingRecord.cs" />
@@ -179,6 +184,17 @@
     <EmbeddedResource Include="GUI\UCServiceAndPayment.resx">
       <DependentUpon>UCServiceAndPayment.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="hotel_managementDataSet.xsc">
+      <DependentUpon>hotel_managementDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="hotel_managementDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotel_managementDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotel_managementDataSet.xss">
+      <DependentUpon>hotel_managementDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
