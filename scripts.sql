@@ -237,7 +237,7 @@ END;
 GO
 
 --Tìm kiếm theo tên phòng
-CREATE PROCEDURE sp_SearchRoomByName(@room_name NVARCHAR(50))
+CREATE PROCEDURE sp_SearchRoomByName (@room_name NVARCHAR(50))
 AS
 BEGIN
  
