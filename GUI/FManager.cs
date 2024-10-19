@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HotelManagementSystem.GUI;
+using System;
 using System.Windows.Forms;
 
 namespace HotelManagementSystem {
@@ -8,15 +9,22 @@ namespace HotelManagementSystem {
 
         public FManager() {
             InitializeComponent();
-
+            UCDashboard uCDashboard = new UCDashboard();
+            uCDashboard.Dock = DockStyle.Fill;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(uCDashboard);
         }
 
         public FManager(string username) {
             InitializeComponent();
             this.username = username;
             lblUsername.Text = username;
+            UCDashboard uCDashboard = new UCDashboard();
+            uCDashboard.Dock = DockStyle.Fill;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(uCDashboard);
         }
-               
+
 
         private void lblClose_Click(object sender, EventArgs e) {
             DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -39,48 +47,45 @@ namespace HotelManagementSystem {
         }
 
         private void btnDashboard_Click(object sender, EventArgs e) {
-            ucDashboard.Visible = true;
-            ucRoom.Visible = false;
-            ucRoomType.Visible = false;
-            ucCustomer.Visible = false;
-            ucService.Visible = false;
-            ucBill.Visible = false;
+            UCDashboard uCDashboard = new UCDashboard();
+            uCDashboard.Dock = DockStyle.Fill;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(uCDashboard);
         }
 
         private void btnRoom_Click(object sender, EventArgs e) {
-            ucDashboard.Visible = false;
-            ucRoom.Visible = true;
-            ucRoomType.Visible = false;
-            ucCustomer.Visible = false;
-            ucService.Visible = false;
-            ucBill.Visible = false;
+            UCRoom ucRoom = new UCRoom();
+            ucRoom.Dock = DockStyle.Fill;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(ucRoom);
+        }
+
+        private void btnRoomType_Click(object sender, EventArgs e) {
+            UCRoomType uCRoomType = new UCRoomType();
+            uCRoomType.Dock = DockStyle.Fill;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(uCRoomType);
         }
 
         private void btnCustomer_Click(object sender, EventArgs e) {
-            ucDashboard.Visible = false;
-            ucRoom.Visible = false;
-            ucRoomType.Visible = false;
-            ucCustomer.Visible = true;
-            ucService.Visible = false;
-            ucBill.Visible = false;
+            UCCustomer uCCustomer = new UCCustomer();
+            uCCustomer.Dock = DockStyle.Fill;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(uCCustomer);
         }
 
         private void btnService_Click(object sender, EventArgs e) {
-            ucDashboard.Visible = false;
-            ucRoom.Visible = false;
-            ucRoomType.Visible = false;
-            ucCustomer.Visible = false;
-            ucService.Visible = true;
-            ucBill.Visible = false;
+            UCService ucService = new UCService(username);
+            ucService.Dock = DockStyle.Fill;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(ucService);
         }
 
         private void btnBill_Click(object sender, EventArgs e) {
-            ucDashboard.Visible = false;
-            ucRoom.Visible = false;
-            ucRoomType.Visible = false;
-            ucCustomer.Visible = false;
-            ucService.Visible = false;
-            ucBill.Visible = true;
+            UCBill ucBill = new UCBill();
+            ucBill.Dock = DockStyle.Fill;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(ucBill);
         }
 
         private void label1_Click(object sender, EventArgs e) {
@@ -101,15 +106,6 @@ namespace HotelManagementSystem {
 
         private void FManager_Load(object sender, EventArgs e) {
 
-        }
-
-        private void btnRoomType_Click(object sender, EventArgs e) {
-            ucDashboard.Visible = false;
-            ucRoom.Visible = false;
-            ucRoomType.Visible = true;
-            ucCustomer.Visible = false;
-            ucService.Visible = false;
-            ucBill.Visible = false;
         }
     }
 }

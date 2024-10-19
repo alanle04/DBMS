@@ -13,7 +13,7 @@ namespace HotelManagementSystem.DAO {
                 using(SqlConnection connection = Connection.GetConnection()) {
                     connection.Open();
 
-                    string query = "SELECT dbo.func_CheckLogin(@username, @password)";
+                    string query = "SELECT dbo.fn_CheckLogin(@username, @password)";
 
                     using(SqlCommand command = new SqlCommand(query, connection)) {
                         command.Parameters.AddWithValue("@username", username);

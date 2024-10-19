@@ -53,6 +53,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\LoginDAO.cs" />
+    <Compile Include="DAO\RoomDAO.cs" />
+    <Compile Include="DAO\RoomTypeDAO.cs" />
+    <Compile Include="DAO\StaffDAO.cs" />
+    <Compile Include="DAO\ServiceDAO.cs" />
     <Compile Include="DBConnection\Connection.cs" />
     <Compile Include="Enums\EnumBookingStatus.cs" />
     <Compile Include="Enums\EnumExtensions.cs" />
