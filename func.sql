@@ -225,7 +225,7 @@ RETURN
 GO
 
 --3.2.4.10. Kiểm tra login
-CREATE FUNCTION CheckLogin (
+CREATE FUNCTION fn_CheckLogin (
 	@username VARCHAR(50),
 	@password VARCHAR(255)
 )

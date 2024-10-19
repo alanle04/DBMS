@@ -73,6 +73,7 @@
             this.btnDelete.TabIndex = 21;
             this.btnDelete.Text = "DELETE ROOM TYPE";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // txt_managerId
             // 
@@ -125,6 +126,7 @@
             this.btnUpdate.TabIndex = 15;
             this.btnUpdate.Text = "UPDATE";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnAdd
             // 
@@ -139,6 +141,7 @@
             this.btnAdd.TabIndex = 14;
             this.btnAdd.Text = "ADD";
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // lblCapacity
             // 
@@ -236,8 +239,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.dtgv_ListRoomType);
+            this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(507, 18);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
@@ -265,6 +268,7 @@
             this.dtgv_ListRoomType.RowHeadersWidth = 51;
             this.dtgv_ListRoomType.Size = new System.Drawing.Size(1093, 810);
             this.dtgv_ListRoomType.TabIndex = 0;
+            this.dtgv_ListRoomType.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_ListRoomType_CellClick);
             // 
             // panel1
             // 
@@ -300,6 +304,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UCRoomType";
             this.Size = new System.Drawing.Size(1667, 929);
+            this.Load += new System.EventHandler(this.UCRoomType_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_ListRoomType)).EndInit();
