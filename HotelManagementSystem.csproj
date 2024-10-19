@@ -118,6 +118,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>hotel_managementDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="GUI\UCRoomType.cs">
       <SubType>UserControl</SubType>
     </Compile>

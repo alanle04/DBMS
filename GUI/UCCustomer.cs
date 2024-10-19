@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +12,6 @@ using System.Drawing.Text;
 using HotelManagementSystem.Model;
 using HotelManagementSystem.DBConnection;
 using HotelManagementSystem.DAO;
-﻿using System.Windows.Forms;
 
 namespace HotelManagementSystem {
     public partial class UCCustomer : UserControl
