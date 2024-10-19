@@ -51,6 +51,7 @@ namespace HotelManagementSystem
             ucRoom.Visible = false;
             ucCustomer.Visible = false;
             ucService.Visible = false;
+            
         }
 
         private void btnRoom_Click(object sender, EventArgs e)

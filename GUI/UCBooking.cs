@@ -16,5 +16,10 @@ namespace HotelManagementSystem
         {
             InitializeComponent();
         }
+
+        private void btnBook_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

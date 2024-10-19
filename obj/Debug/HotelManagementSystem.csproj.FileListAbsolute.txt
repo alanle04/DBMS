@@ -64,3 +64,11 @@ C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.csproj.CoreCompileIn
 C:\Users\Administrator\DBMS\obj\Debug\HotelMan.F5E31FD0.Up2Date
 C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.exe
 C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.pdb
+C:\Users\Administrator\DBMS\bin\Debug\OxyPlot.dll
+C:\Users\Administrator\DBMS\bin\Debug\OxyPlot.WindowsForms.dll
+C:\Users\Administrator\DBMS\bin\Debug\OxyPlot.xml
+C:\Users\Administrator\DBMS\bin\Debug\OxyPlot.WindowsForms.xml
+C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRevenueMonthly.resources
+C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRevenueDaily.resources
+C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRevenueQuarter.resources
+C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRevenueYearly.resources
