@@ -1,21 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using HotelManagementSystem.DBConnection;
-using OxyPlot;
-using OxyPlot.Axes;
-using OxyPlot.Series;
-using OxyPlot.WindowsForms;
+﻿using HotelManagementSystem.DAO;
 using System;
-
-using System.Data.SqlClient;
 using System.Windows.Forms;
-using HotelManagementSystem.DAO;
 
 
-namespace HotelManagementSystem.GUI
-{
+namespace HotelManagementSystem.GUI {
     public partial class UCRevenueDaily : UserControl
     {
         RevenueDailyDAO revenueDAO = new RevenueDailyDAO();

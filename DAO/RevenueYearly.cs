@@ -14,9 +14,8 @@ namespace HotelManagementSystem.DAO
        public List<RevenueData> GetRevenueData(int year)
         {
             var revenueData = new List<RevenueData>();
-            string connectionString = db.strCon;
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = Connection.GetConnection())
             {
                 connection.Open();
 

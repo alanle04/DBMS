@@ -1,23 +1,17 @@
 ﻿using HotelManagementSystem.DBConnection;
-using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HotelManagementSystem.DAO
-{
+namespace HotelManagementSystem.DAO {
     public class RevenueQuarterlyDAO
     {
         Connection db = new Connection();
         public List<RevenueData> GetRevenueData(int quarter, int year)
         {
             var revenueData = new List<RevenueData>();
-            string connectionString = db.strCon;
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = Connection.GetConnection())
             {
                 connection.Open();
 

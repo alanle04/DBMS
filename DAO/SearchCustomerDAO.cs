@@ -1,14 +1,9 @@
 ﻿using HotelManagementSystem.DBConnection;
 using HotelManagementSystem.Model;
-using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace HotelManagementSystem.DAO
-{
+namespace HotelManagementSystem.DAO {
     internal class SearchCustomerDAO
     {
         public List<Customer> FindCustomerByName(string fullName)
@@ -16,7 +11,7 @@ namespace HotelManagementSystem.DAO
             var customers = new List<Customer>();
             Connection db = new Connection(); // Kết nối cơ sở dữ liệu
 
-            using (SqlConnection connection = new SqlConnection(db.strCon))
+            using (SqlConnection connection = Connection.GetConnection())
             {
                 connection.Open();
                 // Truy vấn để gọi hàm fn_FindtoNameCustomer
@@ -53,7 +48,7 @@ namespace HotelManagementSystem.DAO
             Customer customer = null;
             Connection db = new Connection();
 
-            using (SqlConnection connection = new SqlConnection(db.strCon))
+            using (SqlConnection connection = Connection.GetConnection())
             {
                 connection.Open();
                 string query = "SELECT * FROM fn_FindIDCustomer(@customer_id)";

@@ -65,7 +65,10 @@
     <Compile Include="DAO\RevenueMonthlyDAO.cs" />
     <Compile Include="DAO\RevenueQuarterlyDAO.cs" />
     <Compile Include="DAO\RevenueYearly.cs" />
+    <Compile Include="DAO\RoomTypeDAO.cs" />
     <Compile Include="DAO\SearchCustomerDAO.cs" />
+    <Compile Include="DAO\ServiceDAO.cs" />
+    <Compile Include="DAO\StaffDAO.cs" />
     <Compile Include="DBConnection\Connection.cs" />
     <Compile Include="Enums\EnumBookingStatus.cs" />
     <Compile Include="Enums\EnumExtensions.cs" />
@@ -278,4 +281,3 @@
     <Error Condition="!Exists('packages\Microsoft.NETFramework.ReferenceAssemblies.net472.1.0.2\build\Microsoft.NETFramework.ReferenceAssemblies.net472.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.NETFramework.ReferenceAssemblies.net472.1.0.2\build\Microsoft.NETFramework.ReferenceAssemblies.net472.targets'))" />
   </Target>
 </Project>
-

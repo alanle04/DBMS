@@ -35,7 +35,7 @@ namespace HotelManagementSystem {
         {
             var customers = new List<Customer>();
 
-            using (SqlConnection connection = new SqlConnection(db.strCon))
+            using (SqlConnection connection = Connection.GetConnection())
             {
                 connection.Open();
                 string query = "SELECT customer_id, full_name, gender, phone_number, identification_number, nationality, address FROM vw_Customer";
