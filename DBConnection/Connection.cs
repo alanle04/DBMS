@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace HotelManagementSystem.DBConnection {
     public class Connection {
-        string strCon = @"Data Source=DESKTOP-EBUN5JD;Initial Catalog=hotel_management;Persist Security Info=True;User ID=sa;Password=1234567890";
+        public string strCon = @"Data Source=DESKTOP-EBUN5JD;Initial Catalog=hotel_management;Persist Security Info=True;User ID=sa;Password=1234567890";
         public SqlConnection sqlcon = null;
         public SqlConnection getConnection()
         {

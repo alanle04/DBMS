@@ -1,4 +1,5 @@
-﻿using HotelManagementSystem.DBConnection;
+﻿using HotelManagementSystem.DAO;
+using HotelManagementSystem.DBConnection;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -9,56 +10,12 @@ namespace HotelManagementSystem
     public partial class FLogin : Form
     {
         Connection db = new Connection();
+        LoginDAO loginDAO = new LoginDAO();
 
         public FLogin()
         {
             InitializeComponent();
         }
-
-        public int CheckLogin(string username, string password)
-        {
-            int result = -1; // Mặc định là tài khoản không tồn tại
-            string connectionString = @"Data Source=DESKTOP-EBUN5JD;Initial Catalog=hotel_management;Persist Security Info=True;User ID=sa;Password=1234567890";
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-
-                    // Gọi hàm trong câu lệnh SQL
-                    string query = "SELECT dbo.CheckLogin(@username, @password)";
-
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        // Thêm tham số cho hàm
-                        command.Parameters.AddWithValue("@username", username);
-                        command.Parameters.AddWithValue("@password", password);
-
-                        // Thực hiện lệnh và lấy kết quả
-                        object resultObj = command.ExecuteScalar();
-
-                        // Kiểm tra xem kết quả có null không
-                        if (resultObj != null)
-                        {
-                            result = Convert.ToInt32(resultObj); // Chuyển đổi kết quả sang int
-                        }
-                        else
-                        {
-                            MessageBox.Show("Không có kết quả trả về từ cơ sở dữ liệu."); // Thông báo nếu không có kết quả
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message); // Bắt lỗi và hiển thị thông báo
-            }
-
-            return result; // Trả về kết quả
-       
-        }
-
 
         private void lblClose_Click(object sender, EventArgs e)
         {
@@ -87,20 +44,7 @@ namespace HotelManagementSystem
                 db.openConnection(); // Mở kết nối từ class Connection
                 try
                 {
-                    int loginResult = CheckLogin(txtUsername.Text, txtPassword.Text); // Chỉ gọi một lần
-=======
-        private void btnLogin_Click(object sender, EventArgs e) {
-            if(emptyFields()) {
-                MessageBox.Show("All fields are required to be filled.", "Errorr Message", MessageBoxButtons.OK);
-            } else {
-                if(connection.State == ConnectionState.Closed) {
-                    try {
-                        connection.Open();
-                        string selectAccount = "SELECT COUNT(*) FROM account WHERE username = @username AND password = @password";
-                        using(SqlCommand cmd = new SqlCommand(selectAccount, connection)) {
-                            cmd.Parameters.AddWithValue("@username", txtUsername.Text.Trim());
-                            cmd.Parameters.AddWithValue("@password", txtPassword.Text.Trim());
->>>>>>> main
+                    int loginResult = loginDAO.CheckLogin(txtUsername.Text, txtPassword.Text); // Chỉ gọi một lần
 
                     if (loginResult == 1)
                     {
