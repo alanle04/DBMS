@@ -140,7 +140,7 @@ namespace HotelManagementSystem
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLogout.Location = new System.Drawing.Point(17, 682);
+            this.btnLogout.Location = new System.Drawing.Point(15, 616);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(216, 40);
             this.btnLogout.TabIndex = 11;
