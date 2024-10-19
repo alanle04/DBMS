@@ -124,7 +124,6 @@
     </Compile>
     <Compile Include="GUI\UCRoomType.Designer.cs">
       <DependentUpon>UCRoomType.cs</DependentUpon>
->>>>>>> main
     </Compile>
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\Bill.cs" />
@@ -240,17 +239,6 @@
     <EmbeddedResource Include="GUI\UCServiceAndPayment.resx">
       <DependentUpon>UCServiceAndPayment.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="hotel_managementDataSet.xsc">
-      <DependentUpon>hotel_managementDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="hotel_managementDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>hotel_managementDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="hotel_managementDataSet.xss">
-      <DependentUpon>hotel_managementDataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -290,3 +278,4 @@
     <Error Condition="!Exists('packages\Microsoft.NETFramework.ReferenceAssemblies.net472.1.0.2\build\Microsoft.NETFramework.ReferenceAssemblies.net472.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.NETFramework.ReferenceAssemblies.net472.1.0.2\build\Microsoft.NETFramework.ReferenceAssemblies.net472.targets'))" />
   </Target>
 </Project>
+

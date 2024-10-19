@@ -7,7 +7,6 @@
         private string _phoneNumber;
         private string _nationality;
         private string _address;
-
         public Customer() {
         }
 
@@ -20,7 +19,6 @@
             Nationality = nationality;
             Address = address;
         }
-
         public string CustomerId { get => _customerId; set => _customerId = value; }
         public string FullName { get => _fullName; set => _fullName = value; }
         public string Gender { get => _gender; set => _gender = value; }

@@ -5,10 +5,8 @@
         private int _price;
         private string _description;
         private string _managerId;
-
         public Service() {
         }
-
         public Service(string serviceId, string serviceName, int price, string description, string managerId) {
             ServiceId = serviceId;
             ServiceName = serviceName;
@@ -16,7 +14,6 @@
             Description = description;
             ManagerId = managerId;
         }
-
         public string ServiceId { get => _serviceId; set => _serviceId = value; }
         public string ServiceName { get => _serviceName; set => _serviceName = value; }
         public int Price { get => _price; set => _price = value; }

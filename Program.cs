@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HotelManagementSystem
-{
+namespace HotelManagementSystem {
     internal static class Program
     {
         /// <summary>
@@ -16,7 +12,7 @@ namespace HotelManagementSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FManager());
+            Application.Run(new FLogin());
         }
     }
 }
