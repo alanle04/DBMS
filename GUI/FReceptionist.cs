@@ -32,21 +32,24 @@ namespace HotelManagementSystem {
         }
 
         private void btnBooking_Click(object sender, EventArgs e) {
-            ucBooking.Visible = true;
-            ucCheckIn.Visible = false;
-            ucServiceAndPayment.Visible = false;
+            UCBooking ucbooking = new UCBooking();
+            ucbooking.Dock = DockStyle.Fill;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(ucbooking);
         }
 
         private void btnServiceAndPayment_Click(object sender, EventArgs e) {
-            ucBooking.Visible = false;
-            ucCheckIn.Visible = false;
-            ucServiceAndPayment.Visible = true;
+            UCServiceAndPayment ucserPay = new UCServiceAndPayment(username);
+            ucserPay.Dock = DockStyle.Fill;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(ucserPay);
         }
 
         private void btnCheckIn_Click(object sender, EventArgs e) {
-            ucBooking.Visible = false;
-            ucCheckIn.Visible = true;
-            ucServiceAndPayment.Visible = false;
+            UCCheckIn uccheckIN = new UCCheckIn();
+            uccheckIN.Dock = DockStyle.Fill;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(uccheckIN);
         }
     }
 }
