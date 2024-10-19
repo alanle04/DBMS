@@ -104,6 +104,19 @@ GROUP BY
 	rt.cost_per_day,
 	s.staff_id,
 	s.full_name
+----2.7.6 View xem danh sách customer---
+CREATE VIEW vw_Customer as
+Select
+customer_id,
+full_name,
+gender,
+phone_number,
+identification_number,
+nationality,
+[address]
+FROM
+customer
+
 
 	
 
