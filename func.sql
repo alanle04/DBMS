@@ -244,36 +244,62 @@ RETURN
 GO
 
 --3.2.4.10. Kiểm tra login
-CREATE FUNCTION fn_CheckLogin (
-	@username VARCHAR(50),
-	@password VARCHAR(255)
-)
+CREATE FUNCTION fn_CheckLogin(@username VARCHAR(50), @password VARCHAR(255))
 RETURNS INT
 AS
 BEGIN
-	DECLARE @result INT;
-	DECLARE @role VARCHAR(20);
-	
-	-- Kiểm tra nếu tài khoản tồn tại và lấy vai trò
-	SELECT @role = role
-	FROM account
-	WHERE username = @username AND [password] = @password;
- 
-	IF @role IS NOT NULL
-	BEGIN
-    	IF @role = 'manager'
-    	BEGIN
-        	SET @result = 1;  -- Quản lý
-    	END
-    	ELSE IF @role = 'receptionist'
-    	BEGIN
-        	SET @result = 0;  -- Lễ tân
-    	END
-	END
-	ELSE
-	BEGIN
-    	SET @result = -1;  -- Tài khoản không tồn tại
-	END
- 
-	RETURN @result;
+    DECLARE @result INT;
+    DECLARE @role VARCHAR(20);
+
+    -- Kiểm tra nếu tài khoản tồn tại và lấy vai trò
+    SELECT @role = role
+    FROM account
+    WHERE username = @username AND [password] = @password;
+
+    IF @role IS NOT NULL
+    BEGIN
+        IF @role = 'manager'
+        BEGIN
+            SET @result = 1;  -- Quản lý
+        END
+        ELSE IF @role = 'receptionist'
+        BEGIN
+            SET @result = 0;  -- Lễ tân
+        END
+    END
+    ELSE
+    BEGIN
+        SET @result = -1;  -- Tài khoản không tồn tại
+    END
+
+    RETURN @result;
+END;
+
+--3.2.4.11. Lấy ra tên staff theo username
+CREATE FUNCTION fn_GetStaffIdByUsername(@username VARCHAR(20))
+RETURNS VARCHAR(20)
+AS
+BEGIN
+	DECLARE @staff_id VARCHAR(20);
+
+	SELECT @staff_id = staff_id
+	FROM staff
+	WHERE username = @username
+
+	return @staff_id;
+END;
+
+
+--3.2.4.12. Lấy ra tên staff theo username
+CREATE FUNCTION fn_GetStaffFullNameByUsername(@username VARCHAR(20))
+RETURNS NVARCHAR(255)
+AS
+BEGIN
+	DECLARE @full_name NVARCHAR(255)
+
+	SELECT @full_name = full_name
+	FROM staff
+	WHERE username = @username
+
+	return @full_name;
 END;
