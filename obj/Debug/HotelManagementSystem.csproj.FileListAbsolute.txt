@@ -20,7 +20,7 @@ D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagem
 D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\obj\Debug\HotelManagementSystem.UCCheckIn.resources
 D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\obj\Debug\HotelManagementSystem.UCServiceAndPayment.resources
 D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\obj\Debug\HotelManagementSystem.UCBill.resources
-D:\DBMS\DBMS\bin\Debug\HotelManagementSystem.exe.config
+D:\DBMS\DBMS\bin\Debug\HotelManagementSystem.exe.configg
 D:\DBMS\DBMS\bin\Debug\HotelManagementSystem.exe
 D:\DBMS\DBMS\bin\Debug\HotelManagementSystem.pdb
 D:\DBMS\DBMS\bin\Debug\Guna.UI2.dll
@@ -81,8 +81,6 @@ D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.csproj.Sugge
 D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.FLogin.resources
 D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.FManager.resources
 D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.FReceptionist.resources
-D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.GUI..resources
-D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRoomType.resources
 D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.Properties.Resources.resources
 D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.UCBill.resources
 D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.UCBooking.resources
@@ -105,3 +103,11 @@ D:\DBMS\DBMS\bin\Debug\OxyPlot.dll
 D:\DBMS\DBMS\bin\Debug\OxyPlot.WindowsForms.dll
 D:\DBMS\DBMS\bin\Debug\OxyPlot.xml
 D:\DBMS\DBMS\bin\Debug\OxyPlot.WindowsForms.xml
+D:\He-quan-tri-csdl\Project_ck\DBMS\bin\Debug\OxyPlot.dll
+D:\He-quan-tri-csdl\Project_ck\DBMS\bin\Debug\OxyPlot.WindowsForms.dll
+D:\He-quan-tri-csdl\Project_ck\DBMS\bin\Debug\OxyPlot.xml
+D:\He-quan-tri-csdl\Project_ck\DBMS\bin\Debug\OxyPlot.WindowsForms.xml
+D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRevenueDaily.resources
+D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRevenueMonthly.resources
+D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRevenueQuarter.resources
+D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRevenueYearly.resources
