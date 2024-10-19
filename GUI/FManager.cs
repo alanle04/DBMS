@@ -46,21 +46,11 @@ namespace HotelManagementSystem {
             }
         }
 
-<<<<<<< HEAD
-        private void btnDashboard_Click(object sender, EventArgs e)
-        {
-            ucDashboard.Visible = true;
-            ucRoom.Visible = false;
-            ucCustomer.Visible = false;
-            ucService.Visible = false;
-            
-=======
         private void btnDashboard_Click(object sender, EventArgs e) {
             UCDashboard uCDashboard = new UCDashboard();
             uCDashboard.Dock = DockStyle.Fill;
             panelMain.Controls.Clear();
             panelMain.Controls.Add(uCDashboard);
->>>>>>> main
         }
 
         private void btnRoom_Click(object sender, EventArgs e) {

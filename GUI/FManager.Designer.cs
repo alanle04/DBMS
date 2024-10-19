@@ -44,7 +44,6 @@ namespace HotelManagementSystem
             this.lblUsername = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-<<<<<<< HEAD
             this.panel3 = new System.Windows.Forms.Panel();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -55,12 +54,6 @@ namespace HotelManagementSystem
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-=======
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panelMain = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
->>>>>>> main
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,17 +109,11 @@ namespace HotelManagementSystem
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.pictureBox1);
-<<<<<<< HEAD
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 40);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1942, 989);
-=======
-            this.panel2.Location = new System.Drawing.Point(0, 39);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(262, 744);
->>>>>>> main
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -161,15 +148,9 @@ namespace HotelManagementSystem
             this.btnCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCustomer.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCustomer.ForeColor = System.Drawing.Color.WhiteSmoke;
-<<<<<<< HEAD
             this.btnCustomer.Location = new System.Drawing.Point(20, 496);
             this.btnCustomer.Margin = new System.Windows.Forms.Padding(4);
-=======
-            this.btnCustomer.Location = new System.Drawing.Point(17, 458);
->>>>>>> main
-=======
             this.btnCustomer.Location = new System.Drawing.Point(15, 467);
->>>>>>> main
             this.btnCustomer.Name = "btnCustomer";
             this.btnCustomer.Size = new System.Drawing.Size(216, 40);
             this.btnCustomer.TabIndex = 10;
@@ -268,7 +249,6 @@ namespace HotelManagementSystem
             this.label2.TabIndex = 4;
             this.label2.Text = "Manager\'s Portal";
             // 
-<<<<<<< HEAD
             // panel3
             // 
             this.panel3.Controls.Add(this.ucBill);
@@ -278,11 +258,7 @@ namespace HotelManagementSystem
             this.panel3.Location = new System.Drawing.Point(344, 55);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-<<<<<<< HEAD
             this.panel3.Size = new System.Drawing.Size(1644, 927);
-=======
-            this.panel3.Size = new System.Drawing.Size(1250, 755);
->>>>>>> main
             this.panel3.TabIndex = 2;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -299,13 +275,9 @@ namespace HotelManagementSystem
             // 
             // ucBill
             // 
-<<<<<<< HEAD
             this.ucBill.AutoSize = true;
             this.ucBill.Location = new System.Drawing.Point(0, 0);
             this.ucBill.Margin = new System.Windows.Forms.Padding(5);
-=======
-            this.ucBill.Location = new System.Drawing.Point(-3, 0);
->>>>>>> main
             this.ucBill.Name = "ucBill";
             this.ucBill.Size = new System.Drawing.Size(1662, 1067);
             this.ucBill.TabIndex = 6;
@@ -319,7 +291,6 @@ namespace HotelManagementSystem
             this.ucService.Size = new System.Drawing.Size(1667, 896);
             this.ucService.TabIndex = 5;
             // 
-<<<<<<< HEAD
             // ucDashboard
             // 
             this.ucDashboard.Location = new System.Drawing.Point(0, 0);
@@ -328,8 +299,6 @@ namespace HotelManagementSystem
             this.ucDashboard.Size = new System.Drawing.Size(1667, 896);
             this.ucDashboard.TabIndex = 4;
             // 
-=======
->>>>>>> main
             // ucCustomer
             // 
             this.ucCustomer.Location = new System.Drawing.Point(0, 0);
@@ -359,7 +328,6 @@ namespace HotelManagementSystem
             this.ucDashboard.Name = "ucDashboard";
             this.ucDashboard.Size = new System.Drawing.Size(1250, 755);
             this.ucDashboard.TabIndex = 9;
-=======
             // pictureBox1
             // 
             this.pictureBox1.Image = global::HotelManagementSystem.Properties.Resources.hotel_icon1;
@@ -378,7 +346,6 @@ namespace HotelManagementSystem
             this.panelMain.Size = new System.Drawing.Size(1223, 739);
             this.panelMain.TabIndex = 2;
             this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
->>>>>>> main
             // 
             // FManager
             // 
@@ -398,11 +365,8 @@ namespace HotelManagementSystem
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-<<<<<<< HEAD
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-=======
->>>>>>> main
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -427,11 +391,8 @@ namespace HotelManagementSystem
         private System.Windows.Forms.Panel panelMain;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button btnBill;
-<<<<<<< HEAD
         private UCBill ucBill;
         private UCRevenueMonthly ucRevenueMonthly;
-=======
         private System.Windows.Forms.Button btnRoomType;
->>>>>>> main
     }
 }

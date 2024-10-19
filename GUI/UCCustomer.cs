@@ -13,9 +13,7 @@ using System.Drawing.Text;
 using HotelManagementSystem.Model;
 using HotelManagementSystem.DBConnection;
 using HotelManagementSystem.DAO;
-=======
 ﻿using System.Windows.Forms;
->>>>>>> main
 
 namespace HotelManagementSystem {
     public partial class UCCustomer : UserControl

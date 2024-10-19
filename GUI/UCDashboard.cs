@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,9 +15,6 @@ using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
 using OxyPlot.WindowsForms;
-=======
-﻿using System.Windows.Forms;
->>>>>>> main
 
 namespace HotelManagementSystem {
     public partial class UCDashboard : UserControl
