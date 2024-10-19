@@ -45,12 +45,12 @@ namespace HotelManagementSystem.GUI {
                 row = dt.Rows[0];
             }
             
-            txt_roomTypeId.Text = row["room_type_id"].ToString();
-            txt_roomTypeName.Text = row["room_type_name"].ToString();
-            txt_numberOfBeds.Text = row["number_of_bed"].ToString();
+            txt_roomTypeId.Text = row["ID"].ToString();
+            txt_roomTypeName.Text = row["Name"].ToString();
+            txt_numberOfBeds.Text = row["NumOfBed"].ToString();
             txt_capacity.Text = row["capacity"].ToString();
-            txt_costPerDay.Text = row["cost_per_day"].ToString();
-            txt_managerId.Text = row["manager_id"].ToString();
+            txt_costPerDay.Text = row["Cost"].ToString();
+            txt_managerId.Text = row["managerId"].ToString();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)

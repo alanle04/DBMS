@@ -244,8 +244,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.dtgv_ListRoomType);
+            this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(507, 18);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";

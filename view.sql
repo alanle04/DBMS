@@ -82,14 +82,14 @@ GO
 --2.7.5. View xem danh sách các loại phòng
 CREATE VIEW vw_RoomTypeList AS
 SELECT 
-	rt.room_type_id,
-	rt.room_type_name,
-	rt.number_of_bed,
+	rt.room_type_id as ID,
+	rt.room_type_name Name,
+	rt.number_of_bed AS NumOfBed,
 	rt.capacity,
-	rt.cost_per_day,
-	COUNT(r.room_id) AS number_of_room,
-	s.staff_id as manager_id,
-	s.full_name  as manager_name
+	rt.cost_per_day as Cost,
+	COUNT(r.room_id) AS NumOfRoom,
+	s.staff_id as managerId,
+	s.full_name  as managerName
 FROM 
 	room_type rt
 left join
@@ -104,5 +104,7 @@ GROUP BY
 	rt.cost_per_day,
 	s.staff_id,
 	s.full_name
+
+	
 
 
