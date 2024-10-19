@@ -5,5 +5,10 @@ namespace HotelManagementSystem {
         public UCBooking() {
             InitializeComponent();
         }
+
+        private void btnBook_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

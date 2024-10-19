@@ -1,4 +1,4 @@
-﻿using HotelManagementSystem.DBConnection;
+using HotelManagementSystem.DBConnection;
 using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
