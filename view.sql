@@ -104,6 +104,7 @@ GROUP BY
 	rt.cost_per_day,
 	s.staff_id,
 	s.full_name
+	
 ----2.7.6 View xem danh sách customer---
 CREATE VIEW vw_Customer as
 Select
@@ -117,7 +118,30 @@ nationality,
 FROM
 customer
 
+----2.7.7. View xem danh sách service
+CREATE OR ALTER VIEW vw_Service AS
+SELECT service_id, service_name, price, description, full_name as manager_name
+FROM service
+INNER JOIN staff
+ON service.manager_id = staff.staff_id;
 
+----2.7.8. View xem danh sách service
+CREATE OR ALTER VIEW vw_Room AS
+SELECT
+    r.room_id,
+    r.room_name,
+    r.status,
+    rt.room_type_name,
+    rt.number_of_bed,
+    rt.capacity,
+    rt.cost_per_day,
+    s.full_name AS manager_name
+FROM
+    room r
+JOIN
+    room_type rt ON r.room_type_id = rt.room_type_id
+LEFT JOIN
+	staff s ON r.manager_id = s.staff_id;
 	
 
 
