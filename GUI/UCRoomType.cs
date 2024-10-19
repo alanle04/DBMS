@@ -1,9 +1,7 @@
-﻿using HotelManagementSystem.Model;
-using System.Data.SqlClient;
-using System.Data;
+﻿using HotelManagementSystem.DAO;
 using System;
+using System.Data;
 using System.Windows.Forms;
-using HotelManagementSystem.DAO;
 
 namespace HotelManagementSystem.GUI {
     public partial class UCRoomType : UserControl {

@@ -17,9 +17,8 @@ namespace HotelManagementSystem.DAO
             var revenueData = new List<RevenueData>();
 
             // Kết nối đến cơ sở dữ liệu
-            string connectionString = db.strCon;
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = Connection.GetConnection())
             {
                 connection.Open();
 

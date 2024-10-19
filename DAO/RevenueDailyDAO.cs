@@ -22,7 +22,7 @@ namespace HotelManagementSystem.DAO
             int totalRevenue = 0;
             Connection db = new Connection(); // Kết nối cơ sở dữ liệu
 
-            using (SqlConnection connection = new SqlConnection(db.strCon))
+            using (SqlConnection connection = Connection.GetConnection())
             {
                 connection.Open();
                 // Truy vấn gọi hàm fn_CalculateTotalRevenueByDate

@@ -31,7 +31,7 @@ namespace HotelManagementSystem {
         private void LoadBillDetails()
         {
             // Tạo kết nối đến SQL Server
-            using (SqlConnection connection = new SqlConnection(db.strCon))
+            using (SqlConnection connection = Connection.GetConnection())
             {
                 try
                 {
