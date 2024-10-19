@@ -1,23 +1,25 @@
 ﻿namespace HotelManagementSystem.Model {
     public class Room {
-        private int _roomId;
-        private string _status;
-        private string _managerId;
-        private string _roomTypeId;
+        private string _roomId;
         private string _roomName;
+        private string _status;
+        private string _roomTypeId;
+        private string _managerId;
         public Room() {
         }
-        public Room(int roomId, string status, string managerId, string roomTypeId, string roomName) {
+
+        public Room(string roomId, string roomName, string status, string roomTypeId, string managerId) {
             RoomId = roomId;
-            Status = status;
-            ManagerId = managerId;
-            RoomTypeId = roomTypeId;
             RoomName = roomName;
+            Status = status;
+            RoomTypeId = roomTypeId;
+            ManagerId = managerId;
         }
-        public int RoomId { get => _roomId; set => _roomId = value; }
-        public string Status { get => _status; set => _status = value; }
-        public string ManagerId { get => _managerId; set => _managerId = value; }
-        public string RoomTypeId { get => _roomTypeId; set => _roomTypeId = value; }
+
+        public string RoomId { get => _roomId; set => _roomId = value; }
         public string RoomName { get => _roomName; set => _roomName = value; }
+        public string Status { get => _status; set => _status = value; }
+        public string RoomTypeId { get => _roomTypeId; set => _roomTypeId = value; }
+        public string ManagerId { get => _managerId; set => _managerId = value; }
     }
 }

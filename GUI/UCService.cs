@@ -39,7 +39,7 @@ namespace HotelManagementSystem {
             txtManager.Text = "";
         }
 
-        public void SetDataGridViewHeaders(DataGridView dgv) {
+        private void SetDataGridViewHeaders(DataGridView dgv) {
             dgv.Columns.Clear();
 
             dgv.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Mã dịch vụ", Name = "ServiceID" });
@@ -101,7 +101,7 @@ namespace HotelManagementSystem {
                 if(res == 1) {
                     MessageBox.Show("Thêm thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 } else {
-                    MessageBox.Show("Thêm thât bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Thêm thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 EnableInputForAdd(false);
                 ClearInput();
@@ -134,7 +134,7 @@ namespace HotelManagementSystem {
                 if(res == 1) {
                     MessageBox.Show("Cập nhật thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 } else {
-                    MessageBox.Show("Cập nhật thất bại công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Cập nhật thất bại !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 EnableInputForUpdate(false);
                 ClearInput();
@@ -162,7 +162,7 @@ namespace HotelManagementSystem {
                 if(res == 1) {
                     MessageBox.Show("Xóa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 } else {
-                    MessageBox.Show("Xóa thất bại công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Xóa thất bại !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 ClearInput();
                 LoadData();

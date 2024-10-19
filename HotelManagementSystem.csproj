@@ -66,6 +66,7 @@
     <Compile Include="DAO\RevenueMonthlyDAO.cs" />
     <Compile Include="DAO\RevenueQuarterlyDAO.cs" />
     <Compile Include="DAO\RevenueYearly.cs" />
+    <Compile Include="DAO\RoomDAO.cs" />
     <Compile Include="DAO\RoomTypeDAO.cs" />
     <Compile Include="DAO\SearchCustomerDAO.cs" />
     <Compile Include="DAO\ServiceDAO.cs" />
