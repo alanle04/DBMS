@@ -146,45 +146,56 @@ RETURN
 GO
 
 --3.2.4.6. Tính tổng doanh thu theo ngày (ví dụ nhập vào 1 ngày và tính tổng các hóa đơn hôm đó)
-CREATE FUNCTION fn_CalculateTotalRevenueByDate(@date DATE)
-RETURNS TABLE
-AS
-RETURN
+CREATE FUNCTION fn_CalculateTotalRevenueByDate
 (
-    SELECT SUM(total) AS total_revenue
-    FROM bill
-    WHERE CAST(created_at AS DATE) = @date
-);
-GO
-
---3.2.4.7. Tính tổng doanh thu theo tháng (ví dụ nhập vào 1 tháng và tính tổng các hóa đơn trong tháng đó)
-
-CREATE PROCEDURE sp_CalculateMonthlyRevenue
-    @month INT,
-    @year INT
+	@day INT,
+	@month INT,
+	@year INT
+)
+RETURNS INT
 AS
 BEGIN
-    SET NOCOUNT ON;
-    BEGIN TRY
-       DECLARE @totalRevenue INT;
+	DECLARE @totalRevenue INT;
  
-       SELECT @totalRevenue = SUM(total)
-       FROM Bill
-       WHERE MONTH(created_at) = @month AND YEAR(created_at) = @year;
-    END TRY
-    BEGIN CATCH
-       DECLARE @ErrorMessage NVARCHAR(4000);
-       DECLARE @ErrorSeverity INT;
-       DECLARE @ErrorState INT;
-       SELECT
-    	  	@ErrorMessage = ERROR_MESSAGE(),
-    	  	@ErrorSeverity = ERROR_SEVERITY(),
-    	  	@ErrorState = ERROR_STATE();
-       RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
-    END CATCH
+	SELECT @totalRevenue = SUM(CAST(total AS INT)) -- Chuyển 'total' về kiểu INT
+	FROM bill
+	WHERE DAY(created_at) = @day
+	AND MONTH(created_at) = @month
+	AND YEAR(created_at) = @year;
+ 
+	-- Trả về giá trị tổng doanh thu, nếu không có giá trị thì trả về 0
+	RETURN ISNULL(@totalRevenue, 0);
 END;
 GO
 
+
+--3.2.4.7. Tính tổng doanh thu theo tháng (ví dụ nhập vào 1 tháng và tính tổng các hóa đơn trong tháng đó)
+
+CREATE FUNCTION fn_GetDailyRevenue
+(
+	@month INT,
+	@year INT
+)
+RETURNS @DailyRevenueTable TABLE
+(
+	day INT,
+	total INT
+)
+AS
+BEGIN
+	-- Chèn dữ liệu vào bảng trả về
+	INSERT INTO @DailyRevenueTable(day, total)
+	SELECT
+    	DAY(created_at) AS day,
+    	SUM(total) AS total
+	FROM Bill
+	WHERE MONTH(created_at) = @month AND YEAR(created_at) = @year
+	GROUP BY DAY(created_at)
+	ORDER BY day;
+ 
+	RETURN;
+END;
+GO
 --3.2.4.8. Tính tổng doanh thu theo quý (ví dụ nhập vào 1 quý và tính tổng các hóa đơn trong quý đó)
 CREATE FUNCTION fn_TotalRevenueByQuarter
 (
@@ -195,7 +206,9 @@ RETURNS TABLE
 AS
 RETURN
 (
-	SELECT SUM(total) AS total_revenue
+	SELECT
+    	MONTH(created_at) AS month,
+    	SUM(total) AS total_revenue
 	FROM bill
 	WHERE YEAR(created_at) = @year
 	AND
@@ -205,22 +218,28 @@ RETURN
     	(MONTH(created_at) BETWEEN 7 AND 9 AND @quarter = 3) OR
     	(MONTH(created_at) BETWEEN 10 AND 12 AND @quarter = 4)
 	)
+	GROUP BY MONTH(created_at) -- Nhóm theo tháng để tính tổng doanh thu theo từng tháng
 );
 GO
 
-
 --3.2.4.9. Tính tổng doanh thu theo năm (ví dụ nhập vào 1 năm và tính tổng các hóa đơn trong năm đó)
-CREATE FUNCTION fn_TotalRevenueByYear 
+CREATE FUNCTION fn_TotalRevenueByYear
 (
-   	@year INT
+	@year INT
 )
 RETURNS TABLE
 AS
 RETURN
 (
-   	SELECT SUM(total) AS total_revenue
-   	FROM bill
-   	WHERE YEAR(created_at) = @year
+	SELECT
+    	MONTH(created_at) AS Month,
+    	SUM(total) AS TotalRevenue
+	FROM
+    	bill
+	WHERE
+    	YEAR(created_at) = @year
+	GROUP BY
+    	MONTH(created_at)
 );
 GO
 
