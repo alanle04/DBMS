@@ -1,15 +1,9 @@
-using HotelManagementSystem.Model;
 using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace HotelManagementSystem.DAO
-{
+namespace HotelManagementSystem.DAO {
     public class RoomTypeDAO
     {
         public static void AddRoomType(string roomTypeId,string roomTypeName, int numberOfBeds, int capacity, int costPerDay, string managerId)

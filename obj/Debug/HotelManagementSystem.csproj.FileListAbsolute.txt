@@ -20,7 +20,7 @@ D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagem
 D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\obj\Debug\HotelManagementSystem.UCCheckIn.resources
 D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\obj\Debug\HotelManagementSystem.UCServiceAndPayment.resources
 D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\obj\Debug\HotelManagementSystem.UCBill.resources
-D:\DBMS\DBMS\bin\Debug\HotelManagementSystem.exe.config
+D:\DBMS\DBMS\bin\Debug\HotelManagementSystem.exe.configg
 D:\DBMS\DBMS\bin\Debug\HotelManagementSystem.exe
 D:\DBMS\DBMS\bin\Debug\HotelManagementSystem.pdb
 D:\DBMS\DBMS\bin\Debug\Guna.UI2.dll
