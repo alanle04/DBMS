@@ -1,19 +1,12 @@
-using HotelManagementSystem.Model;
+using HotelManagementSystem.DBConnection;
 using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace HotelManagementSystem.DAO
-{
-    public class RoomTypeDAO
-    {
-        public static void AddRoomType(string roomTypeId,string roomTypeName, int numberOfBeds, int capacity, int costPerDay, string managerId)
-        {
+namespace HotelManagementSystem.DAO {
+    public class RoomTypeDAO {
+        public static void AddRoomType(string roomTypeId, string roomTypeName, int numberOfBeds, int capacity, int costPerDay, string managerId) {
             SqlConnection conn = DBConnection.Connection.GetConnection();
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
@@ -26,27 +19,20 @@ namespace HotelManagementSystem.DAO
             cmd.Parameters.Add("@cost_per_day", SqlDbType.Int).Value = costPerDay;
             cmd.Parameters.Add("@manager_id", SqlDbType.VarChar).Value = managerId;
 
-            try
-            {
+            try {
                 conn.Open();
-                if (cmd.ExecuteNonQuery() > 0)
-                {
+                if(cmd.ExecuteNonQuery() > 0) {
                     MessageBox.Show("Thêm loại phòng mới thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-            }
-            catch (Exception ex)
-            {
+            } catch(Exception ex) {
                 MessageBox.Show("Thêm mới thất bại" + ex, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
+            } finally {
                 conn.Close();
             }
         }
 
-        public static void UpdateRoomType(string roomTypeId, string roomTypeName, int numberOfBeds, int capacity, int costPerDay, string managerId)
-        {
-            SqlConnection conn =  DBConnection.Connection.GetConnection();
+        public static void UpdateRoomType(string roomTypeId, string roomTypeName, int numberOfBeds, int capacity, int costPerDay, string managerId) {
+            SqlConnection conn = DBConnection.Connection.GetConnection();
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_UpdateRoomType";
@@ -58,26 +44,19 @@ namespace HotelManagementSystem.DAO
             cmd.Parameters.Add("@cost", SqlDbType.Int).Value = costPerDay;
             cmd.Parameters.Add("@manager", SqlDbType.VarChar).Value = managerId;
 
-            try
-            {
+            try {
                 conn.Open();
-                if (cmd.ExecuteNonQuery() > 0)
-                {
+                if(cmd.ExecuteNonQuery() > 0) {
                     MessageBox.Show("Cập nhật loại phòng mới thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-            }
-            catch (Exception ex)
-            {
+            } catch(Exception ex) {
                 MessageBox.Show("Cập nhật thất bại" + ex, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
+            } finally {
                 conn.Close();
             }
         }
 
-        public static void DeleteRoomType(string roomTypeId)
-        {
+        public static void DeleteRoomType(string roomTypeId) {
 
             SqlConnection conn = DBConnection.Connection.GetConnection();
             SqlCommand cmd = conn.CreateCommand();
@@ -87,33 +66,59 @@ namespace HotelManagementSystem.DAO
             cmd.Parameters.Add("@type_id", SqlDbType.VarChar).Value = roomTypeId;
 
 
-            try
-            {
+            try {
                 conn.Open();
-                if (cmd.ExecuteNonQuery() > 0)
-                {
+                if(cmd.ExecuteNonQuery() > 0) {
                     MessageBox.Show("Xóa loại phòng mới thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-            }
-            catch (Exception ex)
-            {
+            } catch(Exception ex) {
                 MessageBox.Show("Xóa thất bại" + ex, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
+            } finally {
                 conn.Close();
             }
         }
 
-        public static DataTable RoomTypeList()
-        {
+        public static DataTable RoomTypeList() {
             DataTable dt = new DataTable();
             string sql = "SELECT * FROM vw_RoomTypeList";
             SqlConnection conn = DBConnection.Connection.GetConnection();
-            SqlCommand cmd = new SqlCommand(sql,conn);
+            SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             return dt;
+        }
+
+        public DataTable GetAllRoomTypeName() {
+            DataTable dt = new DataTable();
+
+            using(SqlConnection connection = Connection.GetConnection()) {
+                string query = "SELECT Name FROM vw_RoomTypeList";
+
+                connection.Open();
+                using(SqlCommand cmd = new SqlCommand(query, connection)) {
+                    using(SqlDataAdapter adapter = new SqlDataAdapter(cmd)) {
+                        adapter.Fill(dt);
+                    }
+                }
+            }
+            return dt;
+        }
+
+        public string GetRoomTypeIdByRoomTypeName(string roomTypeName) {
+            using(SqlConnection connection = Connection.GetConnection()) {
+                string query = "SELECT ID FROM vw_RoomTypeList WHERE Name = @roomTypeName";
+
+                connection.Open();
+                using(SqlCommand cmd = new SqlCommand(query, connection)) {
+                    cmd.Parameters.AddWithValue("@roomTypeName", roomTypeName);
+                    var result = cmd.ExecuteScalar();
+                    if(result != null) {
+                        return result.ToString();
+                    }
+                }
+            }
+
+            return null;
         }
     }
 }
