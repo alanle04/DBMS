@@ -18,20 +18,25 @@ GO
 
 
 --2.6.2. Trigger thêm vào trạng thái phòng status 'deposited' khi phiếu đặt phòng (booking_record) chưa có thời gian check in thực tế actual_check_in_time)
-
+IF EXISTS (SELECT * FROM sys.triggers WHERE name = 'trg_UpdateRoomStatusDeposited')
+BEGIN
+    DROP TRIGGER trg_UpdateRoomStatusDeposited;
+END
+GO
 
 CREATE TRIGGER trg_UpdateRoomStatusDeposited
 ON booking_record
 AFTER INSERT, UPDATE
 AS
 BEGIN
-      UPDATE room
-	SET room.status = 'deposited'
-	FROM room r
-	JOIN inserted i ON r.room_id = i.room_id
-	WHERE i.actual_check_in_time IS NULL;
+    UPDATE room
+    SET room.status = 'deposited'
+    FROM room r
+    JOIN inserted i ON r.room_id = i.room_id
+    WHERE i.actual_check_in_time IS NULL
 END;
 GO
+
 
 -- 2.6.3. Trigger kiểm tra khách hàng thuê phòng trùng với thời gian phòng được đặt trước thì không được thuê
 

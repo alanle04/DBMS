@@ -1,18 +1,46 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\DBMS\\DBMS\\",
+  "WorkspaceRootPath": "D:\\HCMUTE\\Junior\\Semester 1\\Database Management System\\DBMS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\gui\\ucroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\ucroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\hcmute\\junior\\semester 1\\database management system\\dbms\\dao\\customerdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:dao\\customerdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\gui\\ucservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\ucservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\hcmute\\junior\\semester 1\\database management system\\dbms\\dao\\servicedao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:dao\\servicedao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\gui\\ucroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\ucroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\hcmute\\junior\\semester 1\\database management system\\dbms\\gui\\ucservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\ucservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\hcmute\\junior\\semester 1\\database management system\\dbms\\gui\\ucbooking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\ucbooking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\hcmute\\junior\\semester 1\\database management system\\dbms\\model\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:model\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\hcmute\\junior\\semester 1\\database management system\\dbms\\gui\\fmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\fmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\hcmute\\junior\\semester 1\\database management system\\dbms\\gui\\uccustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\uccustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\hcmute\\junior\\semester 1\\database management system\\dbms\\gui\\uccustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\uccustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\hcmute\\junior\\semester 1\\database management system\\dbms\\gui\\fmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\fmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\hcmute\\junior\\semester 1\\database management system\\dbms\\gui\\freceptionist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\freceptionist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -33,40 +61,134 @@
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UCService.cs [Design]",
-              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\UCService.cs",
-              "RelativeDocumentMoniker": "GUI\\UCService.cs",
-              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\UCService.cs [Design]",
-              "RelativeToolTip": "GUI\\UCService.cs [Design]",
+              "DocumentIndex": 4,
+              "Title": "Customer.cs",
+              "DocumentMoniker": "D:\\HCMUTE\\Junior\\Semester 1\\Database Management System\\DBMS\\Model\\Customer.cs",
+              "RelativeDocumentMoniker": "Model\\Customer.cs",
+              "ToolTip": "D:\\HCMUTE\\Junior\\Semester 1\\Database Management System\\DBMS\\Model\\Customer.cs",
+              "RelativeToolTip": "Model\\Customer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-19T07:48:48.514Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-10-20T00:30:56.852Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UCBooking.cs",
+              "DocumentMoniker": "D:\\HCMUTE\\Junior\\Semester 1\\Database Management System\\DBMS\\GUI\\UCBooking.cs",
+              "RelativeDocumentMoniker": "GUI\\UCBooking.cs",
+              "ToolTip": "D:\\HCMUTE\\Junior\\Semester 1\\Database Management System\\DBMS\\GUI\\UCBooking.cs",
+              "RelativeToolTip": "GUI\\UCBooking.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIgAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T00:20:21.491Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "UCRoom.cs",
-              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\UCRoom.cs",
-              "RelativeDocumentMoniker": "GUI\\UCRoom.cs",
-              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\UCRoom.cs",
-              "RelativeToolTip": "GUI\\UCRoom.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwQAAAAgAAAAAAAAAA==",
+              "Title": "UCService.cs",
+              "DocumentMoniker": "D:\\HCMUTE\\Junior\\Semester 1\\Database Management System\\DBMS\\GUI\\UCService.cs",
+              "RelativeDocumentMoniker": "GUI\\UCService.cs",
+              "ToolTip": "D:\\HCMUTE\\Junior\\Semester 1\\Database Management System\\DBMS\\GUI\\UCService.cs",
+              "RelativeToolTip": "GUI\\UCService.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwCEAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-19T07:48:10.712Z",
+              "WhenOpened": "2024-10-19T23:55:22.769Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ServiceDAO.cs",
+              "DocumentMoniker": "D:\\HCMUTE\\Junior\\Semester 1\\Database Management System\\DBMS\\DAO\\ServiceDAO.cs",
+              "RelativeDocumentMoniker": "DAO\\ServiceDAO.cs",
+              "ToolTip": "D:\\HCMUTE\\Junior\\Semester 1\\Database Management System\\DBMS\\DAO\\ServiceDAO.cs",
+              "RelativeToolTip": "DAO\\ServiceDAO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T23:54:06.861Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UCRoom.cs [Design]",
-              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\UCRoom.cs",
-              "RelativeDocumentMoniker": "GUI\\UCRoom.cs",
-              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\UCRoom.cs [Design]",
-              "RelativeToolTip": "GUI\\UCRoom.cs [Design]",
+              "Title": "CustomerDAO.cs",
+              "DocumentMoniker": "D:\\HCMUTE\\Junior\\Semester 1\\Database Management System\\DBMS\\DAO\\CustomerDAO.cs",
+              "RelativeDocumentMoniker": "DAO\\CustomerDAO.cs",
+              "ToolTip": "D:\\HCMUTE\\Junior\\Semester 1\\Database Management System\\DBMS\\DAO\\CustomerDAO.cs",
+              "RelativeToolTip": "DAO\\CustomerDAO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-19T07:48:08.429Z",
+              "WhenOpened": "2024-10-19T23:53:46.806Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UCCustomer.cs",
+              "DocumentMoniker": "D:\\HCMUTE\\Junior\\Semester 1\\Database Management System\\DBMS\\GUI\\UCCustomer.cs",
+              "RelativeDocumentMoniker": "GUI\\UCCustomer.cs",
+              "ToolTip": "D:\\HCMUTE\\Junior\\Semester 1\\Database Management System\\DBMS\\GUI\\UCCustomer.cs",
+              "RelativeToolTip": "GUI\\UCCustomer.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAgwB0AAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T23:50:56.908Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UCCustomer.cs [Design]",
+              "DocumentMoniker": "D:\\HCMUTE\\Junior\\Semester 1\\Database Management System\\DBMS\\GUI\\UCCustomer.cs",
+              "RelativeDocumentMoniker": "GUI\\UCCustomer.cs",
+              "ToolTip": "D:\\HCMUTE\\Junior\\Semester 1\\Database Management System\\DBMS\\GUI\\UCCustomer.cs [Design]",
+              "RelativeToolTip": "GUI\\UCCustomer.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T23:37:51.373Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FManager.cs",
+              "DocumentMoniker": "D:\\HCMUTE\\Junior\\Semester 1\\Database Management System\\DBMS\\GUI\\FManager.cs",
+              "RelativeDocumentMoniker": "GUI\\FManager.cs",
+              "ToolTip": "D:\\HCMUTE\\Junior\\Semester 1\\Database Management System\\DBMS\\GUI\\FManager.cs",
+              "RelativeToolTip": "GUI\\FManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T23:37:26.112Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "FReceptionist.cs [Design]",
+              "DocumentMoniker": "D:\\HCMUTE\\Junior\\Semester 1\\Database Management System\\DBMS\\GUI\\FReceptionist.cs",
+              "RelativeDocumentMoniker": "GUI\\FReceptionist.cs",
+              "ToolTip": "D:\\HCMUTE\\Junior\\Semester 1\\Database Management System\\DBMS\\GUI\\FReceptionist.cs [Design]",
+              "RelativeToolTip": "GUI\\FReceptionist.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T23:34:03.961Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FManager.cs [Design]",
+              "DocumentMoniker": "D:\\HCMUTE\\Junior\\Semester 1\\Database Management System\\DBMS\\GUI\\FManager.cs",
+              "RelativeDocumentMoniker": "GUI\\FManager.cs",
+              "ToolTip": "D:\\HCMUTE\\Junior\\Semester 1\\Database Management System\\DBMS\\GUI\\FManager.cs [Design]",
+              "RelativeToolTip": "GUI\\FManager.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T23:33:58.138Z",
               "EditorCaption": " [Design]"
             }
           ]
