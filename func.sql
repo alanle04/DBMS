@@ -178,20 +178,20 @@ CREATE FUNCTION fn_GetDailyRevenue
 )
 RETURNS @DailyRevenueTable TABLE
 (
-	day INT,
+	[day] INT,
 	total INT
 )
 AS
 BEGIN
 	-- Chèn dữ liệu vào bảng trả về
-	INSERT INTO @DailyRevenueTable(day, total)
+	INSERT INTO @DailyRevenueTable([day], total)
 	SELECT
-    	DAY(created_at) AS day,
+    	DAY(created_at) AS [day],
     	SUM(total) AS total
 	FROM Bill
 	WHERE MONTH(created_at) = @month AND YEAR(created_at) = @year
 	GROUP BY DAY(created_at)
-	ORDER BY day;
+	ORDER BY [day];
  
 	RETURN;
 END;
@@ -207,7 +207,7 @@ AS
 RETURN
 (
 	SELECT
-    	MONTH(created_at) AS month,
+    	MONTH(created_at) AS [month],
     	SUM(total) AS total_revenue
 	FROM bill
 	WHERE YEAR(created_at) = @year
@@ -232,7 +232,7 @@ AS
 RETURN
 (
 	SELECT
-    	MONTH(created_at) AS Month,
+    	MONTH(created_at) AS [Month],
     	SUM(total) AS TotalRevenue
 	FROM
     	bill
