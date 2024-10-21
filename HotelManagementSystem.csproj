@@ -61,6 +61,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\BookingServiceDAO.cs" />
+    <Compile Include="DAO\BookingRecordDAO.cs" />
+    <Compile Include="DAO\CustomerDAO.cs" />
     <Compile Include="DAO\LoginDAO.cs" />
     <Compile Include="DAO\RevenueDailyDAO.cs" />
     <Compile Include="DAO\RevenueMonthlyDAO.cs" />

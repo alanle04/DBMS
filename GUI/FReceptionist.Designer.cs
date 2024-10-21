@@ -40,7 +40,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.lblClose = new System.Windows.Forms.Label();
+<<<<<<< HEAD
+            this.pnlMain = new System.Windows.Forms.Panel();
+=======
             this.panelMain = new System.Windows.Forms.Panel();
+>>>>>>> main
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -67,7 +71,7 @@
             // btnServiceAndPayment
             // 
             this.btnServiceAndPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnServiceAndPayment.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnServiceAndPayment.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnServiceAndPayment.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnServiceAndPayment.Location = new System.Drawing.Point(20, 412);
             this.btnServiceAndPayment.Margin = new System.Windows.Forms.Padding(4);
@@ -81,42 +85,42 @@
             // btnLogout
             // 
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogout.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnLogout.Location = new System.Drawing.Point(23, 865);
             this.btnLogout.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(288, 49);
             this.btnLogout.TabIndex = 11;
-            this.btnLogout.Text = "Logout";
+            this.btnLogout.Text = "Đăng xuất";
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnCheckIn
             // 
             this.btnCheckIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCheckIn.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheckIn.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckIn.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnCheckIn.Location = new System.Drawing.Point(20, 338);
             this.btnCheckIn.Margin = new System.Windows.Forms.Padding(4);
             this.btnCheckIn.Name = "btnCheckIn";
             this.btnCheckIn.Size = new System.Drawing.Size(288, 49);
             this.btnCheckIn.TabIndex = 8;
-            this.btnCheckIn.Text = "Check In";
+            this.btnCheckIn.Text = "Nhận phòng";
             this.btnCheckIn.UseVisualStyleBackColor = true;
             this.btnCheckIn.Click += new System.EventHandler(this.btnCheckIn_Click);
             // 
             // btnBooking
             // 
             this.btnBooking.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBooking.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBooking.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBooking.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnBooking.Location = new System.Drawing.Point(20, 265);
             this.btnBooking.Margin = new System.Windows.Forms.Padding(4);
             this.btnBooking.Name = "btnBooking";
             this.btnBooking.Size = new System.Drawing.Size(288, 49);
             this.btnBooking.TabIndex = 7;
-            this.btnBooking.Text = "Booking";
+            this.btnBooking.Text = "Đặt phòng";
             this.btnBooking.UseVisualStyleBackColor = true;
             this.btnBooking.Click += new System.EventHandler(this.btnBooking_Click);
             // 
@@ -176,7 +180,11 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
+<<<<<<< HEAD
+            this.panel1.Size = new System.Drawing.Size(2011, 55);
+=======
             this.panel1.Size = new System.Drawing.Size(1942, 55);
+>>>>>>> main
             this.panel1.TabIndex = 2;
             // 
             // label1
@@ -202,19 +210,33 @@
             this.lblClose.Text = "X";
             this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
             // 
+<<<<<<< HEAD
+            // pnlMain
+            // 
+            this.pnlMain.Location = new System.Drawing.Point(333, 55);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(1678, 944);
+            this.pnlMain.TabIndex = 4;
+=======
             // panelMain
             // 
             this.panelMain.Location = new System.Drawing.Point(343, 62);
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(1587, 925);
             this.panelMain.TabIndex = 4;
+>>>>>>> main
             // 
             // FReceptionist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
+            this.ClientSize = new System.Drawing.Size(2011, 999);
+            this.Controls.Add(this.pnlMain);
+=======
             this.ClientSize = new System.Drawing.Size(1942, 999);
             this.Controls.Add(this.panelMain);
+>>>>>>> main
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -245,6 +267,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblClose;
         private System.Windows.Forms.Button btnServiceAndPayment;
+<<<<<<< HEAD
+        private System.Windows.Forms.Panel pnlMain;
+=======
         private System.Windows.Forms.Panel panelMain;
+>>>>>>> main
     }
 }
