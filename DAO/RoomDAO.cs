@@ -1,7 +1,9 @@
 ﻿using HotelManagementSystem.DBConnection;
-<<<<<<< HEAD
 using System.Data.SqlClient;
 using System.Data;
+using System.Windows.Forms;
+using System;
+using HotelManagementSystem.Model;
 
 namespace HotelManagementSystem.DAO {
     public class RoomDAO {
@@ -51,34 +53,6 @@ namespace HotelManagementSystem.DAO {
             return dt;
         }
 
-=======
-using HotelManagementSystem.Model;
-using System;
-using System.Data;
-using System.Data.SqlClient;
-using System.Windows.Forms;
-
-namespace HotelManagementSystem.DAO {
-    public class RoomDAO {
-        public DataTable GetAllRooms() {
-            DataTable dt = new DataTable();
-
-            using(SqlConnection connection = Connection.GetConnection()) {
-                string query = "SELECT * FROM vw_Room";
-
-                connection.Open();
-                using(SqlCommand cmd = new SqlCommand(query, connection)) {
-
-                    using(SqlDataAdapter adapter = new SqlDataAdapter(cmd)) {
-                        adapter.Fill(dt);
-                    }
-
-                }
-
-            }
-
-            return dt;
-        }
         public int AddRoom(Room room) {
 
             using(SqlConnection connection = Connection.GetConnection()) {
@@ -137,7 +111,7 @@ namespace HotelManagementSystem.DAO {
             return 0;
         }
 
-        public int DeleteRoom(String roomId) {
+        public int DeleteRoom(string roomId) {
 
             using(SqlConnection connection = Connection.GetConnection()) {
                 connection.Open();
@@ -162,7 +136,6 @@ namespace HotelManagementSystem.DAO {
 
             return 0;
         }
->>>>>>> main
     }
 
 }

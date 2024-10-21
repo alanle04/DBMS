@@ -63,11 +63,7 @@ namespace HotelManagementSystem
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-<<<<<<< HEAD
-            this.panel1.Size = new System.Drawing.Size(1848, 40);
-=======
             this.panel1.Size = new System.Drawing.Size(1300, 32);
->>>>>>> main
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -87,12 +83,8 @@ namespace HotelManagementSystem
             this.lblClose.AutoSize = true;
             this.lblClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblClose.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
-            this.lblClose.Location = new System.Drawing.Point(1961, 11);
-=======
             this.lblClose.Location = new System.Drawing.Point(1275, 6);
             this.lblClose.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
->>>>>>> main
             this.lblClose.Name = "lblClose";
             this.lblClose.Size = new System.Drawing.Size(22, 23);
             this.lblClose.TabIndex = 2;
@@ -114,18 +106,11 @@ namespace HotelManagementSystem
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.pictureBox1);
-<<<<<<< HEAD
-            this.panel2.Location = new System.Drawing.Point(0, 48);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(349, 916);
-=======
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 32);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1300, 668);
->>>>>>> main
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -156,12 +141,7 @@ namespace HotelManagementSystem
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.Color.WhiteSmoke;
-<<<<<<< HEAD
-            this.btnLogout.Location = new System.Drawing.Point(23, 839);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-=======
             this.btnLogout.Location = new System.Drawing.Point(15, 616);
->>>>>>> main
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(288, 49);
             this.btnLogout.TabIndex = 11;
@@ -174,13 +154,8 @@ namespace HotelManagementSystem
             this.btnCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCustomer.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCustomer.ForeColor = System.Drawing.Color.WhiteSmoke;
-<<<<<<< HEAD
-            this.btnCustomer.Location = new System.Drawing.Point(20, 575);
-            this.btnCustomer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-=======
             this.btnCustomer.Location = new System.Drawing.Point(15, 467);
             this.btnCustomer.Margin = new System.Windows.Forms.Padding(4);
->>>>>>> main
             this.btnCustomer.Name = "btnCustomer";
             this.btnCustomer.Size = new System.Drawing.Size(288, 49);
             this.btnCustomer.TabIndex = 10;
@@ -293,14 +268,12 @@ namespace HotelManagementSystem
             // 
             // ucBill
             // 
-<<<<<<< HEAD
             this.panelMain.Location = new System.Drawing.Point(356, 44);
             this.panelMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(1631, 910);
             this.panelMain.TabIndex = 2;
             this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
-=======
             this.ucBill.AutoSize = true;
             this.ucBill.Location = new System.Drawing.Point(0, 0);
             this.ucBill.Margin = new System.Windows.Forms.Padding(5);
@@ -308,19 +281,13 @@ namespace HotelManagementSystem
             this.ucBill.Size = new System.Drawing.Size(1662, 1067);
             this.ucBill.TabIndex = 6;
             this.ucBill.Load += new System.EventHandler(this.ucBill_Load);
->>>>>>> main
             // 
             // FManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-<<<<<<< HEAD
-            this.ClientSize = new System.Drawing.Size(1848, 970);
-            this.Controls.Add(this.panelMain);
-=======
             this.ClientSize = new System.Drawing.Size(1300, 700);
->>>>>>> main
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

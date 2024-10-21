@@ -40,7 +40,7 @@ namespace HotelManagementSystem {
 
         private void LoadData() {
             dgvRoomList.Rows.Clear();
-            DataTable dt = roomDAO.GetAllRooms();
+            DataTable dt = RoomDAO.GetAllRooms();
             for(int i = 0; i < dt.Rows.Count; i++) {
                 string[] row = { dt.Rows[i]["room_id"].ToString(), dt.Rows[i]["room_name"].ToString(), dt.Rows[i]["status"].ToString(), dt.Rows[i]["room_type_name"].ToString(), dt.Rows[i]["number_of_bed"].ToString(), dt.Rows[i]["capacity"].ToString(), dt.Rows[i]["cost_per_day"].ToString(), dt.Rows[i]["manager_name"].ToString() };
                 dgvRoomList.Rows.Add(row);

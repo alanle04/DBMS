@@ -1,25 +1,11 @@
-<<<<<<< HEAD
-﻿using HotelManagementSystem.DAO;
+using HotelManagementSystem.DAO;
+using HotelManagementSystem.DBConnection;
 using HotelManagementSystem.Model;
 using System;
-using System.Data;
-using System.Windows.Forms;
-=======
-﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Drawing.Text;
-using HotelManagementSystem.Model;
-using HotelManagementSystem.DBConnection;
-using HotelManagementSystem.DAO;
->>>>>>> main
+using System.Windows.Forms;
 
 namespace HotelManagementSystem {
     public partial class UCCustomer : UserControl
@@ -29,7 +15,6 @@ namespace HotelManagementSystem {
         public UCCustomer()
         {
             InitializeComponent();
-<<<<<<< HEAD
             LoadData();
         }
 
@@ -61,7 +46,7 @@ namespace HotelManagementSystem {
         private void btnSearch_Click(object sender, System.EventArgs e)
         {
             string searchBy = cbSearch.Text.Trim();
-            string searchInfor = txtSearch.Text.Trim();
+            string searchInfor = txtCustomer.Text.Trim();
             if (IsEmpty(searchBy))
             {
                 MessageBox.Show("Vui lòng chọn hình thức tìm kiếm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -129,7 +114,6 @@ namespace HotelManagementSystem {
             {
                 MessageBox.Show("Lỗi khi tìm khách hàng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-=======
             LoadCustomers();
         }
         private void LoadCustomers()
@@ -138,7 +122,7 @@ namespace HotelManagementSystem {
             var customers = GetAllCustomers();
 
             // Giả sử bạn có một DataGridView tên là dgvCustomers
-            dtgvCustomer.DataSource = customers;
+            dgvListCustomer.DataSource = customers;
         }
         public List<Customer> GetAllCustomers()
         {
@@ -196,7 +180,7 @@ namespace HotelManagementSystem {
                 dt.Rows.Add(customer.CustomerId, customer.FullName, customer.Gender, customer.PhoneNumber, customer.IdentificationNumber, customer.Nationality, customer.Address);
             }
 
-            dtgvCustomer.DataSource = dt; // Cập nhật DataGridView với DataTable
+            dgvListCustomer.DataSource = dt; // Cập nhật DataGridView với DataTable
         }
      
 
@@ -224,7 +208,7 @@ namespace HotelManagementSystem {
                 else
                 {
                     MessageBox.Show("Không tìm thấy khách hàng " + find, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    dtgvCustomer.DataSource = null; // Xóa dữ liệu cũ nếu không tìm thấy khách hàng
+                    dgvListCustomer.DataSource = null; // Xóa dữ liệu cũ nếu không tìm thấy khách hàng
                 }
             }
             else
@@ -237,7 +221,6 @@ namespace HotelManagementSystem {
         private void btnReload_Click(object sender, EventArgs e)
         {
             LoadCustomers();
->>>>>>> main
         }
     }
 }
