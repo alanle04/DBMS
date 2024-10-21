@@ -47,14 +47,14 @@ namespace HotelManagementSystem {
         }
 
         private void btnDashboard_Click(object sender, EventArgs e) {
-            UCDashboard uCDashboard = new UCDashboard();
-            uCDashboard.Dock = DockStyle.Fill;
+            UCDashboard ucDashboard = new UCDashboard();
+            ucDashboard.Dock = DockStyle.Fill;
             panelMain.Controls.Clear();
-            panelMain.Controls.Add(uCDashboard);
+            panelMain.Controls.Add(ucDashboard);
         }
 
         private void btnRoom_Click(object sender, EventArgs e) {
-            UCRoom ucRoom = new UCRoom();
+            UCRoom ucRoom = new UCRoom(username);
             ucRoom.Dock = DockStyle.Fill;
             panelMain.Controls.Clear();
             panelMain.Controls.Add(ucRoom);

@@ -1,0 +1,16 @@
+# Bỏ qua thư mục .vs
+.vs/
+
+# Bỏ qua các tệp/thư mục do build tạo ra
+bin/
+obj/
+
+# Bỏ qua các tệp cấu hình của người dùng
+*.user
+*.suo
+
+# Bỏ qua tệp nhật ký
+*.log
+
+# Bỏ qua các tệp tạm thời
+*.tmp

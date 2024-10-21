@@ -1,4 +1,4 @@
-﻿using HotelManagementSystem.DBConnection;
+using HotelManagementSystem.DBConnection;
 using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -19,21 +19,19 @@ namespace HotelManagementSystem.DAO {
                         command.Parameters.AddWithValue("@username", username);
                         command.Parameters.AddWithValue("@password", password);
 
-                        object resultObj = command.ExecuteScalar();
+                        var resultObj = command.ExecuteScalar();
 
                         if(resultObj != null) {
                             result = Convert.ToInt32(resultObj);
                         } else {
-                            MessageBox.Show("Không có kết quả trả về từ cơ sở dữ liệu.");
+                            MessageBox.Show("Không có kết quả trả về từ cơ sở dữ liệu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
-
-                    Connection.CloseConnection(); 
                 }
             } catch(SqlException sqlEx) {
-                MessageBox.Show("Lỗi SQL: " + sqlEx.Message);
+                MessageBox.Show("Lỗi SQL: " + sqlEx.Message, "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } catch(Exception ex) {
-                MessageBox.Show("Lỗi: " + ex.Message);
+                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return result;

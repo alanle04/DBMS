@@ -83,8 +83,8 @@ CREATE TABLE booking_record (
     status VARCHAR(50) CHECK (status IN('paid', 'staying', 'deposited')),
     expected_check_in_time DATETIME NOT NULL,
     expected_check_out_time DATETIME NOT NULL,
-    actual_check_in_time DATETIME,
-    actual_check_out_time DATETIME,
+    actual_check_in_time DATETIME NULL,
+    actual_check_out_time DATETIME NULL,
     receptionist_id VARCHAR(20),
     customer_id VARCHAR(20),
     room_id VARCHAR(20),
@@ -117,14 +117,15 @@ CREATE TABLE bill (
     additional_fee INT CHECK (additional_fee >= 0),
     additional_fee_content NVARCHAR(MAX),
     total INT CHECK (total >= 0),
-    created_at DATETIME NOT NULL,
-    payment_method VARCHAR(50) NOT NULL,
+    created_at DATETIME NULL,
+    payment_method VARCHAR(50)NULL,
     receptionist_id VARCHAR(20),
     customer_id VARCHAR(20),
     CONSTRAINT FK_bill_staff_id FOREIGN KEY (receptionist_id) REFERENCES staff(staff_id),
     CONSTRAINT FK_bill_customer_id FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
 );
 GO
+
 
 insert into account values('alan','123','manager')
 insert into account values('dopamine','123','receptionist')
@@ -163,7 +164,7 @@ insert into service values('TE', N'Sân tennis', 0, '','1')
 insert into service values('GO', N'Sân golf', 0, '','1')
 insert into customer values('1', 'Pham Minh Trung','male','0321654','0123456897','VN','HCM')
 insert into customer values('2', 'Lien Hue Tien','female','0789854','0123454561','VN','HCM')
-
+go
 
 -- 3.2.4. Hàm tìm kiếm dữ liệu
 -- 3.2.4.1. Bảng room_type
@@ -204,6 +205,39 @@ RETURN
 );
 GO
 
+-- lay thong tin bill phong dang duoc tim
+CREATE OR ALTER FUNCTION fn_getBillInfoByRoomId
+(
+    @roomId  VARCHAR(20)
+)
+RETURNS TABLE
+AS
+RETURN 
+(
+    SELECT bill.*
+    FROM bill
+    INNER JOIN booking_record b ON b.customer_id = bill.customer_id
+    WHERE b.room_id = @roomId 
+      AND b.actual_check_out_time IS NULL
+      AND bill.created_at IS NULL
+);
+GO
+
+-- lay thong tin dich vu da dung cua phong dang tim
+CREATE OR ALTER FUNCTION fn_getServiceUsageInfoByRoomId
+(
+    @roomId  VARCHAR(20)
+)
+RETURNS TABLE
+AS
+RETURN 
+(
+    SELECT s.*
+    FROM service_usage_record s
+	JOIN	booking_record b ON s.booking_id = b.booking_record_id
+    WHERE b.room_id = @roomId AND b.actual_check_out_time IS NULL
+);
+GO
 --3.2.4.3. Bảng room 
 --Tìm kiếm theo mã phòng
 CREATE PROCEDURE sp_SearchRoomById (@room_id VARCHAR(20))
@@ -237,7 +271,7 @@ END;
 GO
 
 --Tìm kiếm theo tên phòng
-CREATE PROCEDURE sp_SearchRoomByName(@room_name NVARCHAR(50))
+CREATE PROCEDURE sp_SearchRoomByName (@room_name NVARCHAR(50))
 AS
 BEGIN
  
@@ -364,7 +398,6 @@ RETURN
 );
 GO
 
-
 --3.2.4.9. Tính tổng doanh thu theo năm (ví dụ nhập vào 1 năm và tính tổng các hóa đơn trong năm đó)
 CREATE FUNCTION fn_TotalRevenueByYear(@year INT)
 RETURNS TABLE
@@ -408,6 +441,8 @@ BEGIN
 
     RETURN @result;
 END;
+Go
+
 --3.2.4.11. Lấy ra tên staff theo username
 CREATE FUNCTION fn_GetStaffIdByUsername(@username VARCHAR(20))
 RETURNS VARCHAR(20)
@@ -421,7 +456,7 @@ BEGIN
 
 	return @staff_id;
 END;
-
+Go
 
 --3.2.4.12. Lấy ra tên staff theo username
 CREATE FUNCTION fn_GetStaffFullNameByUsername(@username VARCHAR(20))
@@ -436,7 +471,25 @@ BEGIN
 
 	return @full_name;
 END;
+go
+--- lấy booking record id theo mã phòng
+CREATE FUNCTION fn_getBookingRecordIdByRoomIdCustomerId(
+    @room_id VARCHAR(20)
+)
+RETURNS VARCHAR(20)
+AS
+BEGIN
+    DECLARE @booking_record_id VARCHAR(20);
 
+    -- Lấy booking_record_id với điều kiện theo room_id, customer_id, và status
+    SELECT @booking_record_id = booking_record_id
+    FROM booking_record
+    WHERE room_id = @room_id 
+
+    -- Trả về booking_record_id nếu tìm thấy
+    RETURN @booking_record_id;
+END;
+go
 -- 3.2.1. Thủ tục thêm dữ liệu các bảng
 -- 3.2.1.1. Bảng room_type
 CREATE PROCEDURE sp_AddRoomType(
@@ -1047,7 +1100,7 @@ END;
 GO
 
 --2.6.8. Trigger tạo hóa đơn khi phiếu đặt phòng (booking_record) được tạo
-CREATE TRIGGER trg_CreateBill
+CREATE OR ALTER TRIGGER trg_CreateBill
 ON booking_record
 AFTER INSERT
 AS
@@ -1059,7 +1112,8 @@ BEGIN
     	@room_fee INT,
 		@check_in DATE,
         @check_out DATE,
-        @days_stayed INT;
+        @days_stayed INT,
+		@billId VARCHAR(20);
  
 	SELECT
     	@cus = i.customer_id,
@@ -1081,14 +1135,14 @@ BEGIN
 	WHERE
     	rt.room_type_id = @room_type;
 	
-
-	INSERT INTO Bill (customer_id, receptionist_id,created_at,  room_fee, service_fee, additional_fee, total)
-	VALUES (@cus, @staff, NULL, @room_fee, NULL, NULL, @room_fee * @days_stayed);
+	SET @billId = @staff+@cus;
+	INSERT INTO Bill (bill_id,customer_id, receptionist_id,created_at,  room_fee, service_fee, additional_fee, total)
+	VALUES (@billId,@cus, @staff, NULL, @room_fee, 0, 0, @room_fee * @days_stayed);
 END;
 GO
 
 --2.6.9. Trigger kiểm tra phòng đang được đặt bởi khách hàng thì không thể xóa.
-CREATE TRIGGER trg_PreventRoomDeletion
+CREATE OR ALTER TRIGGER trg_PreventRoomDeletion
 ON room
 INSTEAD OF DELETE
 AS
@@ -1114,9 +1168,9 @@ END;
 GO
 
 --2.6.10. Trigger kiểm tra khi quá hạn check in thì xóa phiếu đặt phòng và đặt trạng thái phòng available
-CREATE TRIGGER trg_DeleteExpiredBookings
+CREATE OR ALTER TRIGGER trg_DeleteExpiredBookings
 ON booking_record
-INSTEAD OF INSERT, UPDATE
+AFTER INSERT, UPDATE
 AS
 BEGIN
     DECLARE @current_time DATETIME = GETDATE();
@@ -1135,7 +1189,7 @@ END;
 GO
 
 --2.6.11. Trigger kiểm tra khi thêm loại phòng, tên loại phòng không được trùng.
-CREATE TRIGGER trg_CheckRoomTypeName
+CREATE OR ALTER TRIGGER trg_CheckRoomTypeName
 ON room_type
 INSTEAD OF INSERT
 AS
@@ -1153,7 +1207,7 @@ END;
 GO
 
 --2.6.12. Trigger kiểm tra khi thêm dịch vụ, tên dịch vụ không được trùng.
-CREATE TRIGGER trg_CheckServiceName
+CREATE OR ALTER TRIGGER trg_CheckServiceName
 ON service
 INSTEAD OF INSERT
 AS
@@ -1171,7 +1225,7 @@ END;
 GO
 
 --2.6.13. Trigger kiểm tra khi thêm dịch vụ, mã dịch vụ không được trùng.
-CREATE TRIGGER trg_CheckServiceId
+CREATE  OR ALTER TRIGGER trg_CheckServiceId
 ON service
 INSTEAD OF INSERT
 AS
@@ -1188,7 +1242,7 @@ END;
 GO
 
 --2.6.14. Trigger khi bấm xuất hóa đơn thì lấy thời gian xuất hóa đơn thiết lập giá trị actual_check_out_time bên bảng booking_record.
-CREATE TRIGGER trg_UpdateCheckOutTime
+CREATE OR ALTER TRIGGER trg_UpdateCheckOutTime
 ON bill
 AFTER INSERT
 AS
@@ -1199,14 +1253,14 @@ BEGIN
 	INNER JOIN inserted i ON b.customer_id = i.customer_id
 	WHERE b.customer_id = i.customer_id;
 END;
-
+GO
 -- Các view
 CREATE OR ALTER VIEW vw_Service AS
 SELECT service_id, service_name, price, description, full_name as manager_name
 FROM service
 INNER JOIN staff
 ON service.manager_id = staff.staff_id;
-
+GO
 CREATE OR ALTER VIEW vw_Room AS
 SELECT
     r.room_id,
@@ -1223,14 +1277,14 @@ JOIN
     room_type rt ON r.room_type_id = rt.room_type_id
 LEFT JOIN
 	staff s ON r.manager_id = s.staff_id;
-
+GO
 CREATE OR ALTER VIEW vw_RoomType AS
 SELECT room_type_id, room_type_name, number_of_bed, capacity, cost_per_day, full_name as manager
 FROM room_type
 INNER JOIN staff
 ON manager_id = staff.staff_id;
-
-CREATE VIEW vw_AvailableRooms AS
+GO
+CREATE OR ALTER VIEW vw_AvailableRooms AS
 SELECT
     r.room_id,
     r.room_name,
@@ -1248,8 +1302,8 @@ LEFT JOIN
     staff s ON r.manager_id = s.staff_id
 WHERE
 	r.status = 'available';
-
-CREATE VIEW vw_BillDetails AS
+GO
+CREATE OR ALTER VIEW vw_BillDetails AS
 SELECT
     b.bill_id,
     b.room_fee,
@@ -1267,8 +1321,8 @@ LEFT JOIN
     staff s ON b.receptionist_id = s.staff_id
 LEFT JOIN
 	customer c ON b.customer_id = c.customer_id;
-
-CREATE VIEW vw_ServiceUsageDetails AS
+GO
+CREATE OR ALTER VIEW vw_ServiceUsageDetails AS
 SELECT
     sur.service_usage_id,
     sur.usage_time,
@@ -1289,3 +1343,27 @@ LEFT JOIN
     service srv ON sur.service_id = srv.service_id
 LEFT JOIN
 	customer c ON br.customer_id = c.customer_id;
+GO
+
+CREATE OR ALTER VIEW vw_RoomTypeList AS
+SELECT 
+		rt.room_type_id AS ID,
+		rt.room_type_name AS Name,
+		rt.number_of_bed AS NumOfBed,
+		rt.capacity,
+		rt.cost_per_day AS Cost,
+		COUNT(r.room_id) AS NumOfRoom,
+		st.staff_id AS managerId,
+		st.full_name AS managerName
+FROM room_type rt
+LEFT JOIN room  r ON rt.room_type_id = r.room_type_id
+LEFT JOIN staff st ON rt.manager_id = st.staff_id
+GROUP BY
+		rt.room_type_id,
+		rt.room_type_name ,
+		rt.number_of_bed ,
+		rt.capacity,
+		rt.cost_per_day ,
+		st.staff_id ,
+		st.full_name
+

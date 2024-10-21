@@ -40,7 +40,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.lblClose = new System.Windows.Forms.Label();
+<<<<<<< HEAD
             this.pnlMain = new System.Windows.Forms.Panel();
+=======
+            this.panelMain = new System.Windows.Forms.Panel();
+>>>>>>> main
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -74,7 +78,7 @@
             this.btnServiceAndPayment.Name = "btnServiceAndPayment";
             this.btnServiceAndPayment.Size = new System.Drawing.Size(288, 49);
             this.btnServiceAndPayment.TabIndex = 12;
-            this.btnServiceAndPayment.Text = "Service and Payment";
+            this.btnServiceAndPayment.Text = "Service";
             this.btnServiceAndPayment.UseVisualStyleBackColor = true;
             this.btnServiceAndPayment.Click += new System.EventHandler(this.btnServiceAndPayment_Click);
             // 
@@ -176,7 +180,11 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
+<<<<<<< HEAD
             this.panel1.Size = new System.Drawing.Size(2011, 55);
+=======
+            this.panel1.Size = new System.Drawing.Size(1942, 55);
+>>>>>>> main
             this.panel1.TabIndex = 2;
             // 
             // label1
@@ -202,19 +210,33 @@
             this.lblClose.Text = "X";
             this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
             // 
+<<<<<<< HEAD
             // pnlMain
             // 
             this.pnlMain.Location = new System.Drawing.Point(333, 55);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(1678, 944);
             this.pnlMain.TabIndex = 4;
+=======
+            // panelMain
+            // 
+            this.panelMain.Location = new System.Drawing.Point(343, 62);
+            this.panelMain.Name = "panelMain";
+            this.panelMain.Size = new System.Drawing.Size(1587, 925);
+            this.panelMain.TabIndex = 4;
+>>>>>>> main
             // 
             // FReceptionist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
             this.ClientSize = new System.Drawing.Size(2011, 999);
             this.Controls.Add(this.pnlMain);
+=======
+            this.ClientSize = new System.Drawing.Size(1942, 999);
+            this.Controls.Add(this.panelMain);
+>>>>>>> main
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -245,6 +267,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblClose;
         private System.Windows.Forms.Button btnServiceAndPayment;
+<<<<<<< HEAD
         private System.Windows.Forms.Panel pnlMain;
+=======
+        private System.Windows.Forms.Panel panelMain;
+>>>>>>> main
     }
 }

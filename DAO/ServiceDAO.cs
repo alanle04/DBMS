@@ -43,7 +43,7 @@ namespace HotelManagementSystem.DAO {
                     command.Parameters.Add("@manager_id", SqlDbType.VarChar).Value = service.ManagerId;
 
                     try {
-                        if(command.ExecuteNonQuery()  > 0) {
+                        if(command.ExecuteNonQuery() > 0) {
                             return 1;
                         }
                     } catch(SqlException sqlEx) {

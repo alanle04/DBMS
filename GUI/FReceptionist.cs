@@ -41,6 +41,7 @@ namespace HotelManagementSystem {
         }
 
         private void btnBooking_Click(object sender, EventArgs e) {
+<<<<<<< HEAD
             UCBooking uCBooking = new UCBooking(username);
             uCBooking.Dock = DockStyle.Fill;
             pnlMain.Controls.Clear();
@@ -59,6 +60,26 @@ namespace HotelManagementSystem {
             uCCheckIn.Dock = DockStyle.Fill;
             pnlMain.Controls.Clear();
             pnlMain.Controls.Add(uCCheckIn);
+=======
+            UCBooking ucbooking = new UCBooking();
+            ucbooking.Dock = DockStyle.Fill;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(ucbooking);
+        }
+
+        private void btnServiceAndPayment_Click(object sender, EventArgs e) {
+            UCServiceAndPayment ucserPay = new UCServiceAndPayment(username);
+            ucserPay.Dock = DockStyle.Fill;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(ucserPay);
+        }
+
+        private void btnCheckIn_Click(object sender, EventArgs e) {
+            UCCheckIn uccheckIN = new UCCheckIn();
+            uccheckIN.Dock = DockStyle.Fill;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(uccheckIN);
+>>>>>>> main
         }
     }
 }

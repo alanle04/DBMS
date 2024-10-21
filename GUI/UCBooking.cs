@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 ﻿using System.Data.SqlClient;
 using System.Data;
 using System;
 using System.Windows.Forms;
 using HotelManagementSystem.DAO;
 using HotelManagementSystem.Model;
+=======
+﻿using System;
+using System.Windows.Forms;
+>>>>>>> main
 
 namespace HotelManagementSystem {
     public partial class UCBooking : UserControl {
@@ -154,6 +159,11 @@ namespace HotelManagementSystem {
             {
                 MessageBox.Show("Lỗi khi tìm khách hàng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnBook_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

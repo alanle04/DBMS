@@ -1,11 +1,12 @@
 ﻿using HotelManagementSystem.DAO;
+using HotelManagementSystem.DBConnection;
 using System;
 using System.Windows.Forms;
 
 namespace HotelManagementSystem {
     public partial class FLogin : Form {
 
-        LoginDAO db = new LoginDAO();
+        LoginDAO loginDAO = new LoginDAO();
 
         public FLogin() {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace HotelManagementSystem {
             } else {
 
                 try {
-                    int loginResult = db.CheckLogin(txtUsername.Text.Trim(), txtPassword.Text.Trim());
+                    int loginResult = loginDAO.CheckLogin(txtUsername.Text.Trim(), txtPassword.Text.Trim());
 
                     if(loginResult == 1) {
                         MessageBox.Show("Manager đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

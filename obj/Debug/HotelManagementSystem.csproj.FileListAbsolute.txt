@@ -1,3 +1,28 @@
+D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\bin\Debug\HotelManagementSystem.exe.config
+D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\bin\Debug\HotelManagementSystem.exe
+D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\bin\Debug\HotelManagementSystem.pdb
+D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\bin\Debug\Guna.UI2.dll
+D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\obj\Debug\HotelManagementSystem.csproj.AssemblyReference.cache
+D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\obj\Debug\HotelManagementSystem.FLogin.resources
+D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\obj\Debug\HotelManagementSystem.Properties.Resources.resources
+D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\obj\Debug\HotelManagementSystem.csproj.GenerateResource.cache
+D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\obj\Debug\HotelManagementSystem.csproj.CoreCompileInputs.cache
+D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\obj\Debug\HotelMan.F5E31FD0.Up2Date
+D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\obj\Debug\HotelManagementSystem.exe
+D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\obj\Debug\HotelManagementSystem.pdb
+D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\obj\Debug\HotelManagementSystem.FManager.resources
+D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\obj\Debug\HotelManagementSystem.UCCustomer.resources
+D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\obj\Debug\HotelManagementSystem.UCDashboard.resources
+D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\obj\Debug\HotelManagementSystem.UCRoom.resources
+D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\obj\Debug\HotelManagementSystem.UCService.resources
+D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\obj\Debug\HotelManagementSystem.FReceptionist.resources
+D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\obj\Debug\HotelManagementSystem.UCBooking.resources
+D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\obj\Debug\HotelManagementSystem.UCCheckIn.resources
+D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\obj\Debug\HotelManagementSystem.UCServiceAndPayment.resources
+D:\HCMUTE\Junior\Semester 1\Database Management System\FinalProject\HotelManagementSystem\obj\Debug\HotelManagementSystem.UCBill.resources
+D:\DBMS\DBMS\bin\Debug\HotelManagementSystem.exe
+D:\DBMS\DBMS\bin\Debug\HotelManagementSystem.pdb
+D:\DBMS\DBMS\bin\Debug\Guna.UI2.dll
 D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.csproj.AssemblyReference.cache
 D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.FLogin.resources
 D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.FManager.resources
@@ -13,15 +38,39 @@ D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.UCService.resources
 D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.UCServiceAndPayment.resources
 D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.csproj.GenerateResource.cache
 D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.csproj.CoreCompileInputs.cache
+D:\DBMS\DBMS\obj\Debug\HotelMan.F5E31FD0.Up2Date
 D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.exe
 D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.pdb
-D:\DBMS\DBMS\bin\Debug\HotelManagementSystem.exe.config
-D:\DBMS\DBMS\bin\Debug\HotelManagementSystem.exe
-D:\DBMS\DBMS\bin\Debug\HotelManagementSystem.pdb
-D:\DBMS\DBMS\bin\Debug\Guna.UI2.dll
-D:\DBMS\DBMS\obj\Debug\HotelMan.F5E31FD0.Up2Date
-D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.GUI..resources
-D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRoomType.resources
+C:\Users\Administrator\DBMS\bin\Debug\HotelManagementSystem.exe.config
+C:\Users\Administrator\DBMS\bin\Debug\HotelManagementSystem.exe
+C:\Users\Administrator\DBMS\bin\Debug\HotelManagementSystem.pdb
+C:\Users\Administrator\DBMS\bin\Debug\Guna.UI2.dll
+C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.csproj.AssemblyReference.cache
+C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.FLogin.resources
+C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.FManager.resources
+C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.FReceptionist.resources
+C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.Properties.Resources.resources
+C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.UCBill.resources
+C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.UCBooking.resources
+C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.UCCheckIn.resources
+C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.UCCustomer.resources
+C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.UCDashboard.resources
+C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.UCRoom.resources
+C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.UCService.resources
+C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.UCServiceAndPayment.resources
+C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.csproj.GenerateResource.cache
+C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\DBMS\obj\Debug\HotelMan.F5E31FD0.Up2Date
+C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.exe
+C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.pdb
+C:\Users\Administrator\DBMS\bin\Debug\OxyPlot.dll
+C:\Users\Administrator\DBMS\bin\Debug\OxyPlot.WindowsForms.dll
+C:\Users\Administrator\DBMS\bin\Debug\OxyPlot.xml
+C:\Users\Administrator\DBMS\bin\Debug\OxyPlot.WindowsForms.xml
+C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRevenueMonthly.resources
+C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRevenueDaily.resources
+C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRevenueQuarter.resources
+C:\Users\Administrator\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRevenueYearly.resources
 D:\He-quan-tri-csdl\Project_ck\DBMS\bin\Debug\HotelManagementSystem.exe.config
 D:\He-quan-tri-csdl\Project_ck\DBMS\bin\Debug\HotelManagementSystem.exe
 D:\He-quan-tri-csdl\Project_ck\DBMS\bin\Debug\HotelManagementSystem.pdb
@@ -31,8 +80,6 @@ D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.csproj.Sugge
 D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.FLogin.resources
 D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.FManager.resources
 D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.FReceptionist.resources
-D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.GUI..resources
-D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRoomType.resources
 D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.Properties.Resources.resources
 D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.UCBill.resources
 D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.UCBooking.resources
@@ -47,27 +94,20 @@ D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.csproj.CoreC
 D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.csproj.CopyComplete
 D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.exe
 D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.pdb
-D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS\bin\Debug\HotelManagementSystem.exe.config
-D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS\bin\Debug\HotelManagementSystem.exe
-D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS\bin\Debug\HotelManagementSystem.pdb
-D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS\bin\Debug\Guna.UI2.dll
-D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS\obj\Debug\HotelManagementSystem.csproj.AssemblyReference.cache
-D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS\obj\Debug\HotelManagementSystem.FLogin.resources
-D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS\obj\Debug\HotelManagementSystem.FManager.resources
-D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS\obj\Debug\HotelManagementSystem.FReceptionist.resources
-D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS\obj\Debug\HotelManagementSystem.GUI..resources
-D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRoomType.resources
-D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS\obj\Debug\HotelManagementSystem.Properties.Resources.resources
-D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS\obj\Debug\HotelManagementSystem.UCBill.resources
-D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS\obj\Debug\HotelManagementSystem.UCBooking.resources
-D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS\obj\Debug\HotelManagementSystem.UCCheckIn.resources
-D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS\obj\Debug\HotelManagementSystem.UCCustomer.resources
-D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS\obj\Debug\HotelManagementSystem.UCDashboard.resources
-D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS\obj\Debug\HotelManagementSystem.UCRoom.resources
-D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS\obj\Debug\HotelManagementSystem.UCService.resources
-D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS\obj\Debug\HotelManagementSystem.UCServiceAndPayment.resources
-D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS\obj\Debug\HotelManagementSystem.csproj.GenerateResource.cache
-D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS\obj\Debug\HotelManagementSystem.csproj.CoreCompileInputs.cache
-D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS\obj\Debug\HotelMan.F5E31FD0.Up2Date
-D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS\obj\Debug\HotelManagementSystem.exe
-D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS\obj\Debug\HotelManagementSystem.pdb
+D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRevenueDaily.resources
+D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRevenueMonthly.resources
+D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRevenueQuarter.resources
+D:\DBMS\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRevenueYearly.resources
+D:\DBMS\DBMS\bin\Debug\OxyPlot.dll
+D:\DBMS\DBMS\bin\Debug\OxyPlot.WindowsForms.dll
+D:\DBMS\DBMS\bin\Debug\OxyPlot.xml
+D:\DBMS\DBMS\bin\Debug\OxyPlot.WindowsForms.xml
+D:\He-quan-tri-csdl\Project_ck\DBMS\bin\Debug\OxyPlot.dll
+D:\He-quan-tri-csdl\Project_ck\DBMS\bin\Debug\OxyPlot.WindowsForms.dll
+D:\He-quan-tri-csdl\Project_ck\DBMS\bin\Debug\OxyPlot.xml
+D:\He-quan-tri-csdl\Project_ck\DBMS\bin\Debug\OxyPlot.WindowsForms.xml
+D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRevenueDaily.resources
+D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRevenueMonthly.resources
+D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRevenueQuarter.resources
+D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRevenueYearly.resources
+D:\DBMS\DBMS\bin\Debug\HotelManagementSystem.exe.config
