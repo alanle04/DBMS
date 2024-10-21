@@ -25,10 +25,7 @@ namespace HotelManagementSystem.DAO {
 
                     using (var reader = command.ExecuteReader())
                     {
-                        if (!reader.HasRows)
-                        {
-                            MessageBox.Show("Function không trả về kết quả.");
-                        }
+                      
                         while (reader.Read())
                         {
                             if (!reader.IsDBNull(0) && !reader.IsDBNull(1)) // Kiểm tra giá trị không null
@@ -42,6 +39,7 @@ namespace HotelManagementSystem.DAO {
                         }
                     }
                 }
+                connection.Close();
             }
 
             return revenueData;

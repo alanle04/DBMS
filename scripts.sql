@@ -301,6 +301,33 @@ BEGIN
 END;
 GO
 
+--Tìm kiếm các phòng đã đặt của 1 khách hàng bằng CMND/CCCD
+use hotel_management
+CREATE OR ALTER FUNCTION fn_GetDepositedRoomsByIdNumber(@id_number VARCHAR(20))
+RETURNS TABLE
+AS
+RETURN
+(
+	SELECT
+		br.booking_record_id,
+		r.room_name,
+		rt.room_type_name,
+		r.status,
+		c.full_name,
+		c.identification_number,
+		br.expected_check_in_time,
+		br.expected_check_out_time,
+		rt.capacity,
+		rt.cost_per_day
+	FROM
+		room r
+		JOIN room_type rt ON r.room_type_id = rt.room_type_id
+		JOIN booking_record br ON r.room_id = br.room_id
+		JOIN customer c ON br.customer_id = c.customer_id
+	WHERE
+		c.identification_number = @id_number AND r.status = 'deposited'
+);
+GO
 
 --3.2.4.4. Bảng customer 
 -- Tìm kiếm theo tên khách hàng
@@ -326,6 +353,19 @@ RETURN
 	SELECT *
 	FROM dbo.customer
 	WHERE customer_id = @customer_id
+);
+GO
+
+CREATE FUNCTION fn_FindCustomerByIDNumber (
+	@idNumber VARCHAR(20)
+)
+RETURNS TABLE
+AS
+RETURN
+(
+	SELECT *
+	FROM dbo.customer
+	WHERE identification_number = @idNumber
 );
 GO
 
@@ -820,6 +860,32 @@ BEGIN
 END;
 GO
 
+CREATE OR ALTER PROCEDURE sp_UpdateBookingRecord(@booking_record_id VARCHAR(20))
+AS
+BEGIN
+	BEGIN TRY
+		BEGIN TRANSACTION;
+
+		UPDATE booking_record
+		SET 
+			booking_record.status = 'staying',
+			actual_check_in_time = GETDATE()
+		WHERE booking_record.booking_record_id = @booking_record_id
+		COMMIT TRANSACTION;
+	END TRY
+	BEGIN CATCH
+		ROLLBACK TRANSACTION;
+		DECLARE @ErrorMessage NVARCHAR(4000);
+    	DECLARE @ErrorSeverity INT;
+    	DECLARE @ErrorState INT;
+    	SELECT
+        	@ErrorMessage = ERROR_MESSAGE(),
+        	@ErrorSeverity = ERROR_SEVERITY(),
+        	@ErrorState = ERROR_STATE();
+    	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
+		END CATCH
+END;
+GO
 
 --3.2.3. Thủ tục xóa dữ liệu trong các bảng
 -- 3.2.3.1. Bảng room_type
@@ -933,7 +999,7 @@ USE hotel_management;
 GO
 
 --2.6.1. Trigger thêm vào trạng thái phòng (status) 'occupied' khi phiếu đặt phòng (booking) có thời gian check in thực tế (actual_check_in_time)
-CREATE TRIGGER trg_UpdateRoomStatusOccupied
+/* CREATE TRIGGER trg_UpdateRoomStatusOccupied
 ON booking_record
 AFTER INSERT, UPDATE
 AS
@@ -943,21 +1009,39 @@ BEGIN
     FROM room r
     INNER JOIN inserted i ON r.room_id = i.room_id
     WHERE i.actual_check_in_time IS NOT NULL;
+END; */
+CREATE TRIGGER trg_UpdateRoomStatusOccupied
+ON booking_record
+AFTER UPDATE
+AS
+BEGIN
+    -- Chỉ cập nhật trạng thái phòng khi có actual_check_in_time và trạng thái của booking là 'staying'
+    IF EXISTS (
+        SELECT 1 
+        FROM inserted 
+        WHERE actual_check_in_time IS NOT NULL AND status = 'staying'
+    )
+    BEGIN
+        UPDATE room
+        SET room.status = 'occupied'
+        FROM room r
+        INNER JOIN inserted i ON r.room_id = i.room_id
+        WHERE i.actual_check_in_time IS NOT NULL AND i.status = 'staying';
+    END
 END;
 GO
 
 
 --2.6.2. Trigger thêm vào trạng thái phòng status 'deposited' khi phiếu đặt phòng (booking_record) chưa có thời gian check in thực tế actual_check_in_time)
-CREATE TRIGGER trg_UpdateRoomStatusDeposited
+CREATE OR ALTER TRIGGER trg_UpdateRoomStatusDeposited
 ON booking_record
 AFTER INSERT, UPDATE
 AS
 BEGIN
-      UPDATE room
+    UPDATE room
 	SET room.status = 'deposited'
 	FROM room r
 	JOIN inserted i ON r.room_id = i.room_id
-	WHERE i.actual_check_in_time IS NULL;
 END;
 GO
 
@@ -1072,14 +1156,14 @@ END;
 GO
 
 --2.6.7. Trigger cập nhật chi phí khách hàng check out trễ vào hóa đơn
-CREATE TRIGGER trg_OverCheckOut
+CREATE OR ALTER TRIGGER trg_OverCheckOut
 ON bill
 AFTER INSERT, UPDATE
 AS
 BEGIN
 	DECLARE @checkout_time TIME;  
 	DECLARE @room_price INT;
-	DECLARE @additional_fee DECIMAL(18, 2);   
+	DECLARE @additional_fee INT;   
 	SELECT @checkout_time = CAST(inserted.created_at AS TIME), @room_price = room_fee
 	FROM Inserted;
 	IF @checkout_time BETWEEN '12:00' AND '15:00'
@@ -1113,8 +1197,9 @@ BEGIN
 		@check_in DATE,
         @check_out DATE,
         @days_stayed INT,
-		@billId VARCHAR(20);
- 
+		@billId VARCHAR(20),
+		@substr VARCHAR(20); 
+		
 	SELECT
     	@cus = i.customer_id,
     	@staff = i.receptionist_id,
@@ -1134,12 +1219,15 @@ BEGIN
     	room_type rt
 	WHERE
     	rt.room_type_id = @room_type;
-	
+	SET @substr = SUBSTRING(CONVERT(VARCHAR(36), NEWID()), 1, 3);
 	SET @billId = @staff+@cus;
-	INSERT INTO Bill (bill_id,customer_id, receptionist_id,created_at,  room_fee, service_fee, additional_fee, total)
-	VALUES (@billId,@cus, @staff, NULL, @room_fee, 0, 0, @room_fee * @days_stayed);
+	declare @total int;
+	set @total = @room_fee * @days_stayed;
+	INSERT INTO Bill (bill_id,customer_id, receptionist_id, created_at,  room_fee, service_fee, additional_fee, total)
+	VALUES (@billId,@cus, @staff, NULL, @room_fee, 0, @room_fee, @total);
 END;
 GO
+
 
 --2.6.9. Trigger kiểm tra phòng đang được đặt bởi khách hàng thì không thể xóa.
 CREATE OR ALTER TRIGGER trg_PreventRoomDeletion
@@ -1167,28 +1255,7 @@ BEGIN
 END;
 GO
 
---2.6.10. Trigger kiểm tra khi quá hạn check in thì xóa phiếu đặt phòng và đặt trạng thái phòng available
-CREATE OR ALTER TRIGGER trg_DeleteExpiredBookings
-ON booking_record
-AFTER INSERT, UPDATE
-AS
-BEGIN
-    DECLARE @current_time DATETIME = GETDATE();
-   
-    DELETE FROM booking_record
-    WHERE DATEADD(HOUR, 4, expected_check_in_time) < @current_time;
- 
-    UPDATE room
-    SET status = 'available'
-    WHERE room_id IN (
-    	SELECT room_id
-    	FROM deleted
-    	WHERE expected_check_in_time < @current_time
-    );
-END;
-GO
-
---2.6.11. Trigger kiểm tra khi thêm loại phòng, tên loại phòng không được trùng.
+--2.6.10. Trigger kiểm tra khi thêm loại phòng, tên loại phòng không được trùng.
 CREATE OR ALTER TRIGGER trg_CheckRoomTypeName
 ON room_type
 INSTEAD OF INSERT
@@ -1206,42 +1273,40 @@ BEGIN
 END;
 GO
 
---2.6.12. Trigger kiểm tra khi thêm dịch vụ, tên dịch vụ không được trùng.
-CREATE OR ALTER TRIGGER trg_CheckServiceName
+--2.6.11. Trigger kiểm tra khi thêm dịch vụ, mã dịch vụ, tên dịch vụ không được trùng.
+CREATE OR ALTER TRIGGER trg_CheckService
 ON service
 INSTEAD OF INSERT
 AS
 BEGIN
-    IF EXISTS (SELECT 1 FROM service WHERE service_name IN (SELECT service_name FROM inserted))
+    IF EXISTS (
+        SELECT 1 
+        FROM service s
+        JOIN inserted i ON s.service_name = i.service_name
+    )
     BEGIN
-    	RAISERROR('Tên dịch vụ này đã tồn tại', 16, 1);
-    	RETURN;
+        RAISERROR('Tên dịch vụ này đã tồn tại', 16, 1);
+        RETURN;
     END
-   
+
+    IF EXISTS (
+        SELECT 1 
+        FROM service s
+        JOIN inserted i ON s.service_id = i.service_id
+    )
+    BEGIN
+        RAISERROR('Mã dịch vụ này đã tồn tại', 16, 1);
+        RETURN;
+    END
+
     INSERT INTO service (service_id, service_name, price, description, manager_id)
     SELECT service_id, service_name, price, description, manager_id
     FROM inserted;
 END;
 GO
 
---2.6.13. Trigger kiểm tra khi thêm dịch vụ, mã dịch vụ không được trùng.
-CREATE  OR ALTER TRIGGER trg_CheckServiceId
-ON service
-INSTEAD OF INSERT
-AS
-BEGIN 
-	IF EXISTS (SELECT 1 FROM service WHERE service_id IN (SELECT service_id FROM inserted))
-	BEGIN 
-		RAISERROR('Mã dịch vụ đã tồn tại', 16, 1);
-		RETURN;
-	END
-	INSERT INTO service (service_id, service_name, price, description, manager_id)
-    SELECT service_id, service_name, price, description, manager_id
-    FROM inserted;
-END;
-GO
 
---2.6.14. Trigger khi bấm xuất hóa đơn thì lấy thời gian xuất hóa đơn thiết lập giá trị actual_check_out_time bên bảng booking_record.
+--2.6.13. Trigger khi bấm xuất hóa đơn thì lấy thời gian xuất hóa đơn thiết lập giá trị actual_check_out_time bên bảng booking_record.
 CREATE OR ALTER TRIGGER trg_UpdateCheckOutTime
 ON bill
 AFTER INSERT
@@ -1254,6 +1319,7 @@ BEGIN
 	WHERE b.customer_id = i.customer_id;
 END;
 GO
+
 -- Các view
 CREATE OR ALTER VIEW vw_Service AS
 SELECT service_id, service_name, price, description, full_name as manager_name
@@ -1278,6 +1344,7 @@ JOIN
 LEFT JOIN
 	staff s ON r.manager_id = s.staff_id;
 GO
+
 CREATE OR ALTER VIEW vw_RoomType AS
 SELECT room_type_id, room_type_name, number_of_bed, capacity, cost_per_day, full_name as manager
 FROM room_type
@@ -1366,4 +1433,56 @@ GROUP BY
 		rt.cost_per_day ,
 		st.staff_id ,
 		st.full_name
+GO
+		-- 2.7.1. View xem danh sách các phòng
+CREATE OR ALTER VIEW vw_RoomList AS
+SELECT
+    r.room_id,
+    r.room_name,
+    r.status,
+    rt.room_type_name,
+    rt.number_of_bed,
+    rt.capacity,
+    rt.cost_per_day,
+    s.full_name AS manager_name
+FROM
+    room r
+JOIN
+    room_type rt ON r.room_type_id = rt.room_type_id
+LEFT JOIN
+	staff s ON r.manager_id = s.staff_id;
+GO
 
+--2.7.2. View xem danh sách các phòng checkin
+CREATE OR ALTER VIEW vw_CheckInRooms AS
+SELECT
+	br.booking_record_id,
+    r.room_name,
+    rt.room_type_name,
+    r.status,
+    c.full_name,
+    c.identification_number,
+    br.expected_check_in_time,
+    br.expected_check_out_time,
+    rt.capacity,
+    rt.cost_per_day
+FROM
+    room r
+    JOIN room_type rt ON r.room_type_id = rt.room_type_id
+    JOIN booking_record br ON r.room_id = br.room_id
+    JOIN customer c ON br.customer_id = c.customer_id
+WHERE
+    r.status = 'deposited';
+GO
+----2.7.6 View xem danh sách customer---
+CREATE OR ALTER VIEW vw_Customer as
+Select
+customer_id,
+full_name,
+gender,
+phone_number,
+identification_number,
+nationality,
+[address]
+FROM
+customer

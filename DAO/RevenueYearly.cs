@@ -41,6 +41,7 @@ namespace HotelManagementSystem.DAO
                         }
                     }
                 }
+                connection.Close();
             }
 
             return revenueData;
@@ -49,7 +50,7 @@ namespace HotelManagementSystem.DAO
         public class RevenueData
         {
             public int Month { get; set; } // Tháng
-            public decimal TotalRevenue { get; set; } // Tổng doanh thu
+            public int TotalRevenue { get; set; } // Tổng doanh thu
         }
     }
 }
