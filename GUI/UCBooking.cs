@@ -30,9 +30,9 @@ namespace HotelManagementSystem {
 
         private void btnBook_Click(object sender, System.EventArgs e)
         {
-            if (IsEmpty(txtCustomerId.Text) || IsEmpty(txtRoomId.Text))
+            if (IsEmpty(txtFullName.Text) || IsEmpty(txtIdNumber.Text) || IsEmpty(txtPhoneNumber.Text) || IsEmpty(cbGender.Text) || IsEmpty(cbNationality.Text) || IsEmpty(txtAddress.Text) || IsEmpty(txtRoomId.Text))
             {
-                MessageBox.Show("Vui lòng nhập thông tin khách hàng và phòng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin khách hàng và phòng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -42,10 +42,20 @@ namespace HotelManagementSystem {
 
             string status = "deposited";
 
-            string customerId = txtCustomerId.Text;
             string roomId = txtRoomId.Text;
+            Customer customer = new Customer(
+                Guid.NewGuid().ToString(),
+                txtFullName.Text,
+                cbGender.Text,
+                txtIdNumber.Text,
+                txtPhoneNumber.Text,
+                cbNationality.Text,
+                txtAddress.Text
+            );
 
+            CustomerDAO.AddCustomer(customer);
             string receptionistId = staffDAO.GetStaffIdByUsername(username);
+
 
             if (IsEmpty(receptionistId))
             {
@@ -64,9 +74,10 @@ namespace HotelManagementSystem {
                     null,
                     null,
                     receptionistId,
-                    customerId,
+                    customer.CustomerId,
                     roomId
                 );
+                LoadData();
             }
             catch (Exception ex)
             {
@@ -120,40 +131,5 @@ namespace HotelManagementSystem {
         {
             return text.Trim() == string.Empty;
         }
-
-        private void btnSearchByIdNumber_Click(object sender, EventArgs e)
-        {
-            string identificationNumber = txtSearchByIdNumber.Text.Trim();
-
-            if (IsEmpty(identificationNumber))
-            {
-                MessageBox.Show("Vui lòng nhập số CMND/CCCD của khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            try
-            {
-                Customer customer = CustomerDAO.FindCustomerByIDNumber(identificationNumber);
-                if (customer != null)
-                {
-                    txtCustomerId.Text = customer.CustomerId;
-                    txtFullName.Text = customer.FullName;
-                    txtIdNumber.Text = customer.IdentificationNumber;
-                    cbGender.Text = customer.Gender;
-                    cbNationality.Text = customer.Nationality;
-                    txtPhoneNumber.Text = customer.PhoneNumber;
-                    txtAddress.Text = customer.Address;
-                }
-                else
-                {
-                    MessageBox.Show("Không tìm thấy khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi tìm khách hàng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
     }
 }

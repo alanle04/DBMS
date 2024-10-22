@@ -105,11 +105,13 @@ namespace HotelManagementSystem.DAO
             {
                 connection.Open();
 
-                string query = "SELECT * FROM fn_FindtoCustomer(@full_name)";
+                // Sửa truy vấn để gọi đúng cú pháp hàm trả về bảng
+                string query = "SELECT * FROM dbo.fn_FindtoCustomer(@full_name)";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@full_name", fullName);
+                    // Sử dụng Add với SqlDbType để đảm bảo an toàn
+                    command.Parameters.Add("@full_name", SqlDbType.NVarChar, 255).Value = fullName;
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                     {
@@ -122,6 +124,7 @@ namespace HotelManagementSystem.DAO
 
             return dt;
         }
+
 
         public static DataTable GetAllCustomers()
         {
@@ -146,5 +149,43 @@ namespace HotelManagementSystem.DAO
             return dt;
 
         }
+        public static void AddCustomer(Customer customer)
+        {
+            using (SqlConnection connection = Connection.GetConnection())
+            {
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "sp_AddtoCustomer";
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.Add("@customer_id", SqlDbType.VarChar).Value = customer.CustomerId;
+                    command.Parameters.Add("@full_name", SqlDbType.NVarChar).Value = customer.FullName;
+                    command.Parameters.Add("@gender", SqlDbType.VarChar).Value = customer.Gender;
+                    command.Parameters.Add("@identification_number", SqlDbType.VarChar).Value = customer.IdentificationNumber;
+                    command.Parameters.Add("@phone_number", SqlDbType.VarChar).Value = customer.PhoneNumber;
+                    command.Parameters.Add("@nationality", SqlDbType.VarChar).Value = customer.Nationality;
+                    command.Parameters.Add("@address", SqlDbType.NVarChar).Value = customer.Address;
+
+                    try
+                    {
+                        connection.Open();
+                        if (command.ExecuteNonQuery() > 0)
+                        {
+                            MessageBox.Show("Thêm khách hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Thêm khách hàng thất bại" + ex, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+                }
+
+            }
+        }
+
     }
 }

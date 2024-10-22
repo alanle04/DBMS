@@ -21,6 +21,7 @@ namespace HotelManagementSystem {
         public void LoadData()
         {
             dgvListCustomer.DataSource = CustomerDAO.GetAllCustomers();
+            cbSearch.SelectedIndex = -1; 
         }
 
         private void dgvListCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -47,6 +48,8 @@ namespace HotelManagementSystem {
         {
             string searchBy = cbSearch.Text.Trim();
             string searchInfor = txtCustomer.Text.Trim();
+
+
             if (IsEmpty(searchBy))
             {
                 MessageBox.Show("Vui lòng chọn hình thức tìm kiếm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -61,7 +64,7 @@ namespace HotelManagementSystem {
 
             try
             {
-                if (searchBy == "CMND/CCCD")
+                if (cbSearch.SelectedIndex == 0)
                 {
                     Customer customer = CustomerDAO.FindCustomerByIDNumber(searchInfor);
                     if (customer != null)
@@ -78,7 +81,7 @@ namespace HotelManagementSystem {
                         MessageBox.Show("Không tìm thấy khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                if (searchBy == "Mã khách")
+                if (cbSearch.SelectedIndex == 1)
                 {
                     Customer customer = CustomerDAO.FindCustomerByCustomerId(searchInfor);
                     if (customer != null)
@@ -95,12 +98,13 @@ namespace HotelManagementSystem {
                         MessageBox.Show("Không tìm thấy khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                else if (searchBy == "Tên")
+                if (cbSearch.SelectedIndex == 2)
                 {
                     DataTable customers = CustomerDAO.FindCustomersByName(searchInfor);
 
                     if (customers.Rows.Count > 0)
                     {
+
                         dgvListCustomer.DataSource = customers;
                     }
                     else
@@ -114,12 +118,11 @@ namespace HotelManagementSystem {
             {
                 MessageBox.Show("Lỗi khi tìm khách hàng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            LoadCustomers();
         }
         private void LoadCustomers()
         {
 
-            var customers = GetAllCustomers();
+            var customers = CustomerDAO.GetAllCustomers();
 
             // Giả sử bạn có một DataGridView tên là dgvCustomers
             dgvListCustomer.DataSource = customers;

@@ -54,7 +54,6 @@ namespace HotelManagementSystem
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelDaily = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -65,7 +64,6 @@ namespace HotelManagementSystem
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -75,10 +73,9 @@ namespace HotelManagementSystem
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
-            this.panel1.Location = new System.Drawing.Point(20, 18);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(15, 15);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1627, 273);
+            this.panel1.Size = new System.Drawing.Size(1220, 222);
             this.panel1.TabIndex = 0;
             // 
             // panel6
@@ -88,10 +85,9 @@ namespace HotelManagementSystem
             this.panel6.Controls.Add(this.txtYear);
             this.panel6.Controls.Add(this.label4);
             this.panel6.Controls.Add(this.pictureBox4);
-            this.panel6.Location = new System.Drawing.Point(1223, 37);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4);
+            this.panel6.Location = new System.Drawing.Point(917, 30);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(380, 197);
+            this.panel6.Size = new System.Drawing.Size(285, 160);
             this.panel6.TabIndex = 1;
             // 
             // btnYear
@@ -102,9 +98,10 @@ namespace HotelManagementSystem
             this.btnYear.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnYear.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnYear.ForeColor = System.Drawing.Color.White;
-            this.btnYear.Location = new System.Drawing.Point(175, 119);
+            this.btnYear.Location = new System.Drawing.Point(131, 97);
+            this.btnYear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnYear.Name = "btnYear";
-            this.btnYear.Size = new System.Drawing.Size(180, 45);
+            this.btnYear.Size = new System.Drawing.Size(135, 37);
             this.btnYear.TabIndex = 7;
             this.btnYear.Text = "Revenue";
             this.btnYear.Click += new System.EventHandler(this.btnYear_Click);
@@ -120,13 +117,13 @@ namespace HotelManagementSystem
             this.txtYear.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtYear.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtYear.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtYear.Location = new System.Drawing.Point(175, 64);
-            this.txtYear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtYear.Location = new System.Drawing.Point(131, 52);
+            this.txtYear.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtYear.Name = "txtYear";
             this.txtYear.PasswordChar = '\0';
             this.txtYear.PlaceholderText = "";
             this.txtYear.SelectedText = "";
-            this.txtYear.Size = new System.Drawing.Size(122, 48);
+            this.txtYear.Size = new System.Drawing.Size(92, 39);
             this.txtYear.TabIndex = 4;
             // 
             // label4
@@ -134,20 +131,18 @@ namespace HotelManagementSystem
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(171, 37);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(128, 30);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(149, 23);
+            this.label4.Size = new System.Drawing.Size(121, 18);
             this.label4.TabIndex = 2;
             this.label4.Text = "Yearly Income";
             // 
             // pictureBox4
             // 
             this.pictureBox4.Image = global::HotelManagementSystem.Properties.Resources.year_icon;
-            this.pictureBox4.Location = new System.Drawing.Point(29, 37);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox4.Location = new System.Drawing.Point(22, 30);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(133, 123);
+            this.pictureBox4.Size = new System.Drawing.Size(100, 100);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 1;
             this.pictureBox4.TabStop = false;
@@ -159,10 +154,9 @@ namespace HotelManagementSystem
             this.panel5.Controls.Add(this.txtQuarter);
             this.panel5.Controls.Add(this.label3);
             this.panel5.Controls.Add(this.pictureBox3);
-            this.panel5.Location = new System.Drawing.Point(823, 37);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4);
+            this.panel5.Location = new System.Drawing.Point(617, 30);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(380, 197);
+            this.panel5.Size = new System.Drawing.Size(285, 160);
             this.panel5.TabIndex = 1;
             // 
             // btnRevenueQuarterly
@@ -173,9 +167,10 @@ namespace HotelManagementSystem
             this.btnRevenueQuarterly.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnRevenueQuarterly.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnRevenueQuarterly.ForeColor = System.Drawing.Color.White;
-            this.btnRevenueQuarterly.Location = new System.Drawing.Point(175, 119);
+            this.btnRevenueQuarterly.Location = new System.Drawing.Point(131, 97);
+            this.btnRevenueQuarterly.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRevenueQuarterly.Name = "btnRevenueQuarterly";
-            this.btnRevenueQuarterly.Size = new System.Drawing.Size(180, 45);
+            this.btnRevenueQuarterly.Size = new System.Drawing.Size(135, 37);
             this.btnRevenueQuarterly.TabIndex = 6;
             this.btnRevenueQuarterly.Text = "Revenue";
             this.btnRevenueQuarterly.Click += new System.EventHandler(this.btnRevenueQuarterly_Click);
@@ -191,13 +186,13 @@ namespace HotelManagementSystem
             this.txtQuarter.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtQuarter.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtQuarter.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtQuarter.Location = new System.Drawing.Point(175, 64);
-            this.txtQuarter.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtQuarter.Location = new System.Drawing.Point(131, 52);
+            this.txtQuarter.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtQuarter.Name = "txtQuarter";
             this.txtQuarter.PasswordChar = '\0';
             this.txtQuarter.PlaceholderText = "";
             this.txtQuarter.SelectedText = "";
-            this.txtQuarter.Size = new System.Drawing.Size(122, 48);
+            this.txtQuarter.Size = new System.Drawing.Size(92, 39);
             this.txtQuarter.TabIndex = 3;
             this.txtQuarter.TextChanged += new System.EventHandler(this.guna2TextBox3_TextChanged);
             // 
@@ -206,20 +201,18 @@ namespace HotelManagementSystem
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(171, 37);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(128, 30);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(180, 23);
+            this.label3.Size = new System.Drawing.Size(147, 18);
             this.label3.TabIndex = 2;
             this.label3.Text = "Quarterly Income";
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = global::HotelManagementSystem.Properties.Resources.quarters_icon;
-            this.pictureBox3.Location = new System.Drawing.Point(29, 37);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox3.Location = new System.Drawing.Point(22, 30);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(133, 123);
+            this.pictureBox3.Size = new System.Drawing.Size(100, 100);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 1;
             this.pictureBox3.TabStop = false;
@@ -231,10 +224,9 @@ namespace HotelManagementSystem
             this.panel4.Controls.Add(this.btnShowRevenue);
             this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.pictureBox2);
-            this.panel4.Location = new System.Drawing.Point(423, 37);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4);
+            this.panel4.Location = new System.Drawing.Point(317, 30);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(380, 197);
+            this.panel4.Size = new System.Drawing.Size(285, 160);
             this.panel4.TabIndex = 1;
             // 
             // txtMonthly
@@ -248,13 +240,13 @@ namespace HotelManagementSystem
             this.txtMonthly.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMonthly.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtMonthly.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMonthly.Location = new System.Drawing.Point(180, 64);
-            this.txtMonthly.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtMonthly.Location = new System.Drawing.Point(135, 52);
+            this.txtMonthly.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtMonthly.Name = "txtMonthly";
             this.txtMonthly.PasswordChar = '\0';
             this.txtMonthly.PlaceholderText = "";
             this.txtMonthly.SelectedText = "";
-            this.txtMonthly.Size = new System.Drawing.Size(122, 48);
+            this.txtMonthly.Size = new System.Drawing.Size(92, 39);
             this.txtMonthly.TabIndex = 7;
             this.txtMonthly.TextChanged += new System.EventHandler(this.txtMonthly_TextChanged);
             // 
@@ -266,9 +258,10 @@ namespace HotelManagementSystem
             this.btnShowRevenue.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnShowRevenue.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnShowRevenue.ForeColor = System.Drawing.Color.White;
-            this.btnShowRevenue.Location = new System.Drawing.Point(180, 115);
+            this.btnShowRevenue.Location = new System.Drawing.Point(135, 93);
+            this.btnShowRevenue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnShowRevenue.Name = "btnShowRevenue";
-            this.btnShowRevenue.Size = new System.Drawing.Size(180, 45);
+            this.btnShowRevenue.Size = new System.Drawing.Size(135, 37);
             this.btnShowRevenue.TabIndex = 4;
             this.btnShowRevenue.Text = "Revenue";
             this.btnShowRevenue.Click += new System.EventHandler(this.btnShowRevenue_Click);
@@ -278,20 +271,18 @@ namespace HotelManagementSystem
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(176, 37);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(132, 30);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(163, 23);
+            this.label2.Size = new System.Drawing.Size(133, 18);
             this.label2.TabIndex = 2;
             this.label2.Text = "Monthly Income";
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::HotelManagementSystem.Properties.Resources.month_icon;
-            this.pictureBox2.Location = new System.Drawing.Point(35, 37);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox2.Location = new System.Drawing.Point(26, 30);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(133, 123);
+            this.pictureBox2.Size = new System.Drawing.Size(100, 100);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
@@ -303,10 +294,9 @@ namespace HotelManagementSystem
             this.panel3.Controls.Add(this.btnRevenueDaily);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.pictureBox1);
-            this.panel3.Location = new System.Drawing.Point(23, 37);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.panel3.Location = new System.Drawing.Point(17, 30);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(380, 197);
+            this.panel3.Size = new System.Drawing.Size(285, 160);
             this.panel3.TabIndex = 0;
             // 
             // txtDaily
@@ -320,13 +310,13 @@ namespace HotelManagementSystem
             this.txtDaily.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDaily.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtDaily.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDaily.Location = new System.Drawing.Point(179, 64);
-            this.txtDaily.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtDaily.Location = new System.Drawing.Point(134, 52);
+            this.txtDaily.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtDaily.Name = "txtDaily";
             this.txtDaily.PasswordChar = '\0';
             this.txtDaily.PlaceholderText = "";
             this.txtDaily.SelectedText = "";
-            this.txtDaily.Size = new System.Drawing.Size(122, 48);
+            this.txtDaily.Size = new System.Drawing.Size(92, 39);
             this.txtDaily.TabIndex = 8;
             this.txtDaily.TextChanged += new System.EventHandler(this.txtDaily_TextChanged);
             // 
@@ -338,9 +328,10 @@ namespace HotelManagementSystem
             this.btnRevenueDaily.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnRevenueDaily.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnRevenueDaily.ForeColor = System.Drawing.Color.White;
-            this.btnRevenueDaily.Location = new System.Drawing.Point(179, 115);
+            this.btnRevenueDaily.Location = new System.Drawing.Point(134, 93);
+            this.btnRevenueDaily.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRevenueDaily.Name = "btnRevenueDaily";
-            this.btnRevenueDaily.Size = new System.Drawing.Size(180, 45);
+            this.btnRevenueDaily.Size = new System.Drawing.Size(135, 37);
             this.btnRevenueDaily.TabIndex = 6;
             this.btnRevenueDaily.Text = "Revenue";
             this.btnRevenueDaily.Click += new System.EventHandler(this.btnRevenueDaily_Click);
@@ -350,20 +341,18 @@ namespace HotelManagementSystem
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(175, 37);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(131, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(135, 23);
+            this.label1.Size = new System.Drawing.Size(110, 18);
             this.label1.TabIndex = 1;
             this.label1.Text = "Daily Income";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::HotelManagementSystem.Properties.Resources.day_icon;
-            this.pictureBox1.Location = new System.Drawing.Point(33, 37);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(25, 30);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(133, 123);
+            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -374,20 +363,19 @@ namespace HotelManagementSystem
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.labelDaily);
             this.panel2.Controls.Add(this.guna2HtmlLabel1);
-            this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Location = new System.Drawing.Point(20, 310);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Location = new System.Drawing.Point(15, 252);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1627, 603);
+            this.panel2.Size = new System.Drawing.Size(1220, 490);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // labelDaily
             // 
             this.labelDaily.BackColor = System.Drawing.Color.Transparent;
-            this.labelDaily.Location = new System.Drawing.Point(386, 36);
+            this.labelDaily.Location = new System.Drawing.Point(290, 29);
+            this.labelDaily.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.labelDaily.Name = "labelDaily";
-            this.labelDaily.Size = new System.Drawing.Size(172, 18);
+            this.labelDaily.Size = new System.Drawing.Size(140, 15);
             this.labelDaily.TabIndex = 3;
             this.labelDaily.Text = "Tổng doanh thu theo ngày là";
             this.labelDaily.Click += new System.EventHandler(this.labelDaily_Click);
@@ -395,32 +383,21 @@ namespace HotelManagementSystem
             // guna2HtmlLabel1
             // 
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(161, 36);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(121, 29);
+            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(172, 18);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(140, 15);
             this.guna2HtmlLabel1.TabIndex = 2;
             this.guna2HtmlLabel1.Text = "Tổng doanh thu theo ngày là";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 102);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1621, 501);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
             // UCDashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UCDashboard";
-            this.Size = new System.Drawing.Size(1667, 929);
+            this.Size = new System.Drawing.Size(1250, 755);
             this.panel1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
@@ -436,7 +413,6 @@ namespace HotelManagementSystem
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -466,7 +442,6 @@ namespace HotelManagementSystem
         private UCRevenueDaily ucRevenueDaily1;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelDaily;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private Guna.UI2.WinForms.Guna2TextBox txtMonthly;
         private Guna.UI2.WinForms.Guna2TextBox txtDaily;
         private Guna.UI2.WinForms.Guna2Button btnYear;
