@@ -303,7 +303,7 @@ GO
 
 --Tìm kiếm các phòng đã đặt của 1 khách hàng bằng CMND/CCCD
 use hotel_management
-CREATE OR ALTER FUNCTION fn_GetDepositedRoomsByIdNumber(@id_number VARCHAR(20))
+CREATE FUNCTION fn_GetDepositedRoomsByIdNumber(@id_number VARCHAR(20))
 RETURNS TABLE
 AS
 RETURN
