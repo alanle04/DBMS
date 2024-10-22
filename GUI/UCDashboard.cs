@@ -25,35 +25,8 @@ namespace HotelManagementSystem {
         {
         
             InitializeComponent();
-            LoadBillDetails();
 
-        }
-        private void LoadBillDetails()
-        {
-            // Tạo kết nối đến SQL Server
-            using (SqlConnection connection = Connection.GetConnection())
-            {
-                try
-                {
-                    connection.Open();
 
-                    // Truy vấn dữ liệu từ VIEW
-                    string query = "SELECT * FROM vw_BillDetails";
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter(query, connection);
-
-                    // Đổ dữ liệu vào DataTable
-                    DataTable dataTable = new DataTable();
-                    dataAdapter.Fill(dataTable);
-
-                    // Hiển thị dữ liệu lên DataGridView
-                    dataGridView1.DataSource = dataTable;
-                    connection.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message);
-                }
-            }
         }
     
 
@@ -123,6 +96,9 @@ namespace HotelManagementSystem {
      
         private void btnRevenueQuarterly_Click(object sender, EventArgs e)
         {
+            
+            
+            
             // Lấy giá trị từ textbox
             string input = txtQuarter.Text;
 
@@ -325,12 +301,13 @@ namespace HotelManagementSystem {
                 int currentYear = DateTime.Now.Year;
                 if (year <= currentYear)
                 {
+                    panel2.Controls.Clear(); // Xóa các điều khiển cũ (nếu cần)
                     // Khởi tạo và thêm UCRevenueYearly
                     UCRevenueYearly ucRevenueYearly = new UCRevenueYearly(year);
                     ucRevenueYearly.Dock = DockStyle.Fill; // Đặt Dock để chiếm toàn bộ không gian có sẵn
-                    MessageBox.Show(year.ToString());
+                 
                     // Giả sử bạn có một Panel tên là panelContainer để chứa các điều khiển
-                    panel2.Controls.Clear(); // Xóa các điều khiển cũ (nếu cần)
+                 
                     panel2.Controls.Add(ucRevenueYearly); // Thêm User Control vào Panel
                 }
                 else

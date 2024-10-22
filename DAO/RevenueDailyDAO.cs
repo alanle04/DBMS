@@ -41,7 +41,10 @@ namespace HotelManagementSystem.DAO
                     {
                         totalRevenue = Convert.ToInt32(result); // Chuyển đổi về INT
                     }
+
+                    
                 }
+                connection.Close();
             }
 
             return totalRevenue;

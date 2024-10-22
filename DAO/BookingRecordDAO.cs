@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HotelManagementSystem.DBConnection;
+using HotelManagementSystem.Model;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace HotelManagementSystem.DAO
 {
@@ -48,6 +50,28 @@ namespace HotelManagementSystem.DAO
             }
         }
 
+        public static void UpdateBookingRecordStatus(string bookingRecordId)
+        {
+            SqlConnection conn = DBConnection.Connection.GetConnection();
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_UpdateBookingRecord";
 
+            cmd.Parameters.Add("@booking_record_id", SqlDbType.VarChar).Value = bookingRecordId;
+
+            try
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Nhận phòng thất bại: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }

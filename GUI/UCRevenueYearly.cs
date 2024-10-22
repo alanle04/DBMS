@@ -16,11 +16,16 @@ namespace HotelManagementSystem.GUI
         private PlotView plotView;
         private PlotModel model;
         RevenueYearly re = new RevenueYearly();
+        public UCRevenueYearly()
+        {
+            InitializeComponent();
+        }
 
         public UCRevenueYearly(int year)
         {
-            InitializeComponent();
             CreatePlot(year);
+            InitializeComponent();
+           
         }
 
         private void CreatePlot(int year)
@@ -36,7 +41,7 @@ namespace HotelManagementSystem.GUI
             if (revenueData.Count == 0)
             {
                 MessageBox.Show("Không có dữ liệu cho năm này.");
-                return; // Thoát nếu không có dữ liệu
+                
             }
 
             // Tạo series cho biểu đồ

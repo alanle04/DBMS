@@ -29,6 +29,53 @@ namespace HotelManagementSystem.DAO {
             return dt;
 
         }
+
+        public static DataTable GetDepositedRooms()
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = Connection.GetConnection())
+            {
+                connection.Open();
+
+                string query = "SELECT * FROM dbo.vw_CheckInRooms";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        adapter.Fill(dt);
+                    }
+                }
+                connection.Close();
+            }
+            return dt;
+
+        }
+
+        public static DataTable GetDepositedRoomsByIdNumber(string idNumber)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = Connection.GetConnection())
+            {
+                connection.Open();
+
+                string query = "SELECT * FROM dbo.fn_GetDepositedRoomsByIdNumber(@idNumber)";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.Add("@idNumber", SqlDbType.VarChar).Value = idNumber;
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        adapter.Fill(dt);
+                    }
+                }
+                connection.Close();
+            }
+            return dt;
+
+        }
         public static DataTable FindRoomsByRoomType(string roomTypeName)
         {
             DataTable dt = new DataTable();

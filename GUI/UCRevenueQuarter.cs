@@ -13,18 +13,25 @@ namespace HotelManagementSystem.GUI
     public partial class UCRevenueQuarter : UserControl
     {
         private PlotView plotView;
-        private PlotModel model;
+        
+        
         RevenueQuarterlyDAO revenueQuarterlyDAO = new RevenueQuarterlyDAO();
-        public UCRevenueQuarter(int quarter, int year)
+        public UCRevenueQuarter()
         {
             InitializeComponent();
+        }
+        public UCRevenueQuarter(int quarter, int year)
+        {
             CreatePlot(quarter, year);
+            InitializeComponent();
+            
+            
         }
 
         private void CreatePlot(int quarter, int year)
         {
             // Khởi tạo mô hình PlotModel
-            model = new PlotModel { Title = $"Doanh thu Quý {quarter} Năm {year}" };
+            var model = new PlotModel { Title = $"Doanh thu Quý {quarter} Năm {year}" };
 
             plotView = new PlotView();
             plotView.Dock = DockStyle.Fill;
@@ -37,7 +44,7 @@ namespace HotelManagementSystem.GUI
             if (revenueData.Count == 0)
             {
                 MessageBox.Show("Không có dữ liệu cho quý này.");
-                return; // Thoát phương thức nếu không có dữ liệu
+               
             }
 
             // Tạo series
@@ -65,7 +72,7 @@ namespace HotelManagementSystem.GUI
 
         private void UCRevenueQuarter_Load(object sender, EventArgs e)
         {
-            // Có thể thêm mã khởi tạo nếu cần
+           
         }
     }
 }

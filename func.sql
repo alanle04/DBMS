@@ -104,8 +104,9 @@ GO
 
 --3.2.4.4. Bảng customer 
 -- Tìm kiếm theo tên khách hàng
-CREATE FUNCTION fn_FindtoCustomer (
-	@full_name VARCHAR(255)
+use hotel_management
+CREATE OR ALTER FUNCTION fn_FindtoCustomer (
+	@full_name NVARCHAR(255)
 )
 RETURNS TABLE
 AS
@@ -116,6 +117,7 @@ RETURN
 	WHERE full_name LIKE '%' + @full_name + '%'
 );
 GO
+
 --Tìm kiếm theo mã khách hàng
 CREATE FUNCTION fn_FindCustomer (
 	@customer_id VARCHAR(20)
@@ -168,6 +170,8 @@ BEGIN
 END;
 GO
 
+SELECT dbo.fn_CalculateTotalRevenueByDate(1, 1, 2024);
+
 
 --3.2.4.7. Tính tổng doanh thu theo tháng (ví dụ nhập vào 1 tháng và tính tổng các hóa đơn trong tháng đó)
 
@@ -178,20 +182,20 @@ CREATE FUNCTION fn_GetDailyRevenue
 )
 RETURNS @DailyRevenueTable TABLE
 (
-	day INT,
+	[day] INT,
 	total INT
 )
 AS
 BEGIN
 	-- Chèn dữ liệu vào bảng trả về
-	INSERT INTO @DailyRevenueTable(day, total)
+	INSERT INTO @DailyRevenueTable([day], total)
 	SELECT
-    	DAY(created_at) AS day,
+    	DAY(created_at) AS [day],
     	SUM(total) AS total
 	FROM Bill
 	WHERE MONTH(created_at) = @month AND YEAR(created_at) = @year
 	GROUP BY DAY(created_at)
-	ORDER BY day;
+	ORDER BY [day];
  
 	RETURN;
 END;
@@ -207,7 +211,7 @@ AS
 RETURN
 (
 	SELECT
-    	MONTH(created_at) AS month,
+    	MONTH(created_at) AS [month],
     	SUM(total) AS total_revenue
 	FROM bill
 	WHERE YEAR(created_at) = @year
@@ -232,7 +236,7 @@ AS
 RETURN
 (
 	SELECT
-    	MONTH(created_at) AS Month,
+    	MONTH(created_at) AS [Month],
     	SUM(total) AS TotalRevenue
 	FROM
     	bill
@@ -244,7 +248,7 @@ RETURN
 GO
 
 --3.2.4.10. Kiểm tra login
-CREATE FUNCTION fn_CheckLogin(@username VARCHAR(50), @password VARCHAR(255))
+CREATE  FUNCTION fn_CheckLogin(@username VARCHAR(50), @password VARCHAR(255))
 RETURNS INT
 AS
 BEGIN
@@ -274,9 +278,10 @@ BEGIN
 
     RETURN @result;
 END;
+GO
 
 --3.2.4.11. Lấy ra tên staff theo username
-CREATE FUNCTION fn_GetStaffIdByUsername(@username VARCHAR(20))
+CREATE  FUNCTION fn_GetStaffIdByUsername(@username VARCHAR(20))
 RETURNS VARCHAR(20)
 AS
 BEGIN
@@ -288,7 +293,7 @@ BEGIN
 
 	return @staff_id;
 END;
-
+GO
 
 --3.2.4.12. Lấy ra tên staff theo username
 CREATE FUNCTION fn_GetStaffFullNameByUsername(@username VARCHAR(20))
@@ -303,3 +308,6 @@ BEGIN
 
 	return @full_name;
 END;
+
+
+SELECT * FROM fn_FindtoCustomer('A');
