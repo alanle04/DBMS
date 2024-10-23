@@ -202,7 +202,7 @@ namespace HotelManagementSystem.DAO {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "sp_AddRoom";
 
-                    cmd.Parameters.Add("@room_id", SqlDbType.VarChar).Value = room.RoomId;
+                    cmd.Parameters.Add("@roomId", SqlDbType.VarChar).Value = room.RoomId;
                     cmd.Parameters.Add("@room_name", SqlDbType.VarChar).Value = room.RoomName;
                     cmd.Parameters.Add("@room_type_id", SqlDbType.VarChar).Value = room.RoomTypeId;
                     cmd.Parameters.Add("@manager_id", SqlDbType.VarChar).Value = room.ManagerId;
@@ -231,10 +231,10 @@ namespace HotelManagementSystem.DAO {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "sp_UpdateRoomById";
 
-                    cmd.Parameters.Add("@room_id", SqlDbType.VarChar).Value = room.RoomId;
-                    cmd.Parameters.Add("@room_name", SqlDbType.VarChar).Value = room.RoomName;
-                    cmd.Parameters.Add("@room_type_id", SqlDbType.VarChar).Value = room.RoomTypeId;
-                    cmd.Parameters.Add("@manager_id", SqlDbType.VarChar).Value = room.ManagerId;
+                    cmd.Parameters.Add("@roomId", SqlDbType.VarChar).Value = room.RoomId;
+                    cmd.Parameters.Add("@roomName", SqlDbType.VarChar).Value = room.RoomName;
+                    cmd.Parameters.Add("@roomTypeId", SqlDbType.VarChar).Value = room.RoomTypeId;
+                    cmd.Parameters.Add("@managerId", SqlDbType.VarChar).Value = room.ManagerId;
 
                     try {
                         if(cmd.ExecuteNonQuery() > 0) {
@@ -260,7 +260,7 @@ namespace HotelManagementSystem.DAO {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "sp_DeleteRoomById";
 
-                    cmd.Parameters.Add("@room_id", SqlDbType.VarChar).Value = roomId;
+                    cmd.Parameters.Add("@roomId", SqlDbType.VarChar).Value = roomId;
 
                     try {
                         if(cmd.ExecuteNonQuery() > 0) {

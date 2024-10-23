@@ -26,7 +26,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.txt_managerId = new System.Windows.Forms.TextBox();
             this.lblManager = new System.Windows.Forms.Label();
             this.txt_costPerDay = new System.Windows.Forms.TextBox();
             this.txt_roomTypeName = new System.Windows.Forms.TextBox();
@@ -44,6 +43,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dtgv_ListRoomType = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbManagerID = new System.Windows.Forms.ComboBox();
+            this.btn_excute = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_ListRoomType)).BeginInit();
             this.panel1.SuspendLayout();
@@ -71,18 +72,9 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(420, 49);
             this.btnDelete.TabIndex = 21;
-            this.btnDelete.Text = "DELETE ROOM TYPE";
+            this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // txt_managerId
-            // 
-            this.txt_managerId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_managerId.Location = new System.Drawing.Point(23, 563);
-            this.txt_managerId.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_managerId.Name = "txt_managerId";
-            this.txt_managerId.Size = new System.Drawing.Size(419, 30);
-            this.txt_managerId.TabIndex = 19;
             // 
             // lblManager
             // 
@@ -124,7 +116,7 @@
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(193, 49);
             this.btnUpdate.TabIndex = 15;
-            this.btnUpdate.Text = "UPDATE";
+            this.btnUpdate.Text = "Sửa";
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -139,7 +131,7 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(193, 49);
             this.btnAdd.TabIndex = 14;
-            this.btnAdd.Text = "ADD";
+            this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -273,9 +265,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.btn_excute);
+            this.panel1.Controls.Add(this.cbManagerID);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnDelete);
-            this.panel1.Controls.Add(this.txt_managerId);
             this.panel1.Controls.Add(this.lblManager);
             this.panel1.Controls.Add(this.txt_costPerDay);
             this.panel1.Controls.Add(this.txt_roomTypeName);
@@ -294,6 +287,414 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(467, 892);
             this.panel1.TabIndex = 4;
+            // 
+            // cbManagerID
+            // 
+            this.cbManagerID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbManagerID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbManagerID.DropDownWidth = 250;
+            this.cbManagerID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbManagerID.FormattingEnabled = true;
+            this.cbManagerID.Items.AddRange(new object[] {
+            "Afghan",
+            "",
+            "Albanian",
+            "",
+            "Algerian",
+            "",
+            "American",
+            "",
+            "Andorran",
+            "",
+            "Angolan",
+            "",
+            "Antiguan",
+            "",
+            "Argentine",
+            "",
+            "Armenian",
+            "",
+            "Australian",
+            "",
+            "Austrian",
+            "",
+            "Azerbaijani",
+            "",
+            "Bahamian",
+            "",
+            "Bahraini",
+            "",
+            "Bangladeshi",
+            "",
+            "Barbadian",
+            "",
+            "Belarusian",
+            "",
+            "Belgian",
+            "",
+            "Belizean",
+            "",
+            "Beninese",
+            "",
+            "Bhutanese",
+            "",
+            "Bolivian",
+            "",
+            "Bosnian ",
+            "",
+            "Botswanan",
+            "",
+            "Brazilian",
+            "",
+            "British",
+            "",
+            "Bruneian",
+            "",
+            "Bulgarian",
+            "",
+            "Burkinabe",
+            "",
+            "Burmese",
+            "",
+            "Burundian",
+            "",
+            "Cambodian",
+            "",
+            "Cameroonian",
+            "",
+            "Canadian",
+            "",
+            "Cape Verdean",
+            "",
+            "Central African",
+            "",
+            "Chadian",
+            "",
+            "Chilean",
+            "",
+            "Chinese",
+            "",
+            "Colombian",
+            "",
+            "Comoran",
+            "",
+            "Congolese (Congo-Brazzaville)",
+            "",
+            "Congolese (Congo-Kinshasa)",
+            "",
+            "Costa Rican",
+            "",
+            "Croatian",
+            "",
+            "Cuban",
+            "",
+            "Cypriot",
+            "",
+            "Czech",
+            "",
+            "Danish",
+            "",
+            "Djiboutian",
+            "",
+            "Dominican",
+            "",
+            "Dutch",
+            "",
+            "East Timorese",
+            "",
+            "Ecuadorean",
+            "",
+            "Egyptian",
+            "",
+            "Emirati",
+            "",
+            "Equatorial Guinean",
+            "",
+            "Eritrean",
+            "",
+            "Estonian",
+            "",
+            "Ethiopian",
+            "",
+            "Fijian",
+            "",
+            "Finnish",
+            "",
+            "French",
+            "",
+            "Gabonese",
+            "",
+            "Gambian",
+            "",
+            "Georgian",
+            "",
+            "German",
+            "",
+            "Ghanaian",
+            "",
+            "Greek",
+            "",
+            "Grenadian",
+            "",
+            "Guatemalan",
+            "",
+            "Guinean",
+            "",
+            "Guinea-Bissauan",
+            "",
+            "Guyanese",
+            "",
+            "Haitian",
+            "",
+            "Honduran",
+            "",
+            "Hungarian",
+            "",
+            "Icelandic",
+            "",
+            "Indian",
+            "",
+            "Indonesian",
+            "",
+            "Iranian",
+            "",
+            "Iraqi",
+            "",
+            "Irish",
+            "",
+            "Israeli",
+            "",
+            "Italian",
+            "",
+            "Ivorian",
+            "",
+            "Jamaican",
+            "",
+            "Japanese",
+            "",
+            "Jordanian",
+            "",
+            "Kazakh",
+            "",
+            "Kenyan",
+            "",
+            "Kiribati",
+            "",
+            "Kuwaiti",
+            "",
+            "Kyrgyz",
+            "",
+            "Laotian",
+            "",
+            "Latvian",
+            "",
+            "Lebanese",
+            "",
+            "Lesotho",
+            "",
+            "Liberian",
+            "",
+            "Libyan",
+            "",
+            "Liechtenstein",
+            "",
+            "Lithuanian",
+            "",
+            "Luxembourgish",
+            "",
+            "Macedonian",
+            "",
+            "Malagasy",
+            "",
+            "Malawian",
+            "",
+            "Malaysian",
+            "",
+            "Maldivian",
+            "",
+            "Malian",
+            "",
+            "Maltese",
+            "",
+            "Marshallese",
+            "",
+            "Mauritanian",
+            "",
+            "Mauritian",
+            "",
+            "Mexican",
+            "",
+            "Micronesian",
+            "",
+            "Moldovan",
+            "",
+            "Monacan",
+            "",
+            "Mongolian",
+            "",
+            "Montenegrin",
+            "",
+            "Moroccan",
+            "",
+            "Mozambican",
+            "",
+            "Namibian",
+            "",
+            "Nauruan",
+            "",
+            "Nepalese",
+            "",
+            "New Zealander",
+            "",
+            "Nicaraguan",
+            "",
+            "Nigerian",
+            "",
+            "Nigerien",
+            "",
+            "North Korean",
+            "",
+            "Norwegian",
+            "",
+            "Omani",
+            "",
+            "Pakistani",
+            "",
+            "Palauan",
+            "",
+            "Panamanian",
+            "",
+            "Papua New Guinean",
+            "",
+            "Paraguayan",
+            "",
+            "Peruvian",
+            "",
+            "Philippine",
+            "",
+            "Polish",
+            "",
+            "Portuguese",
+            "",
+            "Qatari",
+            "",
+            "Romanian",
+            "",
+            "Russian",
+            "",
+            "Rwandan",
+            "",
+            "Saint Lucian",
+            "",
+            "Salvadoran",
+            "",
+            "Samoan",
+            "",
+            "San Marinese",
+            "",
+            "Sao Tomean",
+            "",
+            "Saudi",
+            "",
+            "Senegalese",
+            "",
+            "Serbian",
+            "",
+            "Seychellois",
+            "",
+            "Sierra Leonean",
+            "",
+            "Singaporean",
+            "",
+            "Slovak",
+            "",
+            "Slovenian",
+            "",
+            "Solomon Islander",
+            "",
+            "Somali",
+            "",
+            "South African",
+            "",
+            "South Korean",
+            "",
+            "Spanish",
+            "",
+            "Sri Lankan",
+            "",
+            "Sudanese",
+            "",
+            "Surinamese",
+            "",
+            "Swazi",
+            "",
+            "Swedish",
+            "",
+            "Swiss",
+            "",
+            "Syrian",
+            "",
+            "Taiwanese",
+            "",
+            "Tajik",
+            "",
+            "Tanzanian",
+            "",
+            "Thai",
+            "",
+            "Togolese",
+            "",
+            "Tongan",
+            "",
+            "Trinidadian or Tobagonian",
+            "",
+            "Tunisian",
+            "",
+            "Turkish",
+            "",
+            "Turkmen",
+            "",
+            "Tuvaluan",
+            "",
+            "Ugandan",
+            "",
+            "Ukrainian",
+            "",
+            "Uruguayan",
+            "",
+            "Uzbek",
+            "",
+            "Vanuatuan",
+            "",
+            "Venezuelan",
+            "",
+            "Vietnamese",
+            "",
+            "Yemeni",
+            "",
+            "Zambian",
+            "",
+            "Zimbabwean"});
+            this.cbManagerID.Location = new System.Drawing.Point(23, 564);
+            this.cbManagerID.Margin = new System.Windows.Forms.Padding(4);
+            this.cbManagerID.Name = "cbManagerID";
+            this.cbManagerID.Size = new System.Drawing.Size(419, 33);
+            this.cbManagerID.TabIndex = 25;
+            // 
+            // btn_excute
+            // 
+            this.btn_excute.BackColor = System.Drawing.Color.Teal;
+            this.btn_excute.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_excute.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_excute.ForeColor = System.Drawing.Color.White;
+            this.btn_excute.Location = new System.Drawing.Point(22, 778);
+            this.btn_excute.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_excute.Name = "btn_excute";
+            this.btn_excute.Size = new System.Drawing.Size(420, 49);
+            this.btn_excute.TabIndex = 26;
+            this.btn_excute.Text = "Thực hiện";
+            this.btn_excute.UseVisualStyleBackColor = false;
+            this.btn_excute.Click += new System.EventHandler(this.btn_excute_Click);
             // 
             // UCRoomType
             // 
@@ -318,7 +719,6 @@
 
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.TextBox txt_managerId;
         private System.Windows.Forms.Label lblManager;
         private System.Windows.Forms.TextBox txt_costPerDay;
         private System.Windows.Forms.TextBox txt_roomTypeName;
@@ -336,5 +736,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dtgv_ListRoomType;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox cbManagerID;
+        private System.Windows.Forms.Button btn_excute;
     }
 }

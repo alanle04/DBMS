@@ -631,7 +631,7 @@ END;
 GO
 
 --3.2.1.3. Bảng room
-CREATE PROCEDURE sp_AddRoom(
+CREATE OR ALTER PROCEDURE sp_AddRoom(
     @roomId VARCHAR(20),
     @manager_id VARCHAR(20),
     @room_type_id VARCHAR(20),
@@ -642,8 +642,8 @@ BEGIN
     BEGIN TRANSACTION;
  
     BEGIN TRY
-    	INSERT INTO room (room_id, manager_id, room_type_id,room_name)
-    	VALUES (@roomId, @manager_id, @room_type_id,@room_name);
+    	INSERT INTO room (room_id, manager_id, room_type_id,room_name,[status])
+    	VALUES (@roomId, @manager_id, @room_type_id,@room_name,'available');
     	
     	COMMIT TRANSACTION;
     END TRY
@@ -824,9 +824,9 @@ END;
 GO
 
 --3.2.2.3. Bảng room 
-CREATE PROCEDURE sp_UpdateRoomById(
+CREATE OR ALTER PROCEDURE sp_UpdateRoomById(
     @roomId VARCHAR(20),
-    @status VARCHAR(50),
+    @roomName VARCHAR(50),
     @roomTypeId VARCHAR(20),
     @managerId VARCHAR(20)
 )
@@ -838,7 +838,7 @@ BEGIN
     	BEGIN
         	UPDATE room
         	SET
-            	status = @status,
+            	room_name = @roomName,
             	room_type_id = @roomTypeId,
             	manager_id = @managerId
         	WHERE room_id = @roomId;
@@ -1732,3 +1732,12 @@ return (
     FROM bill b
     WHERE b.customer_id = @customer_id
 );
+GO
+
+
+-- VIEW LAY DANH SACH MANAGER
+CREATE VIEW vw_allManager
+AS
+SELECT * 
+FROM staff
+WHERE role = 'manager'

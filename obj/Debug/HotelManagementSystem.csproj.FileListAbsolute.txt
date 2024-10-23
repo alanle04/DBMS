@@ -173,3 +173,4 @@ D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS1\bin\Debug\OxyPlot.x
 D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS1\bin\Debug\OxyPlot.WindowsForms.xml
 D:\HCMUTE\Junior\Semester 1\Database Management System\DBMS1\obj\Debug\HotelMan.F5E31FD0.Up2Date
 D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.GUI.UCCheckOut.resources
+D:\He-quan-tri-csdl\Project_ck\DBMS\obj\Debug\HotelManagementSystem.GUI.UCRoomType.resources
