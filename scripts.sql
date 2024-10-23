@@ -630,7 +630,7 @@ END;
 GO
 
 --3.2.1.3. Bảng room
-ALTER PROCEDURE [dbo].[sp_AddRoom](
+CREATE OR ALTER PROCEDURE [dbo].[sp_AddRoom](
     @roomId VARCHAR(20),
     @manager_id VARCHAR(20),
     @room_type_id VARCHAR(20),
