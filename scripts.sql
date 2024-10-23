@@ -7,7 +7,6 @@ GO
 
 USE hotel_management;
 GO
-
 -- Tạo bảng account
 CREATE TABLE account (
     username VARCHAR(20) CONSTRAINT PK_account PRIMARY KEY,
@@ -632,7 +631,7 @@ GO
 
 --3.2.1.3. Bảng room
 ALTER PROCEDURE [dbo].[sp_AddRoom](
-    @room_id VARCHAR(20),
+    @roomId VARCHAR(20),
     @manager_id VARCHAR(20),
     @room_type_id VARCHAR(20),
 	@room_name VARCHAR(100)
@@ -643,7 +642,7 @@ BEGIN
  
     BEGIN TRY
     	INSERT INTO room (room_id,[status], manager_id, room_type_id,room_name)
-    	VALUES (@room_id,'available', @manager_id, @room_type_id,@room_name);
+    	VALUES (@roomId,'available', @manager_id, @room_type_id,@room_name);
     	
     	COMMIT TRANSACTION;
     END TRY
