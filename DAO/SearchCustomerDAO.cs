@@ -9,12 +9,11 @@ namespace HotelManagementSystem.DAO {
         public List<Customer> FindCustomerByName(string fullName)
         {
             var customers = new List<Customer>();
-            Connection db = new Connection(); // Kết nối cơ sở dữ liệu
 
             using (SqlConnection connection = Connection.GetConnection())
             {
                 connection.Open();
-                // Truy vấn để gọi hàm fn_FindtoNameCustomer
+
                 string query = "SELECT * FROM fn_FindtoNameCustomer(@full_name)";
 
                 using (SqlCommand command = new SqlCommand(query, connection))

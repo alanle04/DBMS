@@ -2,28 +2,29 @@ USE hotel_management;
 GO
 
 --2.6.1. Trigger thêm vào trạng thái phòng (status) 'occupied' khi phiếu đặt phòng (booking) có thời gian check in thực tế (actual_check_in_time)
-
 CREATE TRIGGER trg_UpdateRoomStatusOccupied
 ON booking_record
-AFTER INSERT, UPDATE
+AFTER UPDATE
 AS
 BEGIN
-    UPDATE room
-    SET room.status = 'occupied'
-    FROM room r
-    INNER JOIN inserted i ON r.room_id = i.room_id
-    WHERE i.actual_check_in_time IS NOT NULL;
+    -- Chỉ cập nhật trạng thái phòng khi có actual_check_in_time và trạng thái của booking là 'staying'
+    IF EXISTS (
+        SELECT 1 
+        FROM inserted 
+        WHERE actual_check_in_time IS NOT NULL AND status = 'staying'
+    )
+    BEGIN
+        UPDATE room
+        SET room.status = 'occupied'
+        FROM room r
+        INNER JOIN inserted i ON r.room_id = i.room_id
+        WHERE i.actual_check_in_time IS NOT NULL AND i.status = 'staying';
+    END
 END;
 GO
 
 
 --2.6.2. Trigger thêm vào trạng thái phòng status 'deposited' khi phiếu đặt phòng (booking_record) chưa có thời gian check in thực tế actual_check_in_time)
-IF EXISTS (SELECT * FROM sys.triggers WHERE name = 'trg_UpdateRoomStatusDeposited')
-BEGIN
-    DROP TRIGGER trg_UpdateRoomStatusDeposited;
-END
-GO
-
 CREATE TRIGGER trg_UpdateRoomStatusDeposited
 ON booking_record
 AFTER INSERT, UPDATE
@@ -39,13 +40,11 @@ GO
 
 
 -- 2.6.3. Trigger kiểm tra khách hàng thuê phòng trùng với thời gian phòng được đặt trước thì không được thuê
-
 CREATE TRIGGER trg_PreventDoubleBooking
 ON booking_record
 AFTER INSERT, UPDATE
 AS
 BEGIN
-    DECLARE @errorMessage NVARCHAR(255);
     IF EXISTS (
  		SELECT 1
  		FROM booking_record br
@@ -57,15 +56,13 @@ BEGIN
 				OR (i.expected_check_in_time <= br.expected_check_in_time AND i.expected_check_out_time >= br.expected_check_out_time))
     )
 	BEGIN
- 	SET @errorMessage = 'Can’t book during this time.';
- 	RAISERROR (@errorMessage, 16, 1);
+ 	RAISERROR ('Phòng đang có người ở !', 16, 1);
  	ROLLBACK TRANSACTION;
     END;
 END;
 GO
 
 --2.6.4. Trigger cập nhật chi phí khách hàng check in sớm vào hóa đơn (bill)
-
 CREATE TRIGGER trg_UpdateEarlyCheckInFee
 ON booking_record
 AFTER INSERT, UPDATE
@@ -98,7 +95,6 @@ END;
 GO
 
 --2.6.5. Trigger cập nhật khi sử dụng dịch vụ tính thêm chi phí vào hóa đơn
-
 CREATE TRIGGER trg_UpdateBillOnServiceUsage
 ON service_usage_record
 AFTER INSERT
@@ -137,7 +133,6 @@ END;
 GO
 
 -- 2.6.6. Trigger cập nhật sau khi thanh toán hóa đơn (bill) trạng thái phòng (status)  trở về “available”
-
 CREATE TRIGGER trg_PaymentUpdateRoom
 ON bill
 AFTER UPDATE
@@ -153,8 +148,8 @@ END;
 GO
 
 --2.6.7. Trigger cập nhật chi phí khách hàng check out trễ vào hóa đơn
-ALTER TRIGGER [dbo].[trg_OverCheckOut]
-ON [dbo].[bill]
+CREATE TRIGGER trg_OverCheckOut
+ON bill
 AFTER INSERT, UPDATE
 AS
 BEGIN
@@ -181,15 +176,13 @@ BEGIN
                 ELSE 0 
             END
         FROM bill b
-        INNER JOIN Inserted i ON b.bill_id = i.bill_id; -- Join với bảng Inserted theo khóa chính
+        INNER JOIN Inserted i ON b.bill_id = i.bill_id; 
     END
 END;
 
 GO
 
 --2.6.8. Trigger tạo hóa đơn khi phiếu đặt phòng (booking_record) được tạo
-
-
 CREATE TRIGGER trg_CreateBill
 ON booking_record
 AFTER INSERT
@@ -248,7 +241,7 @@ BEGIN
  
     IF @room_count > 0
     BEGIN
-    	RAISERROR('Cannot delete this room.', 16, 1);
+    	RAISERROR('Không thể xóa phòng nay !', 16, 1);
     END
     ELSE
     BEGIN
@@ -287,7 +280,7 @@ AS
 BEGIN
     IF EXISTS (SELECT 1 FROM room_type WHERE room_type_name IN (SELECT room_type_name FROM inserted))
     BEGIN
-    	RAISERROR('The room_type_name is used before.', 16, 1);
+    	RAISERROR('Tên loại phòng đã tồn tại', 16, 1);
     	RETURN;
     END
    
@@ -297,26 +290,40 @@ BEGIN
 END;
 GO
 
---2.6.12. Trigger kiểm tra khi thêm dịch vụ, tên dịch vụ không được trùng.
+--2.6.12. Trigger kiểm tra khi thêm dịch vụ, mã dịch vụ, tên dịch vụ không được trùng.
 
-CREATE TRIGGER trg_CheckServiceName
+CREATE TRIGGER trg_CheckService
 ON service
 INSTEAD OF INSERT
 AS
 BEGIN
-    IF EXISTS (SELECT 1 FROM service WHERE service_name IN (SELECT service_name FROM inserted))
+    IF EXISTS (
+        SELECT 1 
+        FROM service s
+        JOIN inserted i ON s.service_name = i.service_name
+    )
     BEGIN
-    	RAISERROR('The service_name is used before.', 16, 1);
-    	RETURN;
+        RAISERROR('Tên dịch vụ này đã tồn tại', 16, 1);
+        RETURN;
     END
-   
+
+    IF EXISTS (
+        SELECT 1 
+        FROM service s
+        JOIN inserted i ON s.service_id = i.service_id
+    )
+    BEGIN
+        RAISERROR('Mã dịch vụ này đã tồn tại', 16, 1);
+        RETURN;
+    END
+
     INSERT INTO service (service_id, service_name, price, description, manager_id)
     SELECT service_id, service_name, price, description, manager_id
     FROM inserted;
 END;
 GO
---2.6.13. Trigger khi bấm xuất hóa đơn thì lấy thời gian xuất hóa đơn thiết lập giá trị actual_check_out_time bên bảng booking_record.
 
+--2.6.13. Trigger khi bấm xuất hóa đơn thì lấy thời gian xuất hóa đơn thiết lập giá trị actual_check_out_time bên bảng booking_record.
 CREATE TRIGGER trg_UpdateCheckOutTime
 ON bill
 AFTER INSERT

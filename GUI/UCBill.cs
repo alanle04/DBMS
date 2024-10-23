@@ -1,12 +1,10 @@
 ﻿using HotelManagementSystem.DBConnection;
-using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace HotelManagementSystem {
     public partial class UCBill : UserControl {
-        Connection db = new Connection();
         public UCBill() {
             InitializeComponent();
             LoadBillDetails();
@@ -14,7 +12,7 @@ namespace HotelManagementSystem {
         }
         private void LoadBillDetails() {
             string sql = "SELECT * FROM vw_BillDetails";
-            SqlConnection conn = DBConnection.Connection.GetConnection();
+            SqlConnection conn = Connection.GetConnection();
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();

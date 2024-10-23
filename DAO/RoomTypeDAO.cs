@@ -2,7 +2,6 @@ using HotelManagementSystem.DBConnection;
 using HotelManagementSystem.Model;
 using System;
 using System.Data;
-using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 

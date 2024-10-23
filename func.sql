@@ -3,16 +3,17 @@
 -- 3.2.4.1. Bảng room_type
 --Tìm kiếm theo tên
 
-CREATE FUNCTION fn_SearchNameRoomType(@ten NVARCHAR(50))
+CREATE FUNCTION fn_SearchNameRoomType(@full_name NVARCHAR(50))
 RETURNS TABLE
 AS
 RETURN
 (
     SELECT *
     FROM room_type
-    WHERE room_type_name = @ten
+    WHERE room_type_name = @full_name
 );
 GO
+
 --Tìm kiếm theo mã loại phòng
 CREATE FUNCTION fn_SearchIDRoomType(@id VARCHAR(20))
 RETURNS TABLE
@@ -36,90 +37,69 @@ RETURN
  	WHERE service_usage_id = @id
 );
 GO
+
 --3.2.4.3. Bảng room 
 --Tìm kiếm theo mã phòng
-CREATE PROCEDURE sp_SearchRoomById
-    @room_id VARCHAR(20)
+CREATE FUNCTION fn_SearchRoomById
+(
+	@room_id VARCHAR(20)
+)
+RETURNS TABLE
 AS
-BEGIN
- 
-    BEGIN TRY
-       IF EXISTS (SELECT 1 FROM room WHERE room_id= @room_id)
-       BEGIN
-    	  	SELECT
-        	  room_id,
-             room_name,
-        	   status,
-        	  room_type_id,
-        	  manager_id
-    	  	FROM room
-    	  	WHERE room_id = @room_id;
-       END
-    END TRY
-    BEGIN CATCH
-       DECLARE @ErrorMessage NVARCHAR(4000);
-       DECLARE @ErrorSeverity INT;
-       DECLARE @ErrorState INT;
-       SELECT
-    	  	@ErrorMessage = ERROR_MESSAGE(),
-    	  	@ErrorSeverity = ERROR_SEVERITY(),
-    	  	@ErrorState = ERROR_STATE();
-       RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
-    END CATCH
-END;
+RETURN
+(
+	SELECT
+    	room_id,
+    	room_name,
+    	status,
+    	room_type_id,
+    	manager_id
+	FROM room
+	WHERE room_id = @room_id
+);
 GO
 
+
 --Tìm kiếm theo tên phòng
-CREATE PROCEDURE sp_SearchRoomByName
-    @room_name NVARCHAR(50)
+CREATE FUNCTION fn_SearchRoomByName
+(
+	@room_name NVARCHAR(50)
+)
+RETURNS TABLE
 AS
-BEGIN
- 
-    BEGIN TRY
-       IF EXISTS (SELECT 1 FROM room WHERE room_name= @room_name)
-       BEGIN
-    	  	SELECT
-        	  room_id,
-                room_name,
-        	   [status],
-        	  room_type_id,
-        	  manager_id
-    	  	FROM room
-    	  	WHERE room_name = @room_name;
-       END
-    END TRY
-    BEGIN CATCH
-       DECLARE @ErrorMessage NVARCHAR(4000);
-       DECLARE @ErrorSeverity INT;
-       DECLARE @ErrorState INT;
-       SELECT
-    	  	@ErrorMessage = ERROR_MESSAGE(),
-    	  	@ErrorSeverity = ERROR_SEVERITY(),
-    	  	@ErrorState = ERROR_STATE();
-       RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
-    END CATCH
-END;
+RETURN
+(
+	SELECT
+    	room_id,
+    	room_name,
+    	[status],
+    	room_type_id,
+    	manager_id
+	FROM room
+	WHERE room_name = @room_name
+);
 GO
+
 
 
 --3.2.4.4. Bảng customer 
 -- Tìm kiếm theo tên khách hàng
-use hotel_management
-CREATE OR ALTER FUNCTION fn_FindtoCustomer (
-	@full_name NVARCHAR(255)
+CREATE FUNCTION fn_FindCustomerByName (
+	@full_name VARCHAR(255)
 )
 RETURNS TABLE
 AS
 RETURN
 (
 	SELECT *
-	FROM dbo.customer
+	FROM customer
 	WHERE full_name LIKE '%' + @full_name + '%'
 );
 GO
 
+
 --Tìm kiếm theo mã khách hàng
-CREATE FUNCTION fn_FindCustomer (
+CREATE FUNCTION fn_FindCustomerById (
 	@customer_id VARCHAR(20)
 )
 RETURNS TABLE
@@ -170,12 +150,10 @@ BEGIN
 END;
 GO
 
-SELECT dbo.fn_CalculateTotalRevenueByDate(1, 1, 2024);
-
 
 --3.2.4.7. Tính tổng doanh thu theo tháng (ví dụ nhập vào 1 tháng và tính tổng các hóa đơn trong tháng đó)
 
-CREATE FUNCTION fn_GetDailyRevenue
+CREATE FUNCTION fn_GetMonthlyRevenue
 (
 	@month INT,
 	@year INT
@@ -201,7 +179,7 @@ BEGIN
 END;
 GO
 --3.2.4.8. Tính tổng doanh thu theo quý (ví dụ nhập vào 1 quý và tính tổng các hóa đơn trong quý đó)
-CREATE FUNCTION fn_TotalRevenueByQuarter
+CREATE OR ALTER FUNCTION fn_TotalRevenueByQuarter
 (
 	@quarter INT,
 	@year INT
@@ -211,7 +189,7 @@ AS
 RETURN
 (
 	SELECT
-    	MONTH(created_at) AS [month],
+    	MONTH(created_at) AS month,
     	SUM(total) AS total_revenue
 	FROM bill
 	WHERE YEAR(created_at) = @year
