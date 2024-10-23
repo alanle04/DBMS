@@ -55,7 +55,7 @@ namespace HotelManagementSystem.DAO
             return customer;
         }
 
-        public static Customer FindCustomerByCustomerId(string customerId)
+        public Customer FindCustomerByCustomerId(string customerId)
         {
             Customer customer = null;
 
