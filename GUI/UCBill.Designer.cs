@@ -31,27 +31,24 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgv_listBill1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.txt_total = new System.Windows.Forms.TextBox();
             this.lblAddress = new System.Windows.Forms.Label();
             this.lblNationality = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtIdNumber = new System.Windows.Forms.TextBox();
-            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
+            this.txt_servicefee = new System.Windows.Forms.TextBox();
+            this.txt_roomfee = new System.Windows.Forms.TextBox();
             this.lblPhoneNumber = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtFullName = new System.Windows.Forms.TextBox();
+            this.txtBillId = new System.Windows.Forms.TextBox();
             this.lblFullName = new System.Windows.Forms.Label();
             this.lblIdNumber = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txt_additionfee = new System.Windows.Forms.TextBox();
+            this.txtCusname = new System.Windows.Forms.TextBox();
+            this.txt_staff = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_paymethod = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_listBill1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -77,8 +74,9 @@
             this.dtgv_listBill1.Name = "dtgv_listBill1";
             this.dtgv_listBill1.RowHeadersVisible = false;
             this.dtgv_listBill1.RowHeadersWidth = 51;
-            this.dtgv_listBill1.Size = new System.Drawing.Size(1093, 810);
+            this.dtgv_listBill1.Size = new System.Drawing.Size(1011, 809);
             this.dtgv_listBill1.TabIndex = 0;
+            this.dtgv_listBill1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_listBill1_CellClick);
             // 
             // label2
             // 
@@ -91,28 +89,14 @@
             this.label2.TabIndex = 16;
             this.label2.Text = "Bill Information";
             // 
-            // btnUpdate
+            // txt_total
             // 
-            this.btnUpdate.BackColor = System.Drawing.Color.Teal;
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(255, 823);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(192, 49);
-            this.btnUpdate.TabIndex = 15;
-            this.btnUpdate.Text = "VIEW DETAIL";
-            this.btnUpdate.UseVisualStyleBackColor = false;
-            // 
-            // txtAddress
-            // 
-            this.txtAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.Location = new System.Drawing.Point(27, 534);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(4);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(419, 30);
-            this.txtAddress.TabIndex = 11;
+            this.txt_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_total.Location = new System.Drawing.Point(27, 534);
+            this.txt_total.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_total.Name = "txt_total";
+            this.txt_total.Size = new System.Drawing.Size(419, 30);
+            this.txt_total.TabIndex = 11;
             // 
             // lblAddress
             // 
@@ -139,24 +123,13 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.dtgv_listBill1);
             this.panel2.Location = new System.Drawing.Point(507, 18);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1140, 892);
+            this.panel2.Size = new System.Drawing.Size(1055, 892);
             this.panel2.TabIndex = 3;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(957, 15);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(160, 33);
-            this.comboBox1.TabIndex = 2;
             // 
             // label1
             // 
@@ -169,23 +142,23 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "A list of bills";
             // 
-            // txtIdNumber
+            // txt_servicefee
             // 
-            this.txtIdNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdNumber.Location = new System.Drawing.Point(27, 364);
-            this.txtIdNumber.Margin = new System.Windows.Forms.Padding(4);
-            this.txtIdNumber.Name = "txtIdNumber";
-            this.txtIdNumber.Size = new System.Drawing.Size(419, 30);
-            this.txtIdNumber.TabIndex = 7;
+            this.txt_servicefee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_servicefee.Location = new System.Drawing.Point(27, 364);
+            this.txt_servicefee.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_servicefee.Name = "txt_servicefee";
+            this.txt_servicefee.Size = new System.Drawing.Size(419, 30);
+            this.txt_servicefee.TabIndex = 7;
             // 
-            // txtPhoneNumber
+            // txt_roomfee
             // 
-            this.txtPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhoneNumber.Location = new System.Drawing.Point(27, 276);
-            this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(419, 30);
-            this.txtPhoneNumber.TabIndex = 5;
+            this.txt_roomfee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_roomfee.Location = new System.Drawing.Point(27, 276);
+            this.txt_roomfee.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_roomfee.Name = "txt_roomfee";
+            this.txt_roomfee.Size = new System.Drawing.Size(419, 30);
+            this.txt_roomfee.TabIndex = 5;
             // 
             // lblPhoneNumber
             // 
@@ -209,14 +182,14 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Customer:";
             // 
-            // txtFullName
+            // txtBillId
             // 
-            this.txtFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFullName.Location = new System.Drawing.Point(27, 105);
-            this.txtFullName.Margin = new System.Windows.Forms.Padding(4);
-            this.txtFullName.Name = "txtFullName";
-            this.txtFullName.Size = new System.Drawing.Size(419, 30);
-            this.txtFullName.TabIndex = 1;
+            this.txtBillId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBillId.Location = new System.Drawing.Point(27, 105);
+            this.txtBillId.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBillId.Name = "txtBillId";
+            this.txtBillId.Size = new System.Drawing.Size(419, 30);
+            this.txtBillId.TabIndex = 1;
             // 
             // lblFullName
             // 
@@ -243,24 +216,22 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.textBox4);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.txt_additionfee);
+            this.panel1.Controls.Add(this.txtCusname);
+            this.panel1.Controls.Add(this.txt_staff);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txt_paymethod);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.btnUpdate);
-            this.panel1.Controls.Add(this.txtAddress);
+            this.panel1.Controls.Add(this.txt_total);
             this.panel1.Controls.Add(this.lblAddress);
             this.panel1.Controls.Add(this.lblNationality);
-            this.panel1.Controls.Add(this.txtIdNumber);
+            this.panel1.Controls.Add(this.txt_servicefee);
             this.panel1.Controls.Add(this.lblIdNumber);
-            this.panel1.Controls.Add(this.txtPhoneNumber);
+            this.panel1.Controls.Add(this.txt_roomfee);
             this.panel1.Controls.Add(this.lblPhoneNumber);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.txtFullName);
+            this.panel1.Controls.Add(this.txtBillId);
             this.panel1.Controls.Add(this.lblFullName);
             this.panel1.Location = new System.Drawing.Point(20, 18);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
@@ -268,47 +239,32 @@
             this.panel1.Size = new System.Drawing.Size(467, 892);
             this.panel1.TabIndex = 2;
             // 
-            // button1
+            // txt_additionfee
             // 
-            this.button1.BackColor = System.Drawing.Color.Teal;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(27, 823);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(192, 49);
-            this.button1.TabIndex = 23;
-            this.button1.Text = "UPDATE";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.txt_additionfee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_additionfee.Location = new System.Drawing.Point(27, 450);
+            this.txt_additionfee.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_additionfee.Name = "txt_additionfee";
+            this.txt_additionfee.Size = new System.Drawing.Size(419, 30);
+            this.txt_additionfee.TabIndex = 22;
             // 
-            // textBox4
+            // txtCusname
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(27, 450);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(419, 30);
-            this.textBox4.TabIndex = 22;
+            this.txtCusname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCusname.Location = new System.Drawing.Point(27, 192);
+            this.txtCusname.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCusname.Name = "txtCusname";
+            this.txtCusname.Size = new System.Drawing.Size(419, 30);
+            this.txtCusname.TabIndex = 21;
             // 
-            // textBox3
+            // txt_staff
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(27, 192);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(419, 30);
-            this.textBox3.TabIndex = 21;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(27, 704);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(419, 30);
-            this.textBox2.TabIndex = 20;
+            this.txt_staff.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_staff.Location = new System.Drawing.Point(27, 704);
+            this.txt_staff.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_staff.Name = "txt_staff";
+            this.txt_staff.Size = new System.Drawing.Size(419, 30);
+            this.txt_staff.TabIndex = 20;
             // 
             // label5
             // 
@@ -321,14 +277,14 @@
             this.label5.TabIndex = 19;
             this.label5.Text = "Receptionist:";
             // 
-            // textBox1
+            // txt_paymethod
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(27, 619);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(419, 30);
-            this.textBox1.TabIndex = 18;
+            this.txt_paymethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_paymethod.Location = new System.Drawing.Point(27, 619);
+            this.txt_paymethod.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_paymethod.Name = "txt_paymethod";
+            this.txt_paymethod.Size = new System.Drawing.Size(419, 30);
+            this.txt_paymethod.TabIndex = 18;
             // 
             // label4
             // 
@@ -349,7 +305,7 @@
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UCBill";
-            this.Size = new System.Drawing.Size(1667, 929);
+            this.Size = new System.Drawing.Size(1577, 925);
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_listBill1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -363,27 +319,24 @@
 
         private System.Windows.Forms.DataGridView dtgv_listBill1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.TextBox txt_total;
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.Label lblNationality;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtIdNumber;
-        private System.Windows.Forms.TextBox txtPhoneNumber;
+        private System.Windows.Forms.TextBox txt_servicefee;
+        private System.Windows.Forms.TextBox txt_roomfee;
         private System.Windows.Forms.Label lblPhoneNumber;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtFullName;
+        private System.Windows.Forms.TextBox txtBillId;
         private System.Windows.Forms.Label lblFullName;
         private System.Windows.Forms.Label lblIdNumber;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txt_staff;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_paymethod;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txt_additionfee;
+        private System.Windows.Forms.TextBox txtCusname;
     }
 }
