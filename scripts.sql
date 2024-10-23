@@ -223,6 +223,44 @@ RETURN
 );
 GO
 
+-- lấy thông tin booking record của phòng đang tìm
+
+CREATE OR ALTER FUNCTION fn_getBookingRecordByRoomIdToCheckOut
+(
+    @room_id  VARCHAR(20)
+)
+RETURNS TABLE
+AS
+RETURN 
+(
+    SELECT 
+        br.booking_record_id,
+        br.booking_time,
+        br.status,
+        br.expected_check_in_time,
+        br.expected_check_out_time,
+        br.actual_check_in_time,
+        br.actual_check_out_time,
+        br.receptionist_id,
+        s.full_name AS receptionist_name,
+        br.customer_id,
+        c.full_name AS customer_name,
+        br.room_id,
+        r.room_name
+    FROM 
+        booking_record br
+    LEFT JOIN 
+        staff s ON br.receptionist_id = s.staff_id
+    LEFT JOIN 
+        customer c ON br.customer_id = c.customer_id
+    LEFT JOIN 
+        room r ON br.room_id = r.room_id
+    WHERE 
+        br.room_id = @room_id
+		AND br.status = 'staying'
+);
+GO
+
 -- lay thong tin dich vu da dung cua phong dang tim
 CREATE OR ALTER FUNCTION fn_getServiceUsageInfoByRoomId
 (
@@ -380,6 +418,7 @@ RETURN
     WHERE service_id = @service_id
 );
 GO
+-- 
 
 --3.2.4.6. Tính tổng doanh thu theo ngày (ví dụ nhập vào 1 ngày và tính tổng các hóa đơn hôm đó)
 CREATE FUNCTION fn_CalculateTotalRevenueByDate(@date DATE)
@@ -1486,3 +1525,126 @@ nationality,
 [address]
 FROM
 customer
+GO
+
+-- View xem hóa đơn phòng
+CREATE View vw_RoomBill AS
+SELECT
+r.room_name,
+rt.cost_per_day,
+br.expected_check_in_time,
+br.expected_check_out_time,
+GO
+
+-- Tìm hóa đơn phòng bằng tên phòng
+CREATE FUNCTION fn_GetRoomBillByRoomId
+(
+    @room_id VARCHAR(20)
+)
+RETURNS TABLE 
+AS
+RETURN
+(
+    SELECT 
+        r.room_name,
+        rt.cost_per_day,
+        br.expected_check_in_time,
+        br.expected_check_out_time,
+        DATEDIFF(DAY, br.expected_check_in_time, br.expected_check_out_time) * rt.cost_per_day AS total
+    FROM 
+        booking_record br
+    JOIN 
+        room r ON br.room_id = r.room_id
+    JOIN 
+        room_type rt ON r.room_type_id = rt.room_type_id
+    WHERE 
+        r.room_id = @room_id
+);
+GO
+
+-- Hiện hóa đơn dịch vụ đã dùng bằng bookig record id
+CREATE FUNCTION fn_GetServiceUsageByBookingId(@bookingRecordId VARCHAR(20))
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT 
+        s.service_id,
+        s.service_name,
+        s.price,
+        SUM(sur.quantity) AS quantity,
+        SUM(sur.quantity * s.price) AS total
+    FROM 
+        service s
+    LEFT JOIN 
+        service_usage_record sur ON s.service_id = sur.service_id
+    WHERE 
+        sur.booking_id = @bookingRecordId
+    GROUP BY 
+        s.service_id, s.service_name, s.price
+);
+GO
+-- Hiện hóa đơn phòng theo id br
+
+CREATE FUNCTION fn_GetRoomBillByBookingRecordId
+(
+    @booking_record_id VARCHAR(20)
+)
+RETURNS TABLE 
+AS
+RETURN
+(
+    SELECT 
+        r.room_name,
+        rt.cost_per_day,
+        br.expected_check_in_time,
+        br.expected_check_out_time,
+        DATEDIFF(DAY, br.expected_check_in_time, br.expected_check_out_time) * rt.cost_per_day AS total
+    FROM 
+        booking_record br
+    JOIN 
+        room r ON br.room_id = r.room_id
+    JOIN 
+        room_type rt ON r.room_type_id = rt.room_type_id
+    WHERE 
+        br.booking_record_id = @booking_record_id
+);
+GO
+-- Tính tổng tiền dịch vụ
+CREATE OR ALTER FUNCTION fn_GetTotalServiceCost
+(
+    @booking_id VARCHAR(20)
+)
+RETURNS INT 
+AS
+BEGIN
+    DECLARE @totalCost INT;
+
+    SELECT @totalCost = SUM(quantity * price) 
+    FROM fn_GetServiceUsageByBookingId(@booking_id);
+
+    RETURN ISNULL(@totalCost, 0);
+END;
+GO
+-- Thêm thời gian check out vào booking record khi trả phòng
+CREATE PROCEDURE sp_CheckOutRoom
+    @booking_record_id VARCHAR(20)
+AS
+BEGIN
+    BEGIN TRANSACTION;
+    UPDATE booking_record
+    SET actual_check_out_time = GETDATE()
+    WHERE booking_record_id = @booking_record_id;
+
+    IF @@ROWCOUNT = 0
+    BEGIN
+        ROLLBACK TRANSACTION;
+        RAISERROR('Không tìm thấy bản ghi đặt phòng với ID đã cho.', 16, 1);
+        RETURN;
+    END
+
+    COMMIT TRANSACTION;
+
+    PRINT 'Cập nhật thời gian trả phòng thành công.';
+END;
+GO

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HotelManagementSystem.GUI;
+using System;
 using System.Windows.Forms;
 
 namespace HotelManagementSystem {
@@ -61,5 +62,12 @@ namespace HotelManagementSystem {
             panelMain.Controls.Add(uCCheckIn);
         }
 
+        private void btnCheckOut_Click(object sender, EventArgs e)
+        {
+            UCCheckOut uCCheckOut = new UCCheckOut();
+            uCCheckOut.Dock = DockStyle.Fill;
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(uCCheckOut);
+        }
     }
 }

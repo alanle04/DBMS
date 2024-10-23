@@ -100,6 +100,99 @@ namespace HotelManagementSystem.DAO {
             return dt;
         }
 
+        public Room GetRoomById(string roomId)
+        {
+            Room room = null;
+
+            using (SqlConnection connection = DBConnection.Connection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = "SELECT * FROM fn_SearchRoomById(@room_id)";
+                    cmd.Parameters.Add("@room_id", SqlDbType.VarChar).Value = roomId;
+
+                    try
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    room = new Room()
+                                    {
+                                        RoomId = reader["room_id"].ToString(),
+                                        RoomName = reader["room_name"].ToString(),
+                                        Status = reader["status"].ToString(),
+                                        RoomTypeId = reader["room_type_id"].ToString(),
+                                        ManagerId = reader["manager_id"].ToString()
+                                    };
+                                }
+                            }
+                        }
+                    }
+                    catch (SqlException ex)
+                    {
+                        throw new Exception("Lỗi khi tìm kiếm phòng: " + ex.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception(ex.Message);
+                    }
+                }
+            }
+
+            return room;
+        }
+
+    public Room GetRoomByRoomName(string roomName)
+        {
+            Room room = null;
+
+            using (SqlConnection connection = Connection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "sp_SearchRoomByName";
+                    cmd.Parameters.Add("@room_name", SqlDbType.NVarChar).Value = roomName;
+
+                    try
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    room = new Room()
+                                    {
+                                        RoomId = reader["room_id"].ToString(),
+                                        RoomName = reader["room_name"].ToString(),
+                                        Status = reader["status"].ToString(),
+                                        RoomTypeId = reader["room_type_id"].ToString(),
+                                        ManagerId = reader["manager_id"].ToString()
+                                    };
+                                }
+                            }
+                        }
+                    }
+                    catch (SqlException ex)
+                    {
+                        throw new Exception("Lỗi khi tìm kiếm phòng: " + ex.Message);
+                    }
+                }
+            }
+
+            return room;
+        }
+
+
         public int AddRoom(Room room) {
 
             using(SqlConnection connection = Connection.GetConnection()) {

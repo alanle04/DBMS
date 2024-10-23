@@ -1,4 +1,5 @@
 using HotelManagementSystem.DBConnection;
+using HotelManagementSystem.Model;
 using System;
 using System.Data;
 using System.Data;
@@ -121,5 +122,46 @@ namespace HotelManagementSystem.DAO {
 
             return null;
         }
+
+        public RoomType GetRoomTypeById(string roomTypeId)
+        {
+            RoomType roomType = null;
+
+            using (SqlConnection conn = DBConnection.Connection.GetConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM room_type WHERE room_type_id = @id", conn))
+                {
+                    cmd.Parameters.Add("@id", SqlDbType.VarChar).Value = roomTypeId;
+
+                    try
+                    {
+                        conn.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                roomType = new RoomType
+                                {
+                                    RoomTypeId = reader["room_type_id"].ToString(),
+                                    RoomTypeName = reader["room_type_name"].ToString(),
+                                    NumberOfBed = Convert.ToInt32(reader["number_of_bed"]),
+                                    Capacity = Convert.ToInt32(reader["capacity"]),
+                                    CostPerDay = Convert.ToInt32(reader["cost_per_day"]),
+                                    ManagerId = reader["manager_id"]?.ToString()
+                                };
+                            }
+                        }
+                    }
+                    catch (SqlException ex)
+                    {
+                        throw new Exception("Lỗi khi lấy thông tin loại phòng: " + ex.Message);
+                    }
+                }
+            }
+
+            return roomType;
+        }
+
+
     }
 }
