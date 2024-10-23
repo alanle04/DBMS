@@ -49,6 +49,13 @@ namespace HotelManagementSystem.GUI
 
             dgvRoomBill.DataSource = bookingRecordDAO.GetRoomBillByRoomId(bookingRecord.BookingRecordId);
             dgvServiceBill.DataSource = serviceUsageRecordDAO.GetServiceUsageRecordByBookingRecordId(bookingRecord.BookingRecordId);
+
+            if (dgvRoomBill.Rows.Count > 0)
+            {
+                var totalValue = dgvRoomBill.Rows[0].Cells["total"].Value;
+
+                txtTotal.Text = totalValue != null ? totalValue.ToString() : string.Empty;
+            }
         }
         private bool IsEmpty(string text)
         {
@@ -80,13 +87,19 @@ namespace HotelManagementSystem.GUI
                                           MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                 
+                BookingRecordDAO.CheckOutRoom(txtBookingRecordId.Text.Trim());
             }
         }
 
         private void btnPay_Click(object sender, EventArgs e)
         {
-
+            Room room = roomDAO.GetRoomByRoomName(txtRoomName.Text.Trim());
+            BookingRecord bookingRecord = bookingRecordDAO.GetBookingRecordByRoomIdToCheckOut(room.RoomId);
+            Customer customer = customerDAO.FindCustomerByCustomerId(bookingRecord.CustomerId);
+            string billid = BookingRecordDAO.getBillIdByCustomerId(customer.CustomerId);
+            string payMethod = cbPaymentMethod.SelectedItem.ToString();
+            BookingRecordDAO.addPayMethod(billid,payMethod);
+            BookingRecordDAO.UpdateStatusRoomBookingRecordAfterPay(txtBookingRecordId.Text.Trim());
         }
     }
 }

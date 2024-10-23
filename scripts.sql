@@ -897,7 +897,8 @@ BEGIN
     END CATCH
 END;
 GO
-
+use hotel_management;
+go
 CREATE OR ALTER PROCEDURE sp_UpdateBookingRecord(@booking_record_id VARCHAR(20))
 AS
 BEGIN
@@ -908,7 +909,17 @@ BEGIN
 		SET 
 			booking_record.status = 'staying',
 			actual_check_in_time = GETDATE()
-		WHERE booking_record.booking_record_id = @booking_record_id
+		WHERE booking_record.booking_record_id = @booking_record_id;
+
+		DECLARE @room_id VARCHAR(20);
+		SELECT @room_id = b.room_id
+		FROM booking_record b
+		WHERE b.booking_record_id = @booking_record_id;
+
+		UPDATE room
+		SET status = 'occupied'
+		WHERE room_id = @room_id;
+
 		COMMIT TRANSACTION;
 	END TRY
 	BEGIN CATCH
@@ -1178,32 +1189,20 @@ FROM service_usage_record sur
 END;
 GO
 
--- 2.6.6. Trigger cập nhật sau khi thanh toán hóa đơn (bill) trạng thái phòng (status)  trở về “available”
-CREATE TRIGGER trg_PaymentUpdateRoom
-ON bill
-AFTER UPDATE
-AS
-BEGIN
-	IF EXISTS (SELECT 1 FROM inserted WHERE created_at IS NOT NULL)
-	BEGIN
-    	UPDATE room
-    	SET status = 'available'
-    	WHERE room_id IN (SELECT room_id FROM bill WHERE created_at IS NOT NULL);
-	END
-END;
-GO
 
 --2.6.7. Trigger cập nhật chi phí khách hàng check out trễ vào hóa đơn
 CREATE OR ALTER TRIGGER trg_OverCheckOut
 ON bill
-AFTER INSERT, UPDATE
+AFTER  UPDATE
 AS
 BEGIN
 	DECLARE @checkout_time TIME;  
 	DECLARE @room_price INT;
 	DECLARE @additional_fee INT;   
 	SELECT @checkout_time = CAST(inserted.created_at AS TIME), @room_price = room_fee
-	FROM Inserted;
+	FROM Inserted WHERE inserted.created_at IS NOT NULL;
+	SELECT @additional_fee = b.additional_fee
+	FROM bill b, inserted WHERE b.bill_id = inserted.bill_id;
 	IF @checkout_time BETWEEN '12:00' AND '15:00'
 	BEGIN
     	SET @additional_fee = @additional_fee + @room_price * 0.30;
@@ -1217,7 +1216,7 @@ BEGIN
     	SET @additional_fee = @additional_fee + @room_price * 1.00; 
 	END
 	UPDATE bill
-	SET total = room_fee + service_fee + @additional_fee,  additional_fee = @additional_fee	WHERE customer_id IN (SELECT customer_id FROM Inserted);
+	SET  additional_fee = @additional_fee, total = room_fee + service_fee + @additional_fee	WHERE customer_id IN (SELECT customer_id FROM Inserted);
 END;
 GO
 
@@ -1262,7 +1261,7 @@ BEGIN
 	declare @total int;
 	set @total = @room_fee * @days_stayed;
 	INSERT INTO Bill (bill_id,customer_id, receptionist_id, created_at,  room_fee, service_fee, additional_fee, total)
-	VALUES (@billId,@cus, @staff, NULL, @room_fee, 0, @room_fee, @total);
+	VALUES (@billId,@cus, @staff, NULL, @room_fee, 0, 0, @total);
 END;
 GO
 
@@ -1343,18 +1342,23 @@ BEGIN
 END;
 GO
 
-
+use hotel_management;
+go
 --2.6.13. Trigger khi bấm xuất hóa đơn thì lấy thời gian xuất hóa đơn thiết lập giá trị actual_check_out_time bên bảng booking_record.
 CREATE OR ALTER TRIGGER trg_UpdateCheckOutTime
-ON bill
-AFTER INSERT
+ON booking_record
+AFTER UPDATE
 AS
 BEGIN
-	UPDATE booking_record
-	SET actual_check_out_time = created_at
-	FROM booking_record b
-	INNER JOIN inserted i ON b.customer_id = i.customer_id
-	WHERE b.customer_id = i.customer_id;
+	DECLARE @cusid VARCHAR(20);
+	DECLARE @TIME DATETIME;
+	SELECT @cusid = customer_id,
+				@TIME = actual_check_out_time
+	FROM inserted;
+
+	UPDATE bill
+	SET created_at = @TIME
+	WHERE customer_id =@cusid;
 END;
 GO
 
@@ -1528,13 +1532,7 @@ customer
 GO
 
 -- View xem hóa đơn phòng
-CREATE View vw_RoomBill AS
-SELECT
-r.room_name,
-rt.cost_per_day,
-br.expected_check_in_time,
-br.expected_check_out_time,
-GO
+
 
 -- Tìm hóa đơn phòng bằng tên phòng
 CREATE FUNCTION fn_GetRoomBillByRoomId
@@ -1648,3 +1646,89 @@ BEGIN
     PRINT 'Cập nhật thời gian trả phòng thành công.';
 END;
 GO
+
+-- sau khi thanh toán xong, cập nhật lại phiếu đặt đã thanh toán, cập nhật lại trạng thái phòng.
+CREATE OR ALTER PROCEDURE sp_afterPay 
+    @booking_record_id VARCHAR(20)
+AS
+BEGIN
+    -- Bắt đầu một transaction
+    BEGIN TRANSACTION;
+    
+    BEGIN TRY
+        -- Cập nhật trạng thái đã thanh toán cho phiếu đặt
+        UPDATE booking_record
+        SET status = 'paid'  -- Đã thanh toán
+        WHERE booking_record_id = @booking_record_id;
+        
+        -- Lấy RoomID của phiếu đặt
+        DECLARE @room_id VARCHAR(20);
+
+        -- Kiểm tra nếu phiếu đặt tồn tại và có room_id
+        SELECT @room_id = b.room_id
+        FROM booking_record b
+        WHERE b.booking_record_id = @booking_record_id;
+        
+        -- Kiểm tra nếu tìm được room_id
+        IF @room_id IS NOT NULL
+        BEGIN
+            -- Cập nhật trạng thái phòng thành "Available"
+            UPDATE room
+            SET status = 'available'
+            WHERE room_id = @room_id;
+        END
+        
+        -- Commit transaction nếu không có lỗi
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        -- Rollback nếu có lỗi
+        ROLLBACK TRANSACTION;
+        -- In ra lỗi
+        THROW;
+    END CATCH
+END;
+GO
+use hotel_management;
+go
+--THÊM PHƯƠNG THỨC THANH TOÁN
+CREATE OR ALTER PROCEDURE sp_updatePaymentMethod
+    @bill_id VARCHAR(20),          
+    @payMethod VARCHAR(50)  
+AS
+BEGIN
+
+    BEGIN TRANSACTION;
+    
+    BEGIN TRY
+
+        UPDATE bill
+        SET payment_method = @payMethod
+        WHERE bill_id = @bill_id;
+        
+        -- Commit transaction nếu không có lỗi
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        -- Rollback nếu có lỗi
+        ROLLBACK TRANSACTION;
+        -- In ra lỗi
+        THROW;
+    END CATCH
+END;
+GO
+
+use hotel_management;
+go
+-- HAM LAY MÃ BILL BẰNG MÃ KHÁCH
+ CREATE OR ALTER FUNCTION fn_getBillIDByCustomerID
+(
+    @customer_id VARCHAR(20)
+)
+RETURNS table
+AS
+return (
+    SELECT *
+    FROM bill b
+    WHERE b.customer_id = @customer_id
+);

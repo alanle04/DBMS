@@ -156,7 +156,7 @@ namespace HotelManagementSystem.DAO
             return roomBillTable;
         }
 
-        public void CheckOutRoom(string bookingRecordId)
+        public static void CheckOutRoom(string bookingRecordId)
         {
             using (SqlConnection connection = Connection.GetConnection())
             {
@@ -187,5 +187,79 @@ namespace HotelManagementSystem.DAO
             }
         }
 
+
+        public static void UpdateStatusRoomBookingRecordAfterPay(string bookingRecordId)
+        {
+            SqlConnection conn = DBConnection.Connection.GetConnection();
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_afterPay";
+
+            cmd.Parameters.Add("@booking_record_id", SqlDbType.VarChar).Value = bookingRecordId;
+
+            try
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Thanh toán hoàn tất", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Thanh toán thất bại: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static void addPayMethod(string billid,string payMethod)
+        {
+            SqlConnection conn = DBConnection.Connection.GetConnection();
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "sp_updatePaymentMethod";
+
+            cmd.Parameters.Add("@bill_id", SqlDbType.VarChar).Value = billid;
+            cmd.Parameters.Add("@paymethod", SqlDbType.VarChar).Value = payMethod;
+
+            try
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra:  " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static string getBillIdByCustomerId(string customerId)
+        {
+            string billid = null;
+            using (SqlConnection conn = DBConnection.Connection.GetConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.fn_getBillIDByCustomerID(@customer_id)", conn))
+                {
+                    cmd.Parameters.AddWithValue("@customer_id", customerId);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        // Kiểm tra nếu có dòng kết quả
+                        if (reader.Read())
+                        {
+                            // Lấy giá trị của cột bill_id
+                            billid = reader["bill_id"].ToString();
+                        }
+                    }
+                }
+            }
+            return billid;
+        }
     }
 }
