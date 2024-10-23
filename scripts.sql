@@ -631,8 +631,8 @@ END;
 GO
 
 --3.2.1.3. Bảng room
-CREATE OR ALTER PROCEDURE sp_AddRoom(
-    @roomId VARCHAR(20),
+ALTER PROCEDURE [dbo].[sp_AddRoom](
+    @room_id VARCHAR(20),
     @manager_id VARCHAR(20),
     @room_type_id VARCHAR(20),
 	@room_name VARCHAR(100)
@@ -642,8 +642,8 @@ BEGIN
     BEGIN TRANSACTION;
  
     BEGIN TRY
-    	INSERT INTO room (room_id, manager_id, room_type_id,room_name,[status])
-    	VALUES (@roomId, @manager_id, @room_type_id,@room_name,'available');
+    	INSERT INTO room (room_id,[status], manager_id, room_type_id,room_name)
+    	VALUES (@room_id,'available', @manager_id, @room_type_id,@room_name);
     	
     	COMMIT TRANSACTION;
     END TRY
@@ -660,6 +660,7 @@ BEGIN
     END CATCH
 END;
 GO
+
 
 
 --3.2.1.4. Bảng customer
@@ -1412,24 +1413,37 @@ LEFT JOIN
 WHERE
 	r.status = 'available';
 GO
-CREATE OR ALTER VIEW vw_BillDetails AS
-SELECT
-    b.bill_id,
-    b.room_fee,
-    b.service_fee,
-    b.additional_fee,
-    b.additional_fee_content,
-    b.total,
-    b.created_at,
-    b.payment_method,
+CREATE OR ALTER VIEW vw_BillDetails
+AS
+SELECT 
+    bill.bill_id,
+    bill.room_fee,
+    bill.service_fee,
+    bill.additional_fee,
+    bill.additional_fee_content,
+    bill.created_at,
+    bill.payment_method,
+    bill.receptionist_id,
+    bill.customer_id,
+    booking_record.actual_check_in_time,
+    booking_record.actual_check_out_time,
+    booking_record.expected_check_in_time,
+    booking_record.expected_check_out_time,
+    booking_record.booking_time,
     c.full_name AS customer_name,
     s.full_name AS staff_name
-FROM
-    bill b
-LEFT JOIN
-    staff s ON b.receptionist_id = s.staff_id
-LEFT JOIN
-	customer c ON b.customer_id = c.customer_id;
+FROM 
+    bill
+JOIN 
+    booking_record 
+    ON bill.customer_id = booking_record.customer_id 
+    AND bill.receptionist_id = booking_record.receptionist_id
+LEFT JOIN 
+    staff s 
+    ON bill.receptionist_id = s.staff_id
+LEFT JOIN 
+    customer c 
+    ON bill.customer_id = c.customer_id;
 GO
 CREATE OR ALTER VIEW vw_ServiceUsageDetails AS
 SELECT
