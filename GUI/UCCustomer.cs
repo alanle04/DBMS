@@ -11,6 +11,7 @@ namespace HotelManagementSystem {
     public partial class UCCustomer : UserControl
     {
         Connection db = new Connection();
+        CustomerDAO customerDAO = new CustomerDAO();
         SearchCustomerDAO searchCustomerDAO = new SearchCustomerDAO();
         public UCCustomer()
         {
@@ -83,7 +84,7 @@ namespace HotelManagementSystem {
                 }
                 if (cbSearch.SelectedIndex == 1)
                 {
-                    Customer customer = CustomerDAO.FindCustomerByCustomerId(searchInfor);
+                    Customer customer = customerDAO.FindCustomerByCustomerId(searchInfor);
                     if (customer != null)
                     {
                         txtFullName.Text = customer.FullName;
