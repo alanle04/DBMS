@@ -1,0 +1,145 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\DBMS\\DBMS\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\properties\\settings.settings||{6D2695F9-5365-4A78-89ED-F205C045BFE6}",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:properties\\settings.settings||{6D2695F9-5365-4A78-89ED-F205C045BFE6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\gui\\ucbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\ucbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\gui\\fmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\fmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\gui\\ucbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\ucbill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|d:\\dbms\\dbms\\gui\\flogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{73D98EB1-EC40-4E59-8F55-8AF668D11B2D}|HotelManagementSystem.csproj|solutionrelative:gui\\flogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 11,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:139:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:136:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:138:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:134:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:135:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:137:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Settings.settings",
+              "DocumentMoniker": "D:\\DBMS\\DBMS\\Properties\\Settings.settings",
+              "RelativeDocumentMoniker": "Properties\\Settings.settings",
+              "ToolTip": "D:\\DBMS\\DBMS\\Properties\\Settings.settings*",
+              "RelativeToolTip": "Properties\\Settings.settings*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002767|",
+              "WhenOpened": "2024-10-23T15:20:57.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UCBill.cs",
+              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\UCBill.cs",
+              "RelativeDocumentMoniker": "GUI\\UCBill.cs",
+              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\UCBill.cs",
+              "RelativeToolTip": "GUI\\UCBill.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T15:19:44.567Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UCBill.cs [Design]",
+              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\UCBill.cs",
+              "RelativeDocumentMoniker": "GUI\\UCBill.cs",
+              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\UCBill.cs [Design]",
+              "RelativeToolTip": "GUI\\UCBill.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T15:19:42.35Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FManager.cs [Design]",
+              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\FManager.cs",
+              "RelativeDocumentMoniker": "GUI\\FManager.cs",
+              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\FManager.cs [Design]",
+              "RelativeToolTip": "GUI\\FManager.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T15:19:03.563Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FLogin.cs [Design]",
+              "DocumentMoniker": "D:\\DBMS\\DBMS\\GUI\\FLogin.cs",
+              "RelativeDocumentMoniker": "GUI\\FLogin.cs",
+              "ToolTip": "D:\\DBMS\\DBMS\\GUI\\FLogin.cs [Design]",
+              "RelativeToolTip": "GUI\\FLogin.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T15:19:02.138Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
