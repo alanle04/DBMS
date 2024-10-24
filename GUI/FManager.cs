@@ -1,4 +1,5 @@
-﻿using HotelManagementSystem.GUI;
+using HotelManagementSystem.DAO;
+using HotelManagementSystem.GUI;
 using System;
 using System.Windows.Forms;
 
@@ -6,6 +7,7 @@ namespace HotelManagementSystem {
     public partial class FManager : Form {
 
         private string username;
+        
 
         public FManager() {
             InitializeComponent();
@@ -19,6 +21,7 @@ namespace HotelManagementSystem {
             InitializeComponent();
             this.username = username;
             lblUsername.Text = username;
+            
             UCDashboard uCDashboard = new UCDashboard();
             uCDashboard.Dock = DockStyle.Fill;
             panelMain.Controls.Clear();
@@ -61,7 +64,7 @@ namespace HotelManagementSystem {
         }
 
         private void btnRoomType_Click(object sender, EventArgs e) {
-            UCRoomType uCRoomType = new UCRoomType();
+            UCRoomType uCRoomType = new UCRoomType(username);
             uCRoomType.Dock = DockStyle.Fill;
             panelMain.Controls.Clear();
             panelMain.Controls.Add(uCRoomType);

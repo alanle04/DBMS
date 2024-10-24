@@ -22,12 +22,7 @@ BEGIN
     END TRY
     BEGIN CATCH
     	ROLLBACK TRANSACTION;
-    	DECLARE @ErrorMessage NVARCHAR(4000), @ErrorSeverity INT, @ErrorState INT;
-    	SELECT
-        	@ErrorMessage = ERROR_MESSAGE(),
-        	@ErrorSeverity = ERROR_SEVERITY(),
-        	@ErrorState = ERROR_STATE();
-    	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
+    	RAISERROR('Thêm loại phòng thất bại !', 16, 1);
     END CATCH
 END;
 GO
@@ -38,7 +33,7 @@ CREATE PROCEDURE sp_AddService
     @service_id VARCHAR(20),
     @service_name NVARCHAR(255),
     @price INT,
-    @description TEXT,
+    @description NVARCHAR(MAX),
     @manager_id VARCHAR(20)
 AS
 BEGIN
@@ -52,12 +47,7 @@ BEGIN
     END TRY
     BEGIN CATCH
     	ROLLBACK TRANSACTION;
-    	DECLARE @ErrorMessage NVARCHAR(4000), @ErrorSeverity INT, @ErrorState INT;
-    	SELECT
-        	@ErrorMessage = ERROR_MESSAGE(),
-        	@ErrorSeverity = ERROR_SEVERITY(),
-        	@ErrorState = ERROR_STATE();
-    	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
+    	RAISERROR('Thêm dịch vụ thất bại !', 16, 1);
     END CATCH
 END;
 GO
@@ -65,7 +55,7 @@ GO
 --3.2.1.3. Bảng room
 
 CREATE PROCEDURE sp_AddRoom
-    @roomId VARCHAR(20),
+    @room_id VARCHAR(20),
     @manager_id VARCHAR(20),
     @room_type_id VARCHAR(20),
 	@room_name VARCHAR(100)
@@ -75,34 +65,27 @@ BEGIN
  
     BEGIN TRY
     	INSERT INTO room (room_id, manager_id, room_type_id,room_name)
-    	VALUES (@roomId, @manager_id, @room_type_id,@room_name);
+    	VALUES (@room_id, @manager_id, @room_type_id,@room_name);
     	
     	COMMIT TRANSACTION;
     END TRY
     BEGIN CATCH
     	ROLLBACK TRANSACTION;
-    	DECLARE @ErrorMessage NVARCHAR(4000);
-    	DECLARE @ErrorSeverity INT;
-    	DECLARE @ErrorState INT;
-    	SELECT
-            @ErrorMessage = ERROR_MESSAGE(),
-        	@ErrorSeverity = ERROR_SEVERITY(),
-        	@ErrorState = ERROR_STATE();
-    	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
+    	RAISERROR('Thêm phòng thất bại !', 16, 1);
     END CATCH
 END;
 GO
 
 
 --3.2.1.4. Bảng customer
-CREATE PROCEDURE sp_AddtoCustomer
+CREATE PROCEDURE sp_AddCustomer
     @customer_id VARCHAR(20),
     @full_name NVARCHAR(255),
     @gender VARCHAR(10),
     @identification_number VARCHAR(20),
     @phone_number VARCHAR(20),
     @nationality NVARCHAR(50),
-    @address TEXT
+    @address NVARCHAR(MAX)
 AS
 BEGIN
     BEGIN TRANSACTION;
@@ -113,12 +96,7 @@ BEGIN
     END TRY
     BEGIN CATCH
     	ROLLBACK TRANSACTION;
-    	DECLARE @ErrorMessage NVARCHAR(4000), @ErrorSeverity INT, @ErrorState INT;
-    	SELECT
-        	@ErrorMessage = ERROR_MESSAGE(),
-        	@ErrorSeverity = ERROR_SEVERITY(),
-        	@ErrorState = ERROR_STATE();
-    	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
+    	RAISERROR('Thêm khách hàng thất bại', 16, 1);
     END CATCH
 END;
 GO
@@ -134,20 +112,15 @@ CREATE PROCEDURE sp_AddServiceUsageRecord
     @service_id VARCHAR(20)
 AS
 BEGIN
+	BEGIN TRANSACTION;	
     BEGIN TRY
     	INSERT INTO service_usage_record
     	VALUES (@service_usage_id, @usage_time, @quantity, @booking_record_id, @staff_id, @service_id);
+		COMMIT TRANSACTION;
     END TRY
     BEGIN CATCH
-    	DECLARE @ErrorMessage NVARCHAR(4000);
-    	DECLARE @ErrorSeverity INT;
-    	DECLARE @ErrorState INT;
- 
-    	SELECT
-        	@ErrorMessage = ERROR_MESSAGE(),
-        	@ErrorSeverity = ERROR_SEVERITY(),
-        	@ErrorState = ERROR_STATE();
-    	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
+		ROLLBACK TRANSACTION;
+    	RAISERROR ('Thêm ghi nhận sử dụng dịch vụ thất bại !', 16, 1);
     END CATCH
 END;
 GO
@@ -175,22 +148,13 @@ BEGIN
     END TRY
     BEGIN CATCH
     	ROLLBACK TRANSACTION; 
-    	DECLARE @ErrorMessage NVARCHAR(4000);
-    	DECLARE @ErrorSeverity INT;
-    	DECLARE @ErrorState INT;
-    	SELECT
-        	@ErrorMessage = ERROR_MESSAGE(),
-        	@ErrorSeverity = ERROR_SEVERITY(),
-        	@ErrorState = ERROR_STATE();
- 
-    	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
+    	RAISERROR('Đặt phòng thất bại !', 16, 1);
     END CATCH
 END;
 GO
 
 --3.2.2. Thủ cập nhật dữ liệu các bảng
 -- 3.2.2.1. Bảng room _type
-
 CREATE PROCEDURE sp_UpdateRoomType
     @type_id VARCHAR(20),
     @type_name NVARCHAR(50),
@@ -214,14 +178,7 @@ BEGIN
     END TRY
     BEGIN CATCH
     	ROLLBACK TRANSACTION;  
-    	DECLARE @ErrorMessage NVARCHAR(4000);
-    	DECLARE @ErrorSeverity INT;
-    	DECLARE @ErrorState INT;
-    	SELECT
-        	@ErrorMessage = ERROR_MESSAGE(),
-        	@ErrorSeverity = ERROR_SEVERITY(),
-        	@ErrorState = ERROR_STATE();
-    	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
+    	RAISERROR('Cập nhật loại phòng thất bại !', 16, 1);
     END CATCH
 END;
 GO
@@ -241,14 +198,7 @@ BEGIN
     	COMMIT TRANSACTION;      END TRY
     BEGIN CATCH
     	ROLLBACK TRANSACTION;  
-    	DECLARE @ErrorMessage NVARCHAR(4000);
-    	DECLARE @ErrorSeverity INT;
-    	DECLARE @ErrorState INT;
-    	SELECT
-        	@ErrorMessage = ERROR_MESSAGE(),
-        	@ErrorSeverity = ERROR_SEVERITY(),
-        	@ErrorState = ERROR_STATE();
-    	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
+    	RAISERROR('Cập nhật hóa đơn thất bại !');
     END CATCH
 END;
 GO
@@ -281,14 +231,7 @@ BEGIN
     END TRY
     BEGIN CATCH
     	ROLLBACK TRANSACTION;
-    	DECLARE @ErrorMessage NVARCHAR(4000);
-    	DECLARE @ErrorSeverity INT;
-    	DECLARE @ErrorState INT;
-     	SELECT
-        	@ErrorMessage = ERROR_MESSAGE(),
-        	@ErrorSeverity = ERROR_SEVERITY(),
-        	@ErrorState = ERROR_STATE();
-    	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
+    	RAISERROR('Cập nhật phòng thất bại !', 16, 1);
     END CATCH
 END;
 GO
@@ -298,7 +241,7 @@ CREATE PROCEDURE sp_UpdateService
     @service_id VARCHAR(20),
     @service_name NVARCHAR(255),
     @price INT,
-    @description TEXT,
+    @description NVARCHAR(MAX),
     @manager_id VARCHAR(20)
 AS
 BEGIN
@@ -315,14 +258,7 @@ BEGIN
     END TRY
     BEGIN CATCH
     	ROLLBACK TRANSACTION;  
-    	DECLARE @ErrorMessage NVARCHAR(4000);
-    	DECLARE @ErrorSeverity INT;
-    	DECLARE @ErrorState INT;
-    	SELECT
-        	@ErrorMessage = ERROR_MESSAGE(),
-        	@ErrorSeverity = ERROR_SEVERITY(),
-        	@ErrorState = ERROR_STATE();
-    	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
+    	RAISERROR('Cập nhật dịch vụ thất bại !', 16, 1);
     END CATCH
 END;
 GO
@@ -345,14 +281,7 @@ BEGIN
     BEGIN CATCH
     	ROLLBACK TRANSACTION; 
 
-    	DECLARE @ErrorMessage NVARCHAR(4000);
-    	DECLARE @ErrorSeverity INT;
-    	DECLARE @ErrorState INT;
-    	SELECT
-        	@ErrorMessage = ERROR_MESSAGE(),
-        	@ErrorSeverity = ERROR_SEVERITY(),
-        	@ErrorState = ERROR_STATE();
-    	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
+    	RAISERROR('Xóa loại phòng thất bại !', 16, 1);
     END CATCH
 END;
 GO
@@ -378,14 +307,7 @@ BEGIN
     END TRY
     BEGIN CATCH
     	ROLLBACK TRANSACTION;
-    	DECLARE @ErrorMessage NVARCHAR(4000);
-    	DECLARE @ErrorSeverity INT;
-    	DECLARE @ErrorState INT;
-    	SELECT
-        	@ErrorMessage = ERROR_MESSAGE(),
-        	@ErrorSeverity = ERROR_SEVERITY(),
-        	@ErrorState = ERROR_STATE();
-    	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
+    	RAISERROR('Xóa phòng thất bại !', 16, 1);
     END CATCH
 END;
 GO
@@ -398,20 +320,15 @@ AS
 BEGIN
     BEGIN TRY
     	BEGIN TRANSACTION; 
-    	DELETE FROM dbo.[service]
+    	DELETE FROM service
     	WHERE service_id = @service_id;
      	COMMIT TRANSACTION; 
     END TRY
     BEGIN CATCH
     	ROLLBACK TRANSACTION;
-    	DECLARE @ErrorMessage NVARCHAR(4000);
-    	DECLARE @ErrorSeverity INT;
-    	DECLARE @ErrorState INT;
-    	SELECT
-        	@ErrorMessage = ERROR_MESSAGE(),
-        	@ErrorSeverity = ERROR_SEVERITY(),
-        	@ErrorState = ERROR_STATE();
-    	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
+    	
+		RAISERROR('Xóa dịch vụ thất bại !', 16, 1);
+
     END CATCH
 END;
 GO
@@ -432,14 +349,7 @@ BEGIN
     END TRY
     BEGIN CATCH
     	ROLLBACK TRANSACTION;
-    	DECLARE @ErrorMessage NVARCHAR(4000);
-    	DECLARE @ErrorSeverity INT;
-    	DECLARE @ErrorState INT;
-    	SELECT
-        	@ErrorMessage = ERROR_MESSAGE(),
-        	@ErrorSeverity = ERROR_SEVERITY(),
-        	@ErrorState = ERROR_STATE();
-    	RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
+    	RAISERROR('Xóa ghi nhật sử dụng dịch vụ thất bại !', 16, 1); 
     END CATCH
 END;
 GO

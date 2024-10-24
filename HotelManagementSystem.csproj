@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\BillDAO.cs" />
     <Compile Include="DAO\BookingServiceDAO.cs" />
     <Compile Include="DAO\BookingRecordDAO.cs" />
     <Compile Include="DAO\CustomerDAO.cs" />
@@ -75,11 +76,6 @@
     <Compile Include="DAO\ServiceUsageRecordDAO.cs" />
     <Compile Include="DAO\StaffDAO.cs" />
     <Compile Include="DBConnection\Connection.cs" />
-    <Compile Include="Enums\EnumBookingStatus.cs" />
-    <Compile Include="Enums\EnumExtensions.cs" />
-    <Compile Include="Enums\EnumGender.cs" />
-    <Compile Include="Enums\EnumRole.cs" />
-    <Compile Include="Enums\EnumRoomStatus.cs" />
     <Compile Include="GUI\FLogin.cs">
       <SubType>Form</SubType>
     </Compile>

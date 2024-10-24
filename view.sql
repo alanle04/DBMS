@@ -16,6 +16,7 @@ JOIN
 LEFT JOIN
 	staff s ON r.manager_id = s.staff_id;
 GO
+
 --2.7.2. View xem danh sách các phòng còn trống
 CREATE VIEW vw_AvailableRooms AS
 SELECT
@@ -36,26 +37,40 @@ LEFT JOIN
 WHERE
 	r.status = 'available';
 GO
+
 --2.7.3. View xem chi tiết hóa đơn
-CREATE VIEW vw_BillDetails AS
+CREATE VIEW vw_BillDetails
+AS
 SELECT
-    b.bill_id,
-    b.room_fee,
-    b.service_fee,
-    b.additional_fee,
-    b.additional_fee_content,
-    b.total,
-    b.created_at,
-    b.payment_method,
-    c.full_name AS customer_name,
-    s.full_name AS staff_name
+	bill.bill_id,
+	bill.room_fee,
+	bill.service_fee,
+	bill.additional_fee,
+	bill.additional_fee_content,
+	bill.created_at,
+	bill.payment_method,
+	bill.receptionist_id,
+	bill.customer_id,
+	booking_record.actual_check_in_time,
+	booking_record.actual_check_out_time,
+	booking_record.expected_check_in_time,
+	booking_record.expected_check_out_time,
+	booking_record.booking_time,
+	c.full_name AS customer_name,
+	s.full_name AS staff_name
 FROM
-    bill b
+	bill
+JOIN
+	booking_record
+	ON bill.customer_id = booking_record.customer_id
+	AND bill.receptionist_id = booking_record.receptionist_id
 LEFT JOIN
-    staff s ON b.receptionist_id = s.staff_id
+	staff s
+	ON bill.receptionist_id = s.staff_id
 LEFT JOIN
-	customer c ON b.customer_id = c.customer_id;
-GO
+	customer c
+	ON bill.customer_id = c.customer_id;
+
 --2.7.4. View xem chi tiết các dịch vụ mà khách hàng đã dùng
 CREATE VIEW vw_ServiceUsageDetails AS
 SELECT
@@ -79,6 +94,7 @@ LEFT JOIN
 LEFT JOIN
 	customer c ON br.customer_id = c.customer_id;
 GO
+
 --2.7.5. View xem danh sách các loại phòng
 CREATE VIEW vw_RoomTypeList AS
 SELECT 
@@ -104,26 +120,19 @@ GROUP BY
 	rt.cost_per_day,
 	s.staff_id,
 	s.full_name
-us	
+	
 ----2.7.6 View xem danh sách customer---
 CREATE VIEW vw_Customer as
-Select
-customer_id,
-full_name,
-gender,
-phone_number,
-identification_number,
-nationality,
-[address]
-FROM
-customer
+SELECT * 
+FROM customer
 
 ----2.7.7. View xem danh sách service
-CREATE OR ALTER VIEW vw_Service AS
+CREATE VIEW vw_Service AS
 SELECT service_id, service_name, price, description, full_name as manager_name
 FROM service
 INNER JOIN staff
 ON service.manager_id = staff.staff_id;
+GO
 
 ----2.7.8. View xem danh sách service
 CREATE OR ALTER VIEW vw_Room AS
@@ -142,6 +151,4 @@ JOIN
     room_type rt ON r.room_type_id = rt.room_type_id
 LEFT JOIN
 	staff s ON r.manager_id = s.staff_id;
-	
-
-
+GO

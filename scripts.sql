@@ -96,7 +96,7 @@ GO
 
 -- Tạo bảng service_usage_record
 CREATE TABLE service_usage_record (
-    service_usage_id VARCHAR(20),
+    service_usage_id VARCHAR(20) NOT NULL,
     usage_time DATETIME NOT NULL,
     quantity INT CHECK (quantity > 0),
     booking_id VARCHAR(20),
@@ -1438,6 +1438,7 @@ LEFT JOIN
 WHERE
 	r.status = 'available';
 GO
+
 CREATE OR ALTER VIEW vw_BillDetails AS
 SELECT
     b.bill_id,
@@ -1456,6 +1457,7 @@ LEFT JOIN
 LEFT JOIN
 	customer c ON b.customer_id = c.customer_id;
 GO
+
 CREATE OR ALTER VIEW vw_ServiceUsageDetails AS
 SELECT
     sur.service_usage_id,
@@ -1521,7 +1523,7 @@ LEFT JOIN
 GO
 
 --2.7.2. View xem danh sách các phòng checkin
-CREATE OR ALTER VIEW vw_CheckInRooms AS
+CREATE VIEW vw_CheckInRooms AS
 SELECT
 	br.booking_record_id,
     r.room_name,
@@ -1762,5 +1764,11 @@ GO
 CREATE VIEW vw_allManager
 AS
 SELECT * 
+FROM staff
+WHERE role = 'manager'
+
+CREATE VIEW vw_allManager
+AS
+SELECT *
 FROM staff
 WHERE role = 'manager'

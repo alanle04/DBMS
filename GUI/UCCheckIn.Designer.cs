@@ -30,8 +30,6 @@
         {
             this.txtCheckInDate = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.txtBookingRecordId = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.btnCheckIn = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -56,6 +54,8 @@
             this.btnSearchByIdNumber = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearchByIdNumber = new System.Windows.Forms.TextBox();
+            this.txtBookingRecordId = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCheckInRooms)).BeginInit();
@@ -98,24 +98,6 @@
             this.panel3.Size = new System.Drawing.Size(416, 725);
             this.panel3.TabIndex = 40;
             // 
-            // txtBookingRecordId
-            // 
-            this.txtBookingRecordId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBookingRecordId.Location = new System.Drawing.Point(48, 90);
-            this.txtBookingRecordId.Name = "txtBookingRecordId";
-            this.txtBookingRecordId.Size = new System.Drawing.Size(315, 26);
-            this.txtBookingRecordId.TabIndex = 43;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(45, 69);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 19);
-            this.label2.TabIndex = 42;
-            this.label2.Text = "Mã đặt phòng:";
-            // 
             // txtPrice
             // 
             this.txtPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -128,7 +110,7 @@
             // 
             this.btnCheckIn.BackColor = System.Drawing.Color.Teal;
             this.btnCheckIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCheckIn.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheckIn.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckIn.ForeColor = System.Drawing.Color.White;
             this.btnCheckIn.Location = new System.Drawing.Point(48, 674);
             this.btnCheckIn.Name = "btnCheckIn";
@@ -279,10 +261,10 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(17, 12);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(258, 23);
+            this.label8.Size = new System.Drawing.Size(248, 22);
             this.label8.TabIndex = 4;
             this.label8.Text = "Danh sách phòng check in";
             // 
@@ -347,6 +329,24 @@
             this.txtSearchByIdNumber.Name = "txtSearchByIdNumber";
             this.txtSearchByIdNumber.Size = new System.Drawing.Size(248, 26);
             this.txtSearchByIdNumber.TabIndex = 22;
+            // 
+            // txtBookingRecordId
+            // 
+            this.txtBookingRecordId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBookingRecordId.Location = new System.Drawing.Point(48, 90);
+            this.txtBookingRecordId.Name = "txtBookingRecordId";
+            this.txtBookingRecordId.Size = new System.Drawing.Size(315, 26);
+            this.txtBookingRecordId.TabIndex = 43;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(45, 69);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(112, 19);
+            this.label2.TabIndex = 42;
+            this.label2.Text = "Mã đặt phòng:";
             // 
             // UCCheckIn
             // 

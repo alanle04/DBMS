@@ -1,4 +1,4 @@
-﻿using HotelManagementSystem.GUI;
+using HotelManagementSystem.GUI;
 using System;
 using System.Windows.Forms;
 

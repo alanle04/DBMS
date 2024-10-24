@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvRoomList = new System.Windows.Forms.DataGridView();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -62,41 +62,44 @@
             this.dgvRoomList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRoomList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvRoomList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRoomList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRoomList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvRoomList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRoomList.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRoomList.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRoomList.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvRoomList.EnableHeadersVisualStyles = false;
-            this.dgvRoomList.Location = new System.Drawing.Point(3, 46);
+            this.dgvRoomList.Location = new System.Drawing.Point(4, 57);
+            this.dgvRoomList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvRoomList.Name = "dgvRoomList";
             this.dgvRoomList.ReadOnly = true;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRoomList.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRoomList.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvRoomList.RowHeadersVisible = false;
+            this.dgvRoomList.RowHeadersWidth = 51;
             this.dgvRoomList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvRoomList.Size = new System.Drawing.Size(1025, 585);
+            this.dgvRoomList.Size = new System.Drawing.Size(1367, 720);
             this.dgvRoomList.TabIndex = 0;
             this.dgvRoomList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRoomList_CellClick);
+            this.dgvRoomList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRoomList_CellContentClick);
             // 
             // btnUpdate
             // 
@@ -104,9 +107,10 @@
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(17, 452);
+            this.btnUpdate.Location = new System.Drawing.Point(23, 556);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(164, 40);
+            this.btnUpdate.Size = new System.Drawing.Size(219, 49);
             this.btnUpdate.TabIndex = 15;
             this.btnUpdate.Text = "Cập nhật";
             this.btnUpdate.UseVisualStyleBackColor = false;
@@ -118,9 +122,10 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(17, 390);
+            this.btnAdd.Location = new System.Drawing.Point(23, 480);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(164, 40);
+            this.btnAdd.Size = new System.Drawing.Size(219, 49);
             this.btnAdd.TabIndex = 14;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = false;
@@ -131,18 +136,20 @@
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.lblRoomList);
             this.panel2.Controls.Add(this.dgvRoomList);
-            this.panel2.Location = new System.Drawing.Point(219, 15);
+            this.panel2.Location = new System.Drawing.Point(292, 18);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1031, 656);
+            this.panel2.Size = new System.Drawing.Size(1375, 807);
             this.panel2.TabIndex = 3;
             // 
             // lblRoomList
             // 
             this.lblRoomList.AutoSize = true;
             this.lblRoomList.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoomList.Location = new System.Drawing.Point(15, 15);
+            this.lblRoomList.Location = new System.Drawing.Point(20, 18);
+            this.lblRoomList.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRoomList.Name = "lblRoomList";
-            this.lblRoomList.Size = new System.Drawing.Size(174, 23);
+            this.lblRoomList.Size = new System.Drawing.Size(218, 29);
             this.lblRoomList.TabIndex = 1;
             this.lblRoomList.Text = "Danh sách phòng";
             // 
@@ -150,9 +157,10 @@
             // 
             this.lblRoomType.AutoSize = true;
             this.lblRoomType.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoomType.Location = new System.Drawing.Point(20, 176);
+            this.lblRoomType.Location = new System.Drawing.Point(27, 217);
+            this.lblRoomType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRoomType.Name = "lblRoomType";
-            this.lblRoomType.Size = new System.Drawing.Size(122, 19);
+            this.lblRoomType.Size = new System.Drawing.Size(150, 24);
             this.lblRoomType.TabIndex = 4;
             this.lblRoomType.Text = "Tên loại phòng:";
             // 
@@ -160,9 +168,10 @@
             // 
             this.lblRoomName.AutoSize = true;
             this.lblRoomName.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoomName.Location = new System.Drawing.Point(20, 108);
+            this.lblRoomName.Location = new System.Drawing.Point(27, 133);
+            this.lblRoomName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRoomName.Name = "lblRoomName";
-            this.lblRoomName.Size = new System.Drawing.Size(92, 19);
+            this.lblRoomName.Size = new System.Drawing.Size(112, 24);
             this.lblRoomName.TabIndex = 2;
             this.lblRoomName.Text = "Tên phòng:";
             // 
@@ -170,18 +179,20 @@
             // 
             this.txtRoomId.Enabled = false;
             this.txtRoomId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRoomId.Location = new System.Drawing.Point(17, 64);
+            this.txtRoomId.Location = new System.Drawing.Point(23, 79);
+            this.txtRoomId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtRoomId.Name = "txtRoomId";
-            this.txtRoomId.Size = new System.Drawing.Size(164, 26);
+            this.txtRoomId.Size = new System.Drawing.Size(217, 30);
             this.txtRoomId.TabIndex = 0;
             // 
             // lblRoomId
             // 
             this.lblRoomId.AutoSize = true;
             this.lblRoomId.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoomId.Location = new System.Drawing.Point(20, 43);
+            this.lblRoomId.Location = new System.Drawing.Point(27, 53);
+            this.lblRoomId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRoomId.Name = "lblRoomId";
-            this.lblRoomId.Size = new System.Drawing.Size(85, 19);
+            this.lblRoomId.Size = new System.Drawing.Size(104, 24);
             this.lblRoomId.TabIndex = 0;
             this.lblRoomId.Text = "Mã phòng:";
             // 
@@ -201,18 +212,20 @@
             this.panel1.Controls.Add(this.lblRoomName);
             this.panel1.Controls.Add(this.txtRoomId);
             this.panel1.Controls.Add(this.lblRoomId);
-            this.panel1.Location = new System.Drawing.Point(15, 15);
+            this.panel1.Location = new System.Drawing.Point(20, 18);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(198, 659);
+            this.panel1.Size = new System.Drawing.Size(264, 811);
             this.panel1.TabIndex = 2;
             // 
             // lblRoomInformation
             // 
             this.lblRoomInformation.AutoSize = true;
             this.lblRoomInformation.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoomInformation.Location = new System.Drawing.Point(13, 15);
+            this.lblRoomInformation.Location = new System.Drawing.Point(17, 18);
+            this.lblRoomInformation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRoomInformation.Name = "lblRoomInformation";
-            this.lblRoomInformation.Size = new System.Drawing.Size(168, 23);
+            this.lblRoomInformation.Size = new System.Drawing.Size(209, 29);
             this.lblRoomInformation.TabIndex = 22;
             this.lblRoomInformation.Text = "Thông tin phòng";
             // 
@@ -222,9 +235,10 @@
             this.btnExecute.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExecute.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExecute.ForeColor = System.Drawing.Color.White;
-            this.btnExecute.Location = new System.Drawing.Point(17, 576);
+            this.btnExecute.Location = new System.Drawing.Point(23, 709);
+            this.btnExecute.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExecute.Name = "btnExecute";
-            this.btnExecute.Size = new System.Drawing.Size(164, 40);
+            this.btnExecute.Size = new System.Drawing.Size(219, 49);
             this.btnExecute.TabIndex = 21;
             this.btnExecute.Text = "Thực hiện";
             this.btnExecute.UseVisualStyleBackColor = false;
@@ -236,9 +250,10 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(17, 514);
+            this.btnDelete.Location = new System.Drawing.Point(23, 633);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(164, 40);
+            this.btnDelete.Size = new System.Drawing.Size(219, 49);
             this.btnDelete.TabIndex = 21;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -252,9 +267,10 @@
             this.cbRoomTypeName.Enabled = false;
             this.cbRoomTypeName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbRoomTypeName.FormattingEnabled = true;
-            this.cbRoomTypeName.Location = new System.Drawing.Point(17, 198);
+            this.cbRoomTypeName.Location = new System.Drawing.Point(23, 244);
+            this.cbRoomTypeName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbRoomTypeName.Name = "cbRoomTypeName";
-            this.cbRoomTypeName.Size = new System.Drawing.Size(164, 28);
+            this.cbRoomTypeName.Size = new System.Drawing.Size(217, 33);
             this.cbRoomTypeName.Sorted = true;
             this.cbRoomTypeName.TabIndex = 3;
             // 
@@ -262,18 +278,20 @@
             // 
             this.txtManager.Enabled = false;
             this.txtManager.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtManager.Location = new System.Drawing.Point(17, 260);
+            this.txtManager.Location = new System.Drawing.Point(23, 320);
+            this.txtManager.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtManager.Name = "txtManager";
-            this.txtManager.Size = new System.Drawing.Size(164, 26);
+            this.txtManager.Size = new System.Drawing.Size(217, 30);
             this.txtManager.TabIndex = 4;
             // 
             // lblManager
             // 
             this.lblManager.AutoSize = true;
             this.lblManager.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblManager.Location = new System.Drawing.Point(20, 241);
+            this.lblManager.Location = new System.Drawing.Point(27, 297);
+            this.lblManager.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblManager.Name = "lblManager";
-            this.lblManager.Size = new System.Drawing.Size(115, 19);
+            this.lblManager.Size = new System.Drawing.Size(140, 24);
             this.lblManager.TabIndex = 18;
             this.lblManager.Text = "Người quản lý:";
             this.lblManager.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -282,19 +300,21 @@
             // 
             this.txtRoomName.Enabled = false;
             this.txtRoomName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRoomName.Location = new System.Drawing.Point(17, 128);
+            this.txtRoomName.Location = new System.Drawing.Point(23, 158);
+            this.txtRoomName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtRoomName.Name = "txtRoomName";
-            this.txtRoomName.Size = new System.Drawing.Size(164, 26);
+            this.txtRoomName.Size = new System.Drawing.Size(217, 30);
             this.txtRoomName.TabIndex = 1;
             // 
             // UCRoom
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UCRoom";
-            this.Size = new System.Drawing.Size(1250, 677);
+            this.Size = new System.Drawing.Size(1667, 833);
             this.Load += new System.EventHandler(this.UCRoom_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoomList)).EndInit();
             this.panel2.ResumeLayout(false);

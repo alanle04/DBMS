@@ -36,7 +36,7 @@ namespace HotelManagementSystem.DAO {
 
         public static DataTable getManager()
         {
-            SqlConnection conn = DBConnection.Connection.GetConnection();
+            SqlConnection conn = Connection.GetConnection();
             DataTable table = new DataTable();
             string sql = "SELECT * FROM vw_allManager";
             SqlCommand cmd = new SqlCommand(sql, conn);
