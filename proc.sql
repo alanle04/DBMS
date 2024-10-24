@@ -341,3 +341,66 @@ BEGIN
     END CATCH
 END;
 GO
+
+-- 3.2.3.5. Thêm thời gian check out vào booking record khi trả phòng
+CREATE PROCEDURE sp_CheckOutRoom
+    @booking_record_id VARCHAR(20)
+AS
+BEGIN
+    BEGIN TRANSACTION;
+    UPDATE booking_record
+    SET actual_check_out_time = GETDATE()
+    WHERE booking_record_id = @booking_record_id;
+
+    IF @@ROWCOUNT = 0
+    BEGIN
+        ROLLBACK TRANSACTION;
+        RAISERROR('Không tìm thấy bản ghi đặt phòng với ID đã cho.', 16, 1);
+        RETURN;
+    END
+
+    COMMIT TRANSACTION;
+
+    PRINT 'Cập nhật thời gian trả phòng thành công.';
+END;
+
+-- 3.2.3.6. Sau khi thanh toán xong, cập nhật lại phiếu đặt đã thanh toán, cập nhật lại trạng thái phòng.
+CREATE OR ALTER PROCEDURE sp_AfterPay 
+    @booking_record_id VARCHAR(20)
+AS
+BEGIN
+    -- Bắt đầu một transaction
+    BEGIN TRANSACTION;
+    
+    BEGIN TRY
+        -- Cập nhật trạng thái đã thanh toán cho phiếu đặt
+        UPDATE booking_record
+        SET status = 'paid'  -- Đã thanh toán
+        WHERE booking_record_id = @booking_record_id;
+        
+        -- Lấy room_id của phiếu đặt
+        DECLARE @room_id VARCHAR(20);
+
+        -- Kiểm tra nếu phiếu đặt tồn tại và có room_id
+        SELECT @room_id = b.room_id
+        FROM booking_record b
+        WHERE b.booking_record_id = @booking_record_id;
+        
+        -- Kiểm tra nếu tìm được room_id
+        IF @room_id IS NOT NULL
+        BEGIN
+            -- Cập nhật trạng thái phòng thành "Available"
+            UPDATE room
+            SET status = 'available'
+            WHERE room_id = @room_id;
+        END
+        
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+	RAISERROR('Cập nhật trạng thái phòng thất bại !', 16, 1);
+        THROW;
+    END CATCH
+END;
+GO
