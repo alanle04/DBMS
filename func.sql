@@ -400,7 +400,7 @@ RETURN
 GO
 
 -- 3.2.4.16. Hàm lấy mã hóa đơn thông qua mã khách.	
-CREATE FUNCTION fn_getBillIDByCustomerID
+CREATE FUNCTION fn_GetBillIDByCustomerID
 (
     @customer_id VARCHAR(20)
 )
@@ -413,3 +413,94 @@ return (
 );
 GO
 
+-- 3.2.4.17. Tìm hóa đơn phòng bằng tên phòng
+CREATE FUNCTION fn_GetRoomBillByRoomId
+(
+    @room_id VARCHAR(20)
+)
+RETURNS TABLE 
+AS
+RETURN
+(
+    SELECT 
+        r.room_name,
+        rt.cost_per_day,
+        br.expected_check_in_time,
+        br.expected_check_out_time,
+        DATEDIFF(DAY, br.expected_check_in_time, br.expected_check_out_time) * rt.cost_per_day AS total
+    FROM 
+        booking_record br
+    JOIN 
+        room r ON br.room_id = r.room_id
+    JOIN 
+        room_type rt ON r.room_type_id = rt.room_type_id
+    WHERE 
+        r.room_id = @room_id
+);
+GO
+
+-- 3.2.4.18. Hiện hóa đơn dịch vụ đã dùng bằng booking record id
+CREATE FUNCTION fn_GetServiceUsageByBookingId(@booking_record_id VARCHAR(20))
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT 
+        s.service_id,
+        s.service_name,
+        s.price,
+        SUM(sur.quantity) AS quantity,
+        SUM(sur.quantity * s.price) AS total
+    FROM 
+        service s
+    LEFT JOIN 
+        service_usage_record sur ON s.service_id = sur.service_id
+    WHERE 
+        sur.booking_id = @bookingRecordId
+    GROUP BY 
+        s.service_id, s.service_name, s.price
+);
+GO
+
+-- 3.2.4.19. Hiện hóa đơn phòng theo booking_record_id
+CREATE FUNCTION fn_GetRoomBillByBookingRecordId
+(
+    @booking_record_id VARCHAR(20)
+)
+RETURNS TABLE 
+AS
+RETURN
+(
+    SELECT 
+        r.room_name,
+        rt.cost_per_day,
+        br.expected_check_in_time,
+        br.expected_check_out_time,
+        DATEDIFF(DAY, br.expected_check_in_time, br.expected_check_out_time) * rt.cost_per_day AS total
+    FROM 
+        booking_record br
+    JOIN 
+        room r ON br.room_id = r.room_id
+    JOIN 
+        room_type rt ON r.room_type_id = rt.room_type_id
+    WHERE 
+        br.booking_record_id = @booking_record_id
+);
+GO
+
+-- 3.2.4.20. Tính tổng tiền dịch vụ
+CREATE FUNCTION fn_GetTotalServiceCost
+(
+    @booking_id VARCHAR(20)
+)
+RETURNS INT 
+AS
+BEGIN
+    DECLARE @totalCost INT;
+
+    SELECT @totalCost = SUM(quantity * price) 
+    FROM fn_GetServiceUsageByBookingId(@booking_id);
+
+    RETURN ISNULL(@totalCost, 0);
+END;
+GO
