@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\BillDAO.cs" />
     <Compile Include="DAO\BookingServiceDAO.cs" />
     <Compile Include="DAO\BookingRecordDAO.cs" />
     <Compile Include="DAO\CustomerDAO.cs" />

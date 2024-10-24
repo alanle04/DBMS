@@ -41,12 +41,12 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.cb_ServiceType = new System.Windows.Forms.ComboBox();
             this.txt_quantity = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dtgv_serviceUsage = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
-            this.cb_ServiceType = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_bill)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -59,7 +59,7 @@
             // 
             this.dtgv_bill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgv_bill.Location = new System.Drawing.Point(0, 39);
-            this.dtgv_bill.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtgv_bill.Margin = new System.Windows.Forms.Padding(4);
             this.dtgv_bill.Name = "dtgv_bill";
             this.dtgv_bill.RowHeadersWidth = 51;
             this.dtgv_bill.Size = new System.Drawing.Size(1051, 86);
@@ -68,13 +68,13 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(7, 6);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(120, 28);
+            this.label8.Size = new System.Drawing.Size(169, 28);
             this.label8.TabIndex = 4;
-            this.label8.Text = "Room bill";
+            this.label8.Text = "Hóa đơn phòng";
             // 
             // btn_bookService
             // 
@@ -82,8 +82,8 @@
             this.btn_bookService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_bookService.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_bookService.ForeColor = System.Drawing.Color.White;
-            this.btn_bookService.Location = new System.Drawing.Point(65, 463);
-            this.btn_bookService.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_bookService.Location = new System.Drawing.Point(79, 410);
+            this.btn_bookService.Margin = new System.Windows.Forms.Padding(4);
             this.btn_bookService.Name = "btn_bookService";
             this.btn_bookService.Size = new System.Drawing.Size(420, 49);
             this.btn_bookService.TabIndex = 36;
@@ -94,8 +94,8 @@
             // txt_price
             // 
             this.txt_price.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_price.Location = new System.Drawing.Point(65, 308);
-            this.txt_price.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_price.Location = new System.Drawing.Point(79, 255);
+            this.txt_price.Margin = new System.Windows.Forms.Padding(4);
             this.txt_price.Name = "txt_price";
             this.txt_price.Size = new System.Drawing.Size(419, 30);
             this.txt_price.TabIndex = 37;
@@ -103,13 +103,13 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(61, 282);
+            this.label6.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(75, 229);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 23);
+            this.label6.Size = new System.Drawing.Size(39, 24);
             this.label6.TabIndex = 36;
-            this.label6.Text = "Price:";
+            this.label6.Text = "Giá";
             // 
             // panel1
             // 
@@ -118,7 +118,7 @@
             this.panel1.Controls.Add(this.txt_roomId);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Location = new System.Drawing.Point(20, 18);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(555, 128);
             this.panel1.TabIndex = 43;
@@ -130,7 +130,7 @@
             this.btn_searchByRoom.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_searchByRoom.ForeColor = System.Drawing.Color.White;
             this.btn_searchByRoom.Location = new System.Drawing.Point(311, 55);
-            this.btn_searchByRoom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_searchByRoom.Margin = new System.Windows.Forms.Padding(4);
             this.btn_searchByRoom.Name = "btn_searchByRoom";
             this.btn_searchByRoom.Size = new System.Drawing.Size(173, 49);
             this.btn_searchByRoom.TabIndex = 38;
@@ -142,7 +142,7 @@
             // 
             this.txt_roomId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_roomId.Location = new System.Drawing.Point(64, 64);
-            this.txt_roomId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_roomId.Margin = new System.Windows.Forms.Padding(4);
             this.txt_roomId.Name = "txt_roomId";
             this.txt_roomId.Size = new System.Drawing.Size(237, 30);
             this.txt_roomId.TabIndex = 37;
@@ -150,24 +150,24 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(19, 18);
+            this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(27, 32);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(169, 28);
+            this.label7.Size = new System.Drawing.Size(105, 24);
             this.label7.TabIndex = 24;
-            this.label7.Text = "Search room:";
+            this.label7.Text = "Tìm phòng";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(61, 193);
+            this.label5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(75, 140);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(138, 23);
+            this.label5.Size = new System.Drawing.Size(116, 24);
             this.label5.TabIndex = 34;
-            this.label5.Text = "Service type:";
+            this.label5.Text = "Loại dịch vụ";
             // 
             // panel5
             // 
@@ -175,7 +175,7 @@
             this.panel5.Controls.Add(this.dtgv_bill);
             this.panel5.Controls.Add(this.label8);
             this.panel5.Location = new System.Drawing.Point(596, 18);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1051, 126);
             this.panel5.TabIndex = 45;
@@ -183,13 +183,13 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(61, 370);
+            this.label12.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(75, 317);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(98, 23);
+            this.label12.Size = new System.Drawing.Size(88, 24);
             this.label12.TabIndex = 26;
-            this.label12.Text = "Quantity:";
+            this.label12.Text = "Số lượng";
             // 
             // panel3
             // 
@@ -203,62 +203,10 @@
             this.panel3.Controls.Add(this.label12);
             this.panel3.Controls.Add(this.label11);
             this.panel3.Location = new System.Drawing.Point(20, 154);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(555, 756);
             this.panel3.TabIndex = 44;
-            // 
-            // txt_quantity
-            // 
-            this.txt_quantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_quantity.Location = new System.Drawing.Point(65, 396);
-            this.txt_quantity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txt_quantity.Name = "txt_quantity";
-            this.txt_quantity.Size = new System.Drawing.Size(419, 30);
-            this.txt_quantity.TabIndex = 27;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(20, 138);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(174, 28);
-            this.label11.TabIndex = 25;
-            this.label11.Text = "Using Service";
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.dtgv_serviceUsage);
-            this.panel4.Controls.Add(this.label3);
-            this.panel4.Location = new System.Drawing.Point(596, 155);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1051, 756);
-            this.panel4.TabIndex = 47;
-            // 
-            // dtgv_serviceUsage
-            // 
-            this.dtgv_serviceUsage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgv_serviceUsage.Location = new System.Drawing.Point(0, 39);
-            this.dtgv_serviceUsage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dtgv_serviceUsage.Name = "dtgv_serviceUsage";
-            this.dtgv_serviceUsage.RowHeadersWidth = 51;
-            this.dtgv_serviceUsage.Size = new System.Drawing.Size(1051, 716);
-            this.dtgv_serviceUsage.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(7, 6);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(143, 28);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Service bill";
             // 
             // cb_ServiceType
             // 
@@ -647,12 +595,64 @@
             "Zambian",
             "",
             "Zimbabwean"});
-            this.cb_ServiceType.Location = new System.Drawing.Point(66, 233);
+            this.cb_ServiceType.Location = new System.Drawing.Point(80, 180);
             this.cb_ServiceType.Margin = new System.Windows.Forms.Padding(4);
             this.cb_ServiceType.Name = "cb_ServiceType";
             this.cb_ServiceType.Size = new System.Drawing.Size(419, 33);
             this.cb_ServiceType.TabIndex = 38;
             this.cb_ServiceType.SelectedValueChanged += new System.EventHandler(this.cb_ServiceType_SelectedValueChanged);
+            // 
+            // txt_quantity
+            // 
+            this.txt_quantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_quantity.Location = new System.Drawing.Point(79, 343);
+            this.txt_quantity.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_quantity.Name = "txt_quantity";
+            this.txt_quantity.Size = new System.Drawing.Size(419, 30);
+            this.txt_quantity.TabIndex = 27;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(34, 85);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(152, 24);
+            this.label11.TabIndex = 25;
+            this.label11.Text = "Sử dụng dịch vụ";
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.dtgv_serviceUsage);
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Location = new System.Drawing.Point(596, 155);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1051, 756);
+            this.panel4.TabIndex = 47;
+            // 
+            // dtgv_serviceUsage
+            // 
+            this.dtgv_serviceUsage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_serviceUsage.Location = new System.Drawing.Point(0, 39);
+            this.dtgv_serviceUsage.Margin = new System.Windows.Forms.Padding(4);
+            this.dtgv_serviceUsage.Name = "dtgv_serviceUsage";
+            this.dtgv_serviceUsage.RowHeadersWidth = 51;
+            this.dtgv_serviceUsage.Size = new System.Drawing.Size(1051, 716);
+            this.dtgv_serviceUsage.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(7, 6);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(178, 28);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Hóa đơn dịch vụ";
             // 
             // UCServiceAndPayment
             // 
@@ -662,7 +662,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UCServiceAndPayment";
             this.Size = new System.Drawing.Size(1667, 929);
             this.Load += new System.EventHandler(this.UCServiceAndPayment_Load);

@@ -25,8 +25,8 @@ namespace HotelManagementSystem.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DELL\\TANTRUSQL;Initial Catalog=hotel_management;User ID=sa;Password=n" +
-            "opainnogain@dx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-EBUN5JD;Initial Catalog=hotel_management;Persist Security Inf" +
+            "o=True;User ID=sa;Password=1234567890;")]
         public string connectionString {
             get {
                 return ((string)(this["connectionString"]));
