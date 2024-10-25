@@ -1,3 +1,5 @@
+use hotel_management;
+
 --2.6.1. Trigger thêm vào trạng thái phòng (status) 'occupied' khi phiếu đặt phòng (booking) có thời gian check in thực tế (actual_check_in_time)
 CREATE TRIGGER trg_UpdateRoomStatusOccupied
 ON booking_record
@@ -299,35 +301,3 @@ BEGIN
    	INNER JOIN inserted i ON b.customer_id = i.customer_id
    	WHERE b.customer_id = i.customer_id;
 END;
-
---2.6.12. Trigger kiểm tra khi thêm dịch vụ, mã dịch vụ, tên dịch vụ không được trùng.
-CREATE TRIGGER trg_CheckService
-ON service
-INSTEAD OF INSERT
-AS
-BEGIN
-    IF EXISTS (
-        SELECT 1 
-        FROM service s
-        JOIN inserted i ON s.service_name = i.service_name
-    )
-    BEGIN
-        RAISERROR('Tên dịch vụ này đã tồn tại', 16, 1);
-        RETURN;
-    END
-
-    IF EXISTS (
-        SELECT 1 
-        FROM service s
-        JOIN inserted i ON s.service_id = i.service_id
-    )
-    BEGIN
-        RAISERROR('Mã dịch vụ này đã tồn tại', 16, 1);
-        RETURN;
-    END
-
-    INSERT INTO service (service_id, service_name, price, description, manager_id)
-    SELECT service_id, service_name, price, description, manager_id
-    FROM inserted;
-END;
-GO

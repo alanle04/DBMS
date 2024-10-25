@@ -1,35 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Windows.Forms;
-using HotelManagementSystem.DAO;
+﻿using HotelManagementSystem.DAO;
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
 using OxyPlot.WindowsForms;
+using System;
+using System.Windows.Forms;
 
-namespace HotelManagementSystem.GUI
-{
-    public partial class UCRevenueQuarter : UserControl
-    {
+namespace HotelManagementSystem.GUI {
+    public partial class UCRevenueQuarter : UserControl {
         private PlotView plotView;
-        
-        
+
+
         RevenueQuarterlyDAO revenueQuarterlyDAO = new RevenueQuarterlyDAO();
-        public UCRevenueQuarter()
-        {
+        public UCRevenueQuarter() {
             InitializeComponent();
         }
-        public UCRevenueQuarter(int quarter, int year)
-        {
+        public UCRevenueQuarter(int quarter, int year) {
             CreatePlot(quarter, year);
             InitializeComponent();
-            
-            
+
+
         }
 
-        private void CreatePlot(int quarter, int year)
-        {
+        private void CreatePlot(int quarter, int year) {
             // Khởi tạo mô hình PlotModel
             var model = new PlotModel { Title = $"Doanh thu Quý {quarter} Năm {year}" };
 
@@ -41,22 +34,19 @@ namespace HotelManagementSystem.GUI
             // Lấy dữ liệu từ hàm theo quý
             var revenueData = revenueQuarterlyDAO.GetRevenueData(quarter, year);
 
-            if (revenueData.Count == 0)
-            {
+            if(revenueData.Count == 0) {
                 MessageBox.Show("Không có dữ liệu cho quý này.");
-               
+
             }
 
             // Tạo series
-            var series = new LineSeries
-            {
+            var series = new LineSeries {
                 Title = "Doanh thu",
                 MarkerType = MarkerType.Circle
             };
 
             // Thêm điểm dữ liệu vào series
-            foreach (var dataPoint in revenueData)
-            {
+            foreach(var dataPoint in revenueData) {
                 series.Points.Add(new DataPoint(dataPoint.Month, dataPoint.TotalRevenue)); // Sử dụng Month cho trục X
             }
 
@@ -68,11 +58,10 @@ namespace HotelManagementSystem.GUI
             model.Axes.Add(new LinearAxis { Position = AxisPosition.Left, Title = "Doanh thu" });
         }
 
-      
 
-        private void UCRevenueQuarter_Load(object sender, EventArgs e)
-        {
-           
+
+        private void UCRevenueQuarter_Load(object sender, EventArgs e) {
+
         }
     }
 }

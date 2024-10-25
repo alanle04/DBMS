@@ -1,4 +1,6 @@
-﻿-- 2.7.1. View xem danh sách các phòng
+﻿use hotel_management;
+
+-- 2.7.1. View xem danh sách các phòng
 CREATE VIEW vw_RoomList AS
 SELECT
     r.room_id,
@@ -124,7 +126,8 @@ ON service.manager_id = staff.staff_id;
 GO
 
 ----2.7.8. View xem danh sách service
-CREATE VIEW vw_Room AS
+CREATE VIEW vw_Room 
+AS
 SELECT
     r.room_id,
     r.room_name,
@@ -143,7 +146,8 @@ LEFT JOIN
 GO
 
 ---2.7.9. View xem thông tin check in
-CREATE VIEW vw_CheckInRooms AS
+CREATE VIEW vw_CheckInRooms 
+AS
 SELECT
    	br.booking_record_id,
     r.room_name,
@@ -169,5 +173,5 @@ CREATE VIEW vw_AllManager
 AS
 SELECT *
 FROM staff
-WHERE role = 'manager'
-GO;
+WHERE role = 'manager';
+GO

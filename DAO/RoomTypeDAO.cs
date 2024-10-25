@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace HotelManagementSystem.DAO {
     public class RoomTypeDAO {
         public static void AddRoomType(string roomTypeId, string roomTypeName, int numberOfBeds, int capacity, int costPerDay, string managerId) {
-            SqlConnection conn = DBConnection.Connection.GetConnection();
+            SqlConnection conn = Connection.GetConnection();
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_AddRoomType";
@@ -33,7 +33,7 @@ namespace HotelManagementSystem.DAO {
         }
 
         public static void UpdateRoomType(string roomTypeId, string roomTypeName, int numberOfBeds, int capacity, int costPerDay, string managerId) {
-            SqlConnection conn = DBConnection.Connection.GetConnection();
+            SqlConnection conn = Connection.GetConnection();
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_UpdateRoomType";
@@ -59,7 +59,7 @@ namespace HotelManagementSystem.DAO {
 
         public static void DeleteRoomType(string roomTypeId) {
 
-            SqlConnection conn = DBConnection.Connection.GetConnection();
+            SqlConnection conn = Connection.GetConnection();
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_DeleteRoomType";
@@ -82,7 +82,7 @@ namespace HotelManagementSystem.DAO {
         public static DataTable RoomTypeList() {
             DataTable dt = new DataTable();
             string sql = "SELECT * FROM vw_RoomTypeList";
-            SqlConnection conn = DBConnection.Connection.GetConnection();
+            SqlConnection conn = Connection.GetConnection();
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
@@ -107,11 +107,11 @@ namespace HotelManagementSystem.DAO {
 
         public string GetRoomTypeIdByRoomTypeName(string roomTypeName) {
             using(SqlConnection connection = Connection.GetConnection()) {
-                string query = "SELECT ID FROM vw_RoomTypeList WHERE Name = @roomTypeName";
+                string query = "SELECT ID FROM vw_RoomTypeList WHERE Name = @room_type_name";
 
                 connection.Open();
                 using(SqlCommand cmd = new SqlCommand(query, connection)) {
-                    cmd.Parameters.AddWithValue("@roomTypeName", roomTypeName);
+                    cmd.Parameters.AddWithValue("@room_type_name", roomTypeName);
                     var result = cmd.ExecuteScalar();
                     if(result != null) {
                         return result.ToString();
@@ -122,25 +122,18 @@ namespace HotelManagementSystem.DAO {
             return null;
         }
 
-        public RoomType GetRoomTypeById(string roomTypeId)
-        {
+        public RoomType GetRoomTypeById(string roomTypeId) {
             RoomType roomType = null;
 
-            using (SqlConnection conn = DBConnection.Connection.GetConnection())
-            {
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM room_type WHERE room_type_id = @id", conn))
-                {
+            using(SqlConnection conn = Connection.GetConnection()) {
+                using(SqlCommand cmd = new SqlCommand("SELECT * FROM room_type WHERE room_type_id = @id", conn)) {
                     cmd.Parameters.Add("@id", SqlDbType.VarChar).Value = roomTypeId;
 
-                    try
-                    {
+                    try {
                         conn.Open();
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                roomType = new RoomType
-                                {
+                        using(SqlDataReader reader = cmd.ExecuteReader()) {
+                            if(reader.Read()) {
+                                roomType = new RoomType {
                                     RoomTypeId = reader["room_type_id"].ToString(),
                                     RoomTypeName = reader["room_type_name"].ToString(),
                                     NumberOfBed = Convert.ToInt32(reader["number_of_bed"]),
@@ -150,9 +143,7 @@ namespace HotelManagementSystem.DAO {
                                 };
                             }
                         }
-                    }
-                    catch (SqlException ex)
-                    {
+                    } catch(SqlException ex) {
                         throw new Exception("Lỗi khi lấy thông tin loại phòng: " + ex.Message);
                     }
                 }

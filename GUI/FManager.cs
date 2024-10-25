@@ -1,4 +1,4 @@
-using HotelManagementSystem.DAO;
+﻿using HotelManagementSystem.DAO;
 using HotelManagementSystem.GUI;
 using System;
 using System.Windows.Forms;
@@ -30,7 +30,7 @@ namespace HotelManagementSystem {
 
 
         private void lblClose_Click(object sender, EventArgs e) {
-            DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát ?", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if(result == DialogResult.Yes) {
                 Application.Exit();
@@ -38,7 +38,7 @@ namespace HotelManagementSystem {
         }
 
         private void btnLogout_Click(object sender, EventArgs e) {
-            DialogResult result = MessageBox.Show("Are you sure you want to logout?", "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát ?", "Đăng xuất", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
 
             if(result == DialogResult.Yes) {

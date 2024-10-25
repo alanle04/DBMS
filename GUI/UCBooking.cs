@@ -10,28 +10,23 @@ namespace HotelManagementSystem {
         private string username;
         private StaffDAO staffDAO = new StaffDAO();
 
-        public UCBooking()
-        {
+        public UCBooking() {
             InitializeComponent();
             LoadData();
         }
 
-        public UCBooking(string username)
-        {
+        public UCBooking(string username) {
             InitializeComponent();
             this.username = username;
             LoadData();
         }
 
-        private void LoadData()
-        {
+        private void LoadData() {
             dgvListRoom.DataSource = RoomDAO.GetAllRooms();
         }
 
-        private void btnBook_Click(object sender, System.EventArgs e)
-        {
-            if (IsEmpty(txtFullName.Text) || IsEmpty(txtIdNumber.Text) || IsEmpty(txtPhoneNumber.Text) || IsEmpty(cbGender.Text) || IsEmpty(cbNationality.Text) || IsEmpty(txtAddress.Text) || IsEmpty(txtRoomId.Text))
-            {
+        private void btnBook_Click(object sender, System.EventArgs e) {
+            if(IsEmpty(txtFullName.Text) || IsEmpty(txtIdNumber.Text) || IsEmpty(txtPhoneNumber.Text) || IsEmpty(cbGender.Text) || IsEmpty(cbNationality.Text) || IsEmpty(txtAddress.Text) || IsEmpty(txtRoomId.Text)) {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin khách hàng và phòng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -57,14 +52,12 @@ namespace HotelManagementSystem {
             string receptionistId = staffDAO.GetStaffIdByUsername(username);
 
 
-            if (IsEmpty(receptionistId))
-            {
+            if(IsEmpty(receptionistId)) {
                 MessageBox.Show("Không tìm thấy lễ tân với tên đăng nhập đã cho", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            try
-            {
+            try {
                 BookingRecordDAO.AddBookingRecord(
                     Guid.NewGuid().ToString(),
                     bookingTime,
@@ -78,46 +71,34 @@ namespace HotelManagementSystem {
                     roomId
                 );
                 LoadData();
-            }
-            catch (Exception ex)
-            {
+            } catch(Exception ex) {
                 MessageBox.Show("Lỗi khi đặt phòng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void btnSearchRooms_Click(object sender, System.EventArgs e)
-        {
+        private void btnSearchRooms_Click(object sender, System.EventArgs e) {
             string roomTypeName = cbRoomType.Text.Trim();
 
-            if (IsEmpty(roomTypeName))
-            {
+            if(IsEmpty(roomTypeName)) {
                 MessageBox.Show("Vui lòng chọn loại phòng để tìm kiếm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            try
-            {
+            try {
                 DataTable dt = RoomDAO.FindRoomsByRoomType(roomTypeName);
-                if (dt.Rows.Count > 0)
-                {
+                if(dt.Rows.Count > 0) {
                     dgvListRoom.DataSource = dt;
-                }
-                else
-                {
+                } else {
                     MessageBox.Show("Không tìm thấy phòng nào phù hợp với loại phòng này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     dgvListRoom.DataSource = null;
                 }
-            }
-            catch (Exception ex)
-            {
+            } catch(Exception ex) {
                 MessageBox.Show("Lỗi khi tìm kiếm phòng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void dgvListRoom_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
+        private void dgvListRoom_CellClick(object sender, DataGridViewCellEventArgs e) {
+            if(e.RowIndex >= 0) {
                 DataGridViewRow row = dgvListRoom.Rows[e.RowIndex];
                 txtRoomId.Text = row.Cells["room_id"].Value.ToString();
                 txtRoomName.Text = row.Cells["room_name"].Value.ToString();
@@ -127,8 +108,7 @@ namespace HotelManagementSystem {
             }
         }
 
-        private bool IsEmpty(string text)
-        {
+        private bool IsEmpty(string text) {
             return text.Trim() == string.Empty;
         }
     }

@@ -1,43 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using HotelManagementSystem.DBConnection;
+﻿using HotelManagementSystem.DBConnection;
 using HotelManagementSystem.Model;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 
-namespace HotelManagementSystem.DAO
-{
-    public class BookingRecordDAO
-    {
-        public BookingRecord GetBookingRecordByRoomIdToCheckOut(string roomId)
-        {
+namespace HotelManagementSystem.DAO {
+    public class BookingRecordDAO {
+        public BookingRecord GetBookingRecordByRoomIdToCheckOut(string roomId) {
             BookingRecord bookingRecord = null;
 
-            using (SqlConnection connection = Connection.GetConnection())
-            {
+            using(SqlConnection connection = Connection.GetConnection()) {
                 connection.Open();
 
-                using (SqlCommand cmd = connection.CreateCommand())
-                {
+                using(SqlCommand cmd = connection.CreateCommand()) {
                     cmd.CommandType = CommandType.Text;
                     cmd.CommandText = "SELECT * FROM fn_getBookingRecordByRoomIdToCheckOut(@room_id)";
                     cmd.Parameters.Add("@room_id", SqlDbType.VarChar).Value = roomId;
 
-                    try
-                    {
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            if (reader.HasRows)
-                            {
-                                while (reader.Read())
-                                {
-                                    bookingRecord = new BookingRecord()
-                                    {
+                    try {
+                        using(SqlDataReader reader = cmd.ExecuteReader()) {
+                            if(reader.HasRows) {
+                                while(reader.Read()) {
+                                    bookingRecord = new BookingRecord() {
                                         BookingRecordId = reader["booking_record_id"].ToString(),
                                         BookingTime = Convert.ToDateTime(reader["booking_time"]),
                                         Status = reader["status"].ToString(),
@@ -56,13 +41,9 @@ namespace HotelManagementSystem.DAO
                                 }
                             }
                         }
-                    }
-                    catch (SqlException ex)
-                    {
+                    } catch(SqlException ex) {
                         throw new Exception("Lỗi khi tìm kiếm booking record: " + ex.Message);
-                    }
-                    catch (Exception ex)
-                    {
+                    } catch(Exception ex) {
                         throw new Exception(ex.Message);
                     }
                 }
@@ -70,9 +51,8 @@ namespace HotelManagementSystem.DAO
 
             return bookingRecord;
         }
-        public static void AddBookingRecord(string bookingRecordId, DateTime bookingTime, string status, DateTime expectedCheckInTime, DateTime expectedCheckOutTime, DateTime? actualCheckInTime, DateTime? actualCheckOutTime, string receptionistId, string customerId, string roomId)
-        {
-            SqlConnection conn = DBConnection.Connection.GetConnection();
+        public static void AddBookingRecord(string bookingRecordId, DateTime bookingTime, string status, DateTime expectedCheckInTime, DateTime expectedCheckOutTime, DateTime? actualCheckInTime, DateTime? actualCheckOutTime, string receptionistId, string customerId, string roomId) {
+            SqlConnection conn = Connection.GetConnection();
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_AddBookingRecord";
@@ -88,67 +68,48 @@ namespace HotelManagementSystem.DAO
             cmd.Parameters.Add("@customer_id", SqlDbType.VarChar).Value = customerId;
             cmd.Parameters.Add("@room_id", SqlDbType.VarChar).Value = roomId;
 
-            try
-            {
+            try {
                 conn.Open();
-                if (cmd.ExecuteNonQuery() > 0)
-                {
+                if(cmd.ExecuteNonQuery() > 0) {
                     MessageBox.Show("Đặt phòng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-            }
-            catch (Exception ex)
-            {
+            } catch(Exception ex) {
                 MessageBox.Show("Đặt phòng thất bại: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
+            } finally {
                 conn.Close();
             }
         }
 
-        public static void UpdateBookingRecordStatus(string bookingRecordId)
-        {
-            SqlConnection conn = DBConnection.Connection.GetConnection();
+        public static void UpdateBookingRecordStatus(string bookingRecordId) {
+            SqlConnection conn = Connection.GetConnection();
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_UpdateBookingRecord";
 
             cmd.Parameters.Add("@booking_record_id", SqlDbType.VarChar).Value = bookingRecordId;
 
-            try
-            {
+            try {
                 conn.Open();
                 cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
+            } catch(Exception ex) {
                 MessageBox.Show("Nhận phòng thất bại: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
+            } finally {
                 conn.Close();
             }
         }
-        public DataTable GetRoomBillByRoomId(string bookingRecordId)
-        {
+        public DataTable GetRoomBillByRoomId(string bookingRecordId) {
             DataTable roomBillTable = new DataTable();
 
-            using (SqlConnection conn = DBConnection.Connection.GetConnection())
-            {
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM fn_GetRoomBillByBookingRecordId(@booking_record_id)", conn))
-                {
+            using(SqlConnection conn = Connection.GetConnection()) {
+                using(SqlCommand cmd = new SqlCommand("SELECT * FROM fn_GetRoomBillByBookingRecordId(@booking_record_id)", conn)) {
                     cmd.Parameters.Add("@booking_record_id", SqlDbType.VarChar).Value = bookingRecordId;
 
-                    try
-                    {
+                    try {
                         conn.Open();
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
-                        {
+                        using(SqlDataAdapter adapter = new SqlDataAdapter(cmd)) {
                             adapter.Fill(roomBillTable);
                         }
-                    }
-                    catch (SqlException ex)
-                    {
+                    } catch(SqlException ex) {
                         throw new Exception("Lỗi khi lấy thông tin hóa đơn phòng: " + ex.Message);
                     }
                 }
@@ -156,31 +117,23 @@ namespace HotelManagementSystem.DAO
             return roomBillTable;
         }
 
-        public static void CheckOutRoom(string bookingRecordId)
-        {
-            using (SqlConnection connection = Connection.GetConnection())
-            {
+        public static void CheckOutRoom(string bookingRecordId) {
+            using(SqlConnection connection = Connection.GetConnection()) {
                 connection.Open();
 
-                using (SqlCommand command = connection.CreateCommand())
-                {
+                using(SqlCommand command = connection.CreateCommand()) {
                     command.CommandText = "sp_CheckOutRoom";
                     command.CommandType = CommandType.StoredProcedure;
 
                     command.Parameters.Add("@booking_record_id", SqlDbType.VarChar).Value = bookingRecordId;
 
-                    try
-                    {
+                    try {
                         command.ExecuteNonQuery();
 
                         MessageBox.Show("Cập nhật thời gian trả phòng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (SqlException sqlEx)
-                    {
+                    } catch(SqlException sqlEx) {
                         MessageBox.Show(sqlEx.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    catch (Exception ex)
-                    {
+                    } catch(Exception ex) {
                         MessageBox.Show(ex.ToString());
                     }
                 }
@@ -188,71 +141,54 @@ namespace HotelManagementSystem.DAO
         }
 
 
-        public static void UpdateStatusRoomBookingRecordAfterPay(string bookingRecordId)
-        {
-            SqlConnection conn = DBConnection.Connection.GetConnection();
+        public static void UpdateStatusRoomBookingRecordAfterPay(string bookingRecordId) {
+            SqlConnection conn = Connection.GetConnection();
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_afterPay";
+            cmd.CommandText = "sp_AfterPay";
 
             cmd.Parameters.Add("@booking_record_id", SqlDbType.VarChar).Value = bookingRecordId;
 
-            try
-            {
+            try {
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Thanh toán hoàn tất", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
+            } catch(Exception ex) {
                 MessageBox.Show("Thanh toán thất bại: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
+            } finally {
                 conn.Close();
             }
         }
 
-        public static void addPayMethod(string billid,string payMethod)
-        {
-            SqlConnection conn = DBConnection.Connection.GetConnection();
+        public static void AddPayMethod(string billid, string payMethod) {
+            SqlConnection conn = Connection.GetConnection();
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_updatePaymentMethod";
+            cmd.CommandText = "sp_UpdatePaymentMethod";
 
             cmd.Parameters.Add("@bill_id", SqlDbType.VarChar).Value = billid;
             cmd.Parameters.Add("@paymethod", SqlDbType.VarChar).Value = payMethod;
 
-            try
-            {
+            try {
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                            }
-            catch (Exception ex)
-            {
+            } catch(Exception ex) {
                 MessageBox.Show("Có lỗi xảy ra:  " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
+            } finally {
                 conn.Close();
             }
         }
 
-        public static string getBillIdByCustomerId(string customerId)
-        {
+        public static string GetBillIdByCustomerId(string customerId) {
             string billid = null;
-            using (SqlConnection conn = DBConnection.Connection.GetConnection())
-            {
+            using(SqlConnection conn = Connection.GetConnection()) {
                 conn.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.fn_getBillIDByCustomerID(@customer_id)", conn))
-                {
+                using(SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.fn_GetBillIDByCustomerID(@customer_id)", conn)) {
                     cmd.Parameters.AddWithValue("@customer_id", customerId);
 
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
+                    using(SqlDataReader reader = cmd.ExecuteReader()) {
                         // Kiểm tra nếu có dòng kết quả
-                        if (reader.Read())
-                        {
+                        if(reader.Read()) {
                             // Lấy giá trị của cột bill_id
                             billid = reader["bill_id"].ToString();
                         }

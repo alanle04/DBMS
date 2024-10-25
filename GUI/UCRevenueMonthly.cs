@@ -1,22 +1,17 @@
 ﻿using HotelManagementSystem.DAO;
-using HotelManagementSystem.DBConnection;
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
 using OxyPlot.WindowsForms;
 using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 
 
 
-namespace HotelManagementSystem.GUI
-{
+namespace HotelManagementSystem.GUI {
     public partial class UCRevenueMonthly : UserControl
     {
         private PlotView plotView;
-        Connection db = new Connection();
         RevenueMonthlyDAO revenueDAO = new RevenueMonthlyDAO();
         public UCRevenueMonthly()
         {
