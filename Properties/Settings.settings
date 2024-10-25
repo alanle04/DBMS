@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="connectionString" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Data Source=DESKTOP-EBUN5JD;Initial Catalog=hotel_management;Persist Security Info=True;User ID=sa;Password=1234567890;</Value>
+      <Value Profile="(Default)">Data Source=DELL\TANTRUSQL;Initial Catalog=hotel_management;Integrated Security=True;User ID=sa; Password=nopainogain@dx</Value>
     </Setting>
   </Settings>
 </SettingsFile>

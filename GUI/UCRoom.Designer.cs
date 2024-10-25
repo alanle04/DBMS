@@ -99,7 +99,6 @@
             this.dgvRoomList.Size = new System.Drawing.Size(1367, 720);
             this.dgvRoomList.TabIndex = 0;
             this.dgvRoomList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRoomList_CellClick);
-            this.dgvRoomList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRoomList_CellContentClick);
             // 
             // btnUpdate
             // 

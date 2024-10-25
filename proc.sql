@@ -1,3 +1,5 @@
+use hotel_management;
+
 -- 3.2.1. Thủ tục thêm dữ liệu các bảng
 -- 3.2.1.1. Bảng room_type
 CREATE PROC sp_AddRoomType
@@ -207,7 +209,7 @@ END;
 GO
 
 --3.2.2.3. Bảng service
-CREATE PROCEDURE sp_UpdateService
+CREATE PROCEDURE sp_UpdateServiceById
     @service_id VARCHAR(20),
     @service_name NVARCHAR(255),
     @price INT,
@@ -232,6 +234,7 @@ BEGIN
     END CATCH
 END;
 GO
+
 --3.2.2.4. Bảng booking_record
 CREATE PROCEDURE sp_UpdateBookingRecord(@booking_record_id VARCHAR(20))
 AS
@@ -265,7 +268,7 @@ GO
 	
 --3.2.3. Thủ tục xóa dữ liệu trong các bảng
 -- 3.2.3.1. Bảng room_type
-CREATE PROCEDURE sp_DeleteRoomType
+CREATE PROCEDURE sp_DeleteRoomTypeById
     @type_id VARCHAR(20)
 AS
 BEGIN

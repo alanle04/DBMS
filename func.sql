@@ -1,3 +1,5 @@
+use hotel_management;
+
 -- 3.2.4. Hàm tìm kiếm dữ liệu
 -- 3.2.4.1. Bảng room
 --Tìm kiếm theo mã phòng
@@ -40,7 +42,6 @@ RETURN
 );
 GO
 
-
 --3.2.4.2. Bảng customer
 -- Tìm customer theo tên
 CREATE FUNCTION fn_FindCustomerByName (
@@ -55,6 +56,7 @@ RETURN
 	WHERE full_name LIKE '%' + @full_name + '%'
 );
 GO
+
 --Tìm customer theo id
 CREATE FUNCTION fn_FindCustomerByIDNumber (
  	@id_number VARCHAR(20)

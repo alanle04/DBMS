@@ -1,4 +1,4 @@
-using HotelManagementSystem.GUI;
+﻿using HotelManagementSystem.GUI;
 using System;
 using System.Windows.Forms;
 
@@ -25,13 +25,16 @@ namespace HotelManagementSystem {
         }
 
         private void lblClose_Click(object sender, EventArgs e) {
-            Application.Exit();
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất ?", "Đăng xuất", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if(result == DialogResult.Yes) {
+                Application.Exit();
+            }
         }
 
         private void btnLogout_Click(object sender, EventArgs e) {
-            MessageBox.Show(username);
 
-            DialogResult result = MessageBox.Show("Are you sure you want to logout?", "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất ?", "Đăng xuất", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if(result == DialogResult.Yes) {
                 FLogin fLogin = new FLogin();
@@ -62,8 +65,7 @@ namespace HotelManagementSystem {
             panelMain.Controls.Add(uCCheckIn);
         }
 
-        private void btnCheckOut_Click(object sender, EventArgs e)
-        {
+        private void btnCheckOut_Click(object sender, EventArgs e) {
             UCCheckOut uCCheckOut = new UCCheckOut();
             uCCheckOut.Dock = DockStyle.Fill;
             panelMain.Controls.Clear();

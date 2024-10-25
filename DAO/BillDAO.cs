@@ -1,32 +1,19 @@
 ﻿using HotelManagementSystem.DBConnection;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HotelManagementSystem.Model;
-using System.Windows.Forms;
+using System.Data.SqlClient;
 
-namespace HotelManagementSystem.DAO
-{
-    internal class BillDAO
-    {
-        public static DataTable GetBills()
-        {
+namespace HotelManagementSystem.DAO {
+    internal class BillDAO {
+        public static DataTable GetBills() {
             DataTable dt = new DataTable();
 
-            using (SqlConnection connection = Connection.GetConnection())
-            {
+            using(SqlConnection connection = Connection.GetConnection()) {
                 connection.Open();
 
-                string query = "SELECT * FROM dbo.vw_bill";
+                string query = "SELECT * FROM dbo.vw_Bill";
 
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                    {
+                using(SqlCommand command = new SqlCommand(query, connection)) {
+                    using(SqlDataAdapter adapter = new SqlDataAdapter(command)) {
                         adapter.Fill(dt);
                     }
                 }
@@ -35,25 +22,19 @@ namespace HotelManagementSystem.DAO
             return dt;
 
         }
-        public static DataTable GetDetailBills(string id)
-        {
+        public static DataTable GetDetailBills(string id) {
             DataTable dt = new DataTable();
 
-            using (SqlConnection connection = Connection.GetConnection())
-            {
+            using(SqlConnection connection = Connection.GetConnection()) {
                 connection.Open();
 
-                // Sử dụng tham số hóa để tránh SQL Injection
                 string query = "SELECT * FROM dbo.vw_BillDetails WHERE bill_id = @Id";
 
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    // Thêm tham số @Id với giá trị là 'id'
+                using(SqlCommand command = new SqlCommand(query, connection)) {
+                    
                     command.Parameters.AddWithValue("@Id", id);
 
-                    // Sử dụng SqlDataAdapter để điền DataTable
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                    {
+                    using(SqlDataAdapter adapter = new SqlDataAdapter(command)) {
                         adapter.Fill(dt);
                     }
                 }

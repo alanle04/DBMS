@@ -1,7 +1,6 @@
 ﻿using HotelManagementSystem.DBConnection;
 using System.Data;
 using System.Data.SqlClient;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace HotelManagementSystem.DAO {
     public class StaffDAO {
@@ -34,14 +33,15 @@ namespace HotelManagementSystem.DAO {
             }
         }
 
-        public static DataTable getManager()
+        public static DataTable GetManager()
         {
             SqlConnection conn = Connection.GetConnection();
             DataTable table = new DataTable();
-            string sql = "SELECT * FROM vw_allManager";
+            string sql = "SELECT * FROM vw_AllManager";
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(table);
+            conn.Close();
             return table;
         }
     }

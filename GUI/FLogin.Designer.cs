@@ -32,7 +32,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblClose = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblLogin = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -91,16 +91,16 @@
             this.lblClose.Text = "X";
             this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
             // 
-            // label2
+            // lblLogin
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(354, 57);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 26);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "SIGN IN";
+            this.lblLogin.AutoSize = true;
+            this.lblLogin.Font = new System.Drawing.Font("Tahoma", 17.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLogin.Location = new System.Drawing.Point(324, 59);
+            this.lblLogin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblLogin.Name = "lblLogin";
+            this.lblLogin.Size = new System.Drawing.Size(138, 28);
+            this.lblLogin.TabIndex = 2;
+            this.lblLogin.Text = "Đăng nhập";
             // 
             // lblUsername
             // 
@@ -141,9 +141,9 @@
             this.lblPassword.Location = new System.Drawing.Point(286, 204);
             this.lblPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(93, 19);
+            this.lblPassword.Size = new System.Drawing.Size(91, 19);
             this.lblPassword.TabIndex = 5;
-            this.lblPassword.Text = "Password:";
+            this.lblPassword.Text = "Mật khẩu:";
             // 
             // chkShowPassword
             // 
@@ -153,9 +153,9 @@
             this.chkShowPassword.Location = new System.Drawing.Point(286, 262);
             this.chkShowPassword.Margin = new System.Windows.Forms.Padding(2);
             this.chkShowPassword.Name = "chkShowPassword";
-            this.chkShowPassword.Size = new System.Drawing.Size(117, 20);
+            this.chkShowPassword.Size = new System.Drawing.Size(108, 20);
             this.chkShowPassword.TabIndex = 7;
-            this.chkShowPassword.Text = "Show Password";
+            this.chkShowPassword.Text = "Hiện mật khẩu";
             this.chkShowPassword.UseVisualStyleBackColor = true;
             this.chkShowPassword.CheckedChanged += new System.EventHandler(this.chkShowPassword_CheckedChanged);
             // 
@@ -171,7 +171,7 @@
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(209, 37);
             this.btnLogin.TabIndex = 8;
-            this.btnLogin.Text = "LOGIN";
+            this.btnLogin.Text = "Đăng nhập";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
@@ -187,7 +187,7 @@
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.lblUsername);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblLogin);
             this.Controls.Add(this.lblClose);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -208,7 +208,7 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblClose;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblLogin;
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.TextBox txtPassword;
