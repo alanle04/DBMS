@@ -202,7 +202,7 @@ BEGIN
        rt.room_type_id = @room_type;
    	
  
-   	INSERT INTO Bill (customer_id, receptionist_id,created_at,  room_fee, service_fee, additional_fee, total)
+   	INSERT INTO bill (customer_id, receptionist_id,created_at,  room_fee, service_fee, additional_fee, total)
    	VALUES (@cus, @staff, NULL, @room_fee, NULL, NULL, @room_fee * @days_stayed);
 END;
 GO
@@ -266,20 +266,20 @@ BEGIN
     IF EXISTS (
     	SELECT 1
     	FROM service s
-    	JOIN inserted i ON s.service_name = i.service_name
-    )
-    BEGIN
-    	RAISERROR('Tên dịch vụ này đã tồn tại', 16, 1);
-    	RETURN;
-    END
- 
-    IF EXISTS (
-    	SELECT 1
-    	FROM service s
     	JOIN inserted i ON s.service_id = i.service_id
     )
     BEGIN
     	RAISERROR('Mã dịch vụ này đã tồn tại', 16, 1);
+    	RETURN;
+    END
+	
+    IF EXISTS (
+    	SELECT 1
+    	FROM service s
+    	JOIN inserted i ON s.service_name = i.service_name
+    )
+    BEGIN
+    	RAISERROR('Tên dịch vụ này đã tồn tại', 16, 1);
     	RETURN;
     END
  
