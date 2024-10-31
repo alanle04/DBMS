@@ -20,7 +20,6 @@ BEGIN
     END TRY
     BEGIN CATCH
        ROLLBACK TRANSACTION;
-       RAISERROR('Thêm loại phòng thất bại !', 16, 1);
     END CATCH
 END;
 GO
@@ -44,7 +43,6 @@ BEGIN
     END TRY
     BEGIN CATCH
        ROLLBACK TRANSACTION;
-       RAISERROR('Thêm dịch vụ thất bại !', 16, 1);
     END CATCH
 END;
 GO
@@ -54,7 +52,7 @@ CREATE PROCEDURE sp_AddRoom
     @room_id VARCHAR(20),
     @manager_id VARCHAR(20),
     @room_type_id VARCHAR(20),
-   	@room_name VARCHAR(100)
+    @room_name VARCHAR(100)
 AS
 BEGIN
     BEGIN TRANSACTION;
@@ -67,7 +65,6 @@ BEGIN
     END TRY
     BEGIN CATCH
        ROLLBACK TRANSACTION;
-       RAISERROR('Thêm phòng thất bại !', 16, 1);
     END CATCH
 END;
 GO
@@ -91,7 +88,6 @@ BEGIN
     END TRY
     BEGIN CATCH
        ROLLBACK TRANSACTION;
-       RAISERROR('Thêm khách hàng thất bại', 16, 1);
     END CATCH
 END;
 GO
@@ -114,7 +110,6 @@ BEGIN
     END TRY
     BEGIN CATCH
           	ROLLBACK TRANSACTION;
-       RAISERROR ('Thêm ghi nhận sử dụng dịch vụ thất bại !', 16, 1);
     END CATCH
 END;
 GO
@@ -141,7 +136,6 @@ BEGIN
     END TRY
     BEGIN CATCH
        ROLLBACK TRANSACTION;
-       RAISERROR('Đặt phòng thất bại !', 16, 1);
     END CATCH
 END;
 GO
@@ -171,7 +165,6 @@ BEGIN
     END TRY
     BEGIN CATCH
        ROLLBACK TRANSACTION; 
-       RAISERROR('Cập nhật loại phòng thất bại !', 16, 1);
     END CATCH
 END;
 GO
@@ -203,7 +196,6 @@ BEGIN
     END TRY
     BEGIN CATCH
        ROLLBACK TRANSACTION;
-       RAISERROR('Cập nhật phòng thất bại !', 16, 1);
     END CATCH
 END;
 GO
@@ -230,7 +222,6 @@ BEGIN
     END TRY
     BEGIN CATCH
        ROLLBACK TRANSACTION; 
-       RAISERROR('Cập nhật dịch vụ thất bại !', 16, 1);
     END CATCH
 END;
 GO
@@ -241,7 +232,6 @@ AS
 BEGIN
    	BEGIN TRY
           	BEGIN TRANSACTION;
- 
           	UPDATE booking_record
           	SET
                  	booking_record.status = 'staying',
@@ -261,69 +251,27 @@ BEGIN
    	END TRY
    	BEGIN CATCH
           	ROLLBACK TRANSACTION;
-       RAISERROR ('Cập nhật phiếu đặt phòng thất bại !', 16, 1);
    	END CATCH
 END;
 GO
-	
---3.2.3. Thủ tục xóa dữ liệu trong các bảng
--- 3.2.3.1. Bảng room_type
-CREATE PROCEDURE sp_DeleteRoomTypeById
-    @type_id VARCHAR(20)
+-- 3.2.3.5. Thêm thời gian check out vào booking record khi trả phòng
+CREATE PROCEDURE sp_CheckOutRoom
+    @booking_record_id VARCHAR(20)
 AS
 BEGIN
-    BEGIN TRY
-       BEGIN TRANSACTION;
- 
-       DELETE FROM room_type WHERE room_type_id = @type_id;
- 
-       COMMIT TRANSACTION;
-    END TRY
-    BEGIN CATCH
-       ROLLBACK TRANSACTION;
- 
-       RAISERROR('Xóa loại phòng thất bại !', 16, 1);
-    END CATCH
-END;
-GO
+    BEGIN TRANSACTION;
+    UPDATE booking_record
+    SET actual_check_out_time = GETDATE()
+    WHERE booking_record_id = @booking_record_id;
 
---3.2.3.2 Bảng room 
-CREATE PROCEDURE sp_DeleteRoomById
-    @roomId VARCHAR(20)
-AS
-BEGIN
- 
-    BEGIN TRY
-       BEGIN TRANSACTION;
-       IF EXISTS (SELECT 1 FROM Room WHERE room_id = @roomId)
-       BEGIN
-    	  	DELETE FROM booking_record WHERE room_id = @roomId;
-    	  	DELETE FROM Room WHERE room_id = @roomId;
-    	  	COMMIT TRANSACTION;
-       END
-       ELSE
-       BEGIN
-    	  	ROLLBACK TRANSACTION;
-       END
-    END TRY
-    BEGIN CATCH
-       ROLLBACK TRANSACTION;
-       RAISERROR('Xóa phòng thất bại !', 16, 1);
-    END CATCH
-END;
-GO
-
---3.2.3.3. Bảng service
-CREATE PROCEDURE sp_DeleteServiceById
-    @service_id VARCHAR(20)
-AS
-BEGIN
-       DELETE FROM service
-       WHERE service_id = @service_id;
-END;
-GO
-
---3.2.3.4 Bảng service_usage_record
+    IF @@ROWCOUNT = 0
+    BEGIN
+        ROLLBACK TRANSACTION;
+        RETURN;
+    END
+    COMMIT TRANSACTION;
+END;	
+--3.2.2.5 Bảng bill
 CREATE PROCEDURE sp_UpdatePaymentMethod
     @bill_id VARCHAR(20),      	
     @payMethod VARCHAR(50) 
@@ -339,36 +287,15 @@ BEGIN
     END TRY
     BEGIN CATCH
     	    	ROLLBACK TRANSACTION;
-        RAISERROR('Cập nhật thất bại !', 16, 1);
     	THROW;
     END CATCH
 END;
 GO
 
--- 3.2.3.5. Thêm thời gian check out vào booking record khi trả phòng
-CREATE PROCEDURE sp_CheckOutRoom
-    @booking_record_id VARCHAR(20)
-AS
-BEGIN
-    BEGIN TRANSACTION;
-    UPDATE booking_record
-    SET actual_check_out_time = GETDATE()
-    WHERE booking_record_id = @booking_record_id;
 
-    IF @@ROWCOUNT = 0
-    BEGIN
-        ROLLBACK TRANSACTION;
-        RAISERROR('Không tìm thấy bản ghi đặt phòng với ID đã cho.', 16, 1);
-        RETURN;
-    END
-
-    COMMIT TRANSACTION;
-
-    PRINT 'Cập nhật thời gian trả phòng thành công.';
-END;
 
 -- 3.2.3.6. Sau khi thanh toán xong, cập nhật lại phiếu đặt đã thanh toán, cập nhật lại trạng thái phòng.
-CREATE OR ALTER PROCEDURE sp_AfterPay 
+CREATE PROCEDURE sp_AfterPay 
     @booking_record_id VARCHAR(20)
 AS
 BEGIN
@@ -407,3 +334,58 @@ BEGIN
     END CATCH
 END;
 GO
+
+--3.2.3. Thủ tục xóa dữ liệu trong các bảng
+-- 3.2.3.1. Bảng room_type
+CREATE PROCEDURE sp_DeleteRoomTypeById
+    @type_id VARCHAR(20)
+AS
+BEGIN
+    BEGIN TRY
+       BEGIN TRANSACTION;
+ 
+       DELETE FROM room_type WHERE room_type_id = @type_id;
+ 
+       COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+       ROLLBACK TRANSACTION;
+    END CATCH
+END;
+GO
+
+--3.2.3.2 Bảng room 
+CREATE PROCEDURE sp_DeleteRoomById
+    @roomId VARCHAR(20)
+AS
+BEGIN
+ 
+    BEGIN TRY
+       BEGIN TRANSACTION;
+       IF EXISTS (SELECT 1 FROM Room WHERE room_id = @roomId)
+       BEGIN
+    	  	DELETE FROM booking_record WHERE room_id = @roomId;
+    	  	DELETE FROM Room WHERE room_id = @roomId;
+    	  	COMMIT TRANSACTION;
+       END
+       ELSE
+       BEGIN
+    	  	ROLLBACK TRANSACTION;
+       END
+    END TRY
+    BEGIN CATCH
+       ROLLBACK TRANSACTION;
+    END CATCH
+END;
+GO
+
+--3.2.3.3. Bảng service
+CREATE PROCEDURE sp_DeleteServiceById
+    @service_id VARCHAR(20)
+AS
+BEGIN
+       DELETE FROM service
+       WHERE service_id = @service_id;
+END;
+GO
+
