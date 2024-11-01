@@ -36,10 +36,10 @@ namespace HotelManagementSystem.DAO {
             DataTable result = new DataTable();
 
             using(SqlConnection conn = Connection.GetConnection()) {
-                string query = "SELECT * FROM fn_GetBillInfoByRoomId(@roomId)";
+                string query = "SELECT * FROM fn_GetBillInfoByRoomId(@room_id)";
 
                 using(SqlCommand cmd = new SqlCommand(query, conn)) {
-                    cmd.Parameters.AddWithValue("@roomId", roomId);
+                    cmd.Parameters.AddWithValue("@room_id", roomId);
 
                     conn.Open();
 

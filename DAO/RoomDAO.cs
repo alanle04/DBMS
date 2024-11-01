@@ -123,19 +123,26 @@ namespace HotelManagementSystem.DAO {
         public Room GetRoomByRoomName(string roomName) {
             Room room = null;
 
-            using(SqlConnection connection = Connection.GetConnection()) {
+            using (SqlConnection connection = DBConnection.Connection.GetConnection())
+            {
                 connection.Open();
 
-                using(SqlCommand cmd = connection.CreateCommand()) {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = "sp_SearchRoomByName";
-                    cmd.Parameters.Add("@room_name", SqlDbType.NVarChar).Value = roomName;
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = "SELECT * FROM fn_SearchRoomByName(@room_name)";
+                    cmd.Parameters.Add("@room_name", SqlDbType.VarChar).Value = roomName;
 
-                    try {
-                        using(SqlDataReader reader = cmd.ExecuteReader()) {
-                            if(reader.HasRows) {
-                                while(reader.Read()) {
-                                    room = new Room() {
+                    try
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    room = new Room()
+                                    {
                                         RoomId = reader["room_id"].ToString(),
                                         RoomName = reader["room_name"].ToString(),
                                         Status = reader["status"].ToString(),
@@ -145,7 +152,9 @@ namespace HotelManagementSystem.DAO {
                                 }
                             }
                         }
-                    } catch(SqlException ex) {
+                    }
+                    catch (SqlException ex)
+                    {
                         throw new Exception("Lỗi khi tìm kiếm phòng: " + ex.Message);
                     }
                 }
@@ -164,18 +173,23 @@ namespace HotelManagementSystem.DAO {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "sp_AddRoom";
 
-                    cmd.Parameters.Add("@roomId", SqlDbType.VarChar).Value = room.RoomId;
+                    cmd.Parameters.Add("@room_id", SqlDbType.VarChar).Value = room.RoomId;
                     cmd.Parameters.Add("@room_name", SqlDbType.VarChar).Value = room.RoomName;
                     cmd.Parameters.Add("@room_type_id", SqlDbType.VarChar).Value = room.RoomTypeId;
                     cmd.Parameters.Add("@manager_id", SqlDbType.VarChar).Value = room.ManagerId;
-
-                    try {
-                        if(cmd.ExecuteNonQuery() > 0) {
+                    try
+                    {
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
                             return 1;
                         }
-                    } catch(SqlException sqlEx) {
+                    }
+                    catch (SqlException sqlEx)
+                    {
                         MessageBox.Show(sqlEx.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    } catch(Exception ex) {
+                    }
+                    catch (Exception ex)
+                    {
                         MessageBox.Show(ex.ToString());
                     }
                 }

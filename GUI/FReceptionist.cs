@@ -65,7 +65,8 @@ namespace HotelManagementSystem {
             panelMain.Controls.Add(uCCheckIn);
         }
 
-        private void btnCheckOut_Click(object sender, EventArgs e) {
+        private void btnCheckOut_Click_1(object sender, EventArgs e)
+        {
             UCCheckOut uCCheckOut = new UCCheckOut();
             uCCheckOut.Dock = DockStyle.Fill;
             panelMain.Controls.Clear();

@@ -145,7 +145,7 @@ namespace HotelManagementSystem.DAO {
             SqlConnection conn = Connection.GetConnection();
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_AfterPay";
+            cmd.CommandText = "sp_UpdateBookingRecord_RoomStatus";
 
             cmd.Parameters.Add("@booking_record_id", SqlDbType.VarChar).Value = bookingRecordId;
 

@@ -79,7 +79,7 @@ namespace HotelManagementSystem.DAO {
             using(SqlConnection connection = Connection.GetConnection()) {
                 connection.Open();
 
-                string query = "SELECT * FROM dbo.fn_FindtoCustomer(@full_name)";
+                string query = "SELECT * FROM dbo.fn_FindCustomerByName(@full_name)";
 
                 using(SqlCommand command = new SqlCommand(query, connection)) {
                     command.Parameters.Add("@full_name", SqlDbType.NVarChar, 255).Value = fullName;
@@ -118,7 +118,7 @@ namespace HotelManagementSystem.DAO {
         public static void AddCustomer(Customer customer) {
             using(SqlConnection connection = Connection.GetConnection()) {
                 using(SqlCommand command = connection.CreateCommand()) {
-                    command.CommandText = "sp_AddtoCustomer";
+                    command.CommandText = "sp_AddCustomer";
                     command.CommandType = CommandType.StoredProcedure;
 
                     command.Parameters.Add("@customer_id", SqlDbType.VarChar).Value = customer.CustomerId;

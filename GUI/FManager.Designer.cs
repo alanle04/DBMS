@@ -61,7 +61,7 @@ namespace HotelManagementSystem
             this.panel1.Controls.Add(this.lblClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1940, 40);
             this.panel1.TabIndex = 0;
@@ -107,7 +107,7 @@ namespace HotelManagementSystem
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 40);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1940, 959);
             this.panel2.TabIndex = 1;
@@ -116,10 +116,10 @@ namespace HotelManagementSystem
             // panelMain
             // 
             this.panelMain.BackColor = System.Drawing.Color.Honeydew;
-            this.panelMain.Location = new System.Drawing.Point(332, 44);
-            this.panelMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelMain.Location = new System.Drawing.Point(332, 8);
+            this.panelMain.Margin = new System.Windows.Forms.Padding(4);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1595, 910);
+            this.panelMain.Size = new System.Drawing.Size(1595, 938);
             this.panelMain.TabIndex = 2;
             this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -129,7 +129,7 @@ namespace HotelManagementSystem
             this.btnBill.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBill.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnBill.Location = new System.Drawing.Point(20, 665);
-            this.btnBill.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBill.Margin = new System.Windows.Forms.Padding(4);
             this.btnBill.Name = "btnBill";
             this.btnBill.Size = new System.Drawing.Size(288, 49);
             this.btnBill.TabIndex = 12;
@@ -157,7 +157,7 @@ namespace HotelManagementSystem
             this.btnCustomer.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCustomer.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnCustomer.Location = new System.Drawing.Point(20, 505);
-            this.btnCustomer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCustomer.Margin = new System.Windows.Forms.Padding(4);
             this.btnCustomer.Name = "btnCustomer";
             this.btnCustomer.Size = new System.Drawing.Size(288, 49);
             this.btnCustomer.TabIndex = 10;
@@ -171,7 +171,7 @@ namespace HotelManagementSystem
             this.btnService.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnService.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnService.Location = new System.Drawing.Point(20, 585);
-            this.btnService.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnService.Margin = new System.Windows.Forms.Padding(4);
             this.btnService.Name = "btnService";
             this.btnService.Size = new System.Drawing.Size(288, 49);
             this.btnService.TabIndex = 9;
@@ -185,7 +185,7 @@ namespace HotelManagementSystem
             this.btnRoomType.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRoomType.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnRoomType.Location = new System.Drawing.Point(20, 425);
-            this.btnRoomType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRoomType.Margin = new System.Windows.Forms.Padding(4);
             this.btnRoomType.Name = "btnRoomType";
             this.btnRoomType.Size = new System.Drawing.Size(288, 49);
             this.btnRoomType.TabIndex = 8;
@@ -199,7 +199,7 @@ namespace HotelManagementSystem
             this.btnRoom.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRoom.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnRoom.Location = new System.Drawing.Point(20, 345);
-            this.btnRoom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRoom.Margin = new System.Windows.Forms.Padding(4);
             this.btnRoom.Name = "btnRoom";
             this.btnRoom.Size = new System.Drawing.Size(288, 49);
             this.btnRoom.TabIndex = 8;
@@ -213,7 +213,7 @@ namespace HotelManagementSystem
             this.btnDashboard.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDashboard.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnDashboard.Location = new System.Drawing.Point(20, 265);
-            this.btnDashboard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDashboard.Margin = new System.Windows.Forms.Padding(4);
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.Size = new System.Drawing.Size(288, 49);
             this.btnDashboard.TabIndex = 7;
@@ -287,7 +287,7 @@ namespace HotelManagementSystem
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FManager";

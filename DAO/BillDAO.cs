@@ -10,7 +10,7 @@ namespace HotelManagementSystem.DAO {
             using(SqlConnection connection = Connection.GetConnection()) {
                 connection.Open();
 
-                string query = "SELECT * FROM dbo.vw_Bill";
+                string query = "SELECT * FROM dbo.vw_BillDetails";
 
                 using(SqlCommand command = new SqlCommand(query, connection)) {
                     using(SqlDataAdapter adapter = new SqlDataAdapter(command)) {

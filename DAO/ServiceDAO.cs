@@ -63,7 +63,7 @@ namespace HotelManagementSystem.DAO {
                 connection.Open();
 
                 using(SqlCommand command = connection.CreateCommand()) {
-                    command.CommandText = "sp_UpdateService";
+                    command.CommandText = "sp_UpdateServiceById";
                     command.CommandType = CommandType.StoredProcedure;
 
                     command.Parameters.Add("@service_id", SqlDbType.VarChar).Value = service.ServiceId;
@@ -92,7 +92,7 @@ namespace HotelManagementSystem.DAO {
                 connection.Open();
 
                 using(SqlCommand command = connection.CreateCommand()) {
-                    command.CommandText = "sp_DeleteService";
+                    command.CommandText = "sp_DeleteServiceById";
                     command.CommandType = CommandType.StoredProcedure;
 
                     command.Parameters.Add("@service_id", SqlDbType.VarChar).Value = service.ServiceId;

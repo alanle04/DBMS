@@ -1,5 +1,5 @@
 use hotel_management;
-
+go
 --2.6.1. Trigger thêm vào trạng thái phòng (status) 'occupied' khi phiếu đặt phòng (booking) có thời gian check in thực tế (actual_check_in_time)
 CREATE TRIGGER trg_UpdateRoomStatusOccupied
 ON booking_record
@@ -72,7 +72,7 @@ BEGIN
     SET
        additional_fee = COALESCE(b.additional_fee, 0) +
     	  	CASE
-        	WHEN CAST(i.actual_check_in_time AS TIME) < 
+        	WHEN CAST(i.actual_check_in_time AS TIME) < '12:00'
        	   THEN rt.cost_per_day  -- 100% giá phòng
       		WHEN CAST(i.actual_check_in_time AS TIME) BETWEEN '07:00' AND '09:00'
             	 	THEN rt.cost_per_day * 0.50  -- 50% giá phòng
@@ -167,43 +167,51 @@ END;
 GO
 
 --2.6.7. Trigger tạo hóa đơn khi phiếu đặt phòng (booking_record) được tạo
-CREATE TRIGGER trg_CreateBill
+CREATE OR ALTER TRIGGER trg_CreateBill
 ON booking_record
 AFTER INSERT
 AS
 BEGIN
-   	DECLARE
-       @cus VARCHAR(20),
-       @staff VARCHAR(20),
-       @room_type VARCHAR(20),
-       @room_fee INT,
-          	@check_in DATE,
-    	@check_out DATE,
-    	@days_stayed INT;
- 
-   	SELECT
-       @cus = i.customer_id,
-       @staff = i.receptionist_id,
-       @room_type = r.room_type_id,
-          	@check_in = i.expected_check_in_time,
-    	@check_out = i.expected_check_out_time
-   	FROM
-       inserted i
-       JOIN room r ON i.room_id = r.room_id;
- 
-   	-- Tính số ngày ở
+	DECLARE
+    	@cus VARCHAR(20),
+    	@staff VARCHAR(20),
+    	@room_type VARCHAR(20),
+    	@room_fee INT,
+		@check_in DATE,
+        @check_out DATE,
+        @days_stayed INT,
+		@billId VARCHAR(20),
+		@substr VARCHAR(20); 
+		
+	SELECT
+    	@cus = i.customer_id,
+    	@staff = i.receptionist_id,
+    	@room_type = r.room_type_id,
+		@check_in = i.expected_check_in_time,
+        @check_out = i.expected_check_out_time
+	FROM
+    	inserted i
+    	JOIN room r ON i.room_id = r.room_id;
+
+	-- Tính số ngày ở
     SET @days_stayed = DATEDIFF(DAY, @check_in, @check_out);
-          	-- Lấy chi phí mỗi ngày cho loại phòng
-   	SELECT
-       @room_fee = rt.cost_per_day
-   	FROM
-       room_type rt
-   	WHERE
-       rt.room_type_id = @room_type;
-   	
- 
-   	INSERT INTO bill (customer_id, receptionist_id,created_at,  room_fee, service_fee, additional_fee, total)
-   	VALUES (@cus, @staff, NULL, @room_fee, NULL, NULL, @room_fee * @days_stayed);
+		-- Lấy chi phí mỗi ngày cho loại phòng
+	IF @days_stayed < 1
+BEGIN
+    SET @days_stayed = 1;
+END
+	SELECT
+    	@room_fee = rt.cost_per_day
+	FROM
+    	room_type rt
+	WHERE
+    	rt.room_type_id = @room_type;
+	SET @substr = SUBSTRING(CONVERT(VARCHAR(36), NEWID()), 1, 3);
+	SET @billId = @staff+@cus;
+	declare @total int;
+	set @total = @room_fee * @days_stayed;
+	INSERT INTO Bill (bill_id,customer_id, receptionist_id, created_at,  room_fee, service_fee, additional_fee, total)
+	VALUES (@billId,@cus, @staff, NULL, @room_fee, 0, 0, @total);
 END;
 GO
 
@@ -290,14 +298,14 @@ END;
 GO
 
 --2.6.11. Trigger khi bấm xuất hóa đơn thì lấy thời gian xuất hóa đơn thiết lập giá trị actual_check_out_time bên bảng booking_record.
-CREATE TRIGGER trg_UpdateCheckOutTime
-ON bill
-AFTER INSERT
+CREATE OR ALTER TRIGGER trg_UpdateCheckOutTime
+ON booking_record
+AFTER INSERT,UPDATE
 AS
 BEGIN
-   	UPDATE booking_record
-   	SET actual_check_out_time = created_at
-   	FROM booking_record b
+   	UPDATE bill
+   	SET created_at =  actual_check_out_time 
+   	FROM bill b
    	INNER JOIN inserted i ON b.customer_id = i.customer_id
    	WHERE b.customer_id = i.customer_id;
 END;

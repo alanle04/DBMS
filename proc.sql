@@ -1,5 +1,5 @@
 use hotel_management;
-
+go
 -- 3.2.1. Thủ tục thêm dữ liệu các bảng
 -- 3.2.1.1. Bảng room_type
 CREATE PROC sp_AddRoomType
@@ -48,7 +48,7 @@ END;
 GO
 
 -- 3.2.1.3. Bảng room
-CREATE PROCEDURE sp_AddRoom
+CREATE OR ALTER PROCEDURE sp_AddRoom
     @room_id VARCHAR(20),
     @manager_id VARCHAR(20),
     @room_type_id VARCHAR(20),
@@ -58,8 +58,8 @@ BEGIN
     BEGIN TRANSACTION;
  
     BEGIN TRY
-       INSERT INTO room (room_id, manager_id, room_type_id,room_name)
-       VALUES (@room_id, @manager_id, @room_type_id,@room_name);
+       INSERT INTO room (room_id, manager_id, room_type_id,room_name,[status])
+       VALUES (@room_id, @manager_id, @room_type_id,@room_name,'available');
       
        COMMIT TRANSACTION;
     END TRY
@@ -68,7 +68,7 @@ BEGIN
     END CATCH
 END;
 GO
-	
+
 --3.2.1.4. Bảng customer
 CREATE PROCEDURE sp_AddCustomer
     @customer_id VARCHAR(20),
@@ -170,9 +170,9 @@ END;
 GO
 
 --3.2.2.2. Bảng room 
-CREATE PROCEDURE sp_UpdateRoomById
+CREATE OR ALTER PROCEDURE sp_UpdateRoomById
     @roomId VARCHAR(20),
-    @status VARCHAR(50),
+    @roomName VARCHAR(50),
     @roomTypeId VARCHAR(20),
     @managerId VARCHAR(20)
 AS
@@ -183,7 +183,7 @@ BEGIN
        BEGIN
     	  	UPDATE room
     	  	SET
-        	  status = @status,
+        	  room_name = @roomName,
         	  room_type_id = @roomTypeId,
         	  manager_id = @managerId
     	  	WHERE room_id = @roomId;
@@ -234,7 +234,7 @@ BEGIN
           	BEGIN TRANSACTION;
           	UPDATE booking_record
           	SET
-                 	booking_record.status = 'staying',
+                 	[status] = 'staying',
                  	actual_check_in_time = GETDATE()
           	WHERE booking_record.booking_record_id = @booking_record_id;
  
@@ -271,6 +271,7 @@ BEGIN
     END
     COMMIT TRANSACTION;
 END;	
+go
 --3.2.2.5 Bảng bill
 CREATE PROCEDURE sp_UpdatePaymentMethod
     @bill_id VARCHAR(20),      	
@@ -295,7 +296,7 @@ GO
 
 
 -- 3.2.3.6. Sau khi thanh toán xong, cập nhật lại phiếu đặt đã thanh toán, cập nhật lại trạng thái phòng.
-CREATE PROCEDURE sp_AfterPay 
+CREATE PROCEDURE sp_UpdateBookingRecord_RoomStatus
     @booking_record_id VARCHAR(20)
 AS
 BEGIN

@@ -1,5 +1,5 @@
 ﻿use hotel_management;
-
+go
 -- 2.7.1. View xem danh sách các phòng
 CREATE VIEW vw_RoomList AS
 SELECT

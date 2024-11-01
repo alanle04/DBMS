@@ -1,5 +1,5 @@
 use hotel_management;
-
+go
 -- 3.2.4. Hàm tìm kiếm dữ liệu
 -- 3.2.4.1. Bảng room
 --Tìm kiếm theo mã phòng
@@ -67,10 +67,23 @@ RETURN
 (
  	SELECT *
  	FROM dbo.customer
- 	WHERE identification_number = @idNumber
+ 	WHERE identification_number = @id_number
 );
 GO
 
+--Tìm kiếm theo mã khách hàng
+CREATE FUNCTION fn_FindCustomer (
+	@customer_id VARCHAR(20)
+)
+RETURNS TABLE
+AS
+RETURN
+(
+	SELECT *
+	FROM dbo.customer
+	WHERE customer_id = @customer_id
+);
+GO
 
 --3.2.4.3. Bảng staff 
 --Tìm kiếm id của staff theo username
@@ -235,7 +248,7 @@ BEGIN
  
 	RETURN @result;
 END;
-
+go
 -- 3.2.4.9. Hàm lấy thông tin bill của phòng đang tìm.
 CREATE FUNCTION fn_GetBillInfoByRoomId
 (
@@ -248,7 +261,7 @@ RETURN
     SELECT bill.*
     FROM bill
     INNER JOIN booking_record b ON b.customer_id = bill.customer_id
-    WHERE b.room_id = @roomId
+    WHERE b.room_id = @room_id
   	AND b.actual_check_out_time IS NULL
   	AND bill.created_at IS NULL
 );
@@ -369,7 +382,7 @@ RETURN
     LEFT JOIN
     	service_usage_record sur ON s.service_id = sur.service_id
     WHERE
-    	sur.booking_id = @bookingRecordId
+    	sur.booking_id = @booking_record_id
     GROUP BY
     	s.service_id, s.service_name, s.price
 );
@@ -458,7 +471,7 @@ RETURN
     LEFT JOIN 
         service_usage_record sur ON s.service_id = sur.service_id
     WHERE 
-        sur.booking_id = @bookingRecordId
+        sur.booking_id = @booking_record_id
     GROUP BY 
         s.service_id, s.service_name, s.price
 );

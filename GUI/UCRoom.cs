@@ -127,9 +127,12 @@ namespace HotelManagementSystem {
             if(managerId != null) {
                 Room room = new Room(txtRoomId.Text.Trim(), txtRoomName.Text.Trim(), "", roomTypeId, managerId);
                 int res = roomDAO.AddRoom(room);
-                if(res == 1) {
+                if (res == 1)
+                {
                     MessageBox.Show("Thêm thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                } else {
+                }
+                else
+                {
                     MessageBox.Show("Thêm thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 EnableInputForAdd(false);

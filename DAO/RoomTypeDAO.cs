@@ -62,7 +62,7 @@ namespace HotelManagementSystem.DAO {
             SqlConnection conn = Connection.GetConnection();
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_DeleteRoomType";
+            cmd.CommandText = "sp_DeleteRoomTypeById";
 
             cmd.Parameters.Add("@type_id", SqlDbType.VarChar).Value = roomTypeId;
 
@@ -70,7 +70,7 @@ namespace HotelManagementSystem.DAO {
             try {
                 conn.Open();
                 if(cmd.ExecuteNonQuery() > 0) {
-                    MessageBox.Show("Xóa loại phòng mới thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             } catch(Exception ex) {
                 MessageBox.Show("Xóa thất bại" + ex, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
