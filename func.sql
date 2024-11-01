@@ -22,7 +22,7 @@ RETURN
 );
 GO
 
---Tìm kiếm theo tên phòng
+--3.2.4.2.Tìm kiếm theo tên phòng
 CREATE FUNCTION fn_SearchRoomByName
 (
 	@room_name NVARCHAR(50)
@@ -42,8 +42,8 @@ RETURN
 );
 GO
 
---3.2.4.2. Bảng customer
--- Tìm customer theo tên
+--3.2.4.3. Bảng customer
+--3.2.4.3 Tìm customer theo tên
 CREATE FUNCTION fn_FindCustomerByName (
 	@full_name VARCHAR(255)
 )
@@ -57,7 +57,7 @@ RETURN
 );
 GO
 
---Tìm customer theo id
+--3.2.4.4 Tìm customer theo id
 CREATE FUNCTION fn_FindCustomerByIDNumber (
  	@id_number VARCHAR(20)
 )
@@ -71,22 +71,9 @@ RETURN
 );
 GO
 
---Tìm kiếm theo mã khách hàng
-CREATE FUNCTION fn_FindCustomer (
-	@customer_id VARCHAR(20)
-)
-RETURNS TABLE
-AS
-RETURN
-(
-	SELECT *
-	FROM dbo.customer
-	WHERE customer_id = @customer_id
-);
-GO
 
---3.2.4.3. Bảng staff 
---Tìm kiếm id của staff theo username
+--3.2.4.5. Bảng staff 
+--3.2.4.5 Tìm kiếm id của staff theo username
 CREATE FUNCTION fn_GetStaffIdByUsername(@username VARCHAR(20))
 RETURNS VARCHAR(20)
 AS
@@ -102,7 +89,7 @@ END;
 GO
 
 
---Tìm kiếm full_name của nhân viên theo username
+--3.2.4.6 Tìm kiếm full_name của nhân viên theo username
 CREATE FUNCTION fn_GetStaffFullNameByUsername(@username VARCHAR(20))
 RETURNS NVARCHAR(255)
 AS
@@ -117,7 +104,7 @@ BEGIN
 END;
 GO
 
--- 3.2.4.4. Tính tổng doanh thu theo ngày 
+-- 3.2.4.7. Tính tổng doanh thu theo ngày 
 CREATE FUNCTION fn_CalculateTotalRevenueByDate
 (
  	@day INT,
@@ -140,7 +127,7 @@ BEGIN
 END;
 GO
 
--- 3.2.4.5. Tính tổng doanh thu theo tháng 
+-- 3.2.4.8. Tính tổng doanh thu theo tháng 
 CREATE FUNCTION fn_GetMonthlyRevenue
 (
    	@month INT,
@@ -167,7 +154,7 @@ BEGIN
 END;
 GO
 
--- 3.2.4.6. Tính tổng doanh thu theo quý
+-- 3.2.4.9. Tính tổng doanh thu theo quý
 CREATE FUNCTION fn_TotalRevenueByQuarter
 (
 	@quarter INT,
@@ -193,7 +180,7 @@ RETURN
 );
 GO
 
--- 3.2.4.7. Tính tổng doanh thu theo năm (ví dụ nhập vào 1 năm và tính tổng các hóa đơn trong năm đó)
+-- 3.2.4.10. Tính tổng doanh thu theo năm (ví dụ nhập vào 1 năm và tính tổng các hóa đơn trong năm đó)
 CREATE FUNCTION fn_TotalRevenueByYear
 (
    	@year INT
@@ -214,7 +201,7 @@ RETURN
 );
 GO
 
--- 3.2.4.8. Kiểm tra login
+-- 3.2.4.11. Kiểm tra login
 CREATE FUNCTION fn_CheckLogin (
 	@username VARCHAR(50),
 	@password VARCHAR(255)
@@ -249,7 +236,7 @@ BEGIN
 	RETURN @result;
 END;
 go
--- 3.2.4.9. Hàm lấy thông tin bill của phòng đang tìm.
+-- 3.2.4.12. Hàm lấy thông tin bill của phòng đang tìm.
 CREATE FUNCTION fn_GetBillInfoByRoomId
 (
     @room_id  VARCHAR(20)
@@ -267,7 +254,7 @@ RETURN
 );
 GO
 
--- 3.2.4.10. Hàm lấy thông tin phiếu đặt phòng
+-- 3.2.4.13. Hàm lấy thông tin phiếu đặt phòng
 CREATE FUNCTION fn_GetBookingRecordByRoomIdToCheckOut
 (
     @room_id  VARCHAR(20)
@@ -304,7 +291,7 @@ RETURN
 );
 GO
 
--- 3.2.4.11. Hàm lấy thông tin phiếu dịch vụ thông qua mã phòng
+-- 3.2.4.14. Hàm lấy thông tin phiếu dịch vụ thông qua mã phòng
 CREATE FUNCTION fn_GetServiceUsageInfoByRoomId
 (
     @roomId  VARCHAR(20)
@@ -320,7 +307,7 @@ RETURN
 );
 GO
 
--- 3.2.4.12. Hàm tìm các phòng đã đặt của 1 khách hàng qua mã định danh
+-- 3.2.4.15. Hàm tìm các phòng đã đặt của 1 khách hàng qua mã định danh
 CREATE FUNCTION fn_GetDepositedRoomsByIdNumber(@id_number VARCHAR(20))
 RETURNS TABLE
 AS
@@ -346,7 +333,7 @@ RETURN
        	c.identification_number = @id_number AND r.status = 'deposited');
 GO
 
--- 3.2.4.13. Hàm lấy thông tin mã phiếu đặt phòng đang được áp dụng qua mã phòng
+-- 3.2.4.16. Hàm lấy thông tin mã phiếu đặt phòng đang được áp dụng qua mã phòng
 CREATE FUNCTION fn_GetBookingRecordIdByRoomIdCustomerId(
     @room_id VARCHAR(20)
 )
@@ -365,7 +352,7 @@ BEGIN
 END;
 GO
 
--- 3.2.4.14. Lấy ra tên staff theo username
+-- 3.2.4.17. Hàm lấy thông tin hóa đơn dịch vụ đã dùng bằng mã phiếu đặt phòng
 CREATE FUNCTION fn_GetServiceUsageByBookingId(@booking_record_id VARCHAR(20))
 RETURNS TABLE
 AS
@@ -388,7 +375,7 @@ RETURN
 );
 GO 
 
--- 3.2.4.15. Hàm lấy hóa đơn phòng theo mã phiếu đặt phòng.
+-- 3.2.4.18. Hàm lấy hóa đơn phòng theo mã phiếu đặt phòng.
 CREATE FUNCTION fn_GetRoomBillByBookingRecordId
 (
     @booking_record_id VARCHAR(20)
@@ -414,7 +401,7 @@ RETURN
 )
 GO
 
--- 3.2.4.16. Hàm lấy mã hóa đơn thông qua mã khách.	
+-- 3.2.4.19. Hàm lấy mã hóa đơn thông qua mã khách.	
 CREATE FUNCTION fn_GetBillIDByCustomerID
 (
     @customer_id VARCHAR(20)
@@ -428,7 +415,7 @@ return (
 );
 GO
 
--- 3.2.4.17. Tìm hóa đơn phòng bằng tên phòng
+-- 3.2.4.20. Tìm hóa đơn phòng bằng tên phòng
 CREATE FUNCTION fn_GetRoomBillByRoomId
 (
     @room_id VARCHAR(20)
@@ -454,7 +441,7 @@ RETURN
 );
 GO
 
--- 3.2.4.18. Hiện hóa đơn dịch vụ đã dùng bằng booking record id
+-- 3.2.4.21. Hiện hóa đơn dịch vụ đã dùng bằng booking record id
 CREATE FUNCTION fn_GetServiceUsageByBookingId(@booking_record_id VARCHAR(20))
 RETURNS TABLE
 AS
@@ -477,7 +464,7 @@ RETURN
 );
 GO
 
--- 3.2.4.19. Hiện hóa đơn phòng theo booking_record_id
+-- 3.2.4.22. Hiện hóa đơn phòng theo booking_record_id
 CREATE FUNCTION fn_GetRoomBillByBookingRecordId
 (
     @booking_record_id VARCHAR(20)
@@ -503,7 +490,7 @@ RETURN
 );
 GO
 
--- 3.2.4.20. Tính tổng tiền dịch vụ
+-- 3.2.4.23. Tính tổng tiền dịch vụ
 CREATE FUNCTION fn_GetTotalServiceCost
 (
     @booking_id VARCHAR(20)
