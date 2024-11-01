@@ -180,8 +180,7 @@ BEGIN
 		@check_in DATE,
         @check_out DATE,
         @days_stayed INT,
-		@billId VARCHAR(20),
-		@substr VARCHAR(20); 
+		@billId VARCHAR(20)
 		
 	SELECT
     	@cus = i.customer_id,
@@ -196,7 +195,7 @@ BEGIN
 	-- Tính số ngày ở
     SET @days_stayed = DATEDIFF(DAY, @check_in, @check_out);
 		-- Lấy chi phí mỗi ngày cho loại phòng
-	IF @days_stayed < 1
+	IF @check_in = @check_out
 BEGIN
     SET @days_stayed = 1;
 END
@@ -206,7 +205,6 @@ END
     	room_type rt
 	WHERE
     	rt.room_type_id = @room_type;
-	SET @substr = SUBSTRING(CONVERT(VARCHAR(36), NEWID()), 1, 3);
 	SET @billId = @staff+@cus;
 	declare @total int;
 	set @total = @room_fee * @days_stayed;

@@ -227,7 +227,7 @@ END;
 GO
 
 --3.2.2.4. Bảng booking_record
-CREATE PROCEDURE sp_UpdateBookingRecord(@booking_record_id VARCHAR(20))
+CREATE OR ALTER PROCEDURE sp_UpdateBookingRecord(@booking_record_id VARCHAR(20))
 AS
 BEGIN
    	BEGIN TRY
