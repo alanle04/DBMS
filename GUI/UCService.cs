@@ -89,7 +89,7 @@ namespace HotelManagementSystem {
 
             try {
                 int.Parse(txtPrice.Text.Trim());
-            } catch(Exception ex) {
+            } catch {
                 MessageBox.Show("Giá chỉ bao gồm các con số !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }

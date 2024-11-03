@@ -2,7 +2,7 @@ use hotel_management;
 go
 -- 3.2.1. Thủ tục thêm dữ liệu các bảng
 -- 3.2.1.1. Bảng room_type
-CREATE PROC sp_AddRoomType
+CREATE OR ALTER PROC sp_AddRoomType
     @room_type_id VARCHAR(20),
     @room_type_name NVARCHAR(50),
     @number_of_bed INT,
@@ -20,6 +20,7 @@ BEGIN
     END TRY
     BEGIN CATCH
        ROLLBACK TRANSACTION;
+	   THROW;
     END CATCH
 END;
 GO
@@ -115,7 +116,7 @@ END;
 GO
 
 --3.2.1.6 Bảng booking _record
-CREATE PROCEDURE sp_AddBookingRecord
+CREATE OR ALTER PROCEDURE sp_AddBookingRecord
     @booking_record_id VARCHAR(20),
     @booking_time DATETIME,
     @status NVARCHAR(255),
@@ -136,6 +137,7 @@ BEGIN
     END TRY
     BEGIN CATCH
        ROLLBACK TRANSACTION;
+	   THROW;
     END CATCH
 END;
 GO
@@ -381,12 +383,25 @@ END;
 GO
 
 --3.2.3.3. Bảng service
-CREATE PROCEDURE sp_DeleteServiceById
+CREATE OR ALTER PROCEDURE sp_DeleteServiceById
     @service_id VARCHAR(20)
 AS
 BEGIN
-       DELETE FROM service
-       WHERE service_id = @service_id;
+       BEGIN TRY
+        BEGIN TRANSACTION;
+
+        DELETE FROM service
+        WHERE service_id = @service_id;
+
+		DELETE FROM service_usage_record
+        WHERE service_id = @service_id;
+		
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+        THROW; 
+    END CATCH
 END;
 GO
 

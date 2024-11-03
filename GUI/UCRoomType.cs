@@ -80,8 +80,6 @@ namespace HotelManagementSystem.GUI {
 
             // Lấy giá trị staff_id từ DataRowView
             String managerId = selectedManager["staff_id"].ToString();
-            MessageBox.Show(managerId);
-
 
             RoomTypeDAO.AddRoomType(roomTypeId, roomTypeName, numberOfBeds, capacity, costPerDay, managerId);
 

@@ -37,30 +37,46 @@ END
 GO
 
 -- 2.6.3. Trigger kiểm tra khách hàng thuê phòng trùng với thời gian phòng được đặt trước thì không được thuê
-CREATE TRIGGER trg_PreventDoubleBooking
+CREATE OR ALTER TRIGGER trg_PreventDoubleBooking
 ON booking_record
-AFTER INSERT, UPDATE
+INSTEAD OF INSERT
 AS
 BEGIN
-    IF EXISTS (
-          	SELECT 1
-          	FROM booking_record br
-          	INNER JOIN inserted i ON br.room_id = i.room_id
-          	WHERE
-          	br.booking_record_id <> i.booking_record_id
-          	AND
-                 	((i.expected_check_in_time BETWEEN br.expected_check_in_time AND br.expected_check_out_time)
-                 	OR
-                 	(i.expected_check_out_time BETWEEN br.expected_check_in_time AND br.expected_check_out_time)
-        	OR
-                 	(i.expected_check_in_time <= br.expected_check_in_time AND i.expected_check_out_time >= br.expected_check_out_time))
+   -- Kiểm tra xem có bản ghi trùng lặp không
+    IF NOT EXISTS (
+        SELECT 1
+        FROM booking_record br
+        INNER JOIN inserted i ON br.room_id = i.room_id
+        WHERE 
+
+            (CAST(i.expected_check_in_time AS DATE) BETWEEN CAST(br.expected_check_in_time AS DATE) AND CAST(br.expected_check_out_time AS DATE))
+            OR
+            (CAST(i.expected_check_out_time AS DATE) BETWEEN CAST(br.expected_check_in_time AS DATE) AND CAST(br.expected_check_out_time AS DATE))
+            
+            OR
+            (CAST(br.expected_check_in_time AS DATE) BETWEEN CAST(i.expected_check_in_time AS DATE) AND CAST(i.expected_check_out_time AS DATE))
+            OR
+            (CAST(br.expected_check_out_time AS DATE) BETWEEN CAST(i.expected_check_in_time AS DATE) AND CAST(i.expected_check_out_time AS DATE))
     )
-   	BEGIN
-   	RAISERROR ('Phòng đang có người ở !', 16, 1);
-   	ROLLBACK TRANSACTION;
-    END;
+    BEGIN
+        -- Nếu không có bản ghi trùng, cho phép thêm vào bảng booking_record
+        INSERT INTO booking_record (booking_record_id, booking_time, [status], expected_check_in_time, expected_check_out_time, actual_check_in_time, actual_check_out_time,receptionist_id, customer_id,room_id)
+        SELECT  booking_record_id, booking_time, [status], expected_check_in_time, expected_check_out_time, actual_check_in_time, actual_check_out_time,receptionist_id, customer_id,room_id
+        FROM inserted;
+    END
+    ELSE
+    BEGIN
+        -- Nếu có bản ghi trùng, báo lỗi
+        RAISERROR ('Phòng đã được đặt trước trong khoảng thời gian này!', 16, 1);
+    END
 END;
 GO
+
+INSERT INTO booking_record 
+    (booking_record_id, booking_time, status, expected_check_in_time, expected_check_out_time, actual_check_in_time, actual_check_out_time, receptionist_id, customer_id, room_id)
+VALUES 
+    ('ab037-8', '2024-11-03 17:08:38.573', 'deposited', '2024-11-05 17:08:09.000', '2024-11-06 17:08:09.000', NULL, NULL, '2', 'abd6755c-0377-4cc5-8', '102');
+
 
 --2.6.4. Trigger cập nhật chi phí khách hàng check in sớm vào hóa đơn (bill)
 CREATE TRIGGER trg_UpdateEarlyCheckInFee
