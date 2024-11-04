@@ -65,6 +65,7 @@ BEGIN
        COMMIT TRANSACTION;
     END TRY
     BEGIN CATCH
+       Raiserror('Mã phòng bị trùng',16,1)
        ROLLBACK TRANSACTION;
     END CATCH
 END;
