@@ -43,20 +43,22 @@ INSTEAD OF INSERT
 AS
 BEGIN
    -- Kiểm tra xem có bản ghi trùng lặp không
-    IF NOT EXISTS (
+    IF NOT EXISTS(
         SELECT 1
         FROM booking_record br
         INNER JOIN inserted i ON br.room_id = i.room_id
         WHERE 
 
-            (CAST(i.expected_check_in_time AS DATE) BETWEEN CAST(br.expected_check_in_time AS DATE) AND CAST(br.expected_check_out_time AS DATE))
+            ((CAST(i.expected_check_in_time AS DATE) BETWEEN CAST(br.expected_check_in_time AS DATE) AND CAST(br.expected_check_out_time AS DATE))
             OR
             (CAST(i.expected_check_out_time AS DATE) BETWEEN CAST(br.expected_check_in_time AS DATE) AND CAST(br.expected_check_out_time AS DATE))
             
             OR
             (CAST(br.expected_check_in_time AS DATE) BETWEEN CAST(i.expected_check_in_time AS DATE) AND CAST(i.expected_check_out_time AS DATE))
             OR
-            (CAST(br.expected_check_out_time AS DATE) BETWEEN CAST(i.expected_check_in_time AS DATE) AND CAST(i.expected_check_out_time AS DATE))
+            (CAST(br.expected_check_out_time AS DATE) BETWEEN CAST(i.expected_check_in_time AS DATE) AND CAST(i.expected_check_out_time AS DATE)))
+			and (br.[status] not like 'paid' )
+
     )
     BEGIN
         -- Nếu không có bản ghi trùng, cho phép thêm vào bảng booking_record
