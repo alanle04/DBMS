@@ -389,7 +389,12 @@ RETURN
     	rt.cost_per_day,
     	br.expected_check_in_time,
     	br.expected_check_out_time,
-    	DATEDIFF(DAY, br.expected_check_in_time, br.expected_check_out_time) * rt.cost_per_day AS total
+		case
+		when datediff(day,br.expected_check_in_time,br.expected_check_out_time) = 0
+		then 1 *rt.cost_per_day
+		else
+    		datediff(day,br.expected_check_in_time,br.expected_check_out_time) * rt.cost_per_day
+		end as total
     FROM
     	booking_record br
     JOIN
