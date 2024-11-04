@@ -47,6 +47,7 @@ BEGIN
         SELECT 1
         FROM booking_record br
         INNER JOIN inserted i ON br.room_id = i.room_id
+		join room r on r.room_id= br.room_id
         WHERE 
 
             ((CAST(i.expected_check_in_time AS DATE) BETWEEN CAST(br.expected_check_in_time AS DATE) AND CAST(br.expected_check_out_time AS DATE))
@@ -57,7 +58,7 @@ BEGIN
             (CAST(br.expected_check_in_time AS DATE) BETWEEN CAST(i.expected_check_in_time AS DATE) AND CAST(i.expected_check_out_time AS DATE))
             OR
             (CAST(br.expected_check_out_time AS DATE) BETWEEN CAST(i.expected_check_in_time AS DATE) AND CAST(i.expected_check_out_time AS DATE)))
-			and (br.[status] not like 'paid' )
+			and (r.[status] != 'available'  )
 
     )
     BEGIN
