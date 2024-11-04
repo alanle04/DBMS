@@ -274,7 +274,7 @@ BEGIN
     COMMIT TRANSACTION;
 END;	
 go
---3.2.2.5 Bảng bill
+--3.2.2.6 Bảng bill
 CREATE OR ALTER PROCEDURE sp_UpdatePaymentMethod
     @bill_id VARCHAR(20),      	
     @payMethod VARCHAR(50) 
