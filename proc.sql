@@ -275,7 +275,7 @@ BEGIN
 END;	
 go
 --3.2.2.5 Bảng bill
-CREATE PROCEDURE sp_UpdatePaymentMethod
+CREATE OR ALTER PROCEDURE sp_UpdatePaymentMethod
     @bill_id VARCHAR(20),      	
     @payMethod VARCHAR(50) 
 AS
@@ -283,13 +283,19 @@ BEGIN
  
     BEGIN TRANSACTION;
     BEGIN TRY
+	if @payMethod ='/' 
+		Raiserror('Phương thức thanh toán chưa được điền',16,1);
+	else
+	begin
     	UPDATE bill
     	SET payment_method = @payMethod
     	WHERE bill_id = @bill_id;
     	COMMIT TRANSACTION;
+	end
     END TRY
     BEGIN CATCH
-    	    	ROLLBACK TRANSACTION;
+	
+    	ROLLBACK TRANSACTION;
     	THROW;
     END CATCH
 END;
