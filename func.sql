@@ -58,7 +58,7 @@ RETURN
 GO
 
 --3.2.4.4 Tìm customer theo id
-CREATE FUNCTION fn_FindCustomerByIDNumber (
+CREATE FUNCTION fn_FindCustomer (
  	@id_number VARCHAR(20)
 )
 RETURNS TABLE
@@ -67,7 +67,7 @@ RETURN
 (
  	SELECT *
  	FROM dbo.customer
- 	WHERE identification_number = @id_number
+ 	WHERE customer_id = @id_number
 );
 GO
 
