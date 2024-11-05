@@ -192,7 +192,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1942, 55);
+            this.panel1.Size = new System.Drawing.Size(2010, 55);
             this.panel1.TabIndex = 2;
             // 
             // label1
@@ -223,14 +223,14 @@
             this.panelMain.Location = new System.Drawing.Point(333, 55);
             this.panelMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1585, 914);
+            this.panelMain.Size = new System.Drawing.Size(1650, 914);
             this.panelMain.TabIndex = 4;
             // 
             // FReceptionist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1942, 999);
+            this.ClientSize = new System.Drawing.Size(2010, 999);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

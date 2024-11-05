@@ -69,6 +69,7 @@ namespace HotelManagementSystem {
             if(result == DialogResult.Yes) {
                 try {
                     BookingRecordDAO.UpdateBookingRecordStatus(bookingRecordId);
+                    BookingRecordDAO.UpdateEarlyCheckInFee(bookingRecordId);
                     MessageBox.Show("Nhận phòng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadData();
                 } catch(Exception ex) {

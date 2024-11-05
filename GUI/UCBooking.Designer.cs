@@ -226,7 +226,11 @@
             this.dgvListRoom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvListRoom.Name = "dgvListRoom";
             this.dgvListRoom.RowHeadersWidth = 51;
+<<<<<<< HEAD
             this.dgvListRoom.Size = new System.Drawing.Size(1053, 420);
+=======
+            this.dgvListRoom.Size = new System.Drawing.Size(983, 420);
+>>>>>>> b08674dd6179d6f75075f0bbee4ceee32e632008
             this.dgvListRoom.TabIndex = 3;
             this.dgvListRoom.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListRoom_CellClick);
             // 
