@@ -412,3 +412,133 @@ BEGIN
 END;
 GO
 
+--- proc tính phụ thu khi khách check in sớm.
+CREATE OR ALTER PROC sp_UpdateEarlyCheckInFee
+(
+	@booking_record_id VARCHAR(20)
+)
+AS
+BEGIN
+		BEGIN TRY
+				BEGIN TRANSACTION;
+
+				DECLARE @actual_check_in_time DATETIME;
+				DECLARE @expected_check_in DATETIME;
+				DECLARE @additional_fee INT = 0;
+				DECLARE @additional_fee_content NVARCHAR(MAX);
+				DECLARE @customer_id VARCHAR(20);
+				DECLARE @room_id VARCHAR(20);
+
+				SELECT @actual_check_in_time = actual_check_in_time,
+				@expected_check_in = expected_check_in_time,
+				@customer_id = customer_id,
+				@room_id = room_id
+				FROM booking_record
+				WHERE booking_record.booking_record_id = @booking_record_id;
+
+				IF @actual_check_in_time IS NOT NULL
+				BEGIN
+					DECLARE @cost_per_day INT;
+					SELECT @cost_per_day = rt.cost_per_day
+					FROM room r
+					JOIN room_type rt ON r.room_type_id = rt.room_type_id
+					WHERE r.room_id = @room_id;
+
+					IF CONVERT(DATE, @actual_check_in_time) < CONVERT(DATE, @expected_check_in)
+							
+							SET @additional_fee = @cost_per_day;
+					
+					ELSE IF CAST(@actual_check_in_time AS time) < '7:00'
+
+							SET @additional_fee = @cost_per_day * 0.70;
+
+					ELSE IF CAST(@actual_check_in_time AS time) BETWEEN '7:00' AND '9:00'
+
+							SET @additional_fee = @cost_per_day * 0.5;
+
+					ELSE IF CAST(@actual_check_in_time AS TIME) BETWEEN '09:00' AND '11:59'
+           
+							SET @additional_fee = @cost_per_day * 0.30;
+				END
+
+				IF @additional_fee > 0
+						BEGIN
+								SET @additional_fee_content = 'Phí check in sớm.';
+								UPDATE bill 
+								SET 	additional_fee = COALESCE(additional_fee, 0) + @additional_fee,
+										additional_fee_content = COALESCE(additional_fee_content, '') + @additional_fee_content,
+										total = total + @additional_fee
+								WHERE customer_id = @customer_id;
+						END
+				COMMIT TRANSACTION;
+				END TRY
+				BEGIN CATCH 
+						ROLLBACK TRANSACTION;
+				END CATCH
+END
+GO
+
+--- proc tính phụ thu khi khách check out trễ.
+CREATE OR ALTER PROC sp_UpdateOverCheckOut
+(
+	@booking_record_id VARCHAR(20)
+)
+AS
+BEGIN
+		BEGIN TRY
+				BEGIN TRANSACTION;
+
+				DECLARE @actual_check_out_time DATETIME;
+				DECLARE @expected_check_out DATETIME;
+				DECLARE @additional_fee INT = 0;
+				DECLARE @additional_fee_content NVARCHAR(MAX);
+				DECLARE @customer_id VARCHAR(20);
+				DECLARE @room_id VARCHAR(20);
+
+				SELECT @actual_check_out_time = actual_check_out_time,
+				@expected_check_out = expected_check_out_time,
+				@customer_id = customer_id,
+				@room_id = room_id
+				FROM booking_record
+				WHERE booking_record.booking_record_id = @booking_record_id;
+
+				IF @actual_check_out_time IS NOT NULL
+				BEGIN
+					DECLARE @cost_per_day INT;
+					SELECT @cost_per_day = rt.cost_per_day
+					FROM room r
+					JOIN room_type rt ON r.room_type_id = rt.room_type_id
+					WHERE r.room_id = @room_id;
+
+					IF CONVERT(DATE, @actual_check_out_time) > CONVERT(DATE, @expected_check_out)
+							
+							SET @additional_fee = @cost_per_day;
+					
+					ELSE IF CAST(@actual_check_out_time AS time) > '16:00'
+
+							SET @additional_fee = @cost_per_day * 0.70;
+
+					ELSE IF CAST(@actual_check_out_time AS time) BETWEEN '14:00' AND '16:00'
+
+							SET @additional_fee = @cost_per_day * 0.5;
+
+					ELSE IF CAST(@actual_check_out_time AS TIME) BETWEEN '12:00' AND '13:59'
+           
+							SET @additional_fee = @cost_per_day * 0.30;
+				END
+
+				IF @additional_fee > 0
+						BEGIN
+								SET @additional_fee_content = 'Phí check out tre.';
+								UPDATE bill 
+								SET 	additional_fee = COALESCE(additional_fee, 0) + @additional_fee,
+										additional_fee_content = COALESCE(additional_fee_content, '') + @additional_fee_content,
+										total = total + @additional_fee
+								WHERE customer_id = @customer_id;
+						END
+				COMMIT TRANSACTION;
+				END TRY
+				BEGIN CATCH 
+						ROLLBACK TRANSACTION;
+				END CATCH
+END

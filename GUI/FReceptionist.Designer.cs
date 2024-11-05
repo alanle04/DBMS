@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnCheckOut = new System.Windows.Forms.Button();
             this.btnServiceAndPayment = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnCheckIn = new System.Windows.Forms.Button();
@@ -41,7 +42,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
-            this.btnCheckOut = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -61,10 +61,24 @@
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 55);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(336, 944);
             this.panel2.TabIndex = 3;
+            // 
+            // btnCheckOut
+            // 
+            this.btnCheckOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCheckOut.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheckOut.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCheckOut.Location = new System.Drawing.Point(23, 483);
+            this.btnCheckOut.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCheckOut.Name = "btnCheckOut";
+            this.btnCheckOut.Size = new System.Drawing.Size(288, 49);
+            this.btnCheckOut.TabIndex = 14;
+            this.btnCheckOut.Text = "Trả phòng";
+            this.btnCheckOut.UseVisualStyleBackColor = true;
+            this.btnCheckOut.Click += new System.EventHandler(this.btnCheckOut_Click_1);
             // 
             // btnServiceAndPayment
             // 
@@ -72,7 +86,7 @@
             this.btnServiceAndPayment.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnServiceAndPayment.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnServiceAndPayment.Location = new System.Drawing.Point(20, 412);
-            this.btnServiceAndPayment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnServiceAndPayment.Margin = new System.Windows.Forms.Padding(4);
             this.btnServiceAndPayment.Name = "btnServiceAndPayment";
             this.btnServiceAndPayment.Size = new System.Drawing.Size(288, 49);
             this.btnServiceAndPayment.TabIndex = 12;
@@ -86,7 +100,7 @@
             this.btnLogout.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnLogout.Location = new System.Drawing.Point(23, 865);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(288, 49);
             this.btnLogout.TabIndex = 11;
@@ -100,7 +114,7 @@
             this.btnCheckIn.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckIn.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnCheckIn.Location = new System.Drawing.Point(20, 338);
-            this.btnCheckIn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCheckIn.Margin = new System.Windows.Forms.Padding(4);
             this.btnCheckIn.Name = "btnCheckIn";
             this.btnCheckIn.Size = new System.Drawing.Size(288, 49);
             this.btnCheckIn.TabIndex = 8;
@@ -114,7 +128,7 @@
             this.btnBooking.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBooking.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnBooking.Location = new System.Drawing.Point(20, 265);
-            this.btnBooking.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBooking.Margin = new System.Windows.Forms.Padding(4);
             this.btnBooking.Name = "btnBooking";
             this.btnBooking.Size = new System.Drawing.Size(288, 49);
             this.btnBooking.TabIndex = 7;
@@ -176,9 +190,9 @@
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1942, 55);
+            this.panel1.Size = new System.Drawing.Size(2010, 55);
             this.panel1.TabIndex = 2;
             // 
             // label1
@@ -209,33 +223,19 @@
             this.panelMain.Location = new System.Drawing.Point(333, 55);
             this.panelMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1585, 914);
+            this.panelMain.Size = new System.Drawing.Size(1650, 914);
             this.panelMain.TabIndex = 4;
-            // 
-            // btnCheckOut
-            // 
-            this.btnCheckOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCheckOut.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckOut.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnCheckOut.Location = new System.Drawing.Point(23, 483);
-            this.btnCheckOut.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCheckOut.Name = "btnCheckOut";
-            this.btnCheckOut.Size = new System.Drawing.Size(288, 49);
-            this.btnCheckOut.TabIndex = 14;
-            this.btnCheckOut.Text = "Trả phòng";
-            this.btnCheckOut.UseVisualStyleBackColor = true;
-            this.btnCheckOut.Click += new System.EventHandler(this.btnCheckOut_Click_1);
             // 
             // FReceptionist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1942, 999);
+            this.ClientSize = new System.Drawing.Size(2010, 999);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FReceptionist";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FReceptionist";

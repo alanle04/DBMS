@@ -67,6 +67,8 @@ namespace HotelManagementSystem.GUI {
                                           MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if(result == DialogResult.Yes) {
                 BookingRecordDAO.CheckOutRoom(txtBookingRecordId.Text.Trim());
+                BookingRecordDAO.UpdateOverCheckOutFee(txtBookingRecordId.Text.Trim());
+                LoadData(txtRoomName.Text.Trim());   
             }
         }
 

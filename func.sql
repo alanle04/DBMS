@@ -376,7 +376,7 @@ RETURN
 GO 
 
 -- 3.2.4.18. Hàm lấy hóa đơn phòng theo mã phiếu đặt phòng.
-CREATE FUNCTION fn_GetRoomBillByBookingRecordId
+CREATE OR ALTER FUNCTION fn_GetRoomBillByBookingRecordId
 (
     @booking_record_id VARCHAR(20)
 )
@@ -389,18 +389,15 @@ RETURN
     	rt.cost_per_day,
     	br.expected_check_in_time,
     	br.expected_check_out_time,
-		case
-		when datediff(day,br.expected_check_in_time,br.expected_check_out_time) = 0
-		then 1 *rt.cost_per_day
-		else
-    		datediff(day,br.expected_check_in_time,br.expected_check_out_time) * rt.cost_per_day
-		end as total
+		b.total
     FROM
     	booking_record br
     JOIN
     	room r ON br.room_id = r.room_id
     JOIN
     	room_type rt ON r.room_type_id = rt.room_type_id
+	JOIN 
+		bill b ON br.customer_id =b.customer_id
     WHERE
     	br.booking_record_id = @booking_record_id
 )
@@ -443,55 +440,6 @@ RETURN
         room_type rt ON r.room_type_id = rt.room_type_id
     WHERE 
         r.room_id = @room_id
-);
-GO
-
--- 3.2.4.21. Hiện hóa đơn dịch vụ đã dùng bằng booking record id
-CREATE FUNCTION fn_GetServiceUsageByBookingId(@booking_record_id VARCHAR(20))
-RETURNS TABLE
-AS
-RETURN
-(
-    SELECT 
-        s.service_id,
-        s.service_name,
-        s.price,
-        SUM(sur.quantity) AS quantity,
-        SUM(sur.quantity * s.price) AS total
-    FROM 
-        service s
-    LEFT JOIN 
-        service_usage_record sur ON s.service_id = sur.service_id
-    WHERE 
-        sur.booking_id = @booking_record_id
-    GROUP BY 
-        s.service_id, s.service_name, s.price
-);
-GO
-
--- 3.2.4.22. Hiện hóa đơn phòng theo booking_record_id
-CREATE FUNCTION fn_GetRoomBillByBookingRecordId
-(
-    @booking_record_id VARCHAR(20)
-)
-RETURNS TABLE 
-AS
-RETURN
-(
-    SELECT 
-        r.room_name,
-        rt.cost_per_day,
-        br.expected_check_in_time,
-        br.expected_check_out_time,
-        DATEDIFF(DAY, br.expected_check_in_time, br.expected_check_out_time) * rt.cost_per_day AS total
-    FROM 
-        booking_record br
-    JOIN 
-        room r ON br.room_id = r.room_id
-    JOIN 
-        room_type rt ON r.room_type_id = rt.room_type_id
-    WHERE 
-        br.booking_record_id = @booking_record_id
 );
 GO
 

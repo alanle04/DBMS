@@ -197,5 +197,49 @@ namespace HotelManagementSystem.DAO {
             }
             return billid;
         }
+
+        public static void UpdateEarlyCheckInFee(string booking_record_id)
+        {
+            SqlConnection conn = DBConnection.Connection.GetConnection();
+            SqlCommand sqlCommand= conn.CreateCommand();
+            sqlCommand.CommandType = CommandType.StoredProcedure;
+            sqlCommand.CommandText = "sp_UpdateEarlyCheckInFee";
+            sqlCommand.Parameters.Add("@booking_record_id", SqlDbType.VarChar).Value = booking_record_id;
+            try
+            {
+                conn.Open();
+                sqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Tính phụ thu không hoàn thành. Mời xem lại: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static void UpdateOverCheckOutFee(string booking_record_id)
+        {
+            SqlConnection conn = DBConnection.Connection.GetConnection();
+            SqlCommand sqlCommand = conn.CreateCommand();
+            sqlCommand.CommandType = CommandType.StoredProcedure;
+            sqlCommand.CommandText = "sp_UpdateOverCheckOut";
+            sqlCommand.Parameters.Add("@booking_record_id", SqlDbType.VarChar).Value = booking_record_id;
+            try
+            {
+                conn.Open();
+                sqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Tính phụ thu không hoàn thành. Mời xem lại: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }

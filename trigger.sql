@@ -75,43 +75,6 @@ BEGIN
 END;
 GO
 
-INSERT INTO booking_record 
-    (booking_record_id, booking_time, status, expected_check_in_time, expected_check_out_time, actual_check_in_time, actual_check_out_time, receptionist_id, customer_id, room_id)
-VALUES 
-    ('ab037-8', '2024-11-03 17:08:38.573', 'deposited', '2024-11-05 17:08:09.000', '2024-11-06 17:08:09.000', NULL, NULL, '2', 'abd6755c-0377-4cc5-8', '102');
-
-
---2.6.4. Trigger cập nhật chi phí khách hàng check in sớm vào hóa đơn (bill)
-CREATE TRIGGER trg_UpdateEarlyCheckInFee
-ON booking_record
-AFTER INSERT, UPDATE
-AS
-BEGIN
-    UPDATE b
-    SET
-       additional_fee = COALESCE(b.additional_fee, 0) +
-    	  	CASE
-        	WHEN CAST(i.actual_check_in_time AS TIME) < '12:00'
-       	   THEN rt.cost_per_day  -- 100% giá phòng
-      		WHEN CAST(i.actual_check_in_time AS TIME) BETWEEN '07:00' AND '09:00'
-            	 	THEN rt.cost_per_day * 0.50  -- 50% giá phòng
-        	WHEN CAST(i.actual_check_in_time AS TIME) BETWEEN '09:00' AND '11:59'
-            	 	THEN rt.cost_per_day * 0.30  -- 30% giá phòng
-      		ELSE 0  -- Không thêm phí nếu check-in sau 12:00
-    	  	END,
-       additional_fee_content =
-    	  	CASE
-        	  WHEN CAST(i.actual_check_in_time AS TIME) < '12:00'
-            	 	THEN COALESCE(CAST(b.additional_fee_content AS VARCHAR(MAX)), '') + 'Phí check in sớm.' + CHAR(10)
-        	  ELSE b.additional_fee_content
-    	  	END
-    FROM inserted i
-    JOIN room r ON r.room_id = i.room_id
-    JOIN room_type rt ON r.room_type_id = rt.room_type_id
-    JOIN bill b ON b.customer_id = i.customer_id
-    WHERE i.actual_check_in_time < i.expected_check_in_time;
-END;
-GO
 
 --2.6.5. Trigger cập nhật khi sử dụng dịch vụ tính thêm chi phí vào hóa đơn
 CREATE TRIGGER trg_UpdateBillOnServiceUsage
@@ -151,39 +114,6 @@ FROM service_usage_record sur
 END;
 GO
 
--- 2.6.6. Trigger cập nhật chi phí khách hàng check out trễ vào hóa đơn
-CREATE TRIGGER trg_OverCheckOut
-ON bill
-AFTER INSERT, UPDATE
-AS
-BEGIN
-    -- Chỉ thực thi nếu tồn tại bản ghi trong Inserted
-    IF EXISTS (SELECT 1 FROM Inserted)
-    BEGIN
-    	-- Cập nhật hóa đơn với phí bổ sung dựa trên thời gian checkout
-    	UPDATE b
-    	SET
-        	b.additional_fee = CASE
-            	-- 30% phụ phí nếu checkout giữa 12:00 và 15:00
-            	WHEN CAST(i.created_at AS TIME) BETWEEN '12:00' AND '15:00' THEN i.room_fee * 0.30
-            	-- 50% phụ phí nếu checkout giữa 15:00 và 18:00
-            	WHEN CAST(i.created_at AS TIME) BETWEEN '15:00' AND '18:00' THEN i.room_fee * 0.50
-            	-- 100% phụ phí nếu checkout sau 18:00
-            	WHEN CAST(i.created_at AS TIME) > '18:00' THEN i.room_fee * 1.00
-            	ELSE 0 -- Không có phụ phí nếu checkout trước 12:00
-        	END,
-        	-- Cập nhật tổng phí bao gồm phụ phí
-        	b.total = i.room_fee + i.service_fee + CASE
-            	WHEN CAST(i.created_at AS TIME) BETWEEN '12:00' AND '15:00' THEN i.room_fee * 0.30
-            	WHEN CAST(i.created_at AS TIME) BETWEEN '15:00' AND '18:00' THEN i.room_fee * 0.50
-            	WHEN CAST(i.created_at AS TIME) > '18:00' THEN i.room_fee * 1.00
-            	ELSE 0
-        	END
-    	FROM bill b
-    	INNER JOIN Inserted i ON b.bill_id = i.bill_id;
-    END
-END;
-GO
 
 --2.6.7. Trigger tạo hóa đơn khi phiếu đặt phòng (booking_record) được tạo
 CREATE OR ALTER TRIGGER trg_CreateBill
