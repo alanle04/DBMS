@@ -51,13 +51,20 @@ SELECT
 	b.total,
 	b.payment_method,
 	c.full_name AS customer_name,
-	s.full_name AS staff_name
+	s.full_name AS staff_name,
+	br.room_id,
+	br.expected_check_in_time,
+	br.expected_check_out_time,
+	br.actual_check_in_time,
+	br.actual_check_out_time
 FROM
 	bill b
 LEFT JOIN
 	staff s ON b.receptionist_id = s.staff_id
 LEFT JOIN
-   	customer c ON b.customer_id = c.customer_id;
+   	customer c ON b.customer_id = c.customer_id
+join
+	booking_record br on br.customer_id= c.customer_id
 GO
 
 --2.7.4. View xem chi tiết các dịch vụ mà khách hàng đã dùng
