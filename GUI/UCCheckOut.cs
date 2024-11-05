@@ -2,6 +2,7 @@
 using HotelManagementSystem.Model;
 using System;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace HotelManagementSystem.GUI {
     public partial class UCCheckOut : UserControl {
@@ -50,12 +51,13 @@ namespace HotelManagementSystem.GUI {
 
         private void btnSearch_Click(object sender, EventArgs e) {
             string roomName = txtSearchRoomName.Text;
-
+            Room room = null;
             if(IsEmpty(roomName)) {
                 MessageBox.Show("Vui lòng nhập tên phòng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             try {
+             
                 LoadData(roomName);
             } catch(Exception ex) {
                 MessageBox.Show("Đã xảy ra lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -75,9 +77,26 @@ namespace HotelManagementSystem.GUI {
             BookingRecord bookingRecord = bookingRecordDAO.GetBookingRecordByRoomIdToCheckOut(room.RoomId);
             Customer customer = customerDAO.FindCustomerByCustomerId(bookingRecord.CustomerId);
             string billid = BookingRecordDAO.GetBillIdByCustomerId(customer.CustomerId);
-            string payMethod = cbPaymentMethod.SelectedItem.ToString();
+            string payMethod = "/";
+            if (cbPaymentMethod.SelectedItem != null)
+            {
+                payMethod = cbPaymentMethod.SelectedItem.ToString();
+            }
             BookingRecordDAO.AddPayMethod(billid, payMethod);
-            BookingRecordDAO.UpdateStatusRoomBookingRecordAfterPay(txtBookingRecordId.Text.Trim());
+            if (cbPaymentMethod.SelectedItem != null)
+            {
+                BookingRecordDAO.UpdateStatusRoomBookingRecordAfterPay(txtBookingRecordId.Text.Trim());
+            }
+        }
+
+        private void dgvRoomBill_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvServiceBill_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

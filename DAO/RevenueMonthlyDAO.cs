@@ -10,7 +10,7 @@ namespace HotelManagementSystem.DAO {
             using(SqlConnection connection = Connection.GetConnection()) {
                 connection.Open();
 
-                string query = "SELECT day, total FROM dbo.fn_GetDailyRevenue(@month, @year)";
+                string query = "SELECT day, total FROM dbo.fn_GetMonthlyRevenue(@month, @year)";
 
 
                 using(SqlCommand command = new SqlCommand(query, connection)) {

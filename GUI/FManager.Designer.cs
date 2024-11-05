@@ -291,6 +291,7 @@ namespace HotelManagementSystem
             this.Name = "FManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FManager";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FManager_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

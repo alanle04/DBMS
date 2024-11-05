@@ -6,17 +6,22 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace HotelManagementSystem.DAO {
-    public class RoomDAO {
-        public static DataTable GetAllRooms() {
+    public class RoomDAO
+    {
+        public static DataTable GetAllRooms()
+        {
             DataTable dt = new DataTable();
 
-            using(SqlConnection connection = Connection.GetConnection()) {
+            using (SqlConnection connection = Connection.GetConnection())
+            {
                 connection.Open();
 
                 string query = "SELECT * FROM dbo.vw_RoomList";
 
-                using(SqlCommand command = new SqlCommand(query, connection)) {
-                    using(SqlDataAdapter adapter = new SqlDataAdapter(command)) {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
                         adapter.Fill(dt);
                     }
                 }
@@ -26,16 +31,20 @@ namespace HotelManagementSystem.DAO {
 
         }
 
-        public static DataTable GetDepositedRooms() {
+        public static DataTable GetDepositedRooms()
+        {
             DataTable dt = new DataTable();
 
-            using(SqlConnection connection = Connection.GetConnection()) {
+            using (SqlConnection connection = Connection.GetConnection())
+            {
                 connection.Open();
 
                 string query = "SELECT * FROM dbo.vw_CheckInRooms";
 
-                using(SqlCommand command = new SqlCommand(query, connection)) {
-                    using(SqlDataAdapter adapter = new SqlDataAdapter(command)) {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
                         adapter.Fill(dt);
                     }
                 }
@@ -45,17 +54,21 @@ namespace HotelManagementSystem.DAO {
 
         }
 
-        public static DataTable GetDepositedRoomsByIdNumber(string idNumber) {
+        public static DataTable GetDepositedRoomsByIdNumber(string idNumber)
+        {
             DataTable dt = new DataTable();
 
-            using(SqlConnection connection = Connection.GetConnection()) {
+            using (SqlConnection connection = Connection.GetConnection())
+            {
                 connection.Open();
 
                 string query = "SELECT * FROM dbo.fn_GetDepositedRoomsByIdNumber(@id_number)";
 
-                using(SqlCommand command = new SqlCommand(query, connection)) {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
                     command.Parameters.Add("@id_number", SqlDbType.VarChar).Value = idNumber;
-                    using(SqlDataAdapter adapter = new SqlDataAdapter(command)) {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
                         adapter.Fill(dt);
                     }
                 }
@@ -64,18 +77,22 @@ namespace HotelManagementSystem.DAO {
             return dt;
 
         }
-        public static DataTable FindRoomsByRoomType(string roomTypeName) {
+        public static DataTable FindRoomsByRoomType(string roomTypeName)
+        {
             DataTable dt = new DataTable();
 
-            using(SqlConnection connection = Connection.GetConnection()) {
+            using (SqlConnection connection = Connection.GetConnection())
+            {
                 connection.Open();
 
                 string query = "SELECT * FROM dbo.vw_AvailableRooms WHERE room_type_name = @room_type_name";
 
-                using(SqlCommand command = new SqlCommand(query, connection)) {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
                     command.Parameters.AddWithValue("@room_type_name", roomTypeName);
 
-                    using(SqlDataAdapter adapter = new SqlDataAdapter(command)) {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
                         adapter.Fill(dt);
                     }
                 }
@@ -84,43 +101,10 @@ namespace HotelManagementSystem.DAO {
             return dt;
         }
 
-        public Room GetRoomById(string roomId) {
-            Room room = null;
+       
 
-            using(SqlConnection connection = DBConnection.Connection.GetConnection()) {
-                connection.Open();
-
-                using(SqlCommand cmd = connection.CreateCommand()) {
-                    cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "SELECT * FROM fn_SearchRoomById(@room_id)";
-                    cmd.Parameters.Add("@room_id", SqlDbType.VarChar).Value = roomId;
-
-                    try {
-                        using(SqlDataReader reader = cmd.ExecuteReader()) {
-                            if(reader.HasRows) {
-                                while(reader.Read()) {
-                                    room = new Room() {
-                                        RoomId = reader["room_id"].ToString(),
-                                        RoomName = reader["room_name"].ToString(),
-                                        Status = reader["status"].ToString(),
-                                        RoomTypeId = reader["room_type_id"].ToString(),
-                                        ManagerId = reader["manager_id"].ToString()
-                                    };
-                                }
-                            }
-                        }
-                    } catch(SqlException ex) {
-                        throw new Exception("Lỗi khi tìm kiếm phòng: " + ex.Message);
-                    } catch(Exception ex) {
-                        throw new Exception(ex.Message);
-                    }
-                }
-            }
-
-            return room;
-        }
-
-        public Room GetRoomByRoomName(string roomName) {
+        public Room GetRoomByRoomName(string roomName)
+        {
             Room room = null;
 
             using (SqlConnection connection = DBConnection.Connection.GetConnection())
@@ -133,8 +117,7 @@ namespace HotelManagementSystem.DAO {
                     cmd.CommandText = "SELECT * FROM fn_SearchRoomByName(@room_name)";
                     cmd.Parameters.Add("@room_name", SqlDbType.VarChar).Value = roomName;
 
-                    try
-                    {
+                   
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.HasRows)
@@ -152,11 +135,8 @@ namespace HotelManagementSystem.DAO {
                                 }
                             }
                         }
-                    }
-                    catch (SqlException ex)
-                    {
-                        throw new Exception("Lỗi khi tìm kiếm phòng: " + ex.Message);
-                    }
+                    
+                  
                 }
             }
 
@@ -164,12 +144,15 @@ namespace HotelManagementSystem.DAO {
         }
 
 
-        public int AddRoom(Room room) {
+        public static void AddRoom(Room room)
+        {
 
-            using(SqlConnection connection = Connection.GetConnection()) {
+            using (SqlConnection connection = Connection.GetConnection())
+            {
                 connection.Open();
 
-                using(SqlCommand cmd = connection.CreateCommand()) {
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "sp_AddRoom";
 
@@ -177,33 +160,23 @@ namespace HotelManagementSystem.DAO {
                     cmd.Parameters.Add("@room_name", SqlDbType.VarChar).Value = room.RoomName;
                     cmd.Parameters.Add("@room_type_id", SqlDbType.VarChar).Value = room.RoomTypeId;
                     cmd.Parameters.Add("@manager_id", SqlDbType.VarChar).Value = room.ManagerId;
-                    try
-                    {
-                        if (cmd.ExecuteNonQuery() > 0)
-                        {
-                            return 1;
-                        }
-                    }
-                    catch (SqlException sqlEx)
-                    {
-                        MessageBox.Show(sqlEx.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
+                    cmd.ExecuteNonQuery();
                 }
+                connection.Close();
             }
 
-            return 0;
+           
         }
 
-        public int UpdateRoom(Room room) {
+        public void UpdateRoom(Room room)
+        {
 
-            using(SqlConnection connection = Connection.GetConnection()) {
+            using (SqlConnection connection = Connection.GetConnection())
+            {
                 connection.Open();
 
-                using(SqlCommand cmd = connection.CreateCommand()) {
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "sp_UpdateRoomById";
 
@@ -212,45 +185,36 @@ namespace HotelManagementSystem.DAO {
                     cmd.Parameters.Add("@roomTypeId", SqlDbType.VarChar).Value = room.RoomTypeId;
                     cmd.Parameters.Add("@managerId", SqlDbType.VarChar).Value = room.ManagerId;
 
-                    try {
-                        if(cmd.ExecuteNonQuery() > 0) {
-                            return 1;
-                        }
-                    } catch(SqlException sqlEx) {
-                        MessageBox.Show(sqlEx.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    } catch(Exception ex) {
-                        MessageBox.Show(ex.ToString());
-                    }
+
+                    cmd.ExecuteNonQuery();
+
                 }
+                connection.Close();
             }
 
-            return 0;
         }
 
-        public int DeleteRoom(string roomId) {
+        public void DeleteRoom(string roomId)
+        {
 
-            using(SqlConnection connection = Connection.GetConnection()) {
+            using (SqlConnection connection = Connection.GetConnection())
+            {
                 connection.Open();
-
-                using(SqlCommand cmd = connection.CreateCommand()) {
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "sp_DeleteRoomById";
 
                     cmd.Parameters.Add("@roomId", SqlDbType.VarChar).Value = roomId;
 
-                    try {
-                        if(cmd.ExecuteNonQuery() > 0) {
-                            return 1;
-                        }
-                    } catch(SqlException sqlEx) {
-                        MessageBox.Show(sqlEx.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    } catch(Exception ex) {
-                        MessageBox.Show(ex.ToString());
-                    }
-                }
-            }
 
-            return 0;
+                    cmd.ExecuteNonQuery();
+                }
+
+                connection.Close();
+
+            }
+          
         }
     }
 

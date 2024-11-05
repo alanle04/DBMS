@@ -34,18 +34,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnViewDetail = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dtgvDetailBill = new System.Windows.Forms.DataGridView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtMaHD = new System.Windows.Forms.TextBox();
             this.lblFullName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnTim = new System.Windows.Forms.Button();
-            this.dtgvDetailBill = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_listBill)).BeginInit();
             this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDetailBill)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dtgv_listBill
@@ -88,7 +87,7 @@
             this.btnViewDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewDetail.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnViewDetail.ForeColor = System.Drawing.Color.White;
-            this.btnViewDetail.Location = new System.Drawing.Point(254, 203);
+            this.btnViewDetail.Location = new System.Drawing.Point(138, 199);
             this.btnViewDetail.Margin = new System.Windows.Forms.Padding(4);
             this.btnViewDetail.Name = "btnViewDetail";
             this.btnViewDetail.Size = new System.Drawing.Size(192, 49);
@@ -111,6 +110,39 @@
             this.panel2.Size = new System.Drawing.Size(1140, 892);
             this.panel2.TabIndex = 3;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(21, 480);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(159, 24);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Chi tiết hóa đơn:";
+            // 
+            // dtgvDetailBill
+            // 
+            this.dtgvDetailBill.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgvDetailBill.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvDetailBill.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgvDetailBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvDetailBill.EnableHeadersVisualStyles = false;
+            this.dtgvDetailBill.Location = new System.Drawing.Point(25, 525);
+            this.dtgvDetailBill.Margin = new System.Windows.Forms.Padding(4);
+            this.dtgvDetailBill.Name = "dtgvDetailBill";
+            this.dtgvDetailBill.RowHeadersVisible = false;
+            this.dtgvDetailBill.RowHeadersWidth = 51;
+            this.dtgvDetailBill.Size = new System.Drawing.Size(1093, 332);
+            this.dtgvDetailBill.TabIndex = 3;
             // 
             // comboBox1
             // 
@@ -157,7 +189,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.btnTim);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnViewDetail);
             this.panel1.Controls.Add(this.txtMaHD);
@@ -167,54 +198,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(467, 892);
             this.panel1.TabIndex = 2;
-            // 
-            // btnTim
-            // 
-            this.btnTim.BackColor = System.Drawing.Color.Teal;
-            this.btnTim.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTim.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTim.ForeColor = System.Drawing.Color.White;
-            this.btnTim.Location = new System.Drawing.Point(38, 203);
-            this.btnTim.Margin = new System.Windows.Forms.Padding(4);
-            this.btnTim.Name = "btnTim";
-            this.btnTim.Size = new System.Drawing.Size(192, 49);
-            this.btnTim.TabIndex = 17;
-            this.btnTim.Text = "Tìm";
-            this.btnTim.UseVisualStyleBackColor = false;
-            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
-            // 
-            // dtgvDetailBill
-            // 
-            this.dtgvDetailBill.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtgvDetailBill.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvDetailBill.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dtgvDetailBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvDetailBill.EnableHeadersVisualStyles = false;
-            this.dtgvDetailBill.Location = new System.Drawing.Point(25, 525);
-            this.dtgvDetailBill.Margin = new System.Windows.Forms.Padding(4);
-            this.dtgvDetailBill.Name = "dtgvDetailBill";
-            this.dtgvDetailBill.RowHeadersVisible = false;
-            this.dtgvDetailBill.RowHeadersWidth = 51;
-            this.dtgvDetailBill.Size = new System.Drawing.Size(1093, 332);
-            this.dtgvDetailBill.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(21, 480);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(159, 24);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Chi tiết hóa đơn:";
             // 
             // UCBill
             // 
@@ -228,9 +211,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_listBill)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvDetailBill)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvDetailBill)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -246,7 +229,6 @@
         private System.Windows.Forms.Label lblFullName;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button btnTim;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dtgvDetailBill;
     }

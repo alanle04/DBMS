@@ -129,7 +129,7 @@
             this.btn_searchByRoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_searchByRoom.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_searchByRoom.ForeColor = System.Drawing.Color.White;
-            this.btn_searchByRoom.Location = new System.Drawing.Point(311, 55);
+            this.btn_searchByRoom.Location = new System.Drawing.Point(309, 45);
             this.btn_searchByRoom.Margin = new System.Windows.Forms.Padding(4);
             this.btn_searchByRoom.Name = "btn_searchByRoom";
             this.btn_searchByRoom.Size = new System.Drawing.Size(173, 49);
@@ -154,9 +154,9 @@
             this.label7.Location = new System.Drawing.Point(27, 32);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(105, 24);
+            this.label7.Size = new System.Drawing.Size(185, 24);
             this.label7.TabIndex = 24;
-            this.label7.Text = "Tìm phòng";
+            this.label7.Text = "Tìm phòng theo mã";
             // 
             // label5
             // 

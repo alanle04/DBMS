@@ -111,5 +111,10 @@ namespace HotelManagementSystem {
         private bool IsEmpty(string text) {
             return text.Trim() == string.Empty;
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

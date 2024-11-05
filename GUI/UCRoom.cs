@@ -1,6 +1,8 @@
 ﻿using HotelManagementSystem.DAO;
 using HotelManagementSystem.Model;
+using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace HotelManagementSystem {
@@ -126,14 +128,18 @@ namespace HotelManagementSystem {
             string roomTypeId = roomTypeDAO.GetRoomTypeIdByRoomTypeName(cbRoomTypeName.Text.Trim());
             if(managerId != null) {
                 Room room = new Room(txtRoomId.Text.Trim(), txtRoomName.Text.Trim(), "", roomTypeId, managerId);
-                int res = roomDAO.AddRoom(room);
-                if (res == 1)
+                try
                 {
+                    RoomDAO.AddRoom(room);
                     MessageBox.Show("Thêm thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else
+                catch (SqlException ex)
                 {
-                    MessageBox.Show("Thêm thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(ex.Message, "Lỗi sql ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
                 EnableInputForAdd(false);
                 ClearInput();
@@ -152,11 +158,19 @@ namespace HotelManagementSystem {
 
             if(managerId != null) {
                 Room room = new Room(txtRoomId.Text.Trim(), txtRoomName.Text.Trim(), "", roomTypeId, managerId);
-                int res = roomDAO.UpdateRoom(room);
-                if(res == 1) {
+              
+                try
+                {
+                    roomDAO.UpdateRoom(room);
                     MessageBox.Show("Cập nhật thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                } else {
-                    MessageBox.Show("Cập nhật thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message, "Lỗi sql ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
                 EnableInputForUpdate(false);
                 ClearInput();
@@ -178,11 +192,19 @@ namespace HotelManagementSystem {
 
             string managerId = staffDAO.GetStaffIdByUsername(username);
             if(managerId != null) {
-                int res = roomDAO.DeleteRoom(txtRoomId.Text.Trim());
-                if(res == 1) {
+               
+                try
+                {
+                    roomDAO.DeleteRoom(txtRoomId.Text.Trim());
                     MessageBox.Show("Xóa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                } else {
-                    MessageBox.Show("Xóa thất bại !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message, "Lỗi sql ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
                 ClearInput();
                 LoadData();

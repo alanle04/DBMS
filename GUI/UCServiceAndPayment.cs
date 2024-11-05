@@ -1,4 +1,5 @@
 ﻿using HotelManagementSystem.DAO;
+using HotelManagementSystem.Model;
 using System;
 using System.Data;
 using System.Windows.Forms;

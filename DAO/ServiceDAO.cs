@@ -28,7 +28,7 @@ namespace HotelManagementSystem.DAO {
 
         }
 
-        public int AddService(Service service) {
+        public void AddService(Service service) {
             using(SqlConnection connection = Connection.GetConnection()) {
                 connection.Open();
 
@@ -41,24 +41,15 @@ namespace HotelManagementSystem.DAO {
                     command.Parameters.Add("@price", SqlDbType.Int).Value = service.Price;
                     command.Parameters.Add("@description", SqlDbType.NVarChar).Value = service.Description;
                     command.Parameters.Add("@manager_id", SqlDbType.VarChar).Value = service.ManagerId;
-
-                    try {
-                        if(command.ExecuteNonQuery() > 0) {
-                            return 1;
-                        }
-                    } catch(SqlException sqlEx) {
-                        MessageBox.Show(sqlEx.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    } catch(Exception ex) {
-                        MessageBox.Show(ex.ToString());
-                    }
+                    command.ExecuteNonQuery();                 
+                 
                 }
-
-                return 0;
+                connection.Close();
             }
 
         }
 
-        public int UpdateService(Service service) {
+        public void UpdateService(Service service) {
             using(SqlConnection connection = Connection.GetConnection()) {
                 connection.Open();
 
@@ -71,19 +62,10 @@ namespace HotelManagementSystem.DAO {
                     command.Parameters.Add("@price", SqlDbType.Int).Value = service.Price;
                     command.Parameters.Add("@description", SqlDbType.NVarChar).Value = service.Description;
                     command.Parameters.Add("@manager_id", SqlDbType.VarChar).Value = service.ManagerId;
-
-                    try {
-                        if(command.ExecuteNonQuery() > 0) {
-                            return 1;
-                        }
-                    } catch(SqlException sqlEx) {
-                        MessageBox.Show(sqlEx.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    } catch(Exception ex) {
-                        MessageBox.Show(ex.ToString());
-                    }
+                    command.ExecuteNonQuery();
+                    
                 }
-
-                return 0;
+                connection.Close();
             }
         }
 

@@ -3,24 +3,6 @@ go
 -- 3.2.4. Hàm tìm kiếm dữ liệu
 -- 3.2.4.1. Bảng room
 --Tìm kiếm theo mã phòng
-CREATE FUNCTION fn_SearchRoomById
-(
-   	@room_id VARCHAR(20)
-)
-RETURNS TABLE
-AS
-RETURN
-(
-   	SELECT
-       room_id,
-       room_name,
-       status,
-       room_type_id,
-       manager_id
-   	FROM room
-   	WHERE room_id = @room_id
-);
-GO
 
 --3.2.4.2.Tìm kiếm theo tên phòng
 CREATE FUNCTION fn_SearchRoomByName
@@ -58,7 +40,7 @@ RETURN
 GO
 
 --3.2.4.4 Tìm customer theo id
-CREATE FUNCTION fn_FindCustomerByIDNumber (
+CREATE FUNCTION fn_FindCustomer (
  	@id_number VARCHAR(20)
 )
 RETURNS TABLE
@@ -67,7 +49,7 @@ RETURN
 (
  	SELECT *
  	FROM dbo.customer
- 	WHERE identification_number = @id_number
+ 	WHERE customer_id = @id_number
 );
 GO
 
@@ -201,41 +183,7 @@ RETURN
 );
 GO
 
--- 3.2.4.11. Kiểm tra login
-CREATE FUNCTION fn_CheckLogin (
-	@username VARCHAR(50),
-	@password VARCHAR(255)
-)
-RETURNS INT
-AS
-BEGIN
-	DECLARE @result INT;
-	DECLARE @role VARCHAR(20);
-	
-	-- Kiểm tra nếu tài khoản tồn tại và lấy vai trò
-	SELECT @role = role
-	FROM account
-	WHERE username = @username AND [password] = @password;
- 
-	IF @role IS NOT NULL
-	BEGIN
-    	IF @role = 'manager'
-    	BEGIN
-        	SET @result = 1;  -- Quản lý
-    	END
-    	ELSE IF @role = 'receptionist'
-    	BEGIN
-        	SET @result = 0;  -- Lễ tân
-    	END
-	END
-	ELSE
-	BEGIN
-    	SET @result = -1;  -- Tài khoản không tồn tại
-	END
- 
-	RETURN @result;
-END;
-go
+
 -- 3.2.4.12. Hàm lấy thông tin bill của phòng đang tìm.
 CREATE FUNCTION fn_GetBillInfoByRoomId
 (
@@ -389,7 +337,12 @@ RETURN
     	rt.cost_per_day,
     	br.expected_check_in_time,
     	br.expected_check_out_time,
-    	DATEDIFF(DAY, br.expected_check_in_time, br.expected_check_out_time) * rt.cost_per_day AS total
+		case
+		when datediff(day,br.expected_check_in_time,br.expected_check_out_time) = 0
+		then 1 *rt.cost_per_day
+		else
+    		datediff(day,br.expected_check_in_time,br.expected_check_out_time) * rt.cost_per_day
+		end as total
     FROM
     	booking_record br
     JOIN
@@ -478,18 +431,35 @@ RETURN
         rt.cost_per_day,
         br.expected_check_in_time,
         br.expected_check_out_time,
-        DATEDIFF(DAY, br.expected_check_in_time, br.expected_check_out_time) * rt.cost_per_day AS total
+        CASE 
+            WHEN DATEDIFF(DAY, br.expected_check_in_time, br.expected_check_out_time) = 0 
+            THEN 1 * rt.cost_per_day 
+            ELSE DATEDIFF(DAY, br.expected_check_in_time, br.expected_check_out_time) * rt.cost_per_day 
+        END AS totalPriceRoom, 
+        (CASE 
+            WHEN DATEDIFF(DAY, br.expected_check_in_time, br.expected_check_out_time) = 0 
+            THEN 1 * rt.cost_per_day 
+            ELSE DATEDIFF(DAY, br.expected_check_in_time, br.expected_check_out_time) * rt.cost_per_day 
+        END + ISNULL(SUM(sur.quantity * s.price), 0)) AS total
     FROM 
         booking_record br
     JOIN 
         room r ON br.room_id = r.room_id
     JOIN 
         room_type rt ON r.room_type_id = rt.room_type_id
+    LEFT JOIN 
+        service_usage_record sur ON br.booking_record_id = sur.booking_id
+    LEFT JOIN 
+        service s ON sur.service_id = s.service_id
     WHERE 
         br.booking_record_id = @booking_record_id
+    GROUP BY
+        r.room_name,
+        rt.cost_per_day,
+        br.expected_check_in_time,
+        br.expected_check_out_time
 );
 GO
-
 -- 3.2.4.23. Tính tổng tiền dịch vụ
 CREATE FUNCTION fn_GetTotalServiceCost
 (

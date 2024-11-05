@@ -86,7 +86,7 @@
             this.panel4.Controls.Add(this.dgvServiceBill);
             this.panel4.Controls.Add(this.label3);
             this.panel4.Location = new System.Drawing.Point(596, 169);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1051, 742);
             this.panel4.TabIndex = 51;
@@ -96,11 +96,12 @@
             this.dgvServiceBill.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvServiceBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvServiceBill.Location = new System.Drawing.Point(0, 39);
-            this.dgvServiceBill.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvServiceBill.Margin = new System.Windows.Forms.Padding(4);
             this.dgvServiceBill.Name = "dgvServiceBill";
             this.dgvServiceBill.RowHeadersWidth = 51;
             this.dgvServiceBill.Size = new System.Drawing.Size(1051, 703);
             this.dgvServiceBill.TabIndex = 3;
+            this.dgvServiceBill.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvServiceBill_CellContentClick);
             // 
             // cbPaymentMethod
             // 
@@ -113,7 +114,7 @@
             "cash",
             "bank transfer"});
             this.cbPaymentMethod.Location = new System.Drawing.Point(69, 65);
-            this.cbPaymentMethod.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbPaymentMethod.Margin = new System.Windows.Forms.Padding(4);
             this.cbPaymentMethod.Name = "cbPaymentMethod";
             this.cbPaymentMethod.Size = new System.Drawing.Size(419, 33);
             this.cbPaymentMethod.TabIndex = 38;
@@ -125,7 +126,7 @@
             this.btnCheckOut.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckOut.ForeColor = System.Drawing.Color.White;
             this.btnCheckOut.Location = new System.Drawing.Point(69, 495);
-            this.btnCheckOut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCheckOut.Margin = new System.Windows.Forms.Padding(4);
             this.btnCheckOut.Name = "btnCheckOut";
             this.btnCheckOut.Size = new System.Drawing.Size(420, 49);
             this.btnCheckOut.TabIndex = 36;
@@ -137,7 +138,7 @@
             // 
             this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotal.Location = new System.Drawing.Point(69, 145);
-            this.txtTotal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTotal.Margin = new System.Windows.Forms.Padding(4);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(419, 30);
             this.txtTotal.TabIndex = 37;
@@ -148,7 +149,7 @@
             this.panel5.Controls.Add(this.dgvRoomBill);
             this.panel5.Controls.Add(this.label8);
             this.panel5.Location = new System.Drawing.Point(596, 18);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1051, 143);
             this.panel5.TabIndex = 50;
@@ -158,11 +159,12 @@
             this.dgvRoomBill.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRoomBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRoomBill.Location = new System.Drawing.Point(0, 39);
-            this.dgvRoomBill.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvRoomBill.Margin = new System.Windows.Forms.Padding(4);
             this.dgvRoomBill.Name = "dgvRoomBill";
             this.dgvRoomBill.RowHeadersWidth = 51;
             this.dgvRoomBill.Size = new System.Drawing.Size(1051, 103);
             this.dgvRoomBill.TabIndex = 3;
+            this.dgvRoomBill.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRoomBill_CellContentClick);
             // 
             // label8
             // 
@@ -193,7 +195,7 @@
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.label11);
             this.panel3.Location = new System.Drawing.Point(20, 89);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(555, 551);
             this.panel3.TabIndex = 49;
@@ -202,7 +204,7 @@
             // 
             this.txtBookingRecordId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBookingRecordId.Location = new System.Drawing.Point(67, 75);
-            this.txtBookingRecordId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBookingRecordId.Margin = new System.Windows.Forms.Padding(4);
             this.txtBookingRecordId.Name = "txtBookingRecordId";
             this.txtBookingRecordId.Size = new System.Drawing.Size(419, 30);
             this.txtBookingRecordId.TabIndex = 55;
@@ -222,7 +224,7 @@
             // 
             this.txtIdNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIdNumber.Location = new System.Drawing.Point(67, 224);
-            this.txtIdNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIdNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtIdNumber.Name = "txtIdNumber";
             this.txtIdNumber.Size = new System.Drawing.Size(419, 30);
             this.txtIdNumber.TabIndex = 53;
@@ -242,7 +244,7 @@
             // 
             this.txtFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFullName.Location = new System.Drawing.Point(67, 146);
-            this.txtFullName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFullName.Margin = new System.Windows.Forms.Padding(4);
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Size = new System.Drawing.Size(419, 30);
             this.txtFullName.TabIndex = 51;
@@ -262,7 +264,7 @@
             // 
             this.txtActualCheckInDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtActualCheckInDate.Location = new System.Drawing.Point(68, 455);
-            this.txtActualCheckInDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtActualCheckInDate.Margin = new System.Windows.Forms.Padding(4);
             this.txtActualCheckInDate.Name = "txtActualCheckInDate";
             this.txtActualCheckInDate.Size = new System.Drawing.Size(419, 30);
             this.txtActualCheckInDate.TabIndex = 49;
@@ -282,7 +284,7 @@
             // 
             this.txtRoomTypeName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRoomTypeName.Location = new System.Drawing.Point(68, 378);
-            this.txtRoomTypeName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRoomTypeName.Margin = new System.Windows.Forms.Padding(4);
             this.txtRoomTypeName.Name = "txtRoomTypeName";
             this.txtRoomTypeName.Size = new System.Drawing.Size(419, 30);
             this.txtRoomTypeName.TabIndex = 47;
@@ -302,7 +304,7 @@
             // 
             this.txtRoomName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRoomName.Location = new System.Drawing.Point(68, 298);
-            this.txtRoomName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRoomName.Margin = new System.Windows.Forms.Padding(4);
             this.txtRoomName.Name = "txtRoomName";
             this.txtRoomName.Size = new System.Drawing.Size(419, 30);
             this.txtRoomName.TabIndex = 45;
@@ -344,7 +346,7 @@
             // 
             this.txtSearchRoomName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearchRoomName.Location = new System.Drawing.Point(171, 16);
-            this.txtSearchRoomName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSearchRoomName.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearchRoomName.Name = "txtSearchRoomName";
             this.txtSearchRoomName.Size = new System.Drawing.Size(197, 30);
             this.txtSearchRoomName.TabIndex = 37;
@@ -356,7 +358,7 @@
             this.btnSearch.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.White;
             this.btnSearch.Location = new System.Drawing.Point(377, 6);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(167, 49);
             this.btnSearch.TabIndex = 38;
@@ -371,7 +373,7 @@
             this.panel1.Controls.Add(this.txtSearchRoomName);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Location = new System.Drawing.Point(20, 18);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(555, 63);
             this.panel1.TabIndex = 48;
@@ -397,7 +399,7 @@
             this.panel2.Controls.Add(this.txtTotal);
             this.panel2.Controls.Add(this.cbPaymentMethod);
             this.panel2.Location = new System.Drawing.Point(20, 647);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(555, 263);
             this.panel2.TabIndex = 52;
@@ -409,7 +411,7 @@
             this.btnPay.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPay.ForeColor = System.Drawing.Color.White;
             this.btnPay.Location = new System.Drawing.Point(67, 196);
-            this.btnPay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPay.Margin = new System.Windows.Forms.Padding(4);
             this.btnPay.Name = "btnPay";
             this.btnPay.Size = new System.Drawing.Size(420, 49);
             this.btnPay.TabIndex = 41;
@@ -448,7 +450,7 @@
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UCCheckOut";
             this.Size = new System.Drawing.Size(1667, 929);
             this.panel4.ResumeLayout(false);

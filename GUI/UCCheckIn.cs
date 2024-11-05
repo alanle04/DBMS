@@ -31,7 +31,7 @@ namespace HotelManagementSystem {
                 if(dt.Rows.Count > 0) {
                     dgvCheckInRooms.DataSource = dt;
                 } else {
-                    MessageBox.Show("Không tìm thấy phòng nào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Không tìm thấy phòng nào với thông tin khách", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     dgvCheckInRooms.DataSource = null;
                 }
             } catch(Exception ex) {

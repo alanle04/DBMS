@@ -8,75 +8,69 @@ using System.Windows.Forms;
 namespace HotelManagementSystem.DAO {
     public class RoomTypeDAO {
         public static void AddRoomType(string roomTypeId, string roomTypeName, int numberOfBeds, int capacity, int costPerDay, string managerId) {
-            SqlConnection conn = Connection.GetConnection();
-            SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_AddRoomType";
+            using (SqlConnection connection = Connection.GetConnection())
+            {
+                connection.Open();
 
-            cmd.Parameters.Add("@room_type_id", SqlDbType.VarChar).Value = roomTypeId;
-            cmd.Parameters.Add("@room_type_name", SqlDbType.NVarChar).Value = roomTypeName;
-            cmd.Parameters.Add("@number_of_bed", SqlDbType.Int).Value = numberOfBeds;
-            cmd.Parameters.Add("@capacity", SqlDbType.Int).Value = capacity;
-            cmd.Parameters.Add("@cost_per_day", SqlDbType.Int).Value = costPerDay;
-            cmd.Parameters.Add("@manager_id", SqlDbType.VarChar).Value = managerId;
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "sp_AddRoomType";
 
-            try {
-                conn.Open();
-                if(cmd.ExecuteNonQuery() > 0) {
-                    MessageBox.Show("Thêm loại phòng mới thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cmd.Parameters.Add("@room_type_id", SqlDbType.VarChar).Value = roomTypeId;
+                    cmd.Parameters.Add("@room_type_name", SqlDbType.NVarChar).Value = roomTypeName;
+                    cmd.Parameters.Add("@number_of_bed", SqlDbType.Int).Value = numberOfBeds;
+                    cmd.Parameters.Add("@capacity", SqlDbType.Int).Value = capacity;
+                    cmd.Parameters.Add("@cost_per_day", SqlDbType.Int).Value = costPerDay;
+                    cmd.Parameters.Add("@manager_id", SqlDbType.VarChar).Value = managerId;
+
+                    cmd.ExecuteNonQuery();
                 }
-            } catch(Exception ex) {
-                MessageBox.Show("Thêm mới thất bại" + ex, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } finally {
-                conn.Close();
+                connection.Close();
             }
+              
         }
 
         public static void UpdateRoomType(string roomTypeId, string roomTypeName, int numberOfBeds, int capacity, int costPerDay, string managerId) {
-            SqlConnection conn = Connection.GetConnection();
-            SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_UpdateRoomType";
+            using (SqlConnection connection = Connection.GetConnection())
+            {
+                connection.Open();
 
-            cmd.Parameters.Add("@type_id", SqlDbType.VarChar).Value = roomTypeId;
-            cmd.Parameters.Add("@type_name", SqlDbType.NVarChar).Value = roomTypeName;
-            cmd.Parameters.Add("@num_bed", SqlDbType.Int).Value = numberOfBeds;
-            cmd.Parameters.Add("@capac", SqlDbType.Int).Value = capacity;
-            cmd.Parameters.Add("@cost", SqlDbType.Int).Value = costPerDay;
-            cmd.Parameters.Add("@manager", SqlDbType.VarChar).Value = managerId;
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "sp_UpdateRoomType";
 
-            try {
-                conn.Open();
-                if(cmd.ExecuteNonQuery() > 0) {
-                    MessageBox.Show("Cập nhật loại phòng mới thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cmd.Parameters.Add("@type_id", SqlDbType.VarChar).Value = roomTypeId;
+                    cmd.Parameters.Add("@type_name", SqlDbType.NVarChar).Value = roomTypeName;
+                    cmd.Parameters.Add("@num_bed", SqlDbType.Int).Value = numberOfBeds;
+                    cmd.Parameters.Add("@capac", SqlDbType.Int).Value = capacity;
+                    cmd.Parameters.Add("@cost", SqlDbType.Int).Value = costPerDay;
+                    cmd.Parameters.Add("@manager", SqlDbType.VarChar).Value = managerId;
+
+                    cmd.ExecuteNonQuery();
                 }
-            } catch(Exception ex) {
-                MessageBox.Show("Cập nhật thất bại" + ex, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } finally {
-                conn.Close();
+                connection.Close();
             }
         }
 
         public static void DeleteRoomType(string roomTypeId) {
 
-            SqlConnection conn = Connection.GetConnection();
-            SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_DeleteRoomTypeById";
+            using (SqlConnection connection = Connection.GetConnection())
+            {
+                connection.Open();
 
-            cmd.Parameters.Add("@type_id", SqlDbType.VarChar).Value = roomTypeId;
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "sp_DeleteRoomTypeById";
 
-
-            try {
-                conn.Open();
-                if(cmd.ExecuteNonQuery() > 0) {
-                    MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cmd.Parameters.Add("@type_id", SqlDbType.VarChar).Value = roomTypeId;
+                    cmd.ExecuteNonQuery();
                 }
-            } catch(Exception ex) {
-                MessageBox.Show("Xóa thất bại" + ex, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } finally {
-                conn.Close();
+                connection.Close();
             }
+                
         }
 
         public static DataTable RoomTypeList() {

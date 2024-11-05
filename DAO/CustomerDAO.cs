@@ -7,38 +7,6 @@ using System.Windows.Forms;
 
 namespace HotelManagementSystem.DAO {
     public class CustomerDAO {
-        public static Customer FindCustomerByIDNumber(string identificationNumber) {
-            Customer customer = null;
-
-            SqlConnection conn = Connection.GetConnection();
-            SqlCommand cmd = new SqlCommand("SELECT * FROM fn_FindCustomerByIDNumber(@IdentificationNumber)", conn);
-            cmd.Parameters.Add("@IdentificationNumber", SqlDbType.VarChar).Value = identificationNumber;
-
-            try {
-                conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if(reader.HasRows) {
-                    while(reader.Read()) {
-                        customer = new Customer() {
-                            CustomerId = reader["customer_id"].ToString(),
-                            FullName = reader["full_name"].ToString(),
-                            IdentificationNumber = reader["identification_number"].ToString(),
-                            Gender = reader["gender"].ToString(),
-                            Nationality = reader["nationality"].ToString(),
-                            PhoneNumber = reader["phone_number"].ToString(),
-                            Address = reader["address"].ToString()
-                        };
-                    }
-                }
-                reader.Close();
-            } catch(SqlException ex) {
-                throw new Exception("Lỗi khi tìm kiếm khách hàng: " + ex.Message);
-            } finally {
-                conn.Close();
-            }
-            return customer;
-        }
 
         public Customer FindCustomerByCustomerId(string customerId) {
             Customer customer = null;

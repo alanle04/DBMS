@@ -1,6 +1,8 @@
 ﻿using HotelManagementSystem.DAO;
+using HotelManagementSystem.Model;
 using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace HotelManagementSystem.GUI {
@@ -81,8 +83,20 @@ namespace HotelManagementSystem.GUI {
             // Lấy giá trị staff_id từ DataRowView
             String managerId = selectedManager["staff_id"].ToString();
 
-            RoomTypeDAO.AddRoomType(roomTypeId, roomTypeName, numberOfBeds, capacity, costPerDay, managerId);
-
+           
+            try
+            {
+                RoomTypeDAO.AddRoomType(roomTypeId, roomTypeName, numberOfBeds, capacity, costPerDay, managerId);
+                MessageBox.Show("Thêm thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Lỗi sql ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             UCRoomType_Load(sender, new EventArgs());
             clear();
         }
@@ -97,14 +111,40 @@ namespace HotelManagementSystem.GUI {
             // Lấy giá trị staff_id từ DataRowView
             String managerId = selectedManager["staff_id"].ToString();
 
-            RoomTypeDAO.UpdateRoomType(roomTypeId, roomTypeName, numberOfBeds, capacity, costPerDay, managerId);
+          
+            try
+            {
+                RoomTypeDAO.UpdateRoomType(roomTypeId, roomTypeName, numberOfBeds, capacity, costPerDay, managerId);
+                MessageBox.Show("Sửa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Lỗi sql ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             UCRoomType_Load(sender, new EventArgs());
             clear();
         }
 
         private void DeleteRoomType(object sender, EventArgs e) {
             String roomTypeId = txt_roomTypeId.Text;
-            RoomTypeDAO.DeleteRoomType(roomTypeId);
+        
+            try
+            {
+                RoomTypeDAO.DeleteRoomType(roomTypeId);
+                MessageBox.Show("Xóa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Lỗi sql ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             UCRoomType_Load(sender, new EventArgs());
             clear();
         }

@@ -2,36 +2,44 @@
 using HotelManagementSystem.Model;
 using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace HotelManagementSystem {
-    public partial class UCService : UserControl {
+namespace HotelManagementSystem
+{
+    public partial class UCService : UserControl
+    {
         private string username;
         private int action = -1;
 
         ServiceDAO serviceDAO = new ServiceDAO();
         StaffDAO staffDAO = new StaffDAO();
 
-        public UCService() {
+        public UCService()
+        {
             InitializeComponent();
 
         }
 
-        public UCService(string username) {
+        public UCService(string username)
+        {
             InitializeComponent();
             this.username = username;
         }
 
-        private void LoadData() {
+        private void LoadData()
+        {
             dgvService.Rows.Clear();
             DataTable dt = serviceDAO.GetAllServices();
-            for(int i = 0; i < dt.Rows.Count; i++) {
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
                 string[] row = { dt.Rows[i]["service_id"].ToString(), dt.Rows[i]["service_name"].ToString(), dt.Rows[i]["price"].ToString(), dt.Rows[i]["description"].ToString(), dt.Rows[i]["manager_name"].ToString() };
                 dgvService.Rows.Add(row);
             }
         }
 
-        private void ClearInput() {
+        private void ClearInput()
+        {
             txtServiceId.Text = "";
             txtServiceName.Text = "";
             txtPrice.Text = "";
@@ -39,7 +47,8 @@ namespace HotelManagementSystem {
             txtManager.Text = "";
         }
 
-        private void SetDataGridViewHeaders(DataGridView dgv) {
+        private void SetDataGridViewHeaders(DataGridView dgv)
+        {
             dgv.Columns.Clear();
 
             dgv.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Mã dịch vụ", Name = "ServiceID" });
@@ -49,92 +58,126 @@ namespace HotelManagementSystem {
             dgv.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Người quản lý", Name = "Manager" });
         }
 
-        private void UCService_Load(object sender, System.EventArgs e) {
+        private void UCService_Load(object sender, System.EventArgs e)
+        {
             SetDataGridViewHeaders(dgvService);
             LoadData();
         }
 
-        private void EnableInputForAdd(bool enable) {
+        private void EnableInputForAdd(bool enable)
+        {
             txtServiceId.Enabled = enable;
             txtServiceName.Enabled = enable;
             txtPrice.Enabled = enable;
             txtDescription.Enabled = enable;
         }
 
-        private void EnableInputForUpdate(bool enable) {
+        private void EnableInputForUpdate(bool enable)
+        {
             txtServiceId.Enabled = false;
             txtServiceName.Enabled = enable;
             txtPrice.Enabled = enable;
             txtDescription.Enabled = enable;
         }
 
-        private void btnAdd_Click(object sender, System.EventArgs e) {
+        private void btnAdd_Click(object sender, System.EventArgs e)
+        {
             string managerFullName = staffDAO.GetStaffFullNameByUsername(username);
-            if(managerFullName != null) {
+            if (managerFullName != null)
+            {
                 txtManager.Text = managerFullName;
             }
             EnableInputForAdd(true);
             action = 0;
         }
 
-        private bool IsEmpty(string text) {
+        private bool IsEmpty(string text)
+        {
             return text.Trim() == string.Empty;
         }
 
-        private void AddService() {
-            if(IsEmpty(txtServiceId.Text) || IsEmpty(txtServiceName.Text) || IsEmpty(txtPrice.Text) || IsEmpty(txtDescription.Text)) {
+        private void AddService()
+        {
+            if (IsEmpty(txtServiceId.Text) || IsEmpty(txtServiceName.Text) || IsEmpty(txtPrice.Text) || IsEmpty(txtDescription.Text))
+            {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
-            try {
+            try
+            {
                 int.Parse(txtPrice.Text.Trim());
-            } catch {
+            }
+            catch
+            {
                 MessageBox.Show("Giá chỉ bao gồm các con số !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
             string managerId = staffDAO.GetStaffIdByUsername(username);
-            if(managerId != null) {
+            if (managerId != null)
+            {
                 Service service = new Service(txtServiceId.Text.Trim(), txtServiceName.Text.Trim(), int.Parse(txtPrice.Text.Trim()), txtDescription.Text.Trim(), managerId);
-                int res = serviceDAO.AddService(service);
-                if(res == 1) {
+                try
+                {
+                    serviceDAO.AddService(service);
                     MessageBox.Show("Thêm thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                } else {
-                    MessageBox.Show("Thêm thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
                 EnableInputForAdd(false);
                 ClearInput();
                 LoadData();
             }
         }
 
-        private void UpdateService() {
-            if(IsEmpty(txtServiceId.Text)) {
+        private void UpdateService()
+        {
+            if (IsEmpty(txtServiceId.Text))
+            {
                 MessageBox.Show("Vui lòng chọn dịch vụ để cập nhật !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
-            if(IsEmpty(txtServiceName.Text) || IsEmpty(txtPrice.Text) || IsEmpty(txtDescription.Text)) {
+            if (IsEmpty(txtServiceName.Text) || IsEmpty(txtPrice.Text) || IsEmpty(txtDescription.Text))
+            {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
-            try {
+            try
+            {
                 int.Parse(txtPrice.Text.Trim());
-            } catch(Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show("Giá chỉ bao gồm các con số !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
             string managerId = staffDAO.GetStaffIdByUsername(username);
-            if(managerId != null) {
+            if (managerId != null)
+            {
                 Service service = new Service(txtServiceId.Text.Trim(), txtServiceName.Text.Trim(), int.Parse(txtPrice.Text.Trim()), txtDescription.Text.Trim(), managerId);
-                int res = serviceDAO.UpdateService(service);
-                if(res == 1) {
+                try
+                {
+                    serviceDAO.UpdateService(service);
                     MessageBox.Show("Cập nhật thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                } else {
-                    MessageBox.Show("Cập nhật thất bại !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
                 EnableInputForUpdate(false);
                 ClearInput();
@@ -143,25 +186,32 @@ namespace HotelManagementSystem {
 
         }
 
-        private void DeleteService() {
-            if(IsEmpty(txtServiceId.Text)) {
+        private void DeleteService()
+        {
+            if (IsEmpty(txtServiceId.Text))
+            {
                 MessageBox.Show("Vui lòng chọn dịch vụ để xóa !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa ?", "Xóa dịch vụ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if(dialogResult == DialogResult.No) {
+            if (dialogResult == DialogResult.No)
+            {
                 return;
             }
 
             string managerId = staffDAO.GetStaffIdByUsername(username);
-            if(managerId != null) {
+            if (managerId != null)
+            {
                 Service service = new Service(txtServiceId.Text.Trim(), txtServiceName.Text.Trim(), int.Parse(txtPrice.Text.Trim()), txtDescription.Text.Trim(), managerId);
                 int res = serviceDAO.DeleteService(service);
-                if(res == 1) {
+                if (res == 1)
+                {
                     MessageBox.Show("Xóa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                } else {
+                }
+                else
+                {
                     MessageBox.Show("Xóa thất bại !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 ClearInput();
@@ -169,24 +219,33 @@ namespace HotelManagementSystem {
             }
         }
 
-        private void btnExecute_Click(object sender, System.EventArgs e) {
-            if(action == -1) {
+        private void btnExecute_Click(object sender, System.EventArgs e)
+        {
+            if (action == -1)
+            {
                 MessageBox.Show("Vui lòng chọn chức năng !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if(action == 0) {
+            if (action == 0)
+            {
                 AddService();
-            } else if(action == 1) {
+            }
+            else if (action == 1)
+            {
                 UpdateService();
-            } else if(action == 2) {
+            }
+            else if (action == 2)
+            {
                 DeleteService();
             }
             action = -1;
         }
 
-        private void dgvService_CellClick(object sender, DataGridViewCellEventArgs e) {
-            if(e.RowIndex >= 0) {
+        private void dgvService_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
                 DataGridViewRow row = dgvService.Rows[e.RowIndex];
 
                 txtServiceId.Text = row.Cells["ServiceID"].Value.ToString();
@@ -197,9 +256,11 @@ namespace HotelManagementSystem {
             }
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e) {
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
             string managerFullName = staffDAO.GetStaffFullNameByUsername(username);
-            if(managerFullName != null) {
+            if (managerFullName != null)
+            {
                 txtManager.Text = managerFullName;
             }
 
@@ -207,9 +268,11 @@ namespace HotelManagementSystem {
             action = 1;
         }
 
-        private void btnDelete_Click(object sender, EventArgs e) {
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
             string managerFullName = staffDAO.GetStaffFullNameByUsername(username);
-            if(managerFullName != null) {
+            if (managerFullName != null)
+            {
                 txtManager.Text = managerFullName;
             }
 

@@ -55,19 +55,6 @@ namespace HotelManagementSystem {
 
             try {
                 if(cbSearch.SelectedIndex == 0) {
-                    Customer customer = CustomerDAO.FindCustomerByIDNumber(searchInfor);
-                    if(customer != null) {
-                        txtFullName.Text = customer.FullName;
-                        txtIdNumber.Text = customer.IdentificationNumber;
-                        txtGender.Text = customer.Gender;
-                        txtNationality.Text = customer.Nationality;
-                        txtPhoneNumber.Text = customer.PhoneNumber;
-                        txtAddress.Text = customer.Address;
-                    } else {
-                        MessageBox.Show("Không tìm thấy khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-                if(cbSearch.SelectedIndex == 1) {
                     Customer customer = customerDAO.FindCustomerByCustomerId(searchInfor);
                     if(customer != null) {
                         txtFullName.Text = customer.FullName;
@@ -80,7 +67,7 @@ namespace HotelManagementSystem {
                         MessageBox.Show("Không tìm thấy khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                if(cbSearch.SelectedIndex == 2) {
+                if(cbSearch.SelectedIndex == 1) {
                     DataTable customers = CustomerDAO.FindCustomersByName(searchInfor);
 
                     if(customers.Rows.Count > 0) {

@@ -41,8 +41,7 @@ namespace HotelManagementSystem.DAO {
                                 }
                             }
                         }
-                    } catch(SqlException ex) {
-                        throw new Exception("Lỗi khi tìm kiếm booking record: " + ex.Message);
+                   
                     } catch(Exception ex) {
                         throw new Exception(ex.Message);
                     }
@@ -165,7 +164,7 @@ namespace HotelManagementSystem.DAO {
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_UpdatePaymentMethod";
-
+            
             cmd.Parameters.Add("@bill_id", SqlDbType.VarChar).Value = billid;
             cmd.Parameters.Add("@paymethod", SqlDbType.VarChar).Value = payMethod;
 

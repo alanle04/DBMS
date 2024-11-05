@@ -43,20 +43,23 @@ INSTEAD OF INSERT
 AS
 BEGIN
    -- Kiểm tra xem có bản ghi trùng lặp không
-    IF NOT EXISTS (
+    IF NOT EXISTS(
         SELECT 1
         FROM booking_record br
         INNER JOIN inserted i ON br.room_id = i.room_id
+		join room r on r.room_id= br.room_id
         WHERE 
 
-            (CAST(i.expected_check_in_time AS DATE) BETWEEN CAST(br.expected_check_in_time AS DATE) AND CAST(br.expected_check_out_time AS DATE))
+            ((CAST(i.expected_check_in_time AS DATE) BETWEEN CAST(br.expected_check_in_time AS DATE) AND CAST(br.expected_check_out_time AS DATE))
             OR
             (CAST(i.expected_check_out_time AS DATE) BETWEEN CAST(br.expected_check_in_time AS DATE) AND CAST(br.expected_check_out_time AS DATE))
             
             OR
             (CAST(br.expected_check_in_time AS DATE) BETWEEN CAST(i.expected_check_in_time AS DATE) AND CAST(i.expected_check_out_time AS DATE))
             OR
-            (CAST(br.expected_check_out_time AS DATE) BETWEEN CAST(i.expected_check_in_time AS DATE) AND CAST(i.expected_check_out_time AS DATE))
+            (CAST(br.expected_check_out_time AS DATE) BETWEEN CAST(i.expected_check_in_time AS DATE) AND CAST(i.expected_check_out_time AS DATE)))
+			and (r.[status] != 'available'  )
+
     )
     BEGIN
         -- Nếu không có bản ghi trùng, cho phép thêm vào bảng booking_record
@@ -230,33 +233,37 @@ END;
 GO
 
 --2.6.8. Trigger kiểm tra phòng đang được đặt bởi khách hàng thì không thể xóa.
-CREATE TRIGGER trg_PreventRoomDeletion
-ON room
+CREATE TRIGGER [dbo].[trg_PreventRoomDeletion]
+ON [dbo].[room]
 INSTEAD OF DELETE
 AS
 BEGIN
     DECLARE @room_id VARCHAR(20);
     DECLARE @room_count INT;
- 
+
+    -- Lấy room_id từ bảng deleted
     SELECT @room_id = room_id FROM deleted;
- 
+
+    -- Đếm số lượng bản ghi booking_record với trạng thái không phải 'available'
     SELECT @room_count = COUNT(*)
-    FROM booking_record
-    WHERE room_id = @room_id AND status !=  'available';
- 
+    FROM booking_record b join room on b.room_id = room.room_id
+    WHERE b.room_id = @room_id AND room.[status] != 'available';
+	
+    -- Kiểm tra nếu có bản ghi nào không thỏa mãn điều kiện xóa
     IF @room_count > 0
     BEGIN
-       RAISERROR('Không thể xóa phòng nay !', 16, 1);
+       RAISERROR('Không thể xóa phòng này vì trạng thái không phải là available!', 16, 1);
     END
     ELSE
     BEGIN
+       -- Xóa phòng nếu không có ràng buộc nào
        DELETE FROM room WHERE room_id = @room_id;
     END
 END;
 GO
 
 --2.6.9. Trigger kiểm tra khi thêm loại phòng, mã loại phòng, tên loại phòng không được trùng.
-CREATE TRIGGER trg_CheckRoomType
+CREATE or alter TRIGGER trg_CheckRoomType
 ON room_type
 INSTEAD OF INSERT
 AS
@@ -264,15 +271,15 @@ BEGIN
      IF EXISTS (SELECT 1 FROM room_type WHERE room_type_id IN (SELECT room_type_id FROM inserted))
     BEGIN
        RAISERROR('Mã loại phòng đã tồn tại', 16, 1);
-       RETURN;
+       
     END
-
+	else
     IF EXISTS (SELECT 1 FROM room_type WHERE room_type_name IN (SELECT room_type_name FROM inserted))
     BEGIN
        RAISERROR('Tên loại phòng đã tồn tại', 16, 1);
-       RETURN;
+       
     END
-  
+  else
     INSERT INTO room_type (room_type_id, room_type_name, number_of_bed, capacity, cost_per_day, manager_id)
  SELECT room_type_id, room_type_name, number_of_bed, capacity, cost_per_day, manager_id
     FROM inserted;
@@ -280,38 +287,65 @@ END;
 GO
 
 ---2.6.10. Trigger kiểm tra khi thêm dịch vụ, mã dịch vụ, tên dịch vụ không được trùng.
-CREATE TRIGGER trg_CheckService
+CREATE OR ALTER TRIGGER trg_CheckServiceID
 ON service
 INSTEAD OF INSERT
 AS
 BEGIN
+    -- Kiểm tra xem mã dịch vụ đã tồn tại
     IF EXISTS (
-    	SELECT 1
-    	FROM service s
-    	JOIN inserted i ON s.service_id = i.service_id
+        SELECT 1
+        FROM service s
+        JOIN inserted i ON s.service_id = i.service_id
     )
     BEGIN
-    	RAISERROR('Mã dịch vụ này đã tồn tại', 16, 1);
-    	RETURN;
+        RAISERROR('Mã dịch vụ này đã tồn tại', 16, 1);
+        RETURN;  -- Dừng thực thi trigger
     END
-	
+	  -- Kiểm tra xem tên dịch vụ đã tồn tại
     IF EXISTS (
-    	SELECT 1
-    	FROM service s
-    	JOIN inserted i ON s.service_name = i.service_name
+        SELECT 1
+        FROM service s
+        JOIN inserted i ON s.service_name = i.service_name
     )
     BEGIN
-    	RAISERROR('Tên dịch vụ này đã tồn tại', 16, 1);
-    	RETURN;
+        RAISERROR('Tên dịch vụ này đã tồn tại', 16, 1);
+        RETURN;  -- Dừng thực thi trigger
     END
- 
+
+    -- Chèn dữ liệu vào bảng service
+    INSERT INTO service (service_id, service_name, price, description, manager_id)
+    SELECT service_id, service_name, price, description, manager_id
+    FROM inserted;
+END;
+GO
+---2.6.11. Trigger kiểm tra khi thêm dịch vụ, mã dịch vụ, tên dịch vụ không được trùng.
+CREATE OR ALTER TRIGGER trg_CheckServiceName
+ON service
+INSTEAD OF Update
+AS
+BEGIN
+    
+    -- Kiểm tra xem tên dịch vụ đã tồn tại
+    IF EXISTS (
+        SELECT 1
+        FROM service s
+        JOIN inserted i ON s.service_name = i.service_name
+    )
+    BEGIN
+        RAISERROR('Tên dịch vụ này đã tồn tại', 16, 1);
+        RETURN;  -- Dừng thực thi trigger
+    END
+
+    -- Chèn dữ liệu vào bảng service
     INSERT INTO service (service_id, service_name, price, description, manager_id)
     SELECT service_id, service_name, price, description, manager_id
     FROM inserted;
 END;
 GO
 
---2.6.11. Trigger khi bấm xuất hóa đơn thì lấy thời gian xuất hóa đơn thiết lập giá trị actual_check_out_time bên bảng booking_record.
+
+--2.6.12. Trigger khi bấm xuất hóa đơn thì lấy thời gian xuất hóa đơn thiết lập giá trị actual_check_out_time bên bảng booking_record.
 CREATE OR ALTER TRIGGER trg_UpdateCheckOutTime
 ON booking_record
 AFTER INSERT,UPDATE

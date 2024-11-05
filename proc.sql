@@ -2,7 +2,8 @@ use hotel_management;
 go
 -- 3.2.1. Thủ tục thêm dữ liệu các bảng
 -- 3.2.1.1. Bảng room_type
-CREATE OR ALTER PROC sp_AddRoomType
+
+CREATE PROC sp_AddRoomType
     @room_type_id VARCHAR(20),
     @room_type_name NVARCHAR(50),
     @number_of_bed INT,
@@ -25,8 +26,10 @@ BEGIN
 END;
 GO
 
+
+insert into room_type values('2','1',1,1,12,1)
 --3.2.1.2. Bảng service
-CREATE PROCEDURE sp_AddService
+CREATE OR ALTER PROCEDURE sp_AddService
     @service_id VARCHAR(20),
     @service_name NVARCHAR(255),
     @price INT,
@@ -35,18 +38,27 @@ CREATE PROCEDURE sp_AddService
 AS
 BEGIN
     BEGIN TRANSACTION;
- 
+
     BEGIN TRY
-       INSERT INTO service (service_id, service_name, price, description, manager_id)
-       VALUES (@service_id, @service_name, @price, @description, @manager_id);
- 
-       COMMIT TRANSACTION;
+        -- Chèn dữ liệu vào bảng service
+        INSERT INTO service (service_id, service_name, price, description, manager_id)
+        VALUES (@service_id, @service_name, @price, @description, @manager_id);
+
+        -- Nếu không có lỗi, commit giao dịch
+        COMMIT TRANSACTION;
     END TRY
     BEGIN CATCH
-       ROLLBACK TRANSACTION;
+        -- Nếu có lỗi xảy ra, rollback giao dịch
+        ROLLBACK TRANSACTION;
+
+        -- Ghi lại thông báo lỗi
+        DECLARE @ErrorMessage NVARCHAR(4000);
+        SELECT @ErrorMessage = ERROR_MESSAGE();
+        RAISERROR (@ErrorMessage, 16, 1);
     END CATCH
 END;
 GO
+
 
 -- 3.2.1.3. Bảng room
 CREATE OR ALTER PROCEDURE sp_AddRoom
@@ -65,6 +77,7 @@ BEGIN
        COMMIT TRANSACTION;
     END TRY
     BEGIN CATCH
+		Raiserror('Mã phòng bị trùng',16,1)
        ROLLBACK TRANSACTION;
     END CATCH
 END;
@@ -203,7 +216,7 @@ END;
 GO
 
 --3.2.2.3. Bảng service
-CREATE PROCEDURE sp_UpdateServiceById
+CREATE OR ALTER PROCEDURE sp_UpdateServiceById
     @service_id VARCHAR(20),
     @service_name NVARCHAR(255),
     @price INT,
@@ -224,6 +237,9 @@ BEGIN
     END TRY
     BEGIN CATCH
        ROLLBACK TRANSACTION; 
+	   DECLARE @ErrorMessage NVARCHAR(4000);
+        SELECT @ErrorMessage = ERROR_MESSAGE();
+        RAISERROR (@ErrorMessage, 16, 1);
     END CATCH
 END;
 GO
@@ -256,7 +272,7 @@ BEGIN
    	END CATCH
 END;
 GO
--- 3.2.3.5. Thêm thời gian check out vào booking record khi trả phòng
+-- 3.2.2.5. Thêm thời gian check out vào booking record khi trả phòng
 CREATE PROCEDURE sp_CheckOutRoom
     @booking_record_id VARCHAR(20)
 AS
@@ -274,8 +290,8 @@ BEGIN
     COMMIT TRANSACTION;
 END;	
 go
---3.2.2.5 Bảng bill
-CREATE PROCEDURE sp_UpdatePaymentMethod
+--3.2.2.6 Bảng bill
+CREATE OR ALTER PROCEDURE sp_UpdatePaymentMethod
     @bill_id VARCHAR(20),      	
     @payMethod VARCHAR(50) 
 AS
@@ -283,13 +299,19 @@ BEGIN
  
     BEGIN TRANSACTION;
     BEGIN TRY
+	if @payMethod ='/' 
+		Raiserror('Phương thức thanh toán chưa được điền',16,1);
+	else
+	begin
     	UPDATE bill
     	SET payment_method = @payMethod
     	WHERE bill_id = @bill_id;
     	COMMIT TRANSACTION;
+	end
     END TRY
     BEGIN CATCH
-    	    	ROLLBACK TRANSACTION;
+	
+    	ROLLBACK TRANSACTION;
     	THROW;
     END CATCH
 END;
@@ -358,29 +380,32 @@ END;
 GO
 
 --3.2.3.2 Bảng room 
-CREATE PROCEDURE sp_DeleteRoomById
+CREATE OR ALTER PROCEDURE sp_DeleteRoomById
     @roomId VARCHAR(20)
 AS
 BEGIN
- 
     BEGIN TRY
-       BEGIN TRANSACTION;
-       IF EXISTS (SELECT 1 FROM Room WHERE room_id = @roomId)
-       BEGIN
-    	  	DELETE FROM booking_record WHERE room_id = @roomId;
-    	  	DELETE FROM Room WHERE room_id = @roomId;
-    	  	COMMIT TRANSACTION;
-       END
-       ELSE
-       BEGIN
-    	  	ROLLBACK TRANSACTION;
-       END
+        BEGIN TRANSACTION;
+
+        DELETE FROM Room WHERE room_id = @roomId;
+
+        COMMIT TRANSACTION; 
+        
     END TRY
     BEGIN CATCH
-       ROLLBACK TRANSACTION;
+        -- Rollback the transaction if an error occurs
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION;
+
+        DECLARE @ErrorMessage NVARCHAR(4000);
+        SELECT @ErrorMessage = ERROR_MESSAGE();
+        RAISERROR(@ErrorMessage, 16, 1);
     END CATCH
 END;
 GO
+
+
+exec sp_DeleteRoomById @roomId = '103'
 
 --3.2.3.3. Bảng service
 CREATE OR ALTER PROCEDURE sp_DeleteServiceById
@@ -404,4 +429,43 @@ BEGIN
     END CATCH
 END;
 GO
+--3.2.4 login
+CREATE OR ALTER PROCEDURE sp_CheckLogin (
+    @username VARCHAR(50),
+    @password VARCHAR(255),
+    @result INT OUTPUT  -- Tham số đầu ra để trả kết quả
+)
+AS
+BEGIN
+    DECLARE @role VARCHAR(20);
 
+    BEGIN TRY
+        -- Kiểm tra nếu tài khoản tồn tại và lấy vai trò
+        SELECT @role = role
+        FROM account
+        WHERE username = @username AND [password] = @password;
+
+        IF @role IS NOT NULL
+        BEGIN
+            IF @role = 'manager'
+            BEGIN
+                SET @result = 1;  -- Quản lý
+            END
+            ELSE IF @role = 'receptionist'
+            BEGIN
+                SET @result = 0;  -- Lễ tân
+            END
+        END
+        ELSE
+        BEGIN
+            SET @result = -1;  -- Tài khoản không tồn tại
+          
+        END
+    END TRY
+    BEGIN CATCH
+        -- Xử lý lỗi
+        SET @result = -1;  -- Đặt giá trị lỗi
+        RAISERROR('Đã xảy ra lỗi trong quá trình kiểm tra đăng nhập.', 16, 1);
+    END CATCH
+END;
+GO
