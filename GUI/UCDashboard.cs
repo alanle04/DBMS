@@ -1,5 +1,8 @@
-﻿using HotelManagementSystem.GUI;
+﻿using HotelManagementSystem.DBConnection;
+using HotelManagementSystem.GUI;
 using System;
+using System.Data.SqlClient;
+using System.Data;
 using System.Windows.Forms;
 
 namespace HotelManagementSystem {
@@ -256,6 +259,46 @@ namespace HotelManagementSystem {
                 MessageBox.Show("Đầu vào không hợp lệ. Vui lòng nhập một năm hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtYear.Clear(); // Xóa giá trị trong TextBox
             }
+        }
+
+        private void btnXemChiTietDoanhThu_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                using (SqlConnection connection = Connection.GetConnection())
+                {
+                    connection.Open();
+
+                    string query = "sp_AdvancedRevenueAnalysis"; // Tên của thủ tục lưu trữ
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        // Thêm tham số cho thủ tục
+                        command.Parameters.AddWithValue("@startDate", dateTimePicker1.Value);
+                        command.Parameters.AddWithValue("@endDate", dateTimePicker2.Value);
+
+                        // Sử dụng SqlDataAdapter để đổ dữ liệu vào DataTable
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        // Đặt DataTable làm nguồn dữ liệu cho dataGridView1
+                        dataGridView1.DataSource = dataTable;
+                    }
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show("Lỗi SQL: " + sqlEx.Message, "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }
