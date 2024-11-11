@@ -89,7 +89,7 @@
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(20, 18);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(555, 406);
             this.panel1.TabIndex = 0;
@@ -102,7 +102,7 @@
             this.btnSearchRooms.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearchRooms.ForeColor = System.Drawing.Color.White;
             this.btnSearchRooms.Location = new System.Drawing.Point(67, 321);
-            this.btnSearchRooms.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSearchRooms.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearchRooms.Name = "btnSearchRooms";
             this.btnSearchRooms.Size = new System.Drawing.Size(191, 49);
             this.btnSearchRooms.TabIndex = 36;
@@ -115,7 +115,7 @@
             this.dtpCheckOut.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpCheckOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpCheckOut.Location = new System.Drawing.Point(67, 263);
-            this.dtpCheckOut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpCheckOut.Margin = new System.Windows.Forms.Padding(4);
             this.dtpCheckOut.Name = "dtpCheckOut";
             this.dtpCheckOut.Size = new System.Drawing.Size(419, 29);
             this.dtpCheckOut.TabIndex = 35;
@@ -127,7 +127,7 @@
             this.btnBook.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBook.ForeColor = System.Drawing.Color.White;
             this.btnBook.Location = new System.Drawing.Point(284, 321);
-            this.btnBook.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBook.Margin = new System.Windows.Forms.Padding(4);
             this.btnBook.Name = "btnBook";
             this.btnBook.Size = new System.Drawing.Size(203, 49);
             this.btnBook.TabIndex = 25;
@@ -151,7 +151,7 @@
             this.dtpCheckIn.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpCheckIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpCheckIn.Location = new System.Drawing.Point(67, 175);
-            this.dtpCheckIn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpCheckIn.Margin = new System.Windows.Forms.Padding(4);
             this.dtpCheckIn.Name = "dtpCheckIn";
             this.dtpCheckIn.Size = new System.Drawing.Size(419, 29);
             this.dtpCheckIn.TabIndex = 33;
@@ -182,17 +182,8 @@
             // 
             this.cbRoomType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbRoomType.FormattingEnabled = true;
-            this.cbRoomType.Items.AddRange(new object[] {
-            "Standard-Single",
-            "Standard-Double",
-            "Superior-Single",
-            "Superior-Double",
-            "Deluxe-Single",
-            "Deluxe-Double",
-            "Suite-Single",
-            "Suite-Double"});
             this.cbRoomType.Location = new System.Drawing.Point(67, 89);
-            this.cbRoomType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbRoomType.Margin = new System.Windows.Forms.Padding(4);
             this.cbRoomType.Name = "cbRoomType";
             this.cbRoomType.Size = new System.Drawing.Size(419, 33);
             this.cbRoomType.TabIndex = 28;
@@ -223,14 +214,10 @@
             // 
             this.dgvListRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListRoom.Location = new System.Drawing.Point(0, 49);
-            this.dgvListRoom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvListRoom.Margin = new System.Windows.Forms.Padding(4);
             this.dgvListRoom.Name = "dgvListRoom";
             this.dgvListRoom.RowHeadersWidth = 51;
-<<<<<<< HEAD
-            this.dgvListRoom.Size = new System.Drawing.Size(1053, 420);
-=======
             this.dgvListRoom.Size = new System.Drawing.Size(983, 420);
->>>>>>> b08674dd6179d6f75075f0bbee4ceee32e632008
             this.dgvListRoom.TabIndex = 3;
             this.dgvListRoom.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListRoom_CellClick);
             // 
@@ -251,7 +238,7 @@
             this.panel2.Controls.Add(this.lblFullName);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Location = new System.Drawing.Point(593, 18);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1053, 406);
             this.panel2.TabIndex = 1;
@@ -644,7 +631,7 @@
             "",
             "Zimbabwean"});
             this.cbNationality.Location = new System.Drawing.Point(564, 199);
-            this.cbNationality.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbNationality.Margin = new System.Windows.Forms.Padding(4);
             this.cbNationality.Name = "cbNationality";
             this.cbNationality.Size = new System.Drawing.Size(419, 33);
             this.cbNationality.TabIndex = 24;
@@ -653,7 +640,7 @@
             // 
             this.txtAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddress.Location = new System.Drawing.Point(564, 279);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(4);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(419, 30);
             this.txtAddress.TabIndex = 23;
@@ -684,7 +671,7 @@
             // 
             this.txtIdNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIdNumber.Location = new System.Drawing.Point(564, 123);
-            this.txtIdNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIdNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtIdNumber.Name = "txtIdNumber";
             this.txtIdNumber.Size = new System.Drawing.Size(419, 30);
             this.txtIdNumber.TabIndex = 20;
@@ -709,7 +696,7 @@
             "Male",
             "Female"});
             this.cbGender.Location = new System.Drawing.Point(63, 199);
-            this.cbGender.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbGender.Margin = new System.Windows.Forms.Padding(4);
             this.cbGender.Name = "cbGender";
             this.cbGender.Size = new System.Drawing.Size(419, 33);
             this.cbGender.TabIndex = 18;
@@ -718,7 +705,7 @@
             // 
             this.txtPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhoneNumber.Location = new System.Drawing.Point(63, 279);
-            this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(419, 30);
             this.txtPhoneNumber.TabIndex = 17;
@@ -749,7 +736,7 @@
             // 
             this.txtFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFullName.Location = new System.Drawing.Point(63, 122);
-            this.txtFullName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFullName.Margin = new System.Windows.Forms.Padding(4);
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Size = new System.Drawing.Size(419, 30);
             this.txtFullName.TabIndex = 14;
@@ -791,7 +778,7 @@
             this.panel3.Controls.Add(this.label12);
             this.panel3.Controls.Add(this.label11);
             this.panel3.Location = new System.Drawing.Point(20, 441);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(555, 469);
             this.panel3.TabIndex = 2;
@@ -800,7 +787,7 @@
             // 
             this.txtRoomId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRoomId.Location = new System.Drawing.Point(68, 103);
-            this.txtRoomId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRoomId.Margin = new System.Windows.Forms.Padding(4);
             this.txtRoomId.Name = "txtRoomId";
             this.txtRoomId.Size = new System.Drawing.Size(419, 30);
             this.txtRoomId.TabIndex = 35;
@@ -820,7 +807,7 @@
             // 
             this.txtPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrice.Location = new System.Drawing.Point(67, 417);
-            this.txtPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPrice.Margin = new System.Windows.Forms.Padding(4);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(419, 30);
             this.txtPrice.TabIndex = 33;
@@ -840,7 +827,7 @@
             // 
             this.txtCapacity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCapacity.Location = new System.Drawing.Point(67, 345);
-            this.txtCapacity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCapacity.Margin = new System.Windows.Forms.Padding(4);
             this.txtCapacity.Name = "txtCapacity";
             this.txtCapacity.Size = new System.Drawing.Size(419, 30);
             this.txtCapacity.TabIndex = 31;
@@ -860,7 +847,7 @@
             // 
             this.txtRoomType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRoomType.Location = new System.Drawing.Point(67, 258);
-            this.txtRoomType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRoomType.Margin = new System.Windows.Forms.Padding(4);
             this.txtRoomType.Name = "txtRoomType";
             this.txtRoomType.Size = new System.Drawing.Size(419, 30);
             this.txtRoomType.TabIndex = 29;
@@ -880,7 +867,7 @@
             // 
             this.txtRoomName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRoomName.Location = new System.Drawing.Point(68, 178);
-            this.txtRoomName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRoomName.Margin = new System.Windows.Forms.Padding(4);
             this.txtRoomName.Name = "txtRoomName";
             this.txtRoomName.Size = new System.Drawing.Size(419, 30);
             this.txtRoomName.TabIndex = 27;
@@ -913,7 +900,7 @@
             this.panel5.Controls.Add(this.dgvListRoom);
             this.panel5.Controls.Add(this.label8);
             this.panel5.Location = new System.Drawing.Point(593, 441);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1053, 469);
             this.panel5.TabIndex = 37;
@@ -937,7 +924,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UCBooking";
             this.Size = new System.Drawing.Size(1667, 929);
             this.panel1.ResumeLayout(false);
