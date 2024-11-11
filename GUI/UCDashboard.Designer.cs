@@ -52,10 +52,11 @@ namespace HotelManagementSystem
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dtgv_dv = new System.Windows.Forms.DataGridView();
-            this.dtgv_roomtype = new System.Windows.Forms.DataGridView();
-            this.dtgv_pt = new System.Windows.Forms.DataGridView();
             this.dtgv_mon = new System.Windows.Forms.DataGridView();
+            this.dtgv_pt = new System.Windows.Forms.DataGridView();
+            this.dtgv_roomtype = new System.Windows.Forms.DataGridView();
+            this.dtgv_dv = new System.Windows.Forms.DataGridView();
+            this.btn_ptdt = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -66,10 +67,10 @@ namespace HotelManagementSystem
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgv_dv)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgv_roomtype)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgv_pt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_mon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_pt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_roomtype)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_dv)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -380,6 +381,7 @@ namespace HotelManagementSystem
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.btn_ptdt);
             this.panel2.Controls.Add(this.dtgv_mon);
             this.panel2.Controls.Add(this.dtgv_pt);
             this.panel2.Controls.Add(this.dtgv_roomtype);
@@ -391,27 +393,16 @@ namespace HotelManagementSystem
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // dtgv_dv
+            // dtgv_mon
             // 
-            this.dtgv_dv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtgv_dv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgv_dv.Location = new System.Drawing.Point(46, 20);
-            this.dtgv_dv.Name = "dtgv_dv";
-            this.dtgv_dv.RowHeadersWidth = 51;
-            this.dtgv_dv.RowTemplate.Height = 24;
-            this.dtgv_dv.Size = new System.Drawing.Size(352, 569);
-            this.dtgv_dv.TabIndex = 16;
-            // 
-            // dtgv_roomtype
-            // 
-            this.dtgv_roomtype.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtgv_roomtype.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgv_roomtype.Location = new System.Drawing.Point(413, 20);
-            this.dtgv_roomtype.Name = "dtgv_roomtype";
-            this.dtgv_roomtype.RowHeadersWidth = 51;
-            this.dtgv_roomtype.RowTemplate.Height = 24;
-            this.dtgv_roomtype.Size = new System.Drawing.Size(349, 569);
-            this.dtgv_roomtype.TabIndex = 17;
+            this.dtgv_mon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgv_mon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_mon.Location = new System.Drawing.Point(1135, 20);
+            this.dtgv_mon.Name = "dtgv_mon";
+            this.dtgv_mon.RowHeadersWidth = 51;
+            this.dtgv_mon.RowTemplate.Height = 24;
+            this.dtgv_mon.Size = new System.Drawing.Size(408, 569);
+            this.dtgv_mon.TabIndex = 19;
             // 
             // dtgv_pt
             // 
@@ -424,16 +415,43 @@ namespace HotelManagementSystem
             this.dtgv_pt.Size = new System.Drawing.Size(342, 569);
             this.dtgv_pt.TabIndex = 18;
             // 
-            // dtgv_mon
+            // dtgv_roomtype
             // 
-            this.dtgv_mon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtgv_mon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgv_mon.Location = new System.Drawing.Point(1135, 20);
-            this.dtgv_mon.Name = "dtgv_mon";
-            this.dtgv_mon.RowHeadersWidth = 51;
-            this.dtgv_mon.RowTemplate.Height = 24;
-            this.dtgv_mon.Size = new System.Drawing.Size(408, 569);
-            this.dtgv_mon.TabIndex = 19;
+            this.dtgv_roomtype.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgv_roomtype.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_roomtype.Location = new System.Drawing.Point(413, 20);
+            this.dtgv_roomtype.Name = "dtgv_roomtype";
+            this.dtgv_roomtype.RowHeadersWidth = 51;
+            this.dtgv_roomtype.RowTemplate.Height = 24;
+            this.dtgv_roomtype.Size = new System.Drawing.Size(349, 569);
+            this.dtgv_roomtype.TabIndex = 17;
+            // 
+            // dtgv_dv
+            // 
+            this.dtgv_dv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgv_dv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_dv.Location = new System.Drawing.Point(46, 102);
+            this.dtgv_dv.Name = "dtgv_dv";
+            this.dtgv_dv.RowHeadersWidth = 51;
+            this.dtgv_dv.RowTemplate.Height = 24;
+            this.dtgv_dv.Size = new System.Drawing.Size(352, 487);
+            this.dtgv_dv.TabIndex = 16;
+            // 
+            // btn_ptdt
+            // 
+            this.btn_ptdt.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_ptdt.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_ptdt.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_ptdt.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_ptdt.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_ptdt.ForeColor = System.Drawing.Color.White;
+            this.btn_ptdt.Location = new System.Drawing.Point(46, 20);
+            this.btn_ptdt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_ptdt.Name = "btn_ptdt";
+            this.btn_ptdt.Size = new System.Drawing.Size(352, 77);
+            this.btn_ptdt.TabIndex = 8;
+            this.btn_ptdt.Text = "Phân tích doanh thu";
+            this.btn_ptdt.Click += new System.EventHandler(this.btn_ptdt_Click);
             // 
             // UCDashboard
             // 
@@ -459,10 +477,10 @@ namespace HotelManagementSystem
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgv_dv)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgv_roomtype)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgv_pt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_mon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_pt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_roomtype)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_dv)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -497,5 +515,6 @@ namespace HotelManagementSystem
         private System.Windows.Forms.DataGridView dtgv_mon;
         private System.Windows.Forms.DataGridView dtgv_pt;
         private System.Windows.Forms.DataGridView dtgv_roomtype;
+        private Guna.UI2.WinForms.Guna2Button btn_ptdt;
     }
 }

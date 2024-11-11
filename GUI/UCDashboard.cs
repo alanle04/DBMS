@@ -457,6 +457,18 @@ catch (Exception ex)
 
         private void UCDashboard_Load(object sender, EventArgs e)
         {
+            dtgv_dv.Visible = false;
+            dtgv_roomtype.Visible = false;
+            dtgv_mon.Visible = false;
+            dtgv_pt.Visible = false;
+        }
+
+        private void btn_ptdt_Click(object sender, EventArgs e)
+        {
+            dtgv_dv.Visible = true;
+            dtgv_roomtype.Visible = true;
+            dtgv_mon.Visible = true;
+            dtgv_pt.Visible = true;
             AdvancedRevenueAnalysisService(dtgv_dv);
             AdvancedRevenueAnalysisRoomType(dtgv_roomtype);
             AdvancedRevenueAnalysis(dtgv_pt);
