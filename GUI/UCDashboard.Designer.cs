@@ -52,12 +52,10 @@ namespace HotelManagementSystem
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnXemChiTietDoanhThu = new Guna.UI2.WinForms.Guna2Button();
+            this.dtgv_dv = new System.Windows.Forms.DataGridView();
+            this.dtgv_roomtype = new System.Windows.Forms.DataGridView();
+            this.dtgv_pt = new System.Windows.Forms.DataGridView();
+            this.dtgv_mon = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -68,7 +66,10 @@ namespace HotelManagementSystem
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_dv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_roomtype)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_pt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_mon)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -379,12 +380,10 @@ namespace HotelManagementSystem
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.dateTimePicker2);
-            this.panel2.Controls.Add(this.dateTimePicker1);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Controls.Add(this.btnXemChiTietDoanhThu);
+            this.panel2.Controls.Add(this.dtgv_mon);
+            this.panel2.Controls.Add(this.dtgv_pt);
+            this.panel2.Controls.Add(this.dtgv_roomtype);
+            this.panel2.Controls.Add(this.dtgv_dv);
             this.panel2.Location = new System.Drawing.Point(20, 310);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
@@ -392,69 +391,49 @@ namespace HotelManagementSystem
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // dateTimePicker2
+            // dtgv_dv
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(103, 225);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(300, 22);
-            this.dateTimePicker2.TabIndex = 20;
+            this.dtgv_dv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgv_dv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_dv.Location = new System.Drawing.Point(46, 20);
+            this.dtgv_dv.Name = "dtgv_dv";
+            this.dtgv_dv.RowHeadersWidth = 51;
+            this.dtgv_dv.RowTemplate.Height = 24;
+            this.dtgv_dv.Size = new System.Drawing.Size(352, 569);
+            this.dtgv_dv.TabIndex = 16;
             // 
-            // dateTimePicker1
+            // dtgv_roomtype
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(103, 102);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(300, 22);
-            this.dateTimePicker1.TabIndex = 19;
+            this.dtgv_roomtype.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgv_roomtype.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_roomtype.Location = new System.Drawing.Point(413, 20);
+            this.dtgv_roomtype.Name = "dtgv_roomtype";
+            this.dtgv_roomtype.RowHeadersWidth = 51;
+            this.dtgv_roomtype.RowTemplate.Height = 24;
+            this.dtgv_roomtype.Size = new System.Drawing.Size(349, 569);
+            this.dtgv_roomtype.TabIndex = 17;
             // 
-            // label5
+            // dtgv_pt
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(98, 45);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(296, 28);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "Ngày bắt đầu tính phân tích";
+            this.dtgv_pt.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgv_pt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_pt.Location = new System.Drawing.Point(777, 20);
+            this.dtgv_pt.Name = "dtgv_pt";
+            this.dtgv_pt.RowHeadersWidth = 51;
+            this.dtgv_pt.RowTemplate.Height = 24;
+            this.dtgv_pt.Size = new System.Drawing.Size(342, 569);
+            this.dtgv_pt.TabIndex = 18;
             // 
-            // label6
+            // dtgv_mon
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(124, 181);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(153, 28);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "Ngày kết thúc";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(518, 32);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(742, 538);
-            this.dataGridView1.TabIndex = 16;
-            // 
-            // btnXemChiTietDoanhThu
-            // 
-            this.btnXemChiTietDoanhThu.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnXemChiTietDoanhThu.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnXemChiTietDoanhThu.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnXemChiTietDoanhThu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnXemChiTietDoanhThu.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnXemChiTietDoanhThu.ForeColor = System.Drawing.Color.White;
-            this.btnXemChiTietDoanhThu.Location = new System.Drawing.Point(155, 304);
-            this.btnXemChiTietDoanhThu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnXemChiTietDoanhThu.Name = "btnXemChiTietDoanhThu";
-            this.btnXemChiTietDoanhThu.Size = new System.Drawing.Size(215, 87);
-            this.btnXemChiTietDoanhThu.TabIndex = 15;
-            this.btnXemChiTietDoanhThu.Text = "Phân tích danh thu";
-            this.btnXemChiTietDoanhThu.Click += new System.EventHandler(this.btnXemChiTietDoanhThu_Click);
+            this.dtgv_mon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgv_mon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_mon.Location = new System.Drawing.Point(1135, 20);
+            this.dtgv_mon.Name = "dtgv_mon";
+            this.dtgv_mon.RowHeadersWidth = 51;
+            this.dtgv_mon.RowTemplate.Height = 24;
+            this.dtgv_mon.Size = new System.Drawing.Size(408, 569);
+            this.dtgv_mon.TabIndex = 19;
             // 
             // UCDashboard
             // 
@@ -465,6 +444,7 @@ namespace HotelManagementSystem
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UCDashboard";
             this.Size = new System.Drawing.Size(1667, 929);
+            this.Load += new System.EventHandler(this.UCDashboard_Load);
             this.panel1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
@@ -479,8 +459,10 @@ namespace HotelManagementSystem
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_dv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_roomtype)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_pt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_mon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -511,11 +493,9 @@ namespace HotelManagementSystem
         private Guna.UI2.WinForms.Guna2TextBox txtMonthly;
         private Guna.UI2.WinForms.Guna2TextBox txtDaily;
         private Guna.UI2.WinForms.Guna2Button btnYear;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private Guna.UI2.WinForms.Guna2Button btnXemChiTietDoanhThu;
+        private System.Windows.Forms.DataGridView dtgv_dv;
+        private System.Windows.Forms.DataGridView dtgv_mon;
+        private System.Windows.Forms.DataGridView dtgv_pt;
+        private System.Windows.Forms.DataGridView dtgv_roomtype;
     }
 }

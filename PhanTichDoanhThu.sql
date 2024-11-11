@@ -6,9 +6,8 @@ CREATE FUNCTION fn_AdvancedRevenueAnalysisService (
     @endDate DATE = NULL
 )
 RETURNS @Result TABLE (
-    AnalysisType NVARCHAR(50),
-    Content NVARCHAR(50),
-    TotalRevenue DECIMAL(18, 2)
+    [Dịch vụ] NVARCHAR(50),
+    [Tổng doanh thu của từng loại dịch vụ] DECIMAL(18, 2)
 )
 AS
 BEGIN
@@ -24,11 +23,10 @@ BEGIN
     END
 
     -- Chèn dữ liệu vào bảng trả về
-    INSERT INTO @Result (AnalysisType, Content, TotalRevenue)
+    INSERT INTO @Result ([Dịch vụ],[Tổng doanh thu của từng loại dịch vụ] )
     SELECT
-        N'Dịch vụ' AS AnalysisType,
-        s.[service_name] AS Content,
-        ISNULL(SUM(s.price * sur.quantity), 0) AS TotalRevenue
+        s.[service_name] AS [Dịch vụ],
+        ISNULL(SUM(s.price * sur.quantity), 0) AS [Tổng doanh thu của từng loại dịch vụ]
     FROM service s
     LEFT JOIN service_usage_record sur ON s.service_id = sur.service_id
     LEFT JOIN booking_record br ON br.booking_record_id = sur.booking_id
@@ -44,9 +42,8 @@ CREATE FUNCTION fn_AdvancedRevenueAnalysisRoomType (
     @endDate DATE = NULL
 )
 RETURNS @Result TABLE (
-    AnalysisType NVARCHAR(50),
-    Content NVARCHAR(50),
-    TotalRevenue DECIMAL(18, 2)
+    [Loại phòng] NVARCHAR(50),
+    [Tổng doanh thu của từng loại phòng] DECIMAL(18, 2)
 )
 AS
 BEGIN
@@ -62,11 +59,10 @@ BEGIN
     END
 
     -- Chèn dữ liệu vào bảng trả về
-    INSERT INTO @Result (AnalysisType, Content, TotalRevenue)
+    INSERT INTO @Result ([Loại phòng], [Tổng doanh thu của từng loại phòng])
     SELECT
-        N'Loại phòng' AS AnalysisType,
-        rt.room_type_name AS Content,
-        ISNULL(SUM(b.total), 0) AS TotalRevenue
+        rt.room_type_name AS [Loại phòng],
+        ISNULL(SUM(b.total), 0) AS [Tổng doanh thu của từng loại phòng]
     FROM room_type rt
     LEFT JOIN room r ON rt.room_type_id = r.room_type_id
     LEFT JOIN booking_record br ON r.room_id = br.room_id
@@ -94,26 +90,30 @@ BEGIN
         SET @endDate = GETDATE(); -- Ngày hiện tại
     END
 
-    -- Phân tích tất cả các lần sử dụng dịch vụ trong khoảng thời gian
-    SELECT s.service_name as 'Tất cả các lần sử dụng dịch vụ trong 3 tháng qua:'
+    -- Kết hợp kết quả dịch vụ và loại phòng trong một bảng duy nhất
+    SELECT N'Dịch vụ không được sử dụng' AS [Loại phòng và dịch vụ không được đặt trong 3 tháng qua], 
+           s.service_name AS [Tên]
     FROM service s
     LEFT JOIN service_usage_record sur ON s.service_id = sur.service_id
     LEFT JOIN booking_record br ON br.booking_record_id = sur.booking_id
-    LEFT JOIN bill b ON b.customer_id = br.customer_id AND b.created_at BETWEEN @startDate AND @endDate -- Điều kiện ngày của hóa đơn
+    LEFT JOIN bill b ON b.customer_id = br.customer_id AND b.created_at BETWEEN @startDate AND @endDate
     GROUP BY s.service_name
-    HAVING COUNT(sur.service_id) = 0;
+    HAVING COUNT(sur.service_id) = 0
 
-    -- Phân tích tất cả các loại phòng không được đặt trong khoảng thời gian
-    SELECT rt.room_type_name as 'Tất cả các loại phòng không được đặt trong 3 tháng qua:'
+    UNION ALL
+
+    SELECT N'Loại phòng không được đặt' AS [Loại phòng và dịch vụ không được đặt trong 3 tháng qua],
+           rt.room_type_name AS [Tên]
     FROM room_type rt
     LEFT JOIN room r ON rt.room_type_id = r.room_type_id
-    LEFT JOIN booking_record br ON r.room_id = br.room_id 
-    LEFT JOIN bill b ON b.customer_id = br.customer_id AND b.created_at BETWEEN @startDate AND @endDate -- Điều kiện ngày của hóa đơn
-    WHERE br.booking_record_id IS NULL -- Điều kiện lọc các loại phòng không có booking_record
+    LEFT JOIN booking_record br ON r.room_id = br.room_id
+    LEFT JOIN bill b ON b.customer_id = br.customer_id AND b.created_at BETWEEN @startDate AND @endDate
+    WHERE br.booking_record_id IS NULL
     GROUP BY rt.room_type_name;
-	
 END
 GO
+
+
 
 
 
@@ -175,35 +175,35 @@ BEGIN
     SET @predictedRevenueNextMonth = @totalRevenueCurrentMonth * (1 + @growthRate / 100);
 
     -- Chèn kết quả vào bảng tạm #Result
-    CREATE TABLE #Result (AnalysisType NVARCHAR(100), Content NVARCHAR(500), TotalRevenue DECIMAL(18, 2));
+    CREATE TABLE #Result ([Phân tích] NVARCHAR(100), [Nội dung] NVARCHAR(500),[Tổng doanh thu] DECIMAL(18, 2));
 
     -- Tổng doanh thu tháng hiện tại
-    INSERT INTO #Result (AnalysisType, Content, TotalRevenue)
+    INSERT INTO #Result ([Phân tích], [Nội dung], [Tổng doanh thu])
     SELECT
-        N'Tổng doanh thu tháng này' AS AnalysisType,
-        N'Từ ngày ' + CONVERT(NVARCHAR, @startDate, 103) + N' đến ' + CONVERT(NVARCHAR, @endDate, 103) AS Content,
-        @totalRevenueCurrentMonth AS TotalRevenue;
+        N'Tổng doanh thu tháng này' AS [Phân tích],
+        N'Từ ngày ' + CONVERT(NVARCHAR, @startDate, 103) + N' đến ' + CONVERT(NVARCHAR, @endDate, 103) AS [Nội dung],
+        @totalRevenueCurrentMonth AS [Tổng doanh thu];
     
     -- Tổng doanh thu tháng trước
-    INSERT INTO #Result (AnalysisType, Content, TotalRevenue)
+    INSERT INTO #Result ([Phân tích], [Nội dung], [Tổng doanh thu])
     SELECT
-        N'Tổng doanh thu tháng trước' AS AnalysisType,
-        N'Từ ngày ' + CONVERT(NVARCHAR, @lastMonthStartDate, 103) + N' đến ' + CONVERT(NVARCHAR, @lastMonthEndDate, 103) AS Content,
-        @totalRevenueLastMonth AS TotalRevenue;
+        N'Tổng doanh thu tháng trước' AS [Phân tích],
+        N'Từ ngày ' + CONVERT(NVARCHAR, @lastMonthStartDate, 103) + N' đến ' + CONVERT(NVARCHAR, @lastMonthEndDate, 103) AS [Nội dung],
+        @totalRevenueLastMonth AS [Tổng doanh thu];
 
     -- Tỷ lệ tăng trưởng doanh thu
-    INSERT INTO #Result (AnalysisType, Content, TotalRevenue)
+    INSERT INTO #Result ([Phân tích], [Nội dung], [Tổng doanh thu])
     SELECT
-        N'Tỷ lệ tăng trưởng doanh thu' AS AnalysisType,
-    N'Công thức: growthRate = (CurrentMonth - LastMonth) / LastMonth * 100' AS Content,
-    @growthRate AS TotalRevenue;
+        N'Tỷ lệ tăng trưởng doanh thu' AS [Phân tích],
+    N'Công thức: growthRate = (CurrentMonth - LastMonth) / LastMonth * 100 (%)' AS [Nội dung],
+    @growthRate  AS [Tổng doanh thu];
 
     -- Dự đoán doanh thu tháng sau
-    INSERT INTO #Result (AnalysisType, Content, TotalRevenue)
+    INSERT INTO #Result ([Phân tích], [Nội dung], [Tổng doanh thu])
     SELECT
-         N'Dự đoán doanh thu tháng sau' AS AnalysisType,
-	 N'Công thức: NextMonth = CurrentMonth * (1 + growthRate / 100)' AS Content,
-    @predictedRevenueNextMonth AS TotalRevenue;
+         N'Dự đoán doanh thu tháng sau' AS [Phân tích],
+	 N'Công thức: NextMonth = CurrentMonth * (1 + growthRate / 100)' AS [Nội dung],
+    @predictedRevenueNextMonth AS [Tổng doanh thu];
     -- Hiển thị kết quả
     SELECT * FROM #Result;
 
