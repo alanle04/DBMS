@@ -66,3 +66,4 @@ GRANT SELECT TO ManagerRole;
 -- Gán user vào các role
 ALTER ROLE ReceptionistRole ADD MEMBER Receptionist;
 ALTER ROLE ManagerRole ADD MEMBER Manager;
+

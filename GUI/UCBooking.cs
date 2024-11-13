@@ -23,6 +23,10 @@ namespace HotelManagementSystem {
 
         private void LoadData() {
             dgvListRoom.DataSource = RoomDAO.GetAllRooms();
+            cbRoomType.DataSource = RoomTypeDAO.RoomTypeList();
+            cbRoomType.ValueMember = "ID";
+            cbRoomType.DisplayMember = "Name";
+
         }
 
         private void btnBook_Click(object sender, System.EventArgs e) {
