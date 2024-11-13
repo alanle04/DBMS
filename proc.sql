@@ -25,11 +25,8 @@ BEGIN
     END CATCH
 END;
 GO
-
-
-insert into room_type values('2','1',1,1,12,1)
 --3.2.1.2. Bảng service
-CREATE OR ALTER PROCEDURE sp_AddService
+CREATE PROCEDURE sp_AddService
     @service_id VARCHAR(20),
     @service_name NVARCHAR(255),
     @price INT,
@@ -77,11 +74,7 @@ BEGIN
        COMMIT TRANSACTION;
     END TRY
     BEGIN CATCH
-<<<<<<< HEAD
 		Raiserror('Mã phòng bị trùng',16,1)
-=======
-       Raiserror('Mã phòng bị trùng',16,1)
->>>>>>> b08674dd6179d6f75075f0bbee4ceee32e632008
        ROLLBACK TRANSACTION;
     END CATCH
 END;
@@ -409,7 +402,6 @@ END;
 GO
 
 
-exec sp_DeleteRoomById @roomId = '103'
 
 --3.2.3.3. Bảng service
 CREATE OR ALTER PROCEDURE sp_DeleteServiceById
@@ -442,8 +434,6 @@ CREATE OR ALTER PROCEDURE sp_CheckLogin (
 AS
 BEGIN
     DECLARE @role VARCHAR(20);
-
-<<<<<<< HEAD
     BEGIN TRY
         -- Kiểm tra nếu tài khoản tồn tại và lấy vai trò
         SELECT @role = role
@@ -463,8 +453,7 @@ BEGIN
         END
         ELSE
         BEGIN
-            SET @result = -1;  -- Tài khoản không tồn tại
-          
+            SET @result = -1;  -- Tài khoản không tồn tại   
         END
     END TRY
     BEGIN CATCH
@@ -474,7 +463,7 @@ BEGIN
     END CATCH
 END;
 GO
-=======
+
 --- proc tính phụ thu khi khách check in sớm.
 CREATE OR ALTER PROC sp_UpdateEarlyCheckInFee
 (
@@ -605,4 +594,3 @@ BEGIN
 						ROLLBACK TRANSACTION;
 				END CATCH
 END
->>>>>>> b08674dd6179d6f75075f0bbee4ceee32e632008

@@ -324,7 +324,7 @@ RETURN
 GO 
 
 -- 3.2.4.18. Hàm lấy hóa đơn phòng theo mã phiếu đặt phòng.
-CREATE OR ALTER FUNCTION fn_GetRoomBillByBookingRecordId
+CREATE FUNCTION fn_GetRoomBillByBookingRecordId
 (
     @booking_record_id VARCHAR(20)
 )
@@ -337,24 +337,18 @@ RETURN
     	rt.cost_per_day,
     	br.expected_check_in_time,
     	br.expected_check_out_time,
-<<<<<<< HEAD
 		case
 		when datediff(day,br.expected_check_in_time,br.expected_check_out_time) = 0
 		then 1 *rt.cost_per_day
 		else
     		datediff(day,br.expected_check_in_time,br.expected_check_out_time) * rt.cost_per_day
 		end as total
-=======
-		b.total
->>>>>>> b08674dd6179d6f75075f0bbee4ceee32e632008
     FROM
     	booking_record br
     JOIN
     	room r ON br.room_id = r.room_id
     JOIN
     	room_type rt ON r.room_type_id = rt.room_type_id
-	JOIN 
-		bill b ON br.customer_id =b.customer_id
     WHERE
     	br.booking_record_id = @booking_record_id
 )
@@ -400,7 +394,6 @@ RETURN
 );
 GO
 
-<<<<<<< HEAD
 -- 3.2.4.21. Hiện hóa đơn dịch vụ đã dùng bằng booking record id
 CREATE FUNCTION fn_GetServiceUsageByBookingId(@booking_record_id VARCHAR(20))
 RETURNS TABLE
@@ -467,8 +460,6 @@ RETURN
         br.expected_check_out_time
 );
 GO
-=======
->>>>>>> b08674dd6179d6f75075f0bbee4ceee32e632008
 -- 3.2.4.23. Tính tổng tiền dịch vụ
 CREATE FUNCTION fn_GetTotalServiceCost
 (

@@ -39,11 +39,36 @@ namespace HotelManagementSystem.GUI {
             dgvRoomBill.DataSource = bookingRecordDAO.GetRoomBillByRoomId(bookingRecord.BookingRecordId);
             dgvServiceBill.DataSource = serviceUsageRecordDAO.GetServiceUsageRecordByBookingRecordId(bookingRecord.BookingRecordId);
 
-            if(dgvRoomBill.Rows.Count > 0) {
+            if (dgvRoomBill.Rows.Count > 0)
+            {
                 var totalValue = dgvRoomBill.Rows[0].Cells["total"].Value;
+                var totalService = dgvServiceBill.Rows.Count > 0 ? dgvServiceBill.Rows[0].Cells["total"].Value : null;
 
-                txtTotal.Text = totalValue != null ? totalValue.ToString() : string.Empty;
+                // Kiểm tra nếu giá trị không phải là null
+                if (totalValue != null)
+                {
+                    decimal total = Convert.ToDecimal(totalValue);
+
+                    // Kiểm tra xem totalService có giá trị không, nếu có thì cộng vào
+                    if (totalService != null)
+                    {
+                        total += Convert.ToDecimal(totalService);
+                    }
+
+                    // Gán tổng vào txtTotal.Text
+                    txtTotal.Text = total.ToString("0.##"); // Hiển thị số với định dạng phù hợp
+                }
+                else
+                {
+                    txtTotal.Text = string.Empty; // Nếu totalValue là null, hiển thị rỗng
+                }
             }
+            else
+            {
+                txtTotal.Text = string.Empty; // Nếu không có hàng trong dgvRoomBill, hiển thị rỗng
+            }
+
+
         }
         private bool IsEmpty(string text) {
             return text.Trim() == string.Empty;

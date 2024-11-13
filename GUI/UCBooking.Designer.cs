@@ -213,11 +213,11 @@
             // dgvListRoom
             // 
             this.dgvListRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListRoom.Location = new System.Drawing.Point(0, 49);
+            this.dgvListRoom.Location = new System.Drawing.Point(20, 49);
             this.dgvListRoom.Margin = new System.Windows.Forms.Padding(4);
             this.dgvListRoom.Name = "dgvListRoom";
             this.dgvListRoom.RowHeadersWidth = 51;
-            this.dgvListRoom.Size = new System.Drawing.Size(983, 420);
+            this.dgvListRoom.Size = new System.Drawing.Size(1015, 398);
             this.dgvListRoom.TabIndex = 3;
             this.dgvListRoom.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListRoom_CellClick);
             // 

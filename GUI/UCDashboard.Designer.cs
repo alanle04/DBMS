@@ -35,32 +35,42 @@ namespace HotelManagementSystem
             this.btnYear = new Guna.UI2.WinForms.Guna2Button();
             this.txtYear = new Guna.UI2.WinForms.Guna2TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnRevenueQuarterly = new Guna.UI2.WinForms.Guna2Button();
             this.txtQuarter = new Guna.UI2.WinForms.Guna2TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.txtMonthly = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnShowRevenue = new Guna.UI2.WinForms.Guna2Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtDaily = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnRevenueDaily = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.dtgv_mon = new System.Windows.Forms.DataGridView();
+            this.dtgv_pt = new System.Windows.Forms.DataGridView();
+            this.dtgv_roomtype = new System.Windows.Forms.DataGridView();
+            this.dtgv_dv = new System.Windows.Forms.DataGridView();
+            this.btn_ptdt = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_mon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_pt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_roomtype)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_dv)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -71,7 +81,7 @@ namespace HotelManagementSystem
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Location = new System.Drawing.Point(20, 18);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1627, 273);
             this.panel1.TabIndex = 0;
@@ -84,7 +94,7 @@ namespace HotelManagementSystem
             this.panel6.Controls.Add(this.label4);
             this.panel6.Controls.Add(this.pictureBox4);
             this.panel6.Location = new System.Drawing.Point(1223, 37);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(380, 197);
             this.panel6.TabIndex = 1;
@@ -137,6 +147,17 @@ namespace HotelManagementSystem
             this.label4.TabIndex = 2;
             this.label4.Text = "Yearly Income";
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::HotelManagementSystem.Properties.Resources.year_icon;
+            this.pictureBox4.Location = new System.Drawing.Point(29, 37);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(133, 123);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 1;
+            this.pictureBox4.TabStop = false;
+            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.Teal;
@@ -145,7 +166,7 @@ namespace HotelManagementSystem
             this.panel5.Controls.Add(this.label3);
             this.panel5.Controls.Add(this.pictureBox3);
             this.panel5.Location = new System.Drawing.Point(823, 37);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(380, 197);
             this.panel5.TabIndex = 1;
@@ -199,6 +220,17 @@ namespace HotelManagementSystem
             this.label3.TabIndex = 2;
             this.label3.Text = "Quarterly Income";
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::HotelManagementSystem.Properties.Resources.quarters_icon;
+            this.pictureBox3.Location = new System.Drawing.Point(29, 37);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(133, 123);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 1;
+            this.pictureBox3.TabStop = false;
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Teal;
@@ -207,7 +239,7 @@ namespace HotelManagementSystem
             this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Location = new System.Drawing.Point(423, 37);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(380, 197);
             this.panel4.TabIndex = 1;
@@ -261,6 +293,17 @@ namespace HotelManagementSystem
             this.label2.TabIndex = 2;
             this.label2.Text = "Monthly Income";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::HotelManagementSystem.Properties.Resources.month_icon;
+            this.pictureBox2.Location = new System.Drawing.Point(35, 37);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(133, 123);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Teal;
@@ -269,7 +312,7 @@ namespace HotelManagementSystem
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Location = new System.Drawing.Point(23, 37);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(380, 197);
             this.panel3.TabIndex = 0;
@@ -323,49 +366,6 @@ namespace HotelManagementSystem
             this.label1.TabIndex = 1;
             this.label1.Text = "Daily Income";
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Location = new System.Drawing.Point(20, 310);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1627, 603);
-            this.panel2.TabIndex = 1;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::HotelManagementSystem.Properties.Resources.year_icon;
-            this.pictureBox4.Location = new System.Drawing.Point(29, 37);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(133, 123);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 1;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::HotelManagementSystem.Properties.Resources.quarters_icon;
-            this.pictureBox3.Location = new System.Drawing.Point(29, 37);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(133, 123);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 1;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::HotelManagementSystem.Properties.Resources.month_icon;
-            this.pictureBox2.Location = new System.Drawing.Point(35, 37);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(133, 123);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::HotelManagementSystem.Properties.Resources.day_icon;
@@ -378,28 +378,109 @@ namespace HotelManagementSystem
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.btn_ptdt);
+            this.panel2.Controls.Add(this.dtgv_mon);
+            this.panel2.Controls.Add(this.dtgv_pt);
+            this.panel2.Controls.Add(this.dtgv_roomtype);
+            this.panel2.Controls.Add(this.dtgv_dv);
+            this.panel2.Location = new System.Drawing.Point(20, 310);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1627, 603);
+            this.panel2.TabIndex = 1;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // dtgv_mon
+            // 
+            this.dtgv_mon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgv_mon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_mon.Location = new System.Drawing.Point(1135, 20);
+            this.dtgv_mon.Name = "dtgv_mon";
+            this.dtgv_mon.RowHeadersWidth = 51;
+            this.dtgv_mon.RowTemplate.Height = 24;
+            this.dtgv_mon.Size = new System.Drawing.Size(408, 569);
+            this.dtgv_mon.TabIndex = 19;
+            // 
+            // dtgv_pt
+            // 
+            this.dtgv_pt.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgv_pt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_pt.Location = new System.Drawing.Point(777, 20);
+            this.dtgv_pt.Name = "dtgv_pt";
+            this.dtgv_pt.RowHeadersWidth = 51;
+            this.dtgv_pt.RowTemplate.Height = 24;
+            this.dtgv_pt.Size = new System.Drawing.Size(342, 569);
+            this.dtgv_pt.TabIndex = 18;
+            // 
+            // dtgv_roomtype
+            // 
+            this.dtgv_roomtype.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgv_roomtype.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_roomtype.Location = new System.Drawing.Point(413, 20);
+            this.dtgv_roomtype.Name = "dtgv_roomtype";
+            this.dtgv_roomtype.RowHeadersWidth = 51;
+            this.dtgv_roomtype.RowTemplate.Height = 24;
+            this.dtgv_roomtype.Size = new System.Drawing.Size(349, 569);
+            this.dtgv_roomtype.TabIndex = 17;
+            // 
+            // dtgv_dv
+            // 
+            this.dtgv_dv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgv_dv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_dv.Location = new System.Drawing.Point(46, 102);
+            this.dtgv_dv.Name = "dtgv_dv";
+            this.dtgv_dv.RowHeadersWidth = 51;
+            this.dtgv_dv.RowTemplate.Height = 24;
+            this.dtgv_dv.Size = new System.Drawing.Size(352, 487);
+            this.dtgv_dv.TabIndex = 16;
+            // 
+            // btn_ptdt
+            // 
+            this.btn_ptdt.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_ptdt.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_ptdt.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_ptdt.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_ptdt.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_ptdt.ForeColor = System.Drawing.Color.White;
+            this.btn_ptdt.Location = new System.Drawing.Point(46, 20);
+            this.btn_ptdt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_ptdt.Name = "btn_ptdt";
+            this.btn_ptdt.Size = new System.Drawing.Size(352, 77);
+            this.btn_ptdt.TabIndex = 8;
+            this.btn_ptdt.Text = "Phân tích doanh thu";
+            this.btn_ptdt.Click += new System.EventHandler(this.btn_ptdt_Click);
+            // 
             // UCDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UCDashboard";
             this.Size = new System.Drawing.Size(1667, 929);
+            this.Load += new System.EventHandler(this.UCDashboard_Load);
             this.panel1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_mon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_pt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_roomtype)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_dv)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -430,5 +511,10 @@ namespace HotelManagementSystem
         private Guna.UI2.WinForms.Guna2TextBox txtMonthly;
         private Guna.UI2.WinForms.Guna2TextBox txtDaily;
         private Guna.UI2.WinForms.Guna2Button btnYear;
+        private System.Windows.Forms.DataGridView dtgv_dv;
+        private System.Windows.Forms.DataGridView dtgv_mon;
+        private System.Windows.Forms.DataGridView dtgv_pt;
+        private System.Windows.Forms.DataGridView dtgv_roomtype;
+        private Guna.UI2.WinForms.Guna2Button btn_ptdt;
     }
 }

@@ -36,7 +36,7 @@
             // 
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(259, 162);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(74, 46);
             this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(5);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(306, 31);
@@ -47,7 +47,7 @@
             // 
             this.labelDaily.BackColor = System.Drawing.Color.Transparent;
             this.labelDaily.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDaily.Location = new System.Drawing.Point(700, 162);
+            this.labelDaily.Location = new System.Drawing.Point(445, 46);
             this.labelDaily.Margin = new System.Windows.Forms.Padding(5);
             this.labelDaily.Name = "labelDaily";
             this.labelDaily.Size = new System.Drawing.Size(306, 31);
