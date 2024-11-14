@@ -11,7 +11,7 @@ namespace HotelManagementSystem.GUI {
         BookingRecordDAO bookingRecordDAO = new BookingRecordDAO();
         CustomerDAO customerDAO = new CustomerDAO();
         ServiceUsageRecordDAO serviceUsageRecordDAO = new ServiceUsageRecordDAO();
-
+        BillDAO billDAO = new BillDAO();
         public UCCheckOut() {
             InitializeComponent();
         }
@@ -24,20 +24,29 @@ namespace HotelManagementSystem.GUI {
             }
             RoomType roomType = roomTypeDAO.GetRoomTypeById(room.RoomTypeId);
             BookingRecord bookingRecord = bookingRecordDAO.GetBookingRecordByRoomIdToCheckOut(room.RoomId);
-            Customer customer = customerDAO.FindCustomerByCustomerId(bookingRecord.CustomerId);
+            if (bookingRecord != null)
+            {
+                Customer customer = customerDAO.FindCustomerByCustomerId(bookingRecord.CustomerId);
+                txtFullName.Text = customer.FullName;
+                txtIdNumber.Text = customer.IdentificationNumber;
+            }
+            else
+            {
+                MessageBox.Show("Phòng chưa được sử dụng!");
+                return;
+            }
+
 
             txtBookingRecordId.Text = bookingRecord.BookingRecordId;
-            txtFullName.Text = customer.FullName;
-            txtIdNumber.Text = customer.IdentificationNumber;
             txtRoomName.Text = room.RoomName;
             txtRoomTypeName.Text = roomType.RoomTypeName;
             txtActualCheckInDate.Text = bookingRecord.ActualCheckInTime.ToString();
 
-            //txtServiceFeeTotal.Text = serviceUsageRecordDAO.GetTotalServiceCost(bookingRecord.BookingRecordId).ToString();
-
-
-            dgvRoomBill.DataSource = bookingRecordDAO.GetRoomBillByRoomId(bookingRecord.BookingRecordId);
+            dgvRoomBill.DataSource = bookingRecordDAO.GetRoomBillByBookingRecordId(bookingRecord.BookingRecordId);
             dgvServiceBill.DataSource = serviceUsageRecordDAO.GetServiceUsageRecordByBookingRecordId(bookingRecord.BookingRecordId);
+           
+
+            //txtServiceFeeTotal.Text = serviceUsageRecordDAO.GetTotalServiceCost(bookingRecord.BookingRecordId).ToString();
 
             if (dgvRoomBill.Rows.Count > 0)
             {
@@ -48,15 +57,8 @@ namespace HotelManagementSystem.GUI {
                 if (totalValue != null)
                 {
                     decimal total = Convert.ToDecimal(totalValue);
-
-                    // Kiểm tra xem totalService có giá trị không, nếu có thì cộng vào
-                    if (totalService != null)
-                    {
-                        total += Convert.ToDecimal(totalService);
-                    }
-
                     // Gán tổng vào txtTotal.Text
-                    txtTotal.Text = total.ToString("0.##"); // Hiển thị số với định dạng phù hợp
+                    txtTotal.Text = total.ToString();
                 }
                 else
                 {
@@ -95,6 +97,7 @@ namespace HotelManagementSystem.GUI {
             if(result == DialogResult.Yes) {
                 BookingRecordDAO.CheckOutRoom(txtBookingRecordId.Text.Trim());
                 BookingRecordDAO.UpdateOverCheckOutFee(txtBookingRecordId.Text.Trim());
+                billDAO.UpdateBillWithDiscount(txtBookingRecordId.Text.Trim());
                 LoadData(txtRoomName.Text.Trim());   
             }
         }

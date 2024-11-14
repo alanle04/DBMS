@@ -152,13 +152,13 @@ LEFT JOIN
 GO
 
 ---2.7.9. View xem thông tin check in
-CREATE VIEW vw_CheckInRooms 
+CREATE OR ALTER VIEW vw_CheckInRooms 
 AS
 SELECT
    	br.booking_record_id,
     r.room_name,
     rt.room_type_name,
-    r.status,
+    br.status,
     c.full_name,
     c.identification_number,
     br.expected_check_in_time,
@@ -171,7 +171,7 @@ FROM
     JOIN booking_record br ON r.room_id = br.room_id
     JOIN customer c ON br.customer_id = c.customer_id
 WHERE
-    r.status = 'deposited';
+    br.status = 'deposited';
 GO
 
 ---2.7.10. View xem thông tin tất cả quản lý
@@ -180,4 +180,16 @@ AS
 SELECT *
 FROM staff
 WHERE role = 'manager';
+GO
+
+---2.7.11. View xem tổng số lần ở và tổng số tiền đã chi ở khách sạn của mỗi khách hàng
+CREATE VIEW vw_LoyalCustomerHistory AS
+SELECT 
+    c.identification_number,
+    COUNT(b.booking_record_id) AS total_stays,
+    COALESCE(SUM(bill.total), 0) AS total_spent
+FROM customer AS c
+JOIN booking_record AS b ON c.customer_id = b.customer_id AND b.status = 'paid'
+JOIN bill ON b.customer_id = bill.customer_id
+GROUP BY c.identification_number;
 GO

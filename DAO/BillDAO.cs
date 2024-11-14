@@ -1,4 +1,5 @@
 ﻿using HotelManagementSystem.DBConnection;
+using HotelManagementSystem.Model;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -45,6 +46,22 @@ namespace HotelManagementSystem.DAO {
             return dt;
         }
 
+        public void UpdateBillWithDiscount(string bookingRecordId)
+        {
+            using (SqlConnection connection = Connection.GetConnection())
+            {
+                connection.Open();
 
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "sp_UpdateBillWithDiscount";
+
+                    cmd.Parameters.Add("@booking_record_id", SqlDbType.VarChar).Value = bookingRecordId;
+                    cmd.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
+        }
     }
 }

@@ -240,7 +240,7 @@ RETURN
 GO
 
 -- 3.2.4.14. Hàm lấy thông tin phiếu dịch vụ thông qua mã phòng
-CREATE FUNCTION fn_GetServiceUsageInfoByRoomId
+CREATE OR ALTER FUNCTION fn_GetServiceUsageInfoByRoomId
 (
     @roomId  VARCHAR(20)
 )
@@ -251,9 +251,10 @@ RETURN
     SELECT s.*
     FROM service_usage_record s
  	JOIN booking_record b ON s.booking_id = b.booking_record_id
-    WHERE b.room_id = @roomId AND b.actual_check_out_time IS NULL
+    WHERE b.room_id = @roomId AND b.status = 'staying'
 );
 GO
+
 
 -- 3.2.4.15. Hàm tìm các phòng đã đặt của 1 khách hàng qua mã định danh
 CREATE FUNCTION fn_GetDepositedRoomsByIdNumber(@id_number VARCHAR(20))
@@ -278,11 +279,11 @@ RETURN
        	JOIN booking_record br ON r.room_id = br.room_id
        	JOIN customer c ON br.customer_id = c.customer_id
  	WHERE
-       	c.identification_number = @id_number AND r.status = 'deposited');
+       	c.identification_number = @id_number AND br.status = 'deposited');
 GO
 
 -- 3.2.4.16. Hàm lấy thông tin mã phiếu đặt phòng đang được áp dụng qua mã phòng
-CREATE FUNCTION fn_GetBookingRecordIdByRoomIdCustomerId(
+CREATE OR ALTER FUNCTION fn_GetBookingRecordIdByRoomIdCustomerId(
     @room_id VARCHAR(20)
 )
 RETURNS VARCHAR(20)
@@ -293,7 +294,7 @@ BEGIN
     -- Lấy booking_record_id với điều kiện theo room_id, customer_id, và status
     SELECT @booking_record_id = booking_record_id
     FROM booking_record
-    WHERE room_id = @room_id
+    WHERE room_id = @room_id and status = 'staying'
  
     -- Trả về booking_record_id nếu tìm thấy
     RETURN @booking_record_id;
@@ -323,8 +324,9 @@ RETURN
 );
 GO 
 
+
 -- 3.2.4.18. Hàm lấy hóa đơn phòng theo mã phiếu đặt phòng.
-CREATE FUNCTION fn_GetRoomBillByBookingRecordId
+CREATE OR ALTER FUNCTION fn_GetRoomBillByBookingRecordId
 (
     @booking_record_id VARCHAR(20)
 )
@@ -337,18 +339,15 @@ RETURN
     	rt.cost_per_day,
     	br.expected_check_in_time,
     	br.expected_check_out_time,
-		case
-		when datediff(day,br.expected_check_in_time,br.expected_check_out_time) = 0
-		then 1 *rt.cost_per_day
-		else
-    		datediff(day,br.expected_check_in_time,br.expected_check_out_time) * rt.cost_per_day
-		end as total
+		b.total
     FROM
     	booking_record br
     JOIN
     	room r ON br.room_id = r.room_id
     JOIN
     	room_type rt ON r.room_type_id = rt.room_type_id
+	JOIN 
+		bill b ON br.customer_id = b.customer_id
     WHERE
     	br.booking_record_id = @booking_record_id
 )
@@ -474,5 +473,24 @@ BEGIN
     FROM fn_GetServiceUsageByBookingId(@booking_id);
 
     RETURN ISNULL(@totalCost, 0);
+END;
+GO
+
+-- 3.2.4.24. Kiểm tra khách hàng đã đủ điều kiện để giảm giá
+CREATE OR ALTER FUNCTION fn_CheckLoyaltyDiscount(@identification_number VARCHAR(20))
+RETURNS BIT
+AS
+BEGIN
+    DECLARE @is_eligible BIT = 0;
+    
+    IF EXISTS (SELECT 1 
+               FROM vw_LoyalCustomerHistory 
+               WHERE identification_number = @identification_number AND 
+                     (total_stays >= 10 AND total_spent >= 20000))
+    BEGIN
+        SET @is_eligible = 1;
+    END
+    
+    RETURN @is_eligible;
 END;
 GO

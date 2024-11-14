@@ -926,7 +926,7 @@
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UCBooking";
-            this.Size = new System.Drawing.Size(1667, 929);
+            this.Size = new System.Drawing.Size(1666, 932);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListRoom)).EndInit();

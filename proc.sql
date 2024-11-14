@@ -497,22 +497,24 @@ BEGIN
 					WHERE r.room_id = @room_id;
 
 					IF CONVERT(DATE, @actual_check_in_time) < CONVERT(DATE, @expected_check_in)
-							
+					BEGIN
 							SET @additional_fee = @cost_per_day;
-					
-					ELSE IF CAST(@actual_check_in_time AS time) < '7:00'
+					END
+					ELSE IF CONVERT(DATE, @actual_check_in_time) = CONVERT(DATE, @expected_check_in)
+					BEGIN
+						IF CAST(@actual_check_in_time AS time) < '7:00'
 
-							SET @additional_fee = @cost_per_day * 0.70;
+								SET @additional_fee = @cost_per_day * 0.70;
 
-					ELSE IF CAST(@actual_check_in_time AS time) BETWEEN '7:00' AND '9:00'
+						ELSE IF CAST(@actual_check_in_time AS time) BETWEEN '7:00' AND '9:00'
 
-							SET @additional_fee = @cost_per_day * 0.5;
+								SET @additional_fee = @cost_per_day * 0.5;
 
-					ELSE IF CAST(@actual_check_in_time AS TIME) BETWEEN '09:00' AND '11:59'
+						ELSE IF CAST(@actual_check_in_time AS TIME) BETWEEN '09:00' AND '11:59'
            
-							SET @additional_fee = @cost_per_day * 0.30;
+								SET @additional_fee = @cost_per_day * 0.30;
+					END
 				END
-
 				IF @additional_fee > 0
 						BEGIN
 								SET @additional_fee_content = 'Phí check in sớm.';
@@ -528,6 +530,7 @@ BEGIN
 						ROLLBACK TRANSACTION;
 				END CATCH
 END
+GO
 GO
 
 --- proc tính phụ thu khi khách check out trễ.
@@ -546,7 +549,7 @@ BEGIN
 				DECLARE @additional_fee_content NVARCHAR(MAX);
 				DECLARE @customer_id VARCHAR(20);
 				DECLARE @room_id VARCHAR(20);
-
+				DECLARE @DATE INT = 0;
 				SELECT @actual_check_out_time = actual_check_out_time,
 				@expected_check_out = expected_check_out_time,
 				@customer_id = customer_id,
@@ -563,9 +566,10 @@ BEGIN
 					WHERE r.room_id = @room_id;
 
 					IF CONVERT(DATE, @actual_check_out_time) > CONVERT(DATE, @expected_check_out)
-							
-							SET @additional_fee = @cost_per_day;
-					
+					BEGIN
+							SET @DATE = DATEDIFF(DAY,@expected_check_out,@actual_check_out_time);
+							SET @additional_fee = @cost_per_day * @DATE;
+					END
 					ELSE IF CAST(@actual_check_out_time AS time) > '16:00'
 
 							SET @additional_fee = @cost_per_day * 0.70;
@@ -594,3 +598,53 @@ BEGIN
 						ROLLBACK TRANSACTION;
 				END CATCH
 END
+GO
+
+--- Cập nhật hóa đơn sau giảm giá khi đủ điều kiện là khách hàng trung thành
+CREATE OR ALTER PROCEDURE sp_UpdateBillWithDiscount
+    @booking_record_id VARCHAR(20)
+AS
+BEGIN
+    DECLARE @room_fee INT;
+    DECLARE @service_fee INT;
+    DECLARE @additional_fee INT;
+    DECLARE @discount DECIMAL(3, 2) = 0;
+    DECLARE @bill_id VARCHAR(20);
+    DECLARE @customer_id VARCHAR(20);
+    DECLARE @identification_number VARCHAR(20);
+
+    -- Lấy thông tin về hóa đơn từ bảng bill
+	SELECT 
+		@room_fee = b.room_fee,
+		@service_fee = b.service_fee,
+		@additional_fee = b.additional_fee,
+		@customer_id = b.customer_id,
+		@bill_id = b.bill_id
+	FROM 
+		bill b
+	JOIN 
+		booking_record br ON b.customer_id = br.customer_id
+	WHERE 
+		br.booking_record_id = @booking_record_id;
+
+
+	print @customer_id;
+    -- Lấy identification_number của khách hàng từ customer
+    SELECT @identification_number = c.identification_number
+    FROM customer c
+    WHERE c.customer_id = @customer_id;
+	print @identification_number;
+    -- Kiểm tra giảm giá trung thành
+    IF dbo.fn_CheckLoyaltyDiscount(@identification_number) = 1
+    BEGIN
+        -- Giảm giá 10% cho khách hàng trung thành
+        SET @discount = 0.1;
+    END
+	print dbo.fn_CheckLoyaltyDiscount(@identification_number);
+	print @discount;
+    -- Cập nhật hóa đơn với giảm giá
+    UPDATE bill
+    SET total = (@room_fee + @service_fee) * (1 - @discount) + @additional_fee
+    WHERE bill_id = @bill_id;
+END;
+GO

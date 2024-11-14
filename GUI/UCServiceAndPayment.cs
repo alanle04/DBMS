@@ -54,7 +54,7 @@ namespace HotelManagementSystem {
         }
 
         private void btn_searchByRoom_Click(object sender, EventArgs e) {
-            dtgv_bill.DataSource = BookingServiceDAO.GetBillInfoByRoomId(txt_roomId.Text);
+           
             dtgv_serviceUsage.DataSource = BookingServiceDAO.GetServiceUsageInfoByRoomId(txt_roomId.Text);
         }
     }

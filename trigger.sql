@@ -287,3 +287,158 @@ BEGIN
    	INNER JOIN inserted i ON b.customer_id = i.customer_id
    	WHERE b.customer_id = i.customer_id;
 END;
+
+trigger 
+CREATE OR ALTER TRIGGER trg_PreventInsertDuplicateRoomIdAndRoomName
+ON room
+INSTEAD OF INSERT
+AS
+BEGIN
+    -- Kiểm tra xem mã phòng đã tồn tại trong bảng hay chưa
+    IF EXISTS (
+        SELECT 1
+        FROM room r
+        INNER JOIN inserted i
+        ON r.room_id = i.room_id
+    )
+    BEGIN
+        -- Raise error and rollback the transaction if duplicate room_id is found
+        RAISERROR('Mã phòng đã tồn tại', 16, 1);
+		RETURN;
+    END
+	
+	IF EXISTS (
+        SELECT 1
+        FROM room r
+        INNER JOIN inserted i
+        ON r.room_name = i.room_name
+    )
+	BEGIN
+		RAISERROR('Tên phòng đã tồn tại', 16, 1);
+		RETURN;
+	END;
+
+	INSERT INTO room (room_id, manager_id, room_type_id, room_name, status)
+	SELECT room_id, manager_id, room_type_id, room_name, status
+	FROM inserted;
+END;
+GO
+
+CREATE OR ALTER TRIGGER trg_PreventInsertDuplicateCustomerInformation
+ON customer
+INSTEAD OF INSERT
+AS
+BEGIN
+    IF EXISTS (
+        SELECT 1
+        FROM customer c
+        INNER JOIN inserted i
+        ON c.customer_id = i.customer_id
+    )
+    BEGIN
+        RAISERROR('Mã khách hàng đã tồn tại', 16, 1);
+        RETURN; 
+    END
+
+    IF EXISTS (
+        SELECT 1
+        FROM customer c
+        INNER JOIN inserted i
+        ON c.identification_number = i.identification_number
+    )
+    BEGIN
+        RAISERROR('Số chứng minh nhân dân đã tồn tại', 16, 1);
+        ROLLBACK TRANSACTION; 
+        RETURN; 
+    END
+
+    IF EXISTS (
+		SELECT 1
+        FROM customer c
+        INNER JOIN inserted i
+        ON c.phone_number = i.phone_number
+    )
+    BEGIN
+        RAISERROR('Số điện thoại đã tồn tại', 16, 1);
+        ROLLBACK TRANSACTION; 
+        RETURN; 
+    END
+
+    INSERT INTO customer (customer_id, full_name, gender, identification_number, phone_number, nationality, address)
+    SELECT customer_id, full_name, gender, identification_number, phone_number, nationality, address
+    FROM inserted;
+END;
+GO
+
+CREATE OR ALTER TRIGGER trg_CheckServiceUsageRecord
+ON service_usage_record
+INSTEAD OF INSERT
+AS
+BEGIN
+    IF EXISTS (
+        SELECT 1
+        FROM service_usage_record s
+        INNER JOIN inserted i
+        ON s.service_usage_id = i.service_usage_id
+    )
+    BEGIN
+        RAISERROR('Mã sử dụng dịch vụ đã tồn tại', 16, 1);
+    END
+    ELSE
+    BEGIN
+        INSERT INTO service_usage_record (service_usage_id, usage_time, quantity, booking_id, receptionist_id, service_id)
+        SELECT service_usage_id, usage_time, quantity, booking_id, receptionist_id, service_id
+        FROM inserted;
+    END
+END;
+GO
+
+CREATE OR ALTER TRIGGER trg_CheckUsername
+ON account
+INSTEAD OF INSERT
+AS
+BEGIN
+	IF EXISTS (
+				SELECT 1 FROM account a
+				JOIN inserted i
+				ON a.username = i.username)
+	BEGIN
+		RAISERROR('Tên tài khoản đã tồn tại', 16, 1);
+		RETURN;
+	END;
+	
+	INSERT INTO account (username, password, role)
+	SELECT username, password, role FROM inserted;
+END
+GO
+
+CREATE OR ALTER TRIGGER trg_CheckStaffId
+ON staff
+INSTEAD OF INSERT
+AS
+BEGIN
+    IF EXISTS (
+        SELECT 1 FROM staff s
+        JOIN inserted i
+        ON s.staff_id = i.staff_id
+    )
+    BEGIN
+        RAISERROR('Mã nhân viên đã tồn tại', 16, 1);
+        RETURN;
+    END
+
+	IF EXISTS (
+        SELECT 1 FROM staff s
+        JOIN inserted i
+        ON s.phone_number = i.phone_number
+    )
+    BEGIN
+        RAISERROR('Số điện thoại đã tồn tại', 16, 1);
+        RETURN;
+    END
+
+    INSERT INTO staff (staff_id, full_name, gender, phone_number, address, role, username)
+    SELECT staff_id, full_name, gender, phone_number, address, role, username
+    FROM inserted;
+END;
+GO

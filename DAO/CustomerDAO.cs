@@ -99,9 +99,7 @@ namespace HotelManagementSystem.DAO {
 
                     try {
                         connection.Open();
-                        if(command.ExecuteNonQuery() > 0) {
-                            MessageBox.Show("Thêm khách hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
+                        command.ExecuteNonQuery();
                     } catch(Exception ex) {
                         MessageBox.Show("Thêm khách hàng thất bại" + ex, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     } finally {

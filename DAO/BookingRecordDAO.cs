@@ -96,7 +96,7 @@ namespace HotelManagementSystem.DAO {
                 conn.Close();
             }
         }
-        public DataTable GetRoomBillByRoomId(string bookingRecordId) {
+        public DataTable GetRoomBillByBookingRecordId(string bookingRecordId) {
             DataTable roomBillTable = new DataTable();
 
             using(SqlConnection conn = Connection.GetConnection()) {
