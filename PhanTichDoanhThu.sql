@@ -127,31 +127,24 @@ SELECT * FROM fn_AdvancedRevenueAnalysisService(null,null);
 
 SELECT * FROM fn_AdvancedRevenueAnalysisRoomType(null,null);
 
-CREATE OR ALTER PROCEDURE sp_GetMonthlyRevenueAnalysis
-    @startDate DATETIME = NULL,  -- Ngày bắt đầu của tháng hiện tại
-    @endDate DATETIME = NULL     -- Ngày kết thúc của tháng hiện tại
+CREATE OR ALTER PROCEDURE [dbo].[sp_GetMonthlyRevenueAnalysis]
+    @startDate DATETIME = NULL,
+    @endDate DATETIME = NULL
 AS
 BEGIN
     -- Gán giá trị mặc định cho @startDate và @endDate nếu không truyền vào
     IF @startDate IS NULL OR @endDate IS NULL
     BEGIN
-        -- Ngày bắt đầu của tháng hiện tại
         SET @startDate = DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1);
-        -- Ngày kết thúc của tháng hiện tại
         SET @endDate = GETDATE();
     END
     
-    -- Tổng doanh thu của tháng hiện tại
     DECLARE @totalRevenueCurrentMonth DECIMAL(18, 2);
-
     SELECT @totalRevenueCurrentMonth = SUM(b.total)
     FROM bill b
     WHERE b.created_at BETWEEN @startDate AND @endDate;
    
-    -- Tổng doanh thu của tháng trước
     DECLARE @totalRevenueLastMonth DECIMAL(18, 2);
-
-    -- Tính khoảng thời gian của tháng trước
     DECLARE @lastMonthStartDate DATE = DATEADD(MONTH, -1, DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1));
     DECLARE @lastMonthEndDate DATE = EOMONTH(@lastMonthStartDate);
 
@@ -159,58 +152,66 @@ BEGIN
     FROM bill b
     WHERE b.created_at BETWEEN @lastMonthStartDate AND @lastMonthEndDate;
     
-    -- Kiểm tra nếu doanh thu tháng trước > 0 để tính tỷ lệ tăng trưởng
-    DECLARE @growthRate DECIMAL(5, 2) = 0; -- Nếu doanh thu tháng trước = 0, tỷ lệ tăng trưởng sẽ là 0%
-
+    DECLARE @growthRate DECIMAL(5, 2) = 0;
     IF @totalRevenueLastMonth > 0
     BEGIN
-        -- Tính tỷ lệ tăng trưởng doanh thu từ tháng trước đến tháng hiện tại
         SET @growthRate = (@totalRevenueCurrentMonth - @totalRevenueLastMonth) / @totalRevenueLastMonth * 100;
     END
 
-    -- Dự đoán doanh thu tháng sau
     DECLARE @predictedRevenueNextMonth DECIMAL(18, 2);
-    
-    -- Dự đoán doanh thu tháng sau theo tỷ lệ tăng trưởng
     SET @predictedRevenueNextMonth = @totalRevenueCurrentMonth * (1 + @growthRate / 100);
 
-    -- Chèn kết quả vào bảng tạm #Result
-    CREATE TABLE #Result ([Phân tích] NVARCHAR(100), [Nội dung] NVARCHAR(500),[Tổng doanh thu] DECIMAL(18, 2));
+    DECLARE @threeMonthRevenueLastYear DECIMAL(18, 2) = 0;
+    DECLARE @threeMonthRevenueCurrentYear DECIMAL(18, 2) = 0;
+    DECLARE @growth3Rate DECIMAL(5, 2) = 0;
+    DECLARE @predictedRevenueNextYear DECIMAL(18, 2) = 0;
 
-    -- Tổng doanh thu tháng hiện tại
-    INSERT INTO #Result ([Phân tích], [Nội dung], [Tổng doanh thu])
-    SELECT
-        N'Tổng doanh thu tháng này' AS [Phân tích],
-        N'Từ ngày ' + CONVERT(NVARCHAR, @startDate, 103) + N' đến ' + CONVERT(NVARCHAR, @endDate, 103) AS [Nội dung],
-        @totalRevenueCurrentMonth AS [Tổng doanh thu];
-    
-    -- Tổng doanh thu tháng trước
-    INSERT INTO #Result ([Phân tích], [Nội dung], [Tổng doanh thu])
-    SELECT
-        N'Tổng doanh thu tháng trước' AS [Phân tích],
-        N'Từ ngày ' + CONVERT(NVARCHAR, @lastMonthStartDate, 103) + N' đến ' + CONVERT(NVARCHAR, @lastMonthEndDate, 103) AS [Nội dung],
-        @totalRevenueLastMonth AS [Tổng doanh thu];
+    SELECT @threeMonthRevenueLastYear = SUM(b.total)
+    FROM bill b
+    WHERE b.created_at BETWEEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 1, 1) AND DATEFROMPARTS(YEAR(GETDATE()) - 1, 3, 31);
 
-    -- Tỷ lệ tăng trưởng doanh thu
-    INSERT INTO #Result ([Phân tích], [Nội dung], [Tổng doanh thu])
-    SELECT
-        N'Tỷ lệ tăng trưởng doanh thu' AS [Phân tích],
-    N'Công thức: growthRate = (CurrentMonth - LastMonth) / LastMonth * 100 (%)' AS [Nội dung],
-    @growthRate  AS [Tổng doanh thu];
+    SELECT @threeMonthRevenueCurrentYear = SUM(b.total)
+    FROM bill b
+    WHERE b.created_at BETWEEN DATEFROMPARTS(YEAR(GETDATE()), 1, 1) AND DATEFROMPARTS(YEAR(GETDATE()), 3, 31);
 
-    -- Dự đoán doanh thu tháng sau
+    IF @threeMonthRevenueLastYear > 0
+    BEGIN
+        SET @growth3Rate = (@threeMonthRevenueCurrentYear - @threeMonthRevenueLastYear) / @threeMonthRevenueLastYear * 100;
+    END
+
+    SET @predictedRevenueNextYear = @threeMonthRevenueCurrentYear * (1 + @growth3Rate / 100);
+
+    CREATE TABLE #Result ([Phân tích] NVARCHAR(100), [Nội dung] NVARCHAR(500), [Tổng doanh thu] NUMERIC(18, 2));
+
     INSERT INTO #Result ([Phân tích], [Nội dung], [Tổng doanh thu])
-    SELECT
-         N'Dự đoán doanh thu tháng sau' AS [Phân tích],
-	 N'Công thức: NextMonth = CurrentMonth * (1 + growthRate / 100)' AS [Nội dung],
-    @predictedRevenueNextMonth AS [Tổng doanh thu];
-    -- Hiển thị kết quả
+    SELECT N'Tổng doanh thu tháng này', N'Từ ngày ' + CONVERT(NVARCHAR, @startDate, 103) + N' đến ' + CONVERT(NVARCHAR, @endDate, 103), @totalRevenueCurrentMonth;
+
+    INSERT INTO #Result ([Phân tích], [Nội dung], [Tổng doanh thu])
+    SELECT N'Tổng doanh thu tháng trước', N'Từ ngày ' + CONVERT(NVARCHAR, @lastMonthStartDate, 103) + N' đến ' + CONVERT(NVARCHAR, @lastMonthEndDate, 103), @totalRevenueLastMonth;
+
+    INSERT INTO #Result ([Phân tích], [Nội dung], [Tổng doanh thu])
+    SELECT N'Tỷ lệ tăng trưởng doanh thu', N'Công thức: growthRate = (CurrentMonth - LastMonth) / LastMonth * 100 (%)', @growthRate;
+
+    INSERT INTO #Result ([Phân tích], [Nội dung], [Tổng doanh thu])
+    SELECT N'Dự đoán doanh thu tháng sau', N'Công thức: NextMonth = CurrentMonth * (1 + growthRate / 100)', @predictedRevenueNextMonth;
+
+    INSERT INTO #Result ([Phân tích], [Nội dung], [Tổng doanh thu])
+    SELECT N'Tổng doanh thu 3 tháng đầu năm trước', N'Từ tháng 1 đến tháng 3 năm trước vào dịp tết', @threeMonthRevenueLastYear;
+
+    INSERT INTO #Result ([Phân tích], [Nội dung], [Tổng doanh thu])
+    SELECT N'Tổng doanh thu 3 tháng đầu năm nay vào dịp tết', N'Từ tháng 1 đến tháng 3 năm nay', @threeMonthRevenueCurrentYear;
+
+    INSERT INTO #Result ([Phân tích], [Nội dung], [Tổng doanh thu])
+    SELECT N'Tỷ lệ tăng trưởng doanh thu vào dịp tết', N'Công thức: growthRate = (Current3Month - Last3Month) / Last3Month * 100 (%)', @growth3Rate;
+
+    INSERT INTO #Result ([Phân tích], [Nội dung], [Tổng doanh thu])
+    SELECT N'Dự đoán doanh thu 3 tháng đầu năm sau vào dịp tết', N'Công thức: Next3Months = Current3Months * (1 + growth3Rate / 100)', @predictedRevenueNextYear;
+
     SELECT * FROM #Result;
 
-    -- Xóa bảng tạm
     DROP TABLE #Result;
 END
-GO
+
 
    
 
